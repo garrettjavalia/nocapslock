@@ -55,7 +55,7 @@ export const keycap = style({
   borderRadius: 30,
   background: vars.color.keycapBg,
   border: `1px solid ${vars.color.keycapBorder}`,
-  boxShadow: 'none',
+  boxShadow: 'inset 0 -10px 16px rgba(0, 0, 0, 0.06)',
   userSelect: 'none',
   selectors: {
     '&::before': {
@@ -73,6 +73,11 @@ export const keycap = style({
   '@media': {
     '(max-width: 640px)': {
       borderRadius: 24,
+    },
+  },
+  '@supports': {
+    '(color: color-mix(in srgb, black, white))': {
+      boxShadow: `inset 0 -10px 16px color-mix(in srgb, ${vars.color.text} 8%, transparent)`,
     },
   },
 })

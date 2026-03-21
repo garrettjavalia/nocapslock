@@ -68,7 +68,6 @@ export const localeSelect = style({
   appearance: 'none',
   display: 'block',
   height: vars.control.height,
-  lineHeight: vars.control.height,
   border: 0,
   background: 'transparent',
   color: vars.color.text,

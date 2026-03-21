@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent } from 'react'
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { CompactRemapBadge } from './components/CompactRemapBadge'
@@ -35,6 +42,26 @@ const previewPlatforms: Exclude<PlatformId, 'other'>[] = [
   'android',
   'unix',
 ]
+const demoShortcutWindowMs = 1000
+type DemoShortcutAction = 'a' | 'c' | 'v' | 'x'
+
+function logDemoKeyboardEvent(
+  phase: 'keydown' | 'keyup',
+  event: KeyboardEvent<HTMLTextAreaElement>,
+  capsArmedUntil: number,
+) {
+  console.log(`[demo:${phase}]`, {
+    key: event.key,
+    code: event.code,
+    repeat: event.repeat,
+    timeStamp: Math.round(event.timeStamp),
+    capsLockModifier: event.getModifierState('CapsLock'),
+    armedWindowActive: capsArmedUntil > Date.now(),
+    armedWindowRemainingMs: Math.max(0, Math.round(capsArmedUntil - Date.now())),
+    selectionStart: event.currentTarget.selectionStart,
+    selectionEnd: event.currentTarget.selectionEnd,
+  })
+}
 
 function detectPlatform(): PlatformId {
   if (typeof navigator === 'undefined') {
@@ -85,6 +112,9 @@ export function App() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [keyCycleIndex, setKeyCycleIndex] = useState(0)
   const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
+  const [capsArmedUntil, setCapsArmedUntil] = useState(0)
+  const capsArmedUntilRef = useRef(0)
+  const demoTextareaRef = useRef<HTMLTextAreaElement | null>(null)
 
   const locale = routeLocale ?? defaultLocale
   const copy = messages[locale]
@@ -168,6 +198,7 @@ export function App() {
   const animatedKeyLabels = useMemo(() => ['Command', 'Control', 'ESC'], [])
   const recommendedKeyLabel = osRoleMap[captionPlatform]
   const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
+  const demoModifierLabel = osRoleMap[platform]
   const captionParts = copy.keySection.captionTemplate.split(/(\{device\}|\{key\})/g)
   const demoBodyParts = copy.demoSection.bodyTemplate.split(
     /(\{caps\}|\{control\}|\{a\}|\{c\}|\{v\}|\{x\})/g,
@@ -188,61 +219,145 @@ export function App() {
     return () => window.clearInterval(timer)
   }, [animatedKeyLabels.length])
 
+  const clearDemoShortcutWindow = () => {
+    capsArmedUntilRef.current = 0
+    setCapsHeld(false)
+    setCapsArmedUntil(0)
+  }
+
+  const armDemoShortcutWindow = () => {
+    const armedUntil = Date.now() + demoShortcutWindowMs
+    capsArmedUntilRef.current = armedUntil
+    setCapsHeld(true)
+    setCapsArmedUntil(armedUntil)
+  }
+
+  useEffect(() => {
+    if (!capsArmedUntil) {
+      return
+    }
+
+    const remaining = capsArmedUntil - Date.now()
+    if (remaining <= 0) {
+      clearDemoShortcutWindow()
+      return
+    }
+
+    const timeout = window.setTimeout(() => {
+      clearDemoShortcutWindow()
+    }, remaining)
+
+    return () => window.clearTimeout(timeout)
+  }, [capsArmedUntil])
+
+  const runDeferredDemoShortcut = async (
+    action: DemoShortcutAction,
+    snapshot: { value: string; start: number; end: number },
+  ) => {
+    const textarea = demoTextareaRef.current
+    if (!textarea) {
+      return
+    }
+
+    const selectedText = snapshot.value.slice(snapshot.start, snapshot.end)
+
+    try {
+      if (action === 'a') {
+        setTextValue(snapshot.value)
+        window.requestAnimationFrame(() => {
+          textarea.focus()
+          textarea.setSelectionRange(0, snapshot.value.length)
+        })
+        return
+      }
+
+      if (action === 'c') {
+        await navigator.clipboard.writeText(selectedText || snapshot.value)
+        setTextValue(snapshot.value)
+        window.requestAnimationFrame(() => {
+          textarea.focus()
+          textarea.setSelectionRange(snapshot.start, snapshot.end)
+        })
+        return
+      }
+
+      if (action === 'x') {
+        await navigator.clipboard.writeText(selectedText || snapshot.value)
+        const nextValue =
+          snapshot.value.slice(0, snapshot.start) + snapshot.value.slice(snapshot.end)
+        setTextValue(nextValue)
+        window.requestAnimationFrame(() => {
+          textarea.focus()
+          textarea.setSelectionRange(snapshot.start, snapshot.start)
+        })
+        return
+      }
+
+      if (action === 'v') {
+        const pasted = await navigator.clipboard.readText()
+        const nextValue = `${snapshot.value.slice(0, snapshot.start)}${pasted}${snapshot.value.slice(snapshot.end)}`
+        const nextCursor = snapshot.start + pasted.length
+        setTextValue(nextValue)
+        window.requestAnimationFrame(() => {
+          textarea.focus()
+          textarea.setSelectionRange(nextCursor, nextCursor)
+        })
+      }
+    } catch {
+      setTextValue(snapshot.value)
+      window.requestAnimationFrame(() => {
+        textarea.focus()
+        textarea.setSelectionRange(snapshot.start, snapshot.end)
+      })
+    }
+  }
+
   const handleDemoKeyDown = async (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === 'CapsLock') {
-      setCapsHeld(true)
+    logDemoKeyboardEvent('keydown', event, capsArmedUntilRef.current)
+
+    if (event.key === 'CapsLock' || event.code === 'CapsLock') {
+      armDemoShortcutWindow()
       event.preventDefault()
       return
     }
 
-    if (!capsHeld) {
-      return
+    const capsModifierActive = capsArmedUntilRef.current > Date.now()
+    const codeToActionMap: Record<string, 'a' | 'c' | 'v' | 'x'> = {
+      KeyA: 'a',
+      KeyC: 'c',
+      KeyV: 'v',
+      KeyX: 'x',
     }
-
-    const key = event.key.toLowerCase()
-    if (!['a', 'c', 'v', 'x'].includes(key)) {
+    const key = codeToActionMap[event.code]
+    if (!capsModifierActive) {
       return
     }
 
     event.preventDefault()
 
-    const target = event.currentTarget
-    if (key === 'a') {
-      target.select()
+    if (!key) {
+      clearDemoShortcutWindow()
       return
     }
 
-    const selection = target.value.slice(target.selectionStart, target.selectionEnd)
-
-    try {
-      if (key === 'c') {
-        await navigator.clipboard.writeText(selection || target.value)
-        return
-      }
-
-      if (key === 'x') {
-        await navigator.clipboard.writeText(selection || target.value)
-        const nextValue =
-          target.value.slice(0, target.selectionStart) + target.value.slice(target.selectionEnd)
-        setTextValue(nextValue)
-        return
-      }
-
-      if (key === 'v') {
-        const pasted = await navigator.clipboard.readText()
-        const start = target.selectionStart
-        const end = target.selectionEnd
-        const nextValue = `${target.value.slice(0, start)}${pasted}${target.value.slice(end)}`
-        setTextValue(nextValue)
-      }
-    } catch {
-      // Browsers can block clipboard access unless the page is focused and permitted.
+    const snapshot = {
+      value: event.currentTarget.value,
+      start: event.currentTarget.selectionStart,
+      end: event.currentTarget.selectionEnd,
     }
+
+    window.setTimeout(() => {
+      void runDeferredDemoShortcut(key, snapshot)
+    }, 0)
+
+    clearDemoShortcutWindow()
   }
 
   const handleDemoKeyUp = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === 'CapsLock') {
-      setCapsHeld(false)
+    logDemoKeyboardEvent('keyup', event, capsArmedUntilRef.current)
+
+    if (event.key === 'CapsLock' || event.code === 'CapsLock') {
+      armDemoShortcutWindow()
       event.preventDefault()
     }
   }
@@ -391,12 +506,32 @@ export function App() {
                 return part
               })}
             </p>
+            <div className={styles.demoStatusCard}>
+              <p className={styles.demoStatusLine}>
+                <span className={styles.demoStatusPrefix}>{copy.demoSection.statusPrefix}</span>
+                <span
+                  className={
+                    capsHeld ? `${styles.demoStatusBadge} ${styles.demoStatusBadgeActive}` : styles.demoStatusBadge
+                  }
+                >
+                  {capsHeld ? copy.demoSection.statusArmed : copy.demoSection.statusIdle}
+                </span>
+                <Keycap keyLabel={demoModifierLabel} mini miniSize="sm" platform={platform} />
+              </p>
+              <p className={styles.demoStatusText}>{copy.demoSection.instructions}</p>
+              <p className={styles.demoRestoreNote}>{copy.demoSection.restoreNote}</p>
+            </div>
             <textarea
+              ref={demoTextareaRef}
               className={capsHeld ? `${styles.demoTextarea} ${styles.demoTextareaActive}` : styles.demoTextarea}
               value={textValue}
               onChange={(event) => setTextValue(event.target.value)}
               onKeyDown={handleDemoKeyDown}
               onKeyUp={handleDemoKeyUp}
+              onBlur={() => {
+                clearDemoShortcutWindow()
+              }}
+              readOnly={capsHeld}
               spellCheck={false}
             />
           </section>

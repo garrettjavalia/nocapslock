@@ -219,15 +219,14 @@ export const keyFlowDot = style({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 22,
-  height: 22,
-  borderRadius: 999,
-  border: `1px solid ${vars.color.border}`,
-  background: vars.color.bg,
+  width: 34,
+  height: 34,
   color: vars.color.textSoft,
   selectors: {
     '&::before': {
       content: '"→"',
+      fontSize: '1.5rem',
+      lineHeight: 1,
     },
   },
 })
@@ -262,7 +261,6 @@ export const keyCaptionSelect = style({
   background: vars.color.bgStrong,
   color: vars.color.text,
   fontWeight: 600,
-  lineHeight: 1,
   verticalAlign: 'middle',
   outline: 'none',
   cursor: 'pointer',
@@ -274,6 +272,64 @@ export const keyCaptionSelect = style({
   backgroundPosition: 'calc(100% - 18px) 14px, calc(100% - 12px) 14px',
   backgroundSize: '6px 6px, 6px 6px',
   backgroundRepeat: 'no-repeat',
+})
+
+export const demoStatusCard = style({
+  display: 'grid',
+  gap: 10,
+  marginTop: 18,
+  marginBottom: 16,
+  padding: 16,
+  borderRadius: 18,
+  border: `1px solid ${vars.color.border}`,
+  background: vars.color.bgStrong,
+})
+
+export const demoStatusLine = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 10,
+  flexWrap: 'wrap',
+  marginBottom: 0,
+})
+
+export const demoStatusPrefix = style({
+  color: vars.color.textSoft,
+  fontWeight: 600,
+})
+
+export const demoStatusBadge = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: 30,
+  padding: '0 12px',
+  borderRadius: 999,
+  border: `1px solid ${vars.color.border}`,
+  background: vars.color.bgElevated,
+  color: vars.color.textSoft,
+  fontSize: '0.92rem',
+  fontWeight: 700,
+})
+
+export const demoStatusBadgeActive = style({
+  borderColor: vars.color.accent,
+  background: vars.color.accentSoft,
+  color: vars.color.accentStrong,
+})
+
+export const demoStatusText = style([
+  subduedText,
+  {
+    marginBottom: 0,
+    lineHeight: 1.65,
+  },
+])
+
+export const demoRestoreNote = style({
+  marginBottom: 0,
+  color: vars.color.textSoft,
+  lineHeight: 1.65,
 })
 
 export const demoTextarea = style({

@@ -31,6 +31,11 @@ type Copy = {
     kicker: string
     title: string
     bodyTemplate: string
+    statusIdle: string
+    statusArmed: string
+    statusPrefix: string
+    instructions: string
+    restoreNote: string
     text: string
   }
   guideSection: {
@@ -97,6 +102,13 @@ export const messages: Record<Locale, Copy> = {
       title: 'Try using Caps Lock like a shortcut helper',
       bodyTemplate:
         'Inside this textarea, {caps} behaves like a {control} helper for {a}, {c}, {v}, and {x}. You can check the feel first before changing your whole system. Clipboard actions may ask for browser permission the first time.',
+      statusIdle: 'Waiting',
+      statusArmed: 'Virtual modifier active',
+      statusPrefix: 'Status',
+      instructions:
+        'Press Caps Lock once, then press A, C, V, or X within 1 second. You need to press Caps Lock again for each shortcut. The next supported key will be treated like a Command or Control shortcut in this demo.',
+      restoreNote:
+        'After trying the demo, turn Caps Lock back to its normal state so it does not affect your next task. There may still be browser- and operating-system-specific bugs.',
       text: `Try this box with Caps Lock.
 
 Use Caps Lock + A to select all.
@@ -172,6 +184,13 @@ This is only a browser-level simulation, but it is enough to feel the difference
       title: 'Caps Lock을 단축키 보조키처럼 써보기',
       bodyTemplate:
         '아래 텍스트 영역에서는 {caps}이 {a}, {c}, {v}, {x}에 대해 {control} 보조키처럼 동작합니다. 시스템 전체를 바꾸기 전에 감각부터 먼저 확인할 수 있습니다. 클립보드 관련 동작은 처음 한 번 브라우저 권한을 물어볼 수 있습니다.',
+      statusIdle: '대기 중',
+      statusArmed: '가상 보조키 활성',
+      statusPrefix: '상태',
+      instructions:
+        'Caps Lock을 한 번 누른 뒤 1초 안에 A, C, V, X 중 하나를 누르면 이 데모 안에서 Command 또는 Control 단축키처럼 동작합니다. 단축키를 한 번 쓸 때마다 Caps Lock을 다시 눌러야 합니다.',
+      restoreNote:
+        '체험이 끝나면 다음 작업에 지장이 없도록 Caps Lock을 다시 원래 상태로 돌려두세요. 브라우저와 운영체제에 따라 버그가 있을 수 있습니다.',
       text: `이 박스에서 Caps Lock을 눌러 보세요.
 
 Caps Lock + A 는 전체 선택,
