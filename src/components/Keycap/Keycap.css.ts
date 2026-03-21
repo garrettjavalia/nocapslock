@@ -32,6 +32,7 @@ export const inlineMiniKeycapCross = style({
   position: 'absolute',
   inset: 0,
   zIndex: 1,
+  pointerEvents: 'none',
   selectors: {
     '&::before': {
       content: '""',
@@ -201,7 +202,8 @@ export const inlineMiniKeycap = style({
   fontWeight: 700,
   letterSpacing: '-0.03em',
   boxShadow: 'inset 0 -6px 10px rgba(0, 0, 0, 0.06)',
-  userSelect: 'none',
+  userSelect: 'text',
+  WebkitUserSelect: 'text',
   position: 'relative',
   zIndex: 0,
   selectors: {
@@ -209,6 +211,16 @@ export const inlineMiniKeycap = style({
       boxShadow: 'inset 0 -4px 8px rgba(0, 0, 0, 0.18)',
     },
   },
+})
+
+export const inlineMiniKeycapSelectable = style({
+  userSelect: 'text',
+  WebkitUserSelect: 'text',
+})
+
+export const inlineMiniKeycapNonSelectable = style({
+  userSelect: 'none',
+  WebkitUserSelect: 'none',
 })
 
 export const inlineMiniKeycapSmall = style([

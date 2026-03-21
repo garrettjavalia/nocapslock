@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { GuideLinksSection, GuideNotesSection, GuideStepsSection, type GuideLink, type GuideStep } from '../GuideSections'
+import { GuideRichText } from '../GuideRichText'
 import { WindowsRegistryGenerator } from '../WindowsRegistryGenerator'
 import * as styles from './WindowsGuideMethods.css'
 
@@ -84,7 +85,9 @@ export function WindowsGuideMethods({
           >
             <div>
               <h4 className={styles.comparisonTitle}>{method.title}</h4>
-              <p className={styles.comparisonSummary}>{method.summary}</p>
+              <p className={styles.comparisonSummary}>
+                <GuideRichText text={method.summary} platform="windows" />
+              </p>
             </div>
 
             <div>
@@ -92,7 +95,7 @@ export function WindowsGuideMethods({
               <ul className={styles.bulletList}>
                 {method.pros.map((item) => (
                   <li key={item} className={styles.bulletItem}>
-                    {item}
+                    <GuideRichText text={item} platform="windows" />
                   </li>
                 ))}
               </ul>
@@ -103,7 +106,7 @@ export function WindowsGuideMethods({
               <ul className={styles.bulletList}>
                 {method.cons.map((item) => (
                   <li key={item} className={styles.bulletItem}>
-                    {item}
+                    <GuideRichText text={item} platform="windows" />
                   </li>
                 ))}
               </ul>
@@ -117,14 +120,14 @@ export function WindowsGuideMethods({
           <GuideLinksSection label={labels.linksLabel} links={activeMethod.officialLinks} />
         ) : null}
 
-        <GuideStepsSection label={labels.stepsLabel} steps={activeMethod.steps} />
+          <GuideStepsSection label={labels.stepsLabel} steps={activeMethod.steps} platform="windows" />
 
         {activeMethod.id === 'registry' ? (
           <WindowsRegistryGenerator copy={registryGeneratorCopy} />
         ) : null}
 
         {activeMethod.notes?.length ? (
-          <GuideNotesSection label={labels.notesLabel} notes={activeMethod.notes} />
+          <GuideNotesSection label={labels.notesLabel} notes={activeMethod.notes} platform="windows" />
         ) : null}
       </div>
     </section>

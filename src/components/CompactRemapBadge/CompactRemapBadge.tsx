@@ -54,9 +54,9 @@ export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
   return (
     <button type="button" className={styles.compactHeroBadge} aria-label={label} onClick={handleClick}>
       {displayKey === null ? (
-        <Keycap crossed keyLabel="Caps Lock" mini platform={platform} />
+        <Keycap crossed keyLabel="Caps Lock" mini platform={platform} selectable={false} />
       ) : (
-        <Keycap keyLabel={displayKey} mini platform={platform} />
+        <Keycap keyLabel={displayKey} mini platform={platform} selectable={false} />
       )}
     </button>
   )

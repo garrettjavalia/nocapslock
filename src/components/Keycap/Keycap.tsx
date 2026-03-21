@@ -9,6 +9,7 @@ type KeycapProps = {
   platform: PlatformId
   mini?: boolean
   miniSize?: 'xs' | 'sm' | 'md'
+  selectable?: boolean
   muted?: boolean
   crossed?: boolean
   wide?: boolean
@@ -34,6 +35,7 @@ function renderMini(
   platform: PlatformId,
   crossed?: boolean,
   miniSize: 'xs' | 'sm' | 'md' = 'md',
+  selectable = true,
 ) {
   const miniKeycapClass =
     miniSize === 'xs'
@@ -60,17 +62,21 @@ function renderMini(
         ? styles.inlineMiniCommandLabelSmall
         : styles.inlineMiniCommandLabel
 
+  const selectionClass = selectable
+    ? styles.inlineMiniKeycapSelectable
+    : styles.inlineMiniKeycapNonSelectable
+
   if (isAppleModifierKeycap(platform, label)) {
     const content =
       label === 'Command' ? (
-        <span className={miniModifierClass} aria-label="Command key">
+        <span className={`${miniModifierClass} ${selectionClass}`} aria-label="Command key">
           <span className={miniGlyphClass} aria-hidden="true">
             ⌘
           </span>
           <span className={miniLabelClass}>command</span>
         </span>
       ) : (
-        <span className={miniModifierClass} aria-label="Control key">
+        <span className={`${miniModifierClass} ${selectionClass}`} aria-label="Control key">
           <span className={miniGlyphClass} aria-hidden="true">
             ⌃
           </span>
@@ -88,7 +94,7 @@ function renderMini(
     )
   }
 
-  const content = <span className={miniKeycapClass}>{label}</span>
+  const content = <span className={`${miniKeycapClass} ${selectionClass}`}>{label}</span>
   return crossed ? (
     <span className={styles.inlineMiniKeycapWrap}>
       <span className={styles.inlineMiniKeycapCross} />
@@ -104,12 +110,13 @@ export function Keycap({
   keyLabel,
   mini = false,
   miniSize = 'md',
+  selectable = true,
   muted = false,
   platform,
   wide = false,
 }: KeycapProps) {
   if (mini) {
-    return renderMini(keyLabel, platform, crossed, miniSize)
+    return renderMini(keyLabel, platform, crossed, miniSize, selectable)
   }
 
   const classes = [styles.keycap]

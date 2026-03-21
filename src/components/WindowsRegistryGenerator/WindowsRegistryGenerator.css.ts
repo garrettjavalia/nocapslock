@@ -23,12 +23,6 @@ export const title = style({
   fontSize: '1.05rem',
 })
 
-export const intro = style({
-  marginBottom: 0,
-  color: vars.color.textSoft,
-  lineHeight: 1.65,
-})
-
 export const resetButton = style({
   minHeight: vars.control.height,
   padding: `0 ${vars.control.paddingX}`,
@@ -46,12 +40,6 @@ export const pathText = style({
   color: vars.color.textSoft,
   lineHeight: 1.6,
   wordBreak: 'break-word',
-})
-
-export const sourceLink = style({
-  color: vars.color.text,
-  fontWeight: 600,
-  textDecorationColor: vars.color.border,
 })
 
 export const mappingCard = style({

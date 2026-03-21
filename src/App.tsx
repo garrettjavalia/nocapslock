@@ -10,6 +10,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { CompactRemapBadge } from './components/CompactRemapBadge'
 import { GuideCodeBlock } from './components/GuideCodeBlock'
+import { GuideRichText } from './components/GuideRichText'
 import {
   GuideLinksSection,
   GuideNotesSection,
@@ -215,9 +216,9 @@ export function App() {
   const demoModifierLabel = osRoleMap[platform]
   const activeGuide = copy.guideSection.platforms.find((item) => item.id === guidePlatform) ?? copy.guideSection.platforms.find((item) => item.id === 'linux')!
   const captionParts = copy.keySection.captionTemplate.split(/(\{device\}|\{key\})/g)
-  const demoBodyParts = copy.demoSection.bodyTemplate.split(
-    /(\{caps\}|\{control\}|\{a\}|\{c\}|\{v\}|\{x\})/g,
-  )
+  const demoBodyText = copy.demoSection.bodyTemplate.replaceAll('{modifier}', demoModifierLabel)
+  const demoInstructionsText = copy.demoSection.instructions.replaceAll('{modifier}', demoModifierLabel)
+  const demoRestoreText = copy.demoSection.restoreNote.replaceAll('{modifier}', demoModifierLabel)
   const compactProgress = Math.max(0, Math.min(1, (scrollProgress - 0.42) / 0.38))
 
   const mastheadStyle = {
@@ -496,30 +497,7 @@ export function App() {
               </h2>
             </div>
             <p className={styles.panelCopy}>
-              {demoBodyParts.map((part, index) => {
-                if (part === '{caps}') {
-                  return (
-                    <Keycap key={`caps-${index}`} keyLabel="Caps Lock" mini miniSize="xs" platform={platform} />
-                  )
-                }
-                if (part === '{control}') {
-                  return (
-                    <Keycap key={`control-${index}`} keyLabel="Control" mini miniSize="xs" platform={platform} />
-                  )
-                }
-                if (part === '{a}' || part === '{c}' || part === '{v}' || part === '{x}') {
-                  return (
-                    <Keycap
-                      key={`${part}-${index}`}
-                      keyLabel={part.replace(/[{}]/g, '').toUpperCase()}
-                      mini
-                      miniSize="xs"
-                      platform={platform}
-                    />
-                  )
-                }
-                return part
-              })}
+              <GuideRichText text={demoBodyText} platform={platform} />
             </p>
             <div className={styles.demoStatusCard}>
               <p className={styles.demoStatusLine}>
@@ -533,8 +511,12 @@ export function App() {
                 </span>
                 <Keycap keyLabel={demoModifierLabel} mini miniSize="sm" platform={platform} />
               </p>
-              <p className={styles.demoStatusText}>{copy.demoSection.instructions}</p>
-              <p className={styles.demoRestoreNote}>{copy.demoSection.restoreNote}</p>
+              <p className={styles.demoStatusText}>
+                <GuideRichText text={demoInstructionsText} platform={platform} />
+              </p>
+              <p className={styles.demoRestoreNote}>
+                <GuideRichText text={demoRestoreText} platform={platform} />
+              </p>
             </div>
             <textarea
               ref={demoTextareaRef}
@@ -579,7 +561,9 @@ export function App() {
             </div>
             <article className={styles.guideCard}>
               <h3 className={styles.guideCardTitle}>{activeGuide.title}</h3>
-              <p className={styles.panelCopy}>{activeGuide.summary}</p>
+              <p className={styles.panelCopy}>
+                <GuideRichText text={activeGuide.summary} platform={activeGuide.id} />
+              </p>
 
               {activeGuide.id === 'windows' ? (
                 <WindowsGuideMethods
@@ -632,6 +616,7 @@ export function App() {
                 <GuideStepsSection
                   label={copy.guideSection.stepsLabel}
                   steps={activeGuide.steps}
+                  platform={activeGuide.id}
                   renderExtra={(_, index) => (
                     <>
                         {activeGuide.installScript && activeGuide.installStepIndex === index ? (
@@ -666,7 +651,11 @@ export function App() {
               ) : null}
 
               {activeGuide.id !== 'windows' && activeGuide.notes?.length ? (
-                <GuideNotesSection label={copy.guideSection.notesLabel} notes={activeGuide.notes} />
+                <GuideNotesSection
+                  label={copy.guideSection.notesLabel}
+                  notes={activeGuide.notes}
+                  platform={activeGuide.id}
+                />
               ) : null}
 
               {activeGuide.placeholder ? <p className={styles.subduedText}>{activeGuide.placeholder}</p> : null}

@@ -1,4 +1,6 @@
 import type { ReactNode } from 'react'
+import { GuideRichText } from '../GuideRichText'
+import type { PlatformId } from '../Keycap'
 import * as styles from './GuideSections.css'
 
 export type GuideLink = {
@@ -24,12 +26,14 @@ type GuideLinksSectionProps = {
 type GuideStepsSectionProps = {
   label: string
   steps: GuideStep[]
+  platform: PlatformId
   renderExtra?: (step: GuideStep, index: number) => ReactNode
 }
 
 type GuideNotesSectionProps = {
   label: string
   notes: string[]
+  platform: PlatformId
 }
 
 export function GuideSection({ label, children }: GuideSectionProps) {
@@ -61,14 +65,18 @@ export function GuideLinksSection({ label, links }: GuideLinksSectionProps) {
   )
 }
 
-export function GuideStepsSection({ label, steps, renderExtra }: GuideStepsSectionProps) {
+export function GuideStepsSection({ label, steps, platform, renderExtra }: GuideStepsSectionProps) {
   return (
     <GuideSection label={label}>
       <div className={styles.stepList}>
         {steps.map((step, index) => (
           <section key={step.title} className={styles.stepItem}>
-            <h4 className={styles.stepTitle}>{step.title}</h4>
-            <p className={styles.stepBody}>{step.body}</p>
+            <h4 className={styles.stepTitle}>
+              <GuideRichText text={step.title} platform={platform} />
+            </h4>
+            <p className={styles.stepBody}>
+              <GuideRichText text={step.body} platform={platform} />
+            </p>
             {renderExtra ? renderExtra(step, index) : null}
           </section>
         ))}
@@ -77,13 +85,13 @@ export function GuideStepsSection({ label, steps, renderExtra }: GuideStepsSecti
   )
 }
 
-export function GuideNotesSection({ label, notes }: GuideNotesSectionProps) {
+export function GuideNotesSection({ label, notes, platform }: GuideNotesSectionProps) {
   return (
     <GuideSection label={label}>
       <ul className={styles.notesList}>
         {notes.map((note) => (
           <li key={note} className={styles.noteItem}>
-            {note}
+            <GuideRichText text={note} platform={platform} />
           </li>
         ))}
       </ul>

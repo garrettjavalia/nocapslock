@@ -19,9 +19,6 @@ type RegistryGeneratorCopy = {
   intro: string
   sourceLabel: string
   targetLabel: string
-  scanCodeSourceLabel: string
-  scanCodeSourceText: string
-  scanCodeSourceHref: string
   remapPreviewLabel: string
   revertPreviewLabel: string
   downloadRemapLabel: string
@@ -143,7 +140,6 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
       <div className={styles.header}>
         <div>
           <h4 className={styles.title}>{copy.title}</h4>
-          <p className={styles.intro}>{copy.intro}</p>
         </div>
         <button
           type="button"
@@ -155,17 +151,6 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
       </div>
 
       <p className={styles.pathText}>{copy.registryPathLabel}</p>
-      <p className={styles.pathText}>
-        {copy.scanCodeSourceLabel}:{' '}
-        <a
-          className={styles.sourceLink}
-          href={copy.scanCodeSourceHref}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {copy.scanCodeSourceText}
-        </a>
-      </p>
 
       <div className={styles.mappingCard}>
         <div className={styles.mappingHeader}>
