@@ -8,6 +8,7 @@ type GuideCodeBlockProps = {
   copiedLabel: string
   downloadLabel?: string
   filename?: string
+  headerText?: string
 }
 
 export function GuideCodeBlock({
@@ -16,6 +17,7 @@ export function GuideCodeBlock({
   copiedLabel,
   downloadLabel,
   filename,
+  headerText,
 }: GuideCodeBlockProps) {
   const [copied, setCopied] = useState(false)
 
@@ -42,19 +44,26 @@ export function GuideCodeBlock({
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.actions}>
-        {downloadLabel && filename ? (
-          <button
-            type="button"
-            className={styles.button}
-            onClick={() => downloadTextFile(filename, code)}
-          >
-            {downloadLabel}
+      <div className={styles.header}>
+        {filename || headerText ? (
+          <p className={styles.filename}>{filename ?? headerText}</p>
+        ) : (
+          <span />
+        )}
+        <div className={styles.actions}>
+          {downloadLabel && filename ? (
+            <button
+              type="button"
+              className={styles.button}
+              onClick={() => downloadTextFile(filename, code)}
+            >
+              {downloadLabel}
+            </button>
+          ) : null}
+          <button type="button" className={styles.button} onClick={handleCopy}>
+            {copied ? copiedLabel : copyLabel}
           </button>
-        ) : null}
-        <button type="button" className={styles.button} onClick={handleCopy}>
-          {copied ? copiedLabel : copyLabel}
-        </button>
+        </div>
       </div>
       <pre className={styles.codeBlock}>
         <code>{code}</code>

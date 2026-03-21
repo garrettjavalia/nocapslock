@@ -583,13 +583,6 @@ export function App() {
                 />
               ) : null}
 
-              {activeGuide.id !== 'windows' && activeGuide.officialLinks?.length ? (
-                <GuideLinksSection
-                  label={copy.guideSection.linksLabel}
-                  links={activeGuide.officialLinks}
-                />
-              ) : null}
-
               {activeGuide.id !== 'windows' &&
               activeGuide.installScript &&
               activeGuide.installStepIndex === undefined ? (
@@ -661,6 +654,13 @@ export function App() {
                   label={copy.guideSection.notesLabel}
                   notes={activeGuide.notes}
                   platform={activeGuide.id}
+                />
+              ) : null}
+
+              {activeGuide.id !== 'windows' && activeGuide.officialLinks?.length ? (
+                <GuideLinksSection
+                  label={copy.guideSection.linksLabel}
+                  links={activeGuide.officialLinks}
                 />
               ) : null}
 

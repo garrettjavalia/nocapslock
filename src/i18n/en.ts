@@ -65,7 +65,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
     title: 'Setup guides by operating system',
     intro:
       'Pick the operating system you use and follow the steps that match it.',
-    linksLabel: 'Official sources',
+    linksLabel: 'References',
     commandLabel: 'Install script',
     copyCommandLabel: 'Copy script',
     copiedCommandLabel: 'Copied',
@@ -102,7 +102,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
     },
     windowsMethods: {
       intro:
-        'On Windows, just pick one method. PowerToys and the registry route are alternatives, not steps you need to follow in order.',
+        'On Windows, choose either PowerToys or the registry route.',
       prosLabel: 'Advantages',
       consLabel: 'What to keep in mind',
       methods: [
@@ -160,10 +160,6 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           summary:
             'This route is better when you want a system-level remap that works without PowerToys and can stay active on sign-in screens too.',
           officialLinks: [
-            {
-              label: 'Microsoft Learn keyboard attributes reference',
-              href: 'https://learn.microsoft.com/en-us/windows/win32/api/ntddkbd/ns-ntddkbd-keyboard_attributes',
-            },
             {
               label: sharedGuideCopy.en.scanCodeTablePdfLabel,
               href: 'https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf',
@@ -271,6 +267,10 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             href: 'https://karabiner-elements.pqrs.org/docs/manual/misc/required-macos-settings/',
           },
           {
+            label: 'Karabiner before-login setup',
+            href: 'https://karabiner-elements.pqrs.org/docs/help/how-to/use-before-logging-in/',
+          },
+          {
             label: 'Apple Input Sources settings',
             href: 'https://support.apple.com/guide/mac-help/change-input-sources-settings-on-mac-mchl84525d76/mac',
           },
@@ -285,19 +285,23 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             body: 'Open Karabiner-Elements, choose Simple Modifications, select the keyboard you want to edit, and change [[Caps Lock]] to [[Left Control]]. If you prefer [[Escape]] instead, you can choose that here too.',
           },
           {
-            title: '3. Optional: only continue if [[Caps Lock]] is already your language-switch key',
-            body: 'The next steps are only for multilingual setups that already depend on [[Caps Lock]] for input-source switching. If [[Caps Lock]] is not doing that job on your Mac, you can stop after the basic remap and skip the rest of this section.',
+            title: '3. Optional: make the same mapping work before login',
+            body: 'If you want the same mapping on the password screen before login, open the Misc tab in Karabiner Settings and use “Copy the current configuration to the system default configuration.” Karabiner’s official guide documents this for use before logging in.',
           },
           {
-            title: '4. Optional: pick a spare right-side modifier',
+            title: '4. Optional: only continue if [[Caps Lock]] is already your language-switch key',
+            body: 'The next steps are only for multilingual setups that already depend on [[Caps Lock]] for input-source switching. Moving input-source switching to another key lets you keep a separate language-switch key even after remapping [[Caps Lock]], and it can reduce the occasional glitches that come with relying on a short [[Caps Lock]] tap to switch modes. If [[Caps Lock]] is not doing that job on your Mac, you can stop after the basic remap and skip the rest of this section.',
+          },
+          {
+            title: '4-1. Pick a spare right-side modifier',
             body: 'Choose a spare right-side modifier for language switching first. A common choice is [[Right Command]] -> [[F18]]. You can also use [[Right Option]] -> [[F18]] instead, as long as that key is not already important in your layout.',
           },
           {
-            title: '5. Optional: map that right-side key to [[F18]] in Karabiner',
+            title: '4-2. Map that right-side key to [[F18]] in Karabiner',
             body: 'In Simple Modifications, add either [[Right Command]] -> [[F18]] or [[Right Option]] -> [[F18]], depending on which key you picked in the previous step. This frees [[Caps Lock]] for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
           },
           {
-            title: '6. Optional: assign [[F18]] to input-source switching in macOS',
+            title: '4-3. Assign [[F18]] to input-source switching in macOS',
             body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign [[F18]] to “Select next source in Input menu.” This recreates a reliable language-switch key after [[Caps Lock]] has been repurposed. [[F18]] is used here as a practical example. Apple documents that [[F1]] through [[F12]] are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, [[F18]] has been a safe choice because it tends not to overlap with those built-in roles.',
           },
         ],

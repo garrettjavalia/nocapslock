@@ -83,14 +83,14 @@ export function WindowsGuideMethods({
             }
             onClick={() => setActiveMethodId(method.id)}
           >
-            <div>
+            <div className={styles.comparisonBlock}>
               <h4 className={styles.comparisonTitle}>{method.title}</h4>
               <p className={styles.comparisonSummary}>
                 <GuideRichText text={method.summary} platform="windows" />
               </p>
             </div>
 
-            <div>
+            <div className={styles.comparisonBlock}>
               <p className={styles.comparisonLabel}>{copy.prosLabel}</p>
               <ul className={styles.bulletList}>
                 {method.pros.map((item) => (
@@ -101,7 +101,7 @@ export function WindowsGuideMethods({
               </ul>
             </div>
 
-            <div>
+            <div className={styles.comparisonBlock}>
               <p className={styles.comparisonLabel}>{copy.consLabel}</p>
               <ul className={styles.bulletList}>
                 {method.cons.map((item) => (
@@ -116,11 +116,7 @@ export function WindowsGuideMethods({
       </div>
 
       <div className={styles.detailStack}>
-        {activeMethod.officialLinks?.length ? (
-          <GuideLinksSection label={labels.linksLabel} links={activeMethod.officialLinks} />
-        ) : null}
-
-          <GuideStepsSection label={labels.stepsLabel} steps={activeMethod.steps} platform="windows" />
+        <GuideStepsSection label={labels.stepsLabel} steps={activeMethod.steps} platform="windows" />
 
         {activeMethod.id === 'registry' ? (
           <WindowsRegistryGenerator copy={registryGeneratorCopy} />
@@ -128,6 +124,10 @@ export function WindowsGuideMethods({
 
         {activeMethod.notes?.length ? (
           <GuideNotesSection label={labels.notesLabel} notes={activeMethod.notes} platform="windows" />
+        ) : null}
+
+        {activeMethod.officialLinks?.length ? (
+          <GuideLinksSection label={labels.linksLabel} links={activeMethod.officialLinks} />
         ) : null}
       </div>
     </section>

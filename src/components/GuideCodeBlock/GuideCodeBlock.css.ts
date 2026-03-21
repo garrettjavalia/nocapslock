@@ -2,14 +2,34 @@ import { style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
 export const wrap = style({
-  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  borderRadius: 18,
+  border: `1px solid ${vars.color.border}`,
+  background: vars.color.bg,
+  overflow: 'hidden',
+})
+
+export const header = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 12,
+  flexWrap: 'wrap',
+  padding: '12px 16px',
+  borderBottom: `1px solid ${vars.color.border}`,
+})
+
+export const filename = style({
+  margin: 0,
+  color: vars.color.textSoft,
+  fontSize: '0.82rem',
+  fontWeight: 700,
+  letterSpacing: '0.04em',
+  textTransform: 'uppercase',
 })
 
 export const actions = style({
-  position: 'absolute',
-  top: 10,
-  right: 10,
-  zIndex: 1,
   display: 'flex',
   alignItems: 'center',
   gap: 8,
@@ -31,10 +51,7 @@ export const button = style({
 
 export const codeBlock = style({
   margin: 0,
-  padding: '54px 16px 16px',
-  borderRadius: 18,
-  border: `1px solid ${vars.color.border}`,
-  background: vars.color.bg,
+  padding: '16px',
   color: vars.color.text,
   overflowX: 'auto',
   whiteSpace: 'pre-wrap',

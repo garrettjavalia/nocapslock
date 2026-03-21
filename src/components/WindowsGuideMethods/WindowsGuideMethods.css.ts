@@ -7,7 +7,7 @@ export const wrapper = style({
 })
 
 export const intro = style({
-  marginBottom: 0,
+  margin: 0,
   color: vars.color.textSoft,
   lineHeight: 1.65,
 })
@@ -39,6 +39,12 @@ export const comparisonCard = style({
   transition: 'border-color 140ms ease, background 140ms ease, box-shadow 140ms ease',
 })
 
+export const comparisonBlock = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 6,
+})
+
 export const comparisonCardActive = style({
   borderColor: vars.color.accent,
   background: vars.color.bgStrong,
@@ -46,18 +52,18 @@ export const comparisonCardActive = style({
 })
 
 export const comparisonTitle = style({
-  marginBottom: 6,
+  margin: 0,
   fontSize: '1.02rem',
 })
 
 export const comparisonSummary = style({
-  marginBottom: 0,
+  margin: 0,
   color: vars.color.textSoft,
   lineHeight: 1.6,
 })
 
 export const comparisonLabel = style({
-  marginBottom: 6,
+  margin: 0,
   color: vars.color.textSoft,
   fontSize: '0.8rem',
   fontWeight: 700,
@@ -78,6 +84,7 @@ export const bulletItem = style({
 })
 
 export const detailStack = style({
-  display: 'grid',
+  display: 'flex',
+  flexDirection: 'column',
   gap: 16,
 })

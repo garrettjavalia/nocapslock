@@ -441,7 +441,8 @@ export const guideCardTitle = style({
 })
 
 export const guideInlineCodeSection = style({
-  display: 'grid',
+  display: 'flex',
+  flexDirection: 'column',
   gap: 10,
   marginTop: 14,
 })

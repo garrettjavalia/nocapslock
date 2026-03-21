@@ -65,7 +65,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
     title: '운영체제별 설정 가이드',
     intro:
       '사용 중인 운영체제를 골라, 그에 맞는 설정 방법을 차근차근 따라가 보세요.',
-    linksLabel: '공식 출처',
+    linksLabel: '참고 자료',
     commandLabel: '설치 스크립트',
     copyCommandLabel: '스크립트 복사',
     copiedCommandLabel: '복사됨',
@@ -102,7 +102,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
     },
     windowsMethods: {
       intro:
-        'Windows에서는 두 방법 중 하나만 고르면 됩니다. PowerToys 방식과 레지스트리 방식은 순서가 아니라 선택지입니다.',
+        'Windows에서는 PowerToys와 레지스트리 방식 중 하나만 고르면 됩니다.',
       prosLabel: '장점',
       consLabel: '알아둘 점',
       methods: [
@@ -160,10 +160,6 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
           summary:
             'PowerToys 없이 시스템 전체에 적용하고 싶거나, 로그인 화면에서도 같은 키 배열을 쓰고 싶다면 이 방법이 더 잘 맞습니다.',
           officialLinks: [
-            {
-              label: 'Microsoft Learn 키보드 속성 참고 문서',
-              href: 'https://learn.microsoft.com/en-us/windows/win32/api/ntddkbd/ns-ntddkbd-keyboard_attributes',
-            },
             {
               label: sharedGuideCopy.ko.scanCodeTablePdfLabel,
               href: 'https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf',
@@ -271,6 +267,10 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
             href: 'https://karabiner-elements.pqrs.org/docs/manual/misc/required-macos-settings/',
           },
           {
+            label: 'Karabiner 로그인 전 적용 안내',
+            href: 'https://karabiner-elements.pqrs.org/docs/help/how-to/use-before-logging-in/',
+          },
+          {
             label: 'Apple 입력 소스 설정',
             href: 'https://support.apple.com/guide/mac-help/change-input-sources-settings-on-mac-mchl84525d76/mac',
           },
@@ -285,19 +285,23 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
             body: 'Karabiner-Elements를 열고 Simple Modifications로 들어간 뒤, 수정할 키보드를 고르고 [[Caps Lock]]을 [[Left Control]]로 바꿉니다. [[Escape]]가 더 편하다면 그 키를 골라도 됩니다.',
           },
           {
-            title: '3. 선택 사항: [[Caps Lock]]이 이미 언어 전환 키일 때만 이어서 보기',
-            body: '다음 단계들은 [[Caps Lock]]이 이미 입력 소스 전환용으로 쓰이는 다국어 macOS 환경을 위한 안내입니다. 현재 [[Caps Lock]]이 그런 역할을 하고 있지 않다면, 기본 재매핑만으로 충분하므로 아래 단계는 건너뛰어도 됩니다.',
+            title: '3. 선택 사항: 로그인 창에서도 같은 매핑 쓰기',
+            body: '로그인 전에 뜨는 암호 입력 화면에서도 같은 키 매핑을 쓰고 싶다면, Karabiner 설정의 Misc 탭에서 “Copy the current configuration to the system default configuration” 버튼을 누르세요. 공식 문서에 따르면 이렇게 복사한 설정은 로그인 전 화면에도 적용됩니다.',
           },
           {
-            title: '4. 선택 사항: 오른쪽 보조키 하나 고르기',
+            title: '4. 선택 사항: [[Caps Lock]]이 이미 언어 전환 키일 때만 이어서 보기',
+            body: '다음 단계들은 [[Caps Lock]]이 이미 입력 소스 전환용으로 쓰이는 다국어 macOS 환경을 위한 안내입니다. 입력 전환을 다른 키로 옮겨 두면 [[Caps Lock]]을 재매핑하더라도 언어 전환 키를 따로 유지할 수 있고, 짧게 눌러 전환할 때 간혹 생기는 오류도 줄일 수 있습니다. 현재 [[Caps Lock]]이 그런 역할을 하고 있지 않다면, 기본 재매핑만으로 충분하므로 아래 단계는 건너뛰어도 됩니다.',
+          },
+          {
+            title: '4-1. 오른쪽 보조키 하나 고르기',
             body: '먼저 오른쪽 보조키 중 하나를 입력 언어 전환용으로 정합니다. 보통은 [[Right Command]] -> [[F18]]이 무난하고, 필요하면 [[Right Option]] -> [[F18]]을 써도 됩니다. 다만 그 키가 현재 레이아웃에서 중요한 문자를 만드는 데 쓰이지 않는지는 먼저 확인해 두는 편이 좋습니다.',
           },
           {
-            title: '5. 선택 사항: Karabiner에서 그 오른쪽 키를 [[F18]]로 바꾸기',
+            title: '4-2. Karabiner에서 그 오른쪽 키를 [[F18]]로 바꾸기',
             body: 'Simple Modifications에서 앞 단계에서 고른 키를 [[Right Command]] -> [[F18]] 또는 [[Right Option]] -> [[F18]]으로 추가합니다. 이렇게 하면 [[Caps Lock]]을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
           },
           {
-            title: '6. 선택 사항: macOS에서 [[F18]]을 입력 소스 전환 키로 배정',
+            title: '4-3. macOS에서 [[F18]]을 입력 소스 전환 키로 배정',
             body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 [[F18]]을 지정합니다. 그러면 [[Caps Lock]]을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 [[F18]]을 실사용 예시로 사용합니다. Apple 문서상 [[F1]]부터 [[F12]]까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 [[F18]]은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
           },
         ],
