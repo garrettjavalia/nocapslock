@@ -1,14 +1,24 @@
 export type Locale = 'en' | 'ko'
 
 export type DeviceLabelKey = 'mac' | 'android' | 'ios' | 'windows' | 'linux' | 'unix' | 'other'
+export type GuidePlatformId = 'windows' | 'mac' | 'linux'
+
+export type GuideLink = {
+  label: string
+  href: string
+}
+
+export type GuideStep = {
+  title: string
+  body: string
+  substeps?: GuideStep[]
+}
 
 export type Copy = {
   metaTitle: string
   metaDescription: string
   metaKeywords: string
-  brand: string
   githubLabel: string
-  eyebrow: string
   heroTitle: string
   heroLead: string
   themeToggle: {
@@ -20,11 +30,6 @@ export type Copy = {
     kicker: string
     title: string
     captionTemplate: string
-    beforeLabel: string
-    afterLabel: string
-    remapLabel: string
-    disabledLabel: string
-    alternativeLabel: string
     deviceLabels: Record<DeviceLabelKey, string>
     labels: string[]
   }
@@ -57,11 +62,12 @@ export type Copy = {
     notesLabel: string
     registryGenerator: {
       title: string
-      intro: string
       sourceLabel: string
       targetLabel: string
       remapPreviewLabel: string
       revertPreviewLabel: string
+      copyFileLabel: string
+      copiedFileLabel: string
       downloadRemapLabel: string
       downloadRevertLabel: string
       noChangesLabel: string
@@ -84,37 +90,25 @@ export type Copy = {
         id: 'powertoys' | 'registry'
         title: string
         summary: string
-        officialLinks?: Array<{
-          label: string
-          href: string
-        }>
+        officialLinks?: GuideLink[]
         pros: string[]
         cons: string[]
-        steps: Array<{
-          title: string
-          body: string
-        }>
+        steps: GuideStep[]
         notes?: string[]
       }>
     }
     platforms: Array<{
-      id: 'windows' | 'mac' | 'linux'
+      id: GuidePlatformId
       title: string
       summary: string
-      officialLinks?: Array<{
-        label: string
-        href: string
-      }>
+      officialLinks?: GuideLink[]
       installScript?: string
       installFilename?: string
       installStepIndex?: number
       configSnippet?: string
       configFilename?: string
       configStepIndex?: number
-      steps?: Array<{
-        title: string
-        body: string
-      }>
+      steps?: GuideStep[]
       notes?: string[]
       placeholder: string
     }>

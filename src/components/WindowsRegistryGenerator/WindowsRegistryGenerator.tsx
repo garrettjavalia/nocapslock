@@ -16,7 +16,6 @@ type RegistryTargetId = (typeof registryTargetIds)[number]
 
 type RegistryGeneratorCopy = {
   title: string
-  intro: string
   sourceLabel: string
   targetLabel: string
   remapPreviewLabel: string

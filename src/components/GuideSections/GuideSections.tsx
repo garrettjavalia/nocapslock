@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import type { GuideStep as GuideStepData } from '../../i18n'
 import { GuideRichText } from '../GuideRichText'
 import type { PlatformId } from '../Keycap'
 import * as styles from './GuideSections.css'
@@ -8,10 +9,7 @@ export type GuideLink = {
   href: string
 }
 
-export type GuideStep = {
-  title: string
-  body: string
-}
+export type GuideStep = GuideStepData
 
 type GuideSectionProps = {
   label: string
@@ -66,61 +64,53 @@ export function GuideLinksSection({ label, links }: GuideLinksSectionProps) {
 }
 
 export function GuideStepsSection({ label, steps, platform, renderExtra }: GuideStepsSectionProps) {
-  const groups: Array<{ type: 'step'; step: GuideStep; index: number } | { type: 'substeps'; items: Array<{ step: GuideStep; index: number }> }> = []
-
-  steps.forEach((step, index) => {
-    const isSubstep = /^\d+-\d+\./.test(step.title)
-    const lastGroup = groups[groups.length - 1]
-
-    if (isSubstep && lastGroup?.type === 'substeps') {
-      lastGroup.items.push({ step, index })
-      return
-    }
-
-    if (isSubstep) {
-      groups.push({ type: 'substeps', items: [{ step, index }] })
-      return
-    }
-
-    groups.push({ type: 'step', step, index })
-  })
-
   return (
     <GuideSection label={label}>
       <div className={styles.stepList}>
-        {groups.map((group, groupIndex) => {
-          if (group.type === 'step') {
-            return (
-              <section key={group.step.title} className={styles.stepItem}>
-                <h4 className={styles.stepTitle}>
-                  <GuideRichText text={group.step.title} platform={platform} />
-                </h4>
-                <p className={styles.stepBody}>
-                  <GuideRichText text={group.step.body} platform={platform} />
-                </p>
-                {renderExtra ? renderExtra(group.step, group.index) : null}
-              </section>
-            )
-          }
-
-          return (
-            <div key={`substeps-${groupIndex}`} className={styles.substepGroup}>
-              {group.items.map(({ step, index }) => (
-                <section key={step.title} className={styles.stepItem}>
-                  <h4 className={styles.stepTitle}>
-                    <GuideRichText text={step.title} platform={platform} />
-                  </h4>
-                  <p className={styles.stepBody}>
-                    <GuideRichText text={step.body} platform={platform} />
-                  </p>
-                  {renderExtra ? renderExtra(step, index) : null}
-                </section>
-              ))}
-            </div>
-          )
-        })}
+        {steps.map((step, index) => (
+          <GuideStepBlock
+            key={step.title}
+            step={step}
+            stepIndex={index}
+            platform={platform}
+            renderExtra={renderExtra}
+          />
+        ))}
       </div>
     </GuideSection>
+  )
+}
+
+type GuideStepBlockProps = {
+  step: GuideStep
+  stepIndex: number
+  platform: PlatformId
+  renderExtra?: (step: GuideStep, index: number) => ReactNode
+}
+
+function GuideStepBlock({ step, stepIndex, platform, renderExtra }: GuideStepBlockProps) {
+  return (
+    <section className={styles.stepItem}>
+      <h4 className={styles.stepTitle}>
+        <GuideRichText text={step.title} platform={platform} />
+      </h4>
+      <p className={styles.stepBody}>
+        <GuideRichText text={step.body} platform={platform} />
+      </p>
+      {renderExtra ? renderExtra(step, stepIndex) : null}
+      {step.substeps?.length ? (
+        <div className={styles.substepGroup}>
+          {step.substeps.map((substep) => (
+            <GuideStepBlock
+              key={substep.title}
+              step={substep}
+              stepIndex={stepIndex}
+              platform={platform}
+            />
+          ))}
+        </div>
+      ) : null}
+    </section>
   )
 }
 

@@ -7,9 +7,7 @@ export const koMessages: Copy = {
     '캡스락을 Control, Command, Escape로 바꾸는 이유를 소개하고, 브라우저에서 바로 체험할 수 있는 다국어 웹페이지입니다.',
   metaKeywords:
     '캡스락 변경, caps lock remap, caps lock to control, caps lock to command, caps lock to escape, 키보드 생산성',
-  brand: '노캡스락',
   githubLabel: 'GitHub',
-  eyebrow: '키보드 생산성',
   heroTitle: '이제 캡스락은 그만!',
   heroLead:
     '캡스락은 키보드에서 가장 중요한 자리를 차지하고 있습니다. 실제로 자주 쓰는 단축키용 키로 바꾸면 손이 훨씬 편해집니다.',
@@ -22,11 +20,6 @@ export const koMessages: Copy = {
     kicker: '바꿔보세요',
     title: '같은 키를 훨씬 유용하게 쓸 수 있습니다',
     captionTemplate: '{device}에서는 보통 {key}가 가장 유용합니다.',
-    beforeLabel: '변경 전',
-    afterLabel: '변경 후',
-    remapLabel: '변경',
-    disabledLabel: 'Caps Lock 모드 끄기',
-    alternativeLabel: '다른 선택지',
     deviceLabels: {
       mac: 'macOS',
       android: 'Android',
@@ -78,8 +71,6 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
     notesLabel: '참고 사항',
     registryGenerator: {
       title: '레지스트리 파일 생성기',
-      intro:
-        'PowerToys를 계속 켜 두지 않고 시스템 전체에 적용하고 싶다면, 아래 생성기로 Windows Scancode Map용 .reg 파일을 바로 만들 수 있습니다.',
       sourceLabel: '현재 키 위치',
       targetLabel: '대신 보낼 키',
       remapPreviewLabel: '생성된 변경용 .reg 파일',
@@ -208,42 +199,6 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
         title: 'Windows',
         summary:
           'Windows에서는 PowerToys Keyboard Manager가 가장 간단한 방법이고, [[Caps Lock]]을 PowerToys 없이 시스템 전체에서 바꾸고 싶을 때는 아래 레지스트리 기반 Scancode Map 방식을 쓸 수 있습니다.',
-        officialLinks: [
-          {
-            label: sharedGuideCopy.ko.powerToysInstallationLabel,
-            href: 'https://learn.microsoft.com/en-us/windows/powertoys/install',
-          },
-          {
-            label: sharedGuideCopy.ko.powerToysKeyboardManagerLabel,
-            href: 'https://learn.microsoft.com/en-us/windows/powertoys/keyboard-manager',
-          },
-          {
-            label: sharedGuideCopy.ko.scanCodeTableLabel,
-            href: 'https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf',
-          },
-        ],
-        steps: [
-          {
-            title: '1. 가장 쉬운 방법은 PowerToys Keyboard Manager',
-            body: 'PowerToys를 설치한 뒤 Keyboard Manager에서 Remap a key를 열고 [[Caps Lock]]을 원하는 키로 바꿉니다. Microsoft 문서에 따르면 이 방식은 바로 적용되지만, PowerToys가 백그라운드에서 실행 중이어야 하고 로그인 화면에서는 동작하지 않습니다.',
-          },
-          {
-            title: '2. 시스템 전체 재매핑이 필요하면 레지스트리 방식 사용',
-            body: '아래 생성기는 Windows 키 재배치 도구들이 사용하는 Scancode Map 값을 기준으로 .reg 파일을 만들어 줍니다. PowerToys를 계속 켜 두지 않고 시스템 수준에서 재배치하고 싶을 때 적합합니다. 실제로는 로그인 화면이나 암호 입력 화면까지 함께 반영되는 경우가 많으므로, 그런 용도가 필요하다면 이 방식을 직접 확인해 보세요.',
-          },
-          {
-            title: '3. 변경용 파일과 원복용 파일을 함께 받아두기',
-            body: '생성된 변경용 .reg 파일은 관리자 승인 후 적용하고, 나중에 빠르게 되돌릴 수 있도록 원복용 .reg 파일도 함께 보관해 두세요. 원복용 파일은 Scancode Map 값을 지웁니다.',
-          },
-          {
-            title: '4. 어떤 키를 움직이는지 확인하기',
-            body: '이 생성기는 [[Caps Lock]], 왼쪽과 오른쪽 [[Control]], 왼쪽과 오른쪽 [[Alt]] 위치를 대상으로 합니다. 스캔 코드 값은 Microsoft의 키보드 스캔 코드 변환 표를 기준으로 했으므로, 다운로드 전에 미리보기 내용도 함께 확인할 수 있습니다.',
-          },
-        ],
-        notes: [
-          sharedGuideCopy.ko.rightAltWarning,
-          '변경용 파일을 적용하기 전에는 원복용 파일도 함께 받아 두는 편이 안전합니다. 새 배열이 손에 맞지 않으면 빠르게 되돌릴 수 있습니다.',
-        ],
         placeholder: '',
       },
       {
@@ -293,18 +248,20 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
           {
             title: '4. 선택 사항: [[Caps Lock]]이 이미 언어 전환 키일 때만 이어서 보기',
             body: '다음 단계들은 [[Caps Lock]]이 이미 입력 소스 전환용으로 쓰이는 다국어 macOS 환경을 위한 안내입니다. 입력 전환을 다른 키로 옮겨 두면 [[Caps Lock]]을 재매핑하더라도 언어 전환 키를 따로 유지할 수 있고, 짧게 눌러 전환할 때 간혹 생기는 오류도 줄일 수 있습니다. 현재 [[Caps Lock]]이 그런 역할을 하고 있지 않다면, 기본 재매핑만으로 충분하므로 아래 단계는 건너뛰어도 됩니다.',
-          },
-          {
-            title: '4-1. 오른쪽 보조키 하나 고르기',
-            body: '먼저 오른쪽 보조키 중 하나를 입력 언어 전환용으로 정합니다. 보통은 [[Right Command]] -> [[F18]]이 무난하고, 필요하면 [[Right Option]] -> [[F18]]을 써도 됩니다. 다만 그 키가 현재 레이아웃에서 중요한 문자를 만드는 데 쓰이지 않는지는 먼저 확인해 두는 편이 좋습니다.',
-          },
-          {
-            title: '4-2. Karabiner에서 그 오른쪽 키를 [[F18]]로 바꾸기',
-            body: 'Simple Modifications에서 앞 단계에서 고른 키를 [[Right Command]] -> [[F18]] 또는 [[Right Option]] -> [[F18]]으로 추가합니다. 이렇게 하면 [[Caps Lock]]을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
-          },
-          {
-            title: '4-3. macOS에서 [[F18]]을 입력 소스 전환 키로 배정',
-            body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 [[F18]]을 지정합니다. 그러면 [[Caps Lock]]을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 [[F18]]을 실사용 예시로 사용합니다. Apple 문서상 [[F1]]부터 [[F12]]까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 [[F18]]은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
+            substeps: [
+              {
+                title: '4-1. 오른쪽 보조키 하나 고르기',
+                body: '먼저 오른쪽 보조키 중 하나를 입력 언어 전환용으로 정합니다. 보통은 [[Right Command]] -> [[F18]]이 무난하고, 필요하면 [[Right Option]] -> [[F18]]을 써도 됩니다. 다만 그 키가 현재 레이아웃에서 중요한 문자를 만드는 데 쓰이지 않는지는 먼저 확인해 두는 편이 좋습니다.',
+              },
+              {
+                title: '4-2. Karabiner에서 그 오른쪽 키를 [[F18]]로 바꾸기',
+                body: 'Simple Modifications에서 앞 단계에서 고른 키를 [[Right Command]] -> [[F18]] 또는 [[Right Option]] -> [[F18]]으로 추가합니다. 이렇게 하면 [[Caps Lock]]을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
+              },
+              {
+                title: '4-3. macOS에서 [[F18]]을 입력 소스 전환 키로 배정',
+                body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 [[F18]]을 지정합니다. 그러면 [[Caps Lock]]을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 [[F18]]을 실사용 예시로 사용합니다. Apple 문서상 [[F1]]부터 [[F12]]까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 [[F18]]은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
+              },
+            ],
           },
         ],
         notes: [

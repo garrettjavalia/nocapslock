@@ -9,17 +9,12 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { CompactRemapBadge } from './components/CompactRemapBadge'
-import { GuideCodeBlock } from './components/GuideCodeBlock'
-import { GuideRichText } from './components/GuideRichText'
-import {
-  GuideLinksSection,
-  GuideNotesSection,
-  GuideSection,
-  GuideStepsSection,
-} from './components/GuideSections'
+import { DemoPanel } from './components/DemoPanel'
+import { GuidePanel } from './components/GuidePanel'
 import { HeaderControls } from './components/HeaderControls'
-import { Keycap, type PlatformId, type RemapKey } from './components/Keycap'
-import { WindowsGuideMethods } from './components/WindowsGuideMethods'
+import { KeyPreviewPanel } from './components/KeyPreviewPanel'
+import { type GuidePlatformId } from './i18n'
+import { type PlatformId } from './components/Keycap'
 import {
   defaultLocale,
   detectPreferredLocale,
@@ -60,6 +55,10 @@ function logDemoKeyboardEvent(
   event: KeyboardEvent<HTMLTextAreaElement>,
   capsArmedUntil: number,
 ) {
+  if (!import.meta.env.DEV) {
+    return
+  }
+
   console.log(`[demo:${phase}]`, {
     key: event.key,
     code: event.code,
@@ -118,7 +117,7 @@ export function App() {
   const [platform, setPlatform] = useState<PlatformId>('other')
   const [capsHeld, setCapsHeld] = useState(false)
   const [textValue, setTextValue] = useState(messages.en.demoSection.text)
-  const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('linux')
+  const [guidePlatform, setGuidePlatform] = useState<GuidePlatformId>('linux')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [keyCycleIndex, setKeyCycleIndex] = useState(0)
   const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
@@ -431,242 +430,47 @@ export function App() {
         </section>
 
         <main className={styles.contentGrid}>
-          <section className={`${styles.panel} ${styles.keyStage}`} aria-labelledby="hero-key-title">
-            <div className={styles.sectionHeading}>
-              <p className={styles.sectionKicker}>{copy.keySection.kicker}</p>
-              <h2 id="hero-key-title" className={styles.sectionTitle}>
-                {copy.keySection.title}
-              </h2>
-            </div>
-            <div className={styles.keyRail} aria-hidden="true">
-              <div className={styles.keyNarrative}>
-                <div className={styles.keyStateColumn}>
-                  <Keycap crossed keyLabel="Caps Lock" muted platform={platform} />
-                </div>
+          <KeyPreviewPanel
+            title={copy.keySection.title}
+            kicker={copy.keySection.kicker}
+            guideTitle={copy.guideSection.title}
+            platform={platform}
+            activeKeyLabel={activeKeyLabel}
+            recommendedKeyLabel={recommendedKeyLabel}
+            captionPlatform={captionPlatform}
+            previewPlatforms={previewPlatforms}
+            deviceLabels={copy.keySection.deviceLabels}
+            captionParts={captionParts}
+            onCaptionPlatformChange={setCaptionPlatform}
+          />
 
-                <div className={styles.keyFlowArrow}>
-                  <span className={styles.keyFlowDot} />
-                </div>
+          <DemoPanel
+            title={copy.demoSection.title}
+            kicker={copy.demoSection.kicker}
+            bodyText={demoBodyText}
+            platform={platform}
+            demoModifierLabel={demoModifierLabel}
+            virtualModifierPrefix={copy.demoSection.virtualModifierPrefix}
+            statusPrefix={copy.demoSection.statusPrefix}
+            statusIdle={copy.demoSection.statusIdle}
+            statusArmed={copy.demoSection.statusArmed}
+            instructionsText={demoInstructionsText}
+            restoreText={demoRestoreText}
+            textValue={textValue}
+            capsHeld={capsHeld}
+            textareaRef={demoTextareaRef}
+            onChange={setTextValue}
+            onKeyDown={handleDemoKeyDown}
+            onKeyUp={handleDemoKeyUp}
+            onBlur={clearDemoShortcutWindow}
+          />
 
-                <div className={styles.keyStateColumn}>
-                  <Keycap key={`${platform}-${activeKeyLabel}`} keyLabel={activeKeyLabel} platform={platform} wide />
-                </div>
-              </div>
-              <p className={styles.keyCaption}>
-                {captionParts.map((part, index) => {
-                  if (part === '{device}') {
-                    return (
-                      <select
-                        key={`device-${index}`}
-                        className={styles.keyCaptionSelect}
-                        value={captionPlatform}
-                        onChange={(event) => setCaptionPlatform(event.target.value as PlatformId)}
-                        aria-label={copy.guideSection.title}
-                      >
-                        {previewPlatforms.map((item) => (
-                          <option key={item} value={item}>
-                            {copy.keySection.deviceLabels[item]}
-                          </option>
-                        ))}
-                      </select>
-                    )
-                  }
-
-                  if (part === '{key}') {
-                    return (
-                      <Keycap
-                        key={`key-${index}`}
-                        keyLabel={recommendedKeyLabel}
-                        mini
-                        platform={captionPlatform}
-                      />
-                    )
-                  }
-
-                  return <span key={`text-${index}`}>{part}</span>
-                })}
-              </p>
-            </div>
-          </section>
-
-          <section className={styles.panel} aria-labelledby="demo-title">
-            <div className={styles.sectionHeading}>
-              <p className={styles.sectionKicker}>{copy.demoSection.kicker}</p>
-              <h2 id="demo-title" className={styles.sectionTitle}>
-                {copy.demoSection.title}
-              </h2>
-            </div>
-            <p className={styles.panelCopy}>
-              <GuideRichText text={demoBodyText} platform={platform} />
-            </p>
-            <div className={styles.demoStatusCard}>
-              <p className={styles.demoStatusLine}>
-                <Keycap
-                  keyLabel={demoModifierLabel}
-                  mini
-                  miniSize="sm"
-                  platform={platform}
-                  prefixText={copy.demoSection.virtualModifierPrefix}
-                />
-                <span className={styles.demoStatusPrefix}>{copy.demoSection.statusPrefix}:</span>
-                <span
-                  className={
-                    capsHeld ? `${styles.demoStatusBadge} ${styles.demoStatusBadgeActive}` : styles.demoStatusBadge
-                  }
-                >
-                  {capsHeld ? copy.demoSection.statusArmed : copy.demoSection.statusIdle}
-                </span>
-              </p>
-              <p className={styles.demoStatusText}>
-                <GuideRichText text={demoInstructionsText} platform={platform} />
-              </p>
-              <p className={styles.demoRestoreNote}>
-                <GuideRichText text={demoRestoreText} platform={platform} />
-              </p>
-            </div>
-            <textarea
-              ref={demoTextareaRef}
-              className={capsHeld ? `${styles.demoTextarea} ${styles.demoTextareaActive}` : styles.demoTextarea}
-              value={textValue}
-              onChange={(event) => setTextValue(event.target.value)}
-              onKeyDown={handleDemoKeyDown}
-              onKeyUp={handleDemoKeyUp}
-              onBlur={() => {
-                clearDemoShortcutWindow()
-              }}
-              readOnly={capsHeld}
-              spellCheck={false}
-            />
-          </section>
-
-          <section className={styles.panel} aria-labelledby="guide-title">
-            <div className={styles.sectionHeading}>
-              <p className={styles.sectionKicker}>{copy.guideSection.kicker}</p>
-              <h2 id="guide-title" className={styles.sectionTitle}>
-                {copy.guideSection.title}
-              </h2>
-            </div>
-            <p className={styles.guideIntro}>{copy.guideSection.intro}</p>
-            <div className={styles.guideTabs} role="tablist" aria-label={copy.guideSection.title}>
-              {copy.guideSection.platforms.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={guidePlatform === item.id}
-                  className={
-                    guidePlatform === item.id
-                      ? `${styles.guideTab} ${styles.guideTabActive}`
-                      : styles.guideTab
-                  }
-                  onClick={() => setGuidePlatform(item.id)}
-                >
-                  {item.title}
-                </button>
-              ))}
-            </div>
-            <article className={styles.guideCard}>
-              <h3 className={styles.guideCardTitle}>{activeGuide.title}</h3>
-              <p className={styles.panelCopy}>
-                <GuideRichText text={activeGuide.summary} platform={activeGuide.id} />
-              </p>
-
-              {activeGuide.id === 'windows' ? (
-                <WindowsGuideMethods
-                  copy={copy.guideSection.windowsMethods}
-                  labels={{
-                    linksLabel: copy.guideSection.linksLabel,
-                    stepsLabel: copy.guideSection.stepsLabel,
-                    notesLabel: copy.guideSection.notesLabel,
-                  }}
-                  registryGeneratorCopy={copy.guideSection.registryGenerator}
-                />
-              ) : null}
-
-              {activeGuide.id !== 'windows' &&
-              activeGuide.installScript &&
-              activeGuide.installStepIndex === undefined ? (
-                <GuideSection label={copy.guideSection.commandLabel}>
-                  <GuideCodeBlock
-                    code={activeGuide.installScript}
-                    copyLabel={copy.guideSection.copyCommandLabel}
-                    copiedLabel={copy.guideSection.copiedCommandLabel}
-                    downloadLabel={copy.guideSection.downloadCommandLabel}
-                    filename={activeGuide.installFilename ?? `${activeGuide.id}-setup.sh`}
-                  />
-                </GuideSection>
-              ) : null}
-
-              {activeGuide.id !== 'windows' &&
-              activeGuide.configSnippet &&
-              activeGuide.configStepIndex === undefined ? (
-                <GuideSection label={copy.guideSection.configLabel}>
-                  <GuideCodeBlock
-                    code={activeGuide.configSnippet}
-                    copyLabel={copy.guideSection.copyConfigLabel}
-                    copiedLabel={copy.guideSection.copiedConfigLabel}
-                    downloadLabel={copy.guideSection.downloadConfigLabel}
-                    filename={activeGuide.configFilename ?? `${activeGuide.id}-config.txt`}
-                  />
-                </GuideSection>
-              ) : null}
-
-              {activeGuide.id !== 'windows' && activeGuide.steps?.length ? (
-                <GuideStepsSection
-                  label={copy.guideSection.stepsLabel}
-                  steps={activeGuide.steps}
-                  platform={activeGuide.id}
-                  renderExtra={(_, index) => (
-                    <>
-                        {activeGuide.installScript && activeGuide.installStepIndex === index ? (
-                          <div className={styles.guideInlineCodeSection}>
-                            <GuideSection label={copy.guideSection.commandLabel}>
-                              <GuideCodeBlock
-                                code={activeGuide.installScript}
-                                copyLabel={copy.guideSection.copyCommandLabel}
-                                copiedLabel={copy.guideSection.copiedCommandLabel}
-                                downloadLabel={copy.guideSection.downloadCommandLabel}
-                                filename={activeGuide.installFilename ?? `${activeGuide.id}-setup.sh`}
-                              />
-                            </GuideSection>
-                          </div>
-                        ) : null}
-                        {activeGuide.configSnippet && activeGuide.configStepIndex === index ? (
-                          <div className={styles.guideInlineCodeSection}>
-                            <GuideSection label={copy.guideSection.configLabel}>
-                              <GuideCodeBlock
-                                code={activeGuide.configSnippet}
-                                copyLabel={copy.guideSection.copyConfigLabel}
-                                copiedLabel={copy.guideSection.copiedConfigLabel}
-                                downloadLabel={copy.guideSection.downloadConfigLabel}
-                                filename={activeGuide.configFilename ?? `${activeGuide.id}-config.txt`}
-                              />
-                            </GuideSection>
-                          </div>
-                        ) : null}
-                    </>
-                  )}
-                />
-              ) : null}
-
-              {activeGuide.id !== 'windows' && activeGuide.notes?.length ? (
-                <GuideNotesSection
-                  label={copy.guideSection.notesLabel}
-                  notes={activeGuide.notes}
-                  platform={activeGuide.id}
-                />
-              ) : null}
-
-              {activeGuide.id !== 'windows' && activeGuide.officialLinks?.length ? (
-                <GuideLinksSection
-                  label={copy.guideSection.linksLabel}
-                  links={activeGuide.officialLinks}
-                />
-              ) : null}
-
-              {activeGuide.placeholder ? <p className={styles.subduedText}>{activeGuide.placeholder}</p> : null}
-            </article>
-          </section>
+          <GuidePanel
+            copy={copy.guideSection}
+            activeGuide={activeGuide}
+            guidePlatform={guidePlatform}
+            onGuidePlatformChange={setGuidePlatform}
+          />
         </main>
       </div>
     </>

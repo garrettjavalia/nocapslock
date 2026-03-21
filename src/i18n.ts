@@ -3,7 +3,7 @@ import { koMessages } from './i18n/ko'
 import type { Copy, Locale } from './i18n/schema'
 import { defaultLocale, localeLabels, supportedLocales } from './i18n/shared'
 
-export type { Copy, DeviceLabelKey, Locale } from './i18n/schema'
+export type { Copy, DeviceLabelKey, GuidePlatformId, GuideStep, Locale } from './i18n/schema'
 export { defaultLocale, localeLabels, supportedLocales } from './i18n/shared'
 
 export const messages: Record<Locale, Copy> = {

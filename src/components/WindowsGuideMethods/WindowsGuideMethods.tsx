@@ -30,11 +30,12 @@ type SharedGuideLabels = {
 
 type RegistryGeneratorCopy = {
   title: string
-  intro: string
   sourceLabel: string
   targetLabel: string
   remapPreviewLabel: string
   revertPreviewLabel: string
+  copyFileLabel: string
+  copiedFileLabel: string
   downloadRemapLabel: string
   downloadRevertLabel: string
   noChangesLabel: string

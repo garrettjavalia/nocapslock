@@ -7,9 +7,7 @@ export const enMessages: Copy = {
     'A multilingual landing page that explains why remapping Caps Lock to Control, Command, or Escape is useful, and lets you try it right in the browser.',
   metaKeywords:
     'caps lock remap, caps lock to control, caps lock to command, caps lock to escape, keyboard productivity, karabiner, keyd, powertoys',
-  brand: 'NoCapslock',
   githubLabel: 'GitHub',
-  eyebrow: 'Keyboard Productivity',
   heroTitle: 'No Capslock Anymore!',
   heroLead:
     'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, typing feels much more comfortable.',
@@ -22,11 +20,6 @@ export const enMessages: Copy = {
     kicker: 'Try remapping it',
     title: 'The same key can do much better work',
     captionTemplate: 'On {device}, the most useful default is {key}.',
-    beforeLabel: 'Before',
-    afterLabel: 'After',
-    remapLabel: 'Remap',
-    disabledLabel: 'Caps Lock mode off',
-    alternativeLabel: 'Alternative',
     deviceLabels: {
       mac: 'macOS',
       android: 'Android',
@@ -78,8 +71,6 @@ This is only a browser demo, but it is enough to feel the convenience.`,
     notesLabel: 'Notes',
     registryGenerator: {
       title: 'Registry remap file generator',
-      intro:
-        'Use this generator if you want a downloadable .reg file that rewrites the Windows Scancode Map directly. It is useful when you want a system-wide remap without keeping PowerToys running.',
       sourceLabel: 'Physical key position',
       targetLabel: 'Send this key instead',
       remapPreviewLabel: 'Generated remap file',
@@ -208,42 +199,6 @@ This is only a browser demo, but it is enough to feel the convenience.`,
         title: 'Windows',
         summary:
           'On Windows, the easiest path is PowerToys Keyboard Manager. If you want a system-wide remap for [[Caps Lock]] that does not depend on PowerToys running in the background, you can use the registry-based Scancode Map approach below.',
-        officialLinks: [
-          {
-            label: sharedGuideCopy.en.powerToysInstallationLabel,
-            href: 'https://learn.microsoft.com/en-us/windows/powertoys/install',
-          },
-          {
-            label: sharedGuideCopy.en.powerToysKeyboardManagerLabel,
-            href: 'https://learn.microsoft.com/en-us/windows/powertoys/keyboard-manager',
-          },
-          {
-            label: sharedGuideCopy.en.scanCodeTableLabel,
-            href: 'https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf',
-          },
-        ],
-        steps: [
-          {
-            title: '1. Use PowerToys if you want the easiest GUI route',
-            body: 'Install PowerToys, open Keyboard Manager, choose Remap a key, then map [[Caps Lock]] to the key you want. Microsoft documents that PowerToys remaps apply immediately, but only while PowerToys is running, and they do not work on the sign-in screen.',
-          },
-          {
-            title: '2. Use the registry route if you want a system-wide remap',
-            body: 'The generator below creates .reg files for the Scancode Map value used by Windows keyboard remapping tools. This route is useful when you want the remap to live at the system level instead of depending on PowerToys staying open. In practice, it often carries through to password and sign-in screens as well, so it is worth testing directly if that matters to you.',
-          },
-          {
-            title: '3. Download both the remap file and the revert file',
-            body: 'Apply the generated remap .reg file with administrator approval, and keep the revert .reg file nearby so you can quickly undo the change later. The revert file simply removes the Scancode Map value.',
-          },
-          {
-            title: '4. Know which keys you are moving',
-            body: 'The generator below covers [[Caps Lock]], left and right [[Control]], and left and right [[Alt]]. The scan code list comes from Microsoft’s keyboard scan code translation table, so the file preview shows a mapping you can inspect before you download it.',
-          },
-        ],
-        notes: [
-          sharedGuideCopy.en.rightAltWarning,
-          'Keep the revert file somewhere easy to reach before you apply the remap, so you can undo the change quickly if the new layout feels wrong.',
-        ],
         placeholder: '',
       },
       {
@@ -293,18 +248,20 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           {
             title: '4. Optional: only continue if [[Caps Lock]] is already your language-switch key',
             body: 'The next steps are only for multilingual setups that already depend on [[Caps Lock]] for input-source switching. Moving input-source switching to another key lets you keep a separate language-switch key even after remapping [[Caps Lock]], and it can reduce the occasional glitches that come with relying on a short [[Caps Lock]] tap to switch modes. If [[Caps Lock]] is not doing that job on your Mac, you can stop after the basic remap and skip the rest of this section.',
-          },
-          {
-            title: '4-1. Pick a spare right-side modifier',
-            body: 'Choose a spare right-side modifier for language switching first. A common choice is [[Right Command]] -> [[F18]]. You can also use [[Right Option]] -> [[F18]] instead, as long as that key is not already important in your layout.',
-          },
-          {
-            title: '4-2. Map that right-side key to [[F18]] in Karabiner',
-            body: 'In Simple Modifications, add either [[Right Command]] -> [[F18]] or [[Right Option]] -> [[F18]], depending on which key you picked in the previous step. This frees [[Caps Lock]] for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
-          },
-          {
-            title: '4-3. Assign [[F18]] to input-source switching in macOS',
-            body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign [[F18]] to “Select next source in Input menu.” This recreates a reliable language-switch key after [[Caps Lock]] has been repurposed. [[F18]] is used here as a practical example. Apple documents that [[F1]] through [[F12]] are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, [[F18]] has been a safe choice because it tends not to overlap with those built-in roles.',
+            substeps: [
+              {
+                title: '4-1. Pick a spare right-side modifier',
+                body: 'Choose a spare right-side modifier for language switching first. A common choice is [[Right Command]] -> [[F18]]. You can also use [[Right Option]] -> [[F18]] instead, as long as that key is not already important in your layout.',
+              },
+              {
+                title: '4-2. Map that right-side key to [[F18]] in Karabiner',
+                body: 'In Simple Modifications, add either [[Right Command]] -> [[F18]] or [[Right Option]] -> [[F18]], depending on which key you picked in the previous step. This frees [[Caps Lock]] for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
+              },
+              {
+                title: '4-3. Assign [[F18]] to input-source switching in macOS',
+                body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign [[F18]] to “Select next source in Input menu.” This recreates a reliable language-switch key after [[Caps Lock]] has been repurposed. [[F18]] is used here as a practical example. Apple documents that [[F1]] through [[F12]] are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, [[F18]] has been a safe choice because it tends not to overlap with those built-in roles.',
+              },
+            ],
           },
         ],
         notes: [

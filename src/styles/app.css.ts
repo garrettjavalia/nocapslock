@@ -87,15 +87,6 @@ export const heroLeadSection = style({
   paddingBottom: 20,
 })
 
-export const eyebrow = style({
-  margin: '0 0 10px',
-  color: vars.color.accent,
-  fontSize: '0.88rem',
-  fontWeight: 700,
-  letterSpacing: '0.08em',
-  textTransform: 'uppercase',
-})
-
 export const heroTitle = style({
   marginBottom: 18,
   fontSize: 'clamp(3.2rem, 8vw, 6.2rem)',
@@ -156,9 +147,13 @@ export const sectionHeading = style({
 })
 
 export const sectionKicker = style([
-  eyebrow,
   {
-    marginBottom: 10,
+    margin: '0 0 10px',
+    color: vars.color.accent,
+    fontSize: '0.88rem',
+    fontWeight: 700,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
   },
 ])
 

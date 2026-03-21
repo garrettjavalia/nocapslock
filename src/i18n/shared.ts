@@ -17,7 +17,6 @@ export const sharedGuideCopy = {
       'Changing [[Right Alt]] can affect multilingual input behavior on some non-English keyboard layouts.',
     powerToysInstallationLabel: 'PowerToys installation',
     powerToysKeyboardManagerLabel: 'PowerToys Keyboard Manager',
-    scanCodeTableLabel: 'Microsoft scan code table',
     scanCodeTablePdfLabel: 'Microsoft PDF: USB HID to PS/2 Scan Code Translation Table',
   },
   ko: {
@@ -27,7 +26,6 @@ export const sharedGuideCopy = {
       '영문 외 레이아웃에서는 [[Right Alt]] 변경이 다국어 관련 동작에 영향을 줄 수 있습니다.',
     powerToysInstallationLabel: 'PowerToys 설치',
     powerToysKeyboardManagerLabel: 'PowerToys Keyboard Manager',
-    scanCodeTableLabel: 'Microsoft 스캔 코드 표',
     scanCodeTablePdfLabel: 'Microsoft PDF: USB HID to PS/2 Scan Code Translation Table',
   },
 } as const
