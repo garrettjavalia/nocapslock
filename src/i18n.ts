@@ -1,4 +1,4 @@
-import i18n from 'i18next'
+import { createInstance, type i18n as I18nInstance } from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import type { Locale } from './i18n/schema'
 import { resources } from './i18n/resources'
@@ -8,21 +8,24 @@ export type { GuidePlatformId, Locale } from './i18n/schema'
 export { defaultLocale, localeLabels, supportedLocales } from './i18n/shared'
 export { resources } from './i18n/resources'
 
-if (!i18n.isInitialized) {
-  void i18n.use(initReactI18next).init({
+export function createI18nInstance(locale: Locale): I18nInstance {
+  const instance = createInstance()
+
+  void instance.use(initReactI18next).init({
     resources,
-    lng: defaultLocale,
+    lng: locale,
     fallbackLng: defaultLocale,
     supportedLngs: supportedLocales,
     defaultNS: 'translation',
     ns: ['translation'],
+    initImmediate: false,
     interpolation: {
       escapeValue: false,
     },
   })
-}
 
-export const i18nInstance = i18n
+  return instance
+}
 
 export function getLocaleFromPath(pathname: string): Locale | null {
   if (pathname.startsWith('/ko')) return 'ko'

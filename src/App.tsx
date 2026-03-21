@@ -3,7 +3,7 @@ import {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { DemoPanel } from './components/DemoPanel'
 import { GuidePanel } from './components/GuidePanel'
@@ -11,12 +11,11 @@ import { HeroMasthead } from './components/HeroMasthead'
 import { KeyPreviewPanel } from './components/KeyPreviewPanel'
 import { type PlatformId } from './components/Keycap'
 import {
-  defaultLocale,
-  detectPreferredLocale,
-  getLocaleFromPath,
   getLocalePath,
   supportedLocales,
+  type Locale,
 } from './i18n'
+import { siteOrigin } from './site'
 import * as styles from './styles/app.css'
 
 type ThemeMode = 'light' | 'dark'
@@ -57,25 +56,22 @@ function readInitialTheme(): ThemeMode {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
-export function App() {
-  const location = useLocation()
+type AppProps = {
+  locale: Locale
+}
+
+export function App({ locale }: AppProps) {
   const navigate = useNavigate()
 
-  const routeLocale = getLocaleFromPath(location.pathname)
   const [theme, setTheme] = useState<ThemeMode>(readInitialTheme)
   const [platform, setPlatform] = useState<PlatformId>('other')
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
-  const locale = routeLocale ?? defaultLocale
   const githubUrl = 'https://github.com/garrettjavalia/nocapslock'
 
   useEffect(() => {
     setPlatform(detectPlatform())
   }, [])
-
-  useEffect(() => {
-    void i18n.changeLanguage(locale)
-  }, [i18n, locale])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -95,15 +91,6 @@ export function App() {
     return () => media.removeEventListener('change', listener)
   }, [])
 
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      return
-    }
-
-    const preferredLocale = detectPreferredLocale()
-    navigate(getLocalePath(preferredLocale), { replace: true })
-  }, [location.pathname, navigate])
-
   return (
     <>
       <Head>
@@ -111,13 +98,13 @@ export function App() {
         <title>{t('meta.title')}</title>
         <meta name="description" content={t('meta.description')} />
         <meta name="keywords" content={t('meta.keywords')} />
-        <link rel="canonical" href={`https://nocapslock.dev${getLocalePath(locale)}`} />
+        <link rel="canonical" href={`${siteOrigin}${getLocalePath(locale)}`} />
         {supportedLocales.map((item) => (
           <link
             key={item}
             rel="alternate"
             hrefLang={item}
-            href={`https://nocapslock.dev${getLocalePath(item)}`}
+            href={`${siteOrigin}${getLocalePath(item)}`}
           />
         ))}
         <meta property="og:title" content={t('meta.title')} />
