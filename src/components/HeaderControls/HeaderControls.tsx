@@ -1,30 +1,30 @@
 import type { CSSProperties, Dispatch, SetStateAction } from 'react'
+import { useTranslation } from 'react-i18next'
 import { getLocalePath, localeLabels, supportedLocales, type Locale } from '../../i18n'
 import * as styles from './HeaderControls.css'
 
 type ThemeMode = 'light' | 'dark'
 
 type HeaderControlsProps = {
-  githubLabel: string
   githubUrl: string
   locale: Locale
-  localeSwitcherLabel: string
   navigate: (to: string) => void
   setTheme: Dispatch<SetStateAction<ThemeMode>>
   theme: ThemeMode
-  themeToggleLabel: string
 }
 
 export function HeaderControls({
-  githubLabel,
   githubUrl,
   locale,
-  localeSwitcherLabel,
   navigate,
   setTheme,
   theme,
-  themeToggleLabel,
 }: HeaderControlsProps) {
+  const { t } = useTranslation()
+  const localeSwitcherLabel = t('chrome.language')
+  const githubLabel = t('chrome.github')
+  const themeToggleLabel = theme === 'light' ? t('theme.dark') : t('theme.light')
+
   return (
     <div className={styles.topbarActions}>
       <a className={styles.githubLink} href={githubUrl} target="_blank" rel="noreferrer">

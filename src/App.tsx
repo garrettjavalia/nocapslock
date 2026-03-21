@@ -1,11 +1,11 @@
 import {
   useEffect,
-  useMemo,
   useRef,
   useState,
   type CSSProperties,
   type KeyboardEvent,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { CompactRemapBadge } from './components/CompactRemapBadge'
@@ -20,32 +20,11 @@ import {
   detectPreferredLocale,
   getLocaleFromPath,
   getLocalePath,
-  messages,
   supportedLocales,
 } from './i18n'
 import * as styles from './styles/app.css'
 
 type ThemeMode = 'light' | 'dark'
-type OsKeyRole = 'Command' | 'Control'
-
-const osRoleMap: Record<PlatformId, OsKeyRole> = {
-  mac: 'Command',
-  ios: 'Command',
-  windows: 'Control',
-  linux: 'Control',
-  android: 'Control',
-  unix: 'Control',
-  other: 'Control',
-}
-
-const previewPlatforms: Exclude<PlatformId, 'other'>[] = [
-  'mac',
-  'ios',
-  'windows',
-  'linux',
-  'android',
-  'unix',
-]
 const demoShortcutWindowMs = 1000
 const heroKeyCycleIntervalMs = 2000
 type DemoShortcutAction = 'a' | 'c' | 'v' | 'x'
@@ -116,7 +95,7 @@ export function App() {
   const [theme, setTheme] = useState<ThemeMode>(readInitialTheme)
   const [platform, setPlatform] = useState<PlatformId>('other')
   const [capsHeld, setCapsHeld] = useState(false)
-  const [textValue, setTextValue] = useState(messages.en.demoSection.text)
+  const [textValue, setTextValue] = useState('')
   const [guidePlatform, setGuidePlatform] = useState<GuidePlatformId>('linux')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [keyCycleIndex, setKeyCycleIndex] = useState(0)
@@ -124,9 +103,9 @@ export function App() {
   const [capsArmedUntil, setCapsArmedUntil] = useState(0)
   const capsArmedUntilRef = useRef(0)
   const demoTextareaRef = useRef<HTMLTextAreaElement | null>(null)
+  const { t, i18n } = useTranslation()
 
   const locale = routeLocale ?? defaultLocale
-  const copy = messages[locale]
   const githubUrl = 'https://github.com/garrettjavalia/nocapslock'
 
   useEffect(() => {
@@ -138,8 +117,12 @@ export function App() {
   }, [platform])
 
   useEffect(() => {
-    setTextValue(copy.demoSection.text)
-  }, [copy.demoSection.text])
+    void i18n.changeLanguage(locale)
+  }, [i18n, locale])
+
+  useEffect(() => {
+    setTextValue(t('demo.text'))
+  }, [locale, t])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -209,15 +192,8 @@ export function App() {
     setGuidePlatform('linux')
   }, [platform])
 
-  const animatedKeyLabels = useMemo(() => ['Command', 'Control', 'ESC'], [])
-  const recommendedKeyLabel = osRoleMap[captionPlatform]
+  const animatedKeyLabels = ['Command', 'Control', 'ESC'] as const
   const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
-  const demoModifierLabel = osRoleMap[platform]
-  const activeGuide = copy.guideSection.platforms.find((item) => item.id === guidePlatform) ?? copy.guideSection.platforms.find((item) => item.id === 'linux')!
-  const captionParts = copy.keySection.captionTemplate.split(/(\{device\}|\{key\})/g)
-  const demoBodyText = copy.demoSection.bodyTemplate.replaceAll('{modifier}', demoModifierLabel)
-  const demoInstructionsText = copy.demoSection.instructions.replaceAll('{modifier}', demoModifierLabel)
-  const demoRestoreText = copy.demoSection.restoreNote.replaceAll('{modifier}', demoModifierLabel)
   const compactProgress = Math.max(0, Math.min(1, (scrollProgress - 0.42) / 0.38))
 
   const mastheadStyle = {
@@ -381,9 +357,9 @@ export function App() {
     <>
       <Head>
         <html lang={locale} />
-        <title>{copy.metaTitle}</title>
-        <meta name="description" content={copy.metaDescription} />
-        <meta name="keywords" content={copy.metaKeywords} />
+        <title>{t('meta.title')}</title>
+        <meta name="description" content={t('meta.description')} />
+        <meta name="keywords" content={t('meta.keywords')} />
         <link rel="canonical" href={`https://nocapslock.dev${getLocalePath(locale)}`} />
         {supportedLocales.map((item) => (
           <link
@@ -393,8 +369,8 @@ export function App() {
             href={`https://nocapslock.dev${getLocalePath(item)}`}
           />
         ))}
-        <meta property="og:title" content={copy.metaTitle} />
-        <meta property="og:description" content={copy.metaDescription} />
+        <meta property="og:title" content={t('meta.title')} />
+        <meta property="og:description" content={t('meta.description')} />
       </Head>
 
       <div className={styles.pageShell}>
@@ -402,18 +378,15 @@ export function App() {
           <div className={styles.mastheadSurface}>
             <div className={styles.mastheadTop}>
               <div className={styles.mastheadTitles}>
-                <CompactRemapBadge label={copy.heroTitle} platform={platform} />
+                <CompactRemapBadge label={t('hero.title')} platform={platform} />
               </div>
 
               <HeaderControls
-                githubLabel={copy.githubLabel}
                 githubUrl={githubUrl}
                 locale={locale}
-                localeSwitcherLabel={copy.localeSwitcherLabel}
                 navigate={navigate}
                 setTheme={setTheme}
                 theme={theme}
-                themeToggleLabel={theme === 'light' ? copy.themeToggle.dark : copy.themeToggle.light}
               />
             </div>
           </div>
@@ -421,41 +394,24 @@ export function App() {
 
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <h1 className={`${styles.heroTitle} ${styles.heroTitleFloating}`}>{copy.heroTitle}</h1>
+            <h1 className={`${styles.heroTitle} ${styles.heroTitleFloating}`}>{t('hero.title')}</h1>
           </div>
         </section>
 
         <section className={styles.heroLeadSection}>
-          <p className={styles.heroLead}>{copy.heroLead}</p>
+          <p className={styles.heroLead}>{t('hero.lead')}</p>
         </section>
 
         <main className={styles.contentGrid}>
           <KeyPreviewPanel
-            title={copy.keySection.title}
-            kicker={copy.keySection.kicker}
-            guideTitle={copy.guideSection.title}
             platform={platform}
             activeKeyLabel={activeKeyLabel}
-            recommendedKeyLabel={recommendedKeyLabel}
             captionPlatform={captionPlatform}
-            previewPlatforms={previewPlatforms}
-            deviceLabels={copy.keySection.deviceLabels}
-            captionParts={captionParts}
             onCaptionPlatformChange={setCaptionPlatform}
           />
 
           <DemoPanel
-            title={copy.demoSection.title}
-            kicker={copy.demoSection.kicker}
-            bodyText={demoBodyText}
             platform={platform}
-            demoModifierLabel={demoModifierLabel}
-            virtualModifierPrefix={copy.demoSection.virtualModifierPrefix}
-            statusPrefix={copy.demoSection.statusPrefix}
-            statusIdle={copy.demoSection.statusIdle}
-            statusArmed={copy.demoSection.statusArmed}
-            instructionsText={demoInstructionsText}
-            restoreText={demoRestoreText}
             textValue={textValue}
             capsHeld={capsHeld}
             textareaRef={demoTextareaRef}
@@ -466,8 +422,6 @@ export function App() {
           />
 
           <GuidePanel
-            copy={copy.guideSection}
-            activeGuide={activeGuide}
             guidePlatform={guidePlatform}
             onGuidePlatformChange={setGuidePlatform}
           />

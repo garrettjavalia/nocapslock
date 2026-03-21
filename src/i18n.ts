@@ -1,15 +1,28 @@
-import { enMessages } from './i18n/en'
-import { koMessages } from './i18n/ko'
-import type { Copy, Locale } from './i18n/schema'
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import type { Locale } from './i18n/schema'
+import { resources } from './i18n/resources'
 import { defaultLocale, localeLabels, supportedLocales } from './i18n/shared'
 
-export type { Copy, DeviceLabelKey, GuidePlatformId, GuideStep, Locale } from './i18n/schema'
+export type { GuidePlatformId, Locale } from './i18n/schema'
 export { defaultLocale, localeLabels, supportedLocales } from './i18n/shared'
+export { resources } from './i18n/resources'
 
-export const messages: Record<Locale, Copy> = {
-  en: enMessages,
-  ko: koMessages,
+if (!i18n.isInitialized) {
+  void i18n.use(initReactI18next).init({
+    resources,
+    lng: defaultLocale,
+    fallbackLng: defaultLocale,
+    supportedLngs: supportedLocales,
+    defaultNS: 'translation',
+    ns: ['translation'],
+    interpolation: {
+      escapeValue: false,
+    },
+  })
 }
+
+export const i18nInstance = i18n
 
 export function getLocaleFromPath(pathname: string): Locale | null {
   if (pathname.startsWith('/ko')) return 'ko'

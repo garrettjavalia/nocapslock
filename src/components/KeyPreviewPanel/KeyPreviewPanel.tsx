@@ -1,39 +1,31 @@
+import { useTranslation } from 'react-i18next'
 import { Keycap, type PlatformId } from '../Keycap'
+import { getShortcutRole, previewPlatforms } from '../Keycap/keyRoles'
 import * as styles from '../../styles/app.css'
 
 type KeyPreviewPanelProps = {
-  title: string
-  kicker: string
-  guideTitle: string
   platform: PlatformId
   activeKeyLabel: string
-  recommendedKeyLabel: 'Command' | 'Control'
   captionPlatform: PlatformId
-  previewPlatforms: Exclude<PlatformId, 'other'>[]
-  deviceLabels: Record<Exclude<PlatformId, 'other'> | 'other', string>
-  captionParts: string[]
   onCaptionPlatformChange: (platform: PlatformId) => void
 }
 
 export function KeyPreviewPanel({
-  title,
-  kicker,
-  guideTitle,
   platform,
   activeKeyLabel,
-  recommendedKeyLabel,
   captionPlatform,
-  previewPlatforms,
-  deviceLabels,
-  captionParts,
   onCaptionPlatformChange,
 }: KeyPreviewPanelProps) {
+  const { t } = useTranslation()
+  const captionParts = t('preview.captionTemplate').split(/(\{device\}|\{key\})/g)
+  const recommendedKeyLabel = getShortcutRole(captionPlatform)
+
   return (
     <section className={`${styles.panel} ${styles.keyStage}`} aria-labelledby="hero-key-title">
       <div className={styles.sectionHeading}>
-        <p className={styles.sectionKicker}>{kicker}</p>
+        <p className={styles.sectionKicker}>{t('preview.kicker')}</p>
         <h2 id="hero-key-title" className={styles.sectionTitle}>
-          {title}
+          {t('preview.title')}
         </h2>
       </div>
       <div className={styles.keyRail} aria-hidden="true">
@@ -59,11 +51,11 @@ export function KeyPreviewPanel({
                   className={styles.keyCaptionSelect}
                   value={captionPlatform}
                   onChange={(event) => onCaptionPlatformChange(event.target.value as PlatformId)}
-                  aria-label={guideTitle}
+                  aria-label={t('guide.title')}
                 >
                   {previewPlatforms.map((item) => (
                     <option key={item} value={item}>
-                      {deviceLabels[item]}
+                      {t(`preview.device.${item}`)}
                     </option>
                   ))}
                 </select>

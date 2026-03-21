@@ -1,20 +1,12 @@
 import type { KeyboardEvent, RefObject } from 'react'
+import { useTranslation } from 'react-i18next'
 import { GuideRichText } from '../GuideRichText'
 import { Keycap, type PlatformId } from '../Keycap'
+import { getShortcutRole } from '../Keycap/keyRoles'
 import * as styles from '../../styles/app.css'
 
 type DemoPanelProps = {
-  title: string
-  kicker: string
-  bodyText: string
   platform: PlatformId
-  demoModifierLabel: 'Command' | 'Control'
-  virtualModifierPrefix: string
-  statusPrefix: string
-  statusIdle: string
-  statusArmed: string
-  instructionsText: string
-  restoreText: string
   textValue: string
   capsHeld: boolean
   textareaRef: RefObject<HTMLTextAreaElement>
@@ -25,17 +17,7 @@ type DemoPanelProps = {
 }
 
 export function DemoPanel({
-  title,
-  kicker,
-  bodyText,
   platform,
-  demoModifierLabel,
-  virtualModifierPrefix,
-  statusPrefix,
-  statusIdle,
-  statusArmed,
-  instructionsText,
-  restoreText,
   textValue,
   capsHeld,
   textareaRef,
@@ -44,12 +26,18 @@ export function DemoPanel({
   onKeyUp,
   onBlur,
 }: DemoPanelProps) {
+  const { t } = useTranslation()
+  const demoModifierLabel = getShortcutRole(platform)
+  const bodyText = t('demo.bodyTemplate').replaceAll('{modifier}', demoModifierLabel)
+  const instructionsText = t('demo.instructions').replaceAll('{modifier}', demoModifierLabel)
+  const restoreText = t('demo.restoreNote').replaceAll('{modifier}', demoModifierLabel)
+
   return (
     <section className={styles.panel} aria-labelledby="demo-title">
       <div className={styles.sectionHeading}>
-        <p className={styles.sectionKicker}>{kicker}</p>
+        <p className={styles.sectionKicker}>{t('demo.kicker')}</p>
         <h2 id="demo-title" className={styles.sectionTitle}>
-          {title}
+          {t('demo.title')}
         </h2>
       </div>
       <p className={styles.panelCopy}>
@@ -62,15 +50,15 @@ export function DemoPanel({
             mini
             miniSize="sm"
             platform={platform}
-            prefixText={virtualModifierPrefix}
+            prefixText={t('demo.virtualModifierPrefix')}
           />
-          <span className={styles.demoStatusPrefix}>{statusPrefix}:</span>
+          <span className={styles.demoStatusPrefix}>{t('demo.status.prefix')}:</span>
           <span
             className={
               capsHeld ? `${styles.demoStatusBadge} ${styles.demoStatusBadgeActive}` : styles.demoStatusBadge
             }
           >
-            {capsHeld ? statusArmed : statusIdle}
+            {capsHeld ? t('demo.status.armed') : t('demo.status.idle')}
           </span>
         </p>
         <p className={styles.demoStatusText}>
