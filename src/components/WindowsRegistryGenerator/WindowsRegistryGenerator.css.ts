@@ -163,9 +163,3 @@ export const previewLabel = style({
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
 })
-
-export const note = style({
-  margin: 0,
-  color: vars.color.textSoft,
-  lineHeight: 1.65,
-})

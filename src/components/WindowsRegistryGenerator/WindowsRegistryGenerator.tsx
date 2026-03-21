@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { GuideCodeBlock } from '../GuideCodeBlock'
 import { Keycap } from '../Keycap'
 import * as styles from './WindowsRegistryGenerator.css'
@@ -13,28 +14,6 @@ const registryTargetIds = [
   'rightAlt',
 ] as const
 type RegistryTargetId = (typeof registryTargetIds)[number]
-
-type RegistryGeneratorCopy = {
-  title: string
-  intro: string
-  sourceLabel: string
-  targetLabel: string
-  remapPreviewLabel: string
-  revertPreviewLabel: string
-  copyFileLabel: string
-  copiedFileLabel: string
-  downloadRemapLabel: string
-  downloadRevertLabel: string
-  noChangesLabel: string
-  registryPathLabel: string
-  restartNote: string
-  resetLabel: string
-  keys: Record<RegistryTargetId, string>
-}
-
-type WindowsRegistryGeneratorProps = {
-  copy: RegistryGeneratorCopy
-}
 
 const registryPath = 'HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout'
 const scanCodes: Record<RegistryTargetId, string> = {
@@ -119,7 +98,8 @@ function buildRevertFile() {
   ].join('\r\n')
 }
 
-export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps) {
+export function WindowsRegistryGenerator() {
+  const { t } = useTranslation()
   const [mapping, setMapping] = useState(identityMapping)
 
   const hasChanges = useMemo(
@@ -141,31 +121,36 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
     <section className={styles.generator}>
       <div className={styles.header}>
         <div className={styles.headerBlock}>
-          <h4 className={styles.title}>{copy.title}</h4>
+          <h4 className={styles.title}>{t('guide.registryGenerator.title')}</h4>
         </div>
         <button
           type="button"
           className={styles.resetButton}
           onClick={() => setMapping(identityMapping)}
         >
-          {copy.resetLabel}
+          {t('guide.registryGenerator.resetLabel')}
         </button>
       </div>
 
-      <p className={styles.pathText}>{copy.registryPathLabel}</p>
+      <p className={styles.pathText}>{t('guide.registryGenerator.registryPathLabel')}</p>
 
       <div className={styles.mappingCard}>
         <div className={styles.mappingHeader}>
-          <span>{copy.sourceLabel}</span>
+          <span>{t('guide.registryGenerator.sourceLabel')}</span>
           <span />
-          <span>{copy.targetLabel}</span>
+          <span>{t('guide.registryGenerator.targetLabel')}</span>
         </div>
 
         <div className={styles.mappingList}>
           {registryKeyIds.map((source) => (
             <div key={source} className={styles.mappingRow}>
               <div className={styles.keyCell}>
-                <Keycap keyLabel={copy.keys[source]} mini miniSize="sm" platform="windows" />
+                <Keycap
+                  keyLabel={t(`guide.registryGenerator.key.${source}`)}
+                  mini
+                  miniSize="sm"
+                  platform="windows"
+                />
                 <span className={styles.codeBadge}>{formatScanCode(scanCodes[source])}</span>
               </div>
 
@@ -177,11 +162,11 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
                 className={styles.targetSelect}
                 value={mapping[source]}
                 onChange={(event) => handleTargetChange(source, event.target.value as RegistryTargetId)}
-                aria-label={`${copy.keys[source]} ${copy.targetLabel}`}
+                aria-label={`${t(`guide.registryGenerator.key.${source}`)} ${t('guide.registryGenerator.targetLabel')}`}
               >
                 {registryTargetIds.map((target) => (
                   <option key={target} value={target}>
-                    {copy.keys[target]} ({formatScanCode(scanCodes[target])})
+                    {t(`guide.registryGenerator.key.${target}`)} ({formatScanCode(scanCodes[target])})
                   </option>
                 ))}
               </select>
@@ -192,31 +177,29 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
 
       <div className={styles.previewGrid}>
         <section className={styles.previewCard}>
-          <p className={styles.previewLabel}>{copy.remapPreviewLabel}</p>
+          <p className={styles.previewLabel}>{t('guide.registryGenerator.remapPreviewLabel')}</p>
           <GuideCodeBlock
             code={remapFile}
-            copyLabel={copy.copyFileLabel}
-            copiedLabel={copy.copiedFileLabel}
-            downloadLabel={copy.downloadRemapLabel}
+            copyLabel={t('guide.registryGenerator.copyFileLabel')}
+            copiedLabel={t('guide.registryGenerator.copiedFileLabel')}
+            downloadLabel={t('guide.registryGenerator.downloadRemapLabel')}
             filename="nocapslock-remap.reg"
             disabled={!hasChanges}
-            placeholderText={copy.noChangesLabel}
+            placeholderText={t('guide.registryGenerator.noChangesLabel')}
           />
         </section>
 
         <section className={styles.previewCard}>
-          <p className={styles.previewLabel}>{copy.revertPreviewLabel}</p>
+          <p className={styles.previewLabel}>{t('guide.registryGenerator.revertPreviewLabel')}</p>
           <GuideCodeBlock
             code={revertFile}
-            copyLabel={copy.copyFileLabel}
-            copiedLabel={copy.copiedFileLabel}
-            downloadLabel={copy.downloadRevertLabel}
+            copyLabel={t('guide.registryGenerator.copyFileLabel')}
+            copiedLabel={t('guide.registryGenerator.copiedFileLabel')}
+            downloadLabel={t('guide.registryGenerator.downloadRevertLabel')}
             filename="nocapslock-revert.reg"
           />
         </section>
       </div>
-
-      <p className={styles.note}>{copy.restartNote}</p>
     </section>
   )
 }

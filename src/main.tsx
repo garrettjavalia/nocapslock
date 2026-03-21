@@ -1,12 +1,13 @@
 import type { RouteObject } from 'react-router-dom'
 import { ViteReactSSG } from 'vite-react-ssg'
-import { App } from './App'
+import { LocalizedApp } from './LocalizedApp'
+import { RootLocaleRedirect } from './RootLocaleRedirect'
 import './styles/theme.css.ts'
 
 const routes: RouteObject[] = [
-  { path: '/', element: <App /> },
-  { path: '/en/', element: <App /> },
-  { path: '/ko/', element: <App /> },
+  { path: '/', element: <RootLocaleRedirect /> },
+  { path: '/en/', element: <LocalizedApp locale="en" /> },
+  { path: '/ko/', element: <LocalizedApp locale="ko" /> },
 ]
 
 export const createRoot = ViteReactSSG(
