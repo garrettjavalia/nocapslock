@@ -84,6 +84,8 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       targetLabel: '대신 보낼 키',
       remapPreviewLabel: '생성된 변경용 .reg 파일',
       revertPreviewLabel: '원복용 .reg 파일',
+      copyFileLabel: '내용 복사',
+      copiedFileLabel: '복사됨',
       downloadRemapLabel: '변경용 .reg 다운로드',
       downloadRevertLabel: '원복용 .reg 다운로드',
       noChangesLabel: '하나 이상 다른 키로 바꿔야 변경용 파일을 만들 수 있습니다.',

@@ -9,6 +9,8 @@ type GuideCodeBlockProps = {
   downloadLabel?: string
   filename?: string
   headerText?: string
+  disabled?: boolean
+  placeholderText?: string
 }
 
 export function GuideCodeBlock({
@@ -18,6 +20,8 @@ export function GuideCodeBlock({
   downloadLabel,
   filename,
   headerText,
+  disabled = false,
+  placeholderText,
 }: GuideCodeBlockProps) {
   const [copied, setCopied] = useState(false)
 
@@ -34,6 +38,10 @@ export function GuideCodeBlock({
   }, [copied])
 
   const handleCopy = async () => {
+    if (disabled) {
+      return
+    }
+
     try {
       await navigator.clipboard.writeText(code)
       setCopied(true)
@@ -55,19 +63,24 @@ export function GuideCodeBlock({
             <button
               type="button"
               className={styles.button}
+              disabled={disabled}
               onClick={() => downloadTextFile(filename, code)}
             >
               {downloadLabel}
             </button>
           ) : null}
-          <button type="button" className={styles.button} onClick={handleCopy}>
+          <button type="button" className={styles.button} onClick={handleCopy} disabled={disabled}>
             {copied ? copiedLabel : copyLabel}
           </button>
         </div>
       </div>
-      <pre className={styles.codeBlock}>
-        <code>{code}</code>
-      </pre>
+      {disabled && placeholderText ? (
+        <p className={styles.placeholder}>{placeholderText}</p>
+      ) : (
+        <pre className={styles.codeBlock}>
+          <code>{code}</code>
+        </pre>
+      )}
     </div>
   )
 }

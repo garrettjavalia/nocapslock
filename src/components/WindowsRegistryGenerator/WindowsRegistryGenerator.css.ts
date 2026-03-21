@@ -155,14 +155,6 @@ export const previewCard = style({
   gap: 10,
 })
 
-export const previewHeader = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: 12,
-  flexWrap: 'wrap',
-})
-
 export const previewLabel = style({
   margin: 0,
   color: vars.color.textSoft,
@@ -170,52 +162,6 @@ export const previewLabel = style({
   fontWeight: 700,
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
-})
-
-export const downloadButton = style({
-  minHeight: 36,
-  padding: '0 14px',
-  borderRadius: 999,
-  border: `1px solid ${vars.color.border}`,
-  background: vars.color.bgElevated,
-  color: vars.color.text,
-  cursor: 'pointer',
-  fontWeight: 600,
-  selectors: {
-    '&:disabled': {
-      cursor: 'not-allowed',
-      opacity: 0.48,
-    },
-  },
-})
-
-export const downloadButtonPrimary = style({
-  background: vars.color.accent,
-  borderColor: vars.color.accent,
-  color: '#fffaf5',
-})
-
-export const codeBlock = style({
-  margin: 0,
-  padding: '16px 18px',
-  borderRadius: 18,
-  border: `1px solid ${vars.color.border}`,
-  background: vars.color.bg,
-  color: vars.color.text,
-  overflowX: 'auto',
-  whiteSpace: 'pre-wrap',
-  wordBreak: 'break-word',
-  lineHeight: 1.6,
-})
-
-export const emptyState = style({
-  margin: 0,
-  padding: '16px 18px',
-  borderRadius: 18,
-  border: `1px dashed ${vars.color.border}`,
-  background: vars.color.bg,
-  color: vars.color.textSoft,
-  lineHeight: 1.6,
 })
 
 export const note = style({

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
+import { GuideCodeBlock } from '../GuideCodeBlock'
 import { Keycap } from '../Keycap'
-import { downloadTextFile } from '../../utils/downloadTextFile'
 import * as styles from './WindowsRegistryGenerator.css'
 
 const registryKeyIds = ['capslock', 'leftCtrl', 'rightCtrl', 'leftAlt', 'rightAlt'] as const
@@ -21,6 +21,8 @@ type RegistryGeneratorCopy = {
   targetLabel: string
   remapPreviewLabel: string
   revertPreviewLabel: string
+  copyFileLabel: string
+  copiedFileLabel: string
   downloadRemapLabel: string
   downloadRevertLabel: string
   noChangesLabel: string
@@ -190,42 +192,27 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
 
       <div className={styles.previewGrid}>
         <section className={styles.previewCard}>
-          <div className={styles.previewHeader}>
-            <p className={styles.previewLabel}>{copy.remapPreviewLabel}</p>
-            <button
-              type="button"
-              className={`${styles.downloadButton} ${styles.downloadButtonPrimary}`}
-              disabled={!hasChanges}
-              onClick={() => downloadTextFile('nocapslock-remap.reg', remapFile)}
-            >
-              {copy.downloadRemapLabel}
-            </button>
-          </div>
-
-          {hasChanges ? (
-            <pre className={styles.codeBlock}>
-              <code>{remapFile}</code>
-            </pre>
-          ) : (
-            <p className={styles.emptyState}>{copy.noChangesLabel}</p>
-          )}
+          <p className={styles.previewLabel}>{copy.remapPreviewLabel}</p>
+          <GuideCodeBlock
+            code={remapFile}
+            copyLabel={copy.copyFileLabel}
+            copiedLabel={copy.copiedFileLabel}
+            downloadLabel={copy.downloadRemapLabel}
+            filename="nocapslock-remap.reg"
+            disabled={!hasChanges}
+            placeholderText={copy.noChangesLabel}
+          />
         </section>
 
         <section className={styles.previewCard}>
-          <div className={styles.previewHeader}>
-            <p className={styles.previewLabel}>{copy.revertPreviewLabel}</p>
-            <button
-              type="button"
-              className={styles.downloadButton}
-              onClick={() => downloadTextFile('nocapslock-revert.reg', revertFile)}
-            >
-              {copy.downloadRevertLabel}
-            </button>
-          </div>
-
-          <pre className={styles.codeBlock}>
-            <code>{revertFile}</code>
-          </pre>
+          <p className={styles.previewLabel}>{copy.revertPreviewLabel}</p>
+          <GuideCodeBlock
+            code={revertFile}
+            copyLabel={copy.copyFileLabel}
+            copiedLabel={copy.copiedFileLabel}
+            downloadLabel={copy.downloadRevertLabel}
+            filename="nocapslock-revert.reg"
+          />
         </section>
       </div>
 

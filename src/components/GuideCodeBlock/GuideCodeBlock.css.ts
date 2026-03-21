@@ -26,7 +26,6 @@ export const filename = style({
   fontSize: '0.82rem',
   fontWeight: 700,
   letterSpacing: '0.04em',
-  textTransform: 'uppercase',
 })
 
 export const actions = style({
@@ -47,6 +46,12 @@ export const button = style({
   cursor: 'pointer',
   fontWeight: 600,
   fontSize: '0.86rem',
+  selectors: {
+    '&:disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.48,
+    },
+  },
 })
 
 export const codeBlock = style({
@@ -56,5 +61,12 @@ export const codeBlock = style({
   overflowX: 'auto',
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
+  lineHeight: 1.6,
+})
+
+export const placeholder = style({
+  margin: 0,
+  padding: '16px',
+  color: vars.color.textSoft,
   lineHeight: 1.6,
 })
