@@ -71,7 +71,7 @@ export const messages: Record<Locale, Copy> = {
     eyebrow: 'Keyboard Productivity',
     heroTitle: 'No Capslock Anymore!',
     heroLead:
-      'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, your hands can move much less.',
+      'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, your hands will feel much more comfortable.',
     themeToggle: {
       light: 'Light mode',
       dark: 'Dark mode',
@@ -153,7 +153,7 @@ This is only a browser-level simulation, but it is enough to feel the difference
     eyebrow: '키보드 생산성',
     heroTitle: '이제 캡스락은 그만!',
     heroLead:
-      '캡스락은 키보드에서 가장 아까운 자리를 차지하고 있습니다. 실제로 자주 쓰는 단축키용 키로 바꾸면 손의 이동이 훨씬 줄어듭니다.',
+      '캡스락은 키보드에서 가장 아까운 자리를 차지하고 있습니다. 실제로 자주 쓰는 단축키용 키로 바꾸면 손이 훨씬 편해집니다.',
     themeToggle: {
       light: '라이트 모드',
       dark: '다크 모드',
