@@ -37,7 +37,7 @@ export function DemoPanel({ platform }: DemoPanelProps) {
   const { t, i18n } = useTranslation()
   const demoModifierLabel = getShortcutRole(platform)
   const [capsHeld, setCapsHeld] = useState(false)
-  const [textValue, setTextValue] = useState('')
+  const [textValue, setTextValue] = useState(() => t('demo.text'))
   const [capsArmedUntil, setCapsArmedUntil] = useState(0)
   const capsArmedUntilRef = useRef(0)
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
