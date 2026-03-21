@@ -116,6 +116,7 @@ export const heroTitleFloating = style({
 
 export const subduedText = style({
   color: vars.color.textSoft,
+  marginBottom: 0,
 })
 
 export const heroLead = style([
@@ -235,6 +236,13 @@ export const panelCopy = style([
   subduedText,
   {
     lineHeight: 1.7,
+  },
+])
+
+export const guideIntro = style([
+  panelCopy,
+  {
+    marginBottom: 12,
   },
 ])
 
@@ -423,9 +431,17 @@ export const guideCard = style({
   padding: 22,
   background: vars.color.bgStrong,
   border: `1px solid ${vars.color.border}`,
+  display: 'grid',
+  gap: 18,
 })
 
 export const guideCardTitle = style({
   marginBottom: 10,
   fontSize: '1.4rem',
+})
+
+export const guideInlineCodeSection = style({
+  display: 'grid',
+  gap: 10,
+  marginTop: 14,
 })

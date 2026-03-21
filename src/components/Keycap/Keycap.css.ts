@@ -1,22 +1,24 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
+const keycapAnimationDuration = '1.6s'
+
 const labelFlip = keyframes({
   '0%': {
     opacity: 0,
-    transform: 'translateY(16px) scale(0.95)',
+    transform: 'scale(0.88)',
   },
   '18%': {
     opacity: 1,
-    transform: 'translateY(0) scale(1)',
+    transform: 'scale(1)',
   },
   '82%': {
     opacity: 1,
-    transform: 'translateY(0) scale(1)',
+    transform: 'scale(1)',
   },
   '100%': {
     opacity: 0.88,
-    transform: 'translateY(-6px) scale(1.02)',
+    transform: 'scale(1)',
   },
 })
 
@@ -114,7 +116,8 @@ export const keycapLabel = style({
   fontSize: 'clamp(1.8rem, 5vw, 3rem)',
   fontWeight: 700,
   letterSpacing: '-0.05em',
-  animation: `${labelFlip} 1.8s ease`,
+  willChange: 'transform, opacity',
+  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
 })
 
 export const keycapLabelStatic = style({
@@ -141,7 +144,8 @@ const appleModifierGlyphBase = style({
   fontSize: '2.15rem',
   lineHeight: 1,
   letterSpacing: '-0.06em',
-  animation: `${labelFlip} 1.8s ease`,
+  willChange: 'transform, opacity',
+  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
 })
 
 export const commandGlyphLeft = style([
@@ -164,7 +168,8 @@ export const commandGlyph = style({
   fontSize: '2.35rem',
   lineHeight: 1,
   letterSpacing: '-0.06em',
-  animation: `${labelFlip} 1.8s ease`,
+  willChange: 'transform, opacity',
+  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
 })
 
 export const commandLabel = style({
@@ -175,7 +180,8 @@ export const commandLabel = style({
   fontWeight: 700,
   letterSpacing: '-0.04em',
   textTransform: 'lowercase',
-  animation: `${labelFlip} 1.8s ease`,
+  willChange: 'transform, opacity',
+  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
 })
 
 export const inlineMiniKeycap = style({

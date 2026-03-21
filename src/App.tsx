@@ -9,8 +9,16 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { CompactRemapBadge } from './components/CompactRemapBadge'
+import { GuideCodeBlock } from './components/GuideCodeBlock'
+import {
+  GuideLinksSection,
+  GuideNotesSection,
+  GuideSection,
+  GuideStepsSection,
+} from './components/GuideSections'
 import { HeaderControls } from './components/HeaderControls'
 import { Keycap, type PlatformId, type RemapKey } from './components/Keycap'
+import { WindowsGuideMethods } from './components/WindowsGuideMethods'
 import {
   defaultLocale,
   detectPreferredLocale,
@@ -43,6 +51,7 @@ const previewPlatforms: Exclude<PlatformId, 'other'>[] = [
   'unix',
 ]
 const demoShortcutWindowMs = 1000
+const heroKeyCycleIntervalMs = 2000
 type DemoShortcutAction = 'a' | 'c' | 'v' | 'x'
 
 function logDemoKeyboardEvent(
@@ -108,7 +117,7 @@ export function App() {
   const [platform, setPlatform] = useState<PlatformId>('other')
   const [capsHeld, setCapsHeld] = useState(false)
   const [textValue, setTextValue] = useState(messages.en.demoSection.text)
-  const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('windows')
+  const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('linux')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [keyCycleIndex, setKeyCycleIndex] = useState(0)
   const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
@@ -187,18 +196,24 @@ export function App() {
       return
     }
 
+    if (platform === 'windows') {
+      setGuidePlatform('windows')
+      return
+    }
+
     if (platform === 'linux') {
       setGuidePlatform('linux')
       return
     }
 
-    setGuidePlatform('windows')
+    setGuidePlatform('linux')
   }, [platform])
 
   const animatedKeyLabels = useMemo(() => ['Command', 'Control', 'ESC'], [])
   const recommendedKeyLabel = osRoleMap[captionPlatform]
   const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
   const demoModifierLabel = osRoleMap[platform]
+  const activeGuide = copy.guideSection.platforms.find((item) => item.id === guidePlatform) ?? copy.guideSection.platforms.find((item) => item.id === 'linux')!
   const captionParts = copy.keySection.captionTemplate.split(/(\{device\}|\{key\})/g)
   const demoBodyParts = copy.demoSection.bodyTemplate.split(
     /(\{caps\}|\{control\}|\{a\}|\{c\}|\{v\}|\{x\})/g,
@@ -214,7 +229,7 @@ export function App() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setKeyCycleIndex((current) => (current + 1) % animatedKeyLabels.length)
-    }, 1800)
+    }, heroKeyCycleIntervalMs)
 
     return () => window.clearInterval(timer)
   }, [animatedKeyLabels.length])
@@ -433,7 +448,7 @@ export function App() {
                 </div>
 
                 <div className={styles.keyStateColumn}>
-                  <Keycap keyLabel={activeKeyLabel} platform={platform} wide />
+                  <Keycap key={`${platform}-${activeKeyLabel}`} keyLabel={activeKeyLabel} platform={platform} wide />
                 </div>
               </div>
               <p className={styles.keyCaption}>
@@ -543,7 +558,7 @@ export function App() {
                 {copy.guideSection.title}
               </h2>
             </div>
-            <p className={styles.panelCopy}>{copy.guideSection.intro}</p>
+            <p className={styles.guideIntro}>{copy.guideSection.intro}</p>
             <div className={styles.guideTabs} role="tablist" aria-label={copy.guideSection.title}>
               {copy.guideSection.platforms.map((item) => (
                 <button
@@ -562,14 +577,100 @@ export function App() {
                 </button>
               ))}
             </div>
-            {copy.guideSection.platforms
-              .filter((item) => item.id === guidePlatform)
-              .map((item) => (
-                <article key={item.id} className={styles.guideCard}>
-                  <h3 className={styles.guideCardTitle}>{item.title}</h3>
-                  <p className={styles.subduedText}>{item.placeholder}</p>
-                </article>
-              ))}
+            <article className={styles.guideCard}>
+              <h3 className={styles.guideCardTitle}>{activeGuide.title}</h3>
+              <p className={styles.panelCopy}>{activeGuide.summary}</p>
+
+              {activeGuide.id === 'windows' ? (
+                <WindowsGuideMethods
+                  copy={copy.guideSection.windowsMethods}
+                  labels={{
+                    linksLabel: copy.guideSection.linksLabel,
+                    stepsLabel: copy.guideSection.stepsLabel,
+                    notesLabel: copy.guideSection.notesLabel,
+                  }}
+                  registryGeneratorCopy={copy.guideSection.registryGenerator}
+                />
+              ) : null}
+
+              {activeGuide.id !== 'windows' && activeGuide.officialLinks?.length ? (
+                <GuideLinksSection
+                  label={copy.guideSection.linksLabel}
+                  links={activeGuide.officialLinks}
+                />
+              ) : null}
+
+              {activeGuide.id !== 'windows' &&
+              activeGuide.installScript &&
+              activeGuide.installStepIndex === undefined ? (
+                <GuideSection label={copy.guideSection.commandLabel}>
+                  <GuideCodeBlock
+                    code={activeGuide.installScript}
+                    copyLabel={copy.guideSection.copyCommandLabel}
+                    copiedLabel={copy.guideSection.copiedCommandLabel}
+                    downloadLabel={copy.guideSection.downloadCommandLabel}
+                    filename={activeGuide.installFilename ?? `${activeGuide.id}-setup.sh`}
+                  />
+                </GuideSection>
+              ) : null}
+
+              {activeGuide.id !== 'windows' &&
+              activeGuide.configSnippet &&
+              activeGuide.configStepIndex === undefined ? (
+                <GuideSection label={copy.guideSection.configLabel}>
+                  <GuideCodeBlock
+                    code={activeGuide.configSnippet}
+                    copyLabel={copy.guideSection.copyConfigLabel}
+                    copiedLabel={copy.guideSection.copiedConfigLabel}
+                    downloadLabel={copy.guideSection.downloadConfigLabel}
+                    filename={activeGuide.configFilename ?? `${activeGuide.id}-config.txt`}
+                  />
+                </GuideSection>
+              ) : null}
+
+              {activeGuide.id !== 'windows' && activeGuide.steps?.length ? (
+                <GuideStepsSection
+                  label={copy.guideSection.stepsLabel}
+                  steps={activeGuide.steps}
+                  renderExtra={(_, index) => (
+                    <>
+                        {activeGuide.installScript && activeGuide.installStepIndex === index ? (
+                          <div className={styles.guideInlineCodeSection}>
+                            <GuideSection label={copy.guideSection.commandLabel}>
+                              <GuideCodeBlock
+                                code={activeGuide.installScript}
+                                copyLabel={copy.guideSection.copyCommandLabel}
+                                copiedLabel={copy.guideSection.copiedCommandLabel}
+                                downloadLabel={copy.guideSection.downloadCommandLabel}
+                                filename={activeGuide.installFilename ?? `${activeGuide.id}-setup.sh`}
+                              />
+                            </GuideSection>
+                          </div>
+                        ) : null}
+                        {activeGuide.configSnippet && activeGuide.configStepIndex === index ? (
+                          <div className={styles.guideInlineCodeSection}>
+                            <GuideSection label={copy.guideSection.configLabel}>
+                              <GuideCodeBlock
+                                code={activeGuide.configSnippet}
+                                copyLabel={copy.guideSection.copyConfigLabel}
+                                copiedLabel={copy.guideSection.copiedConfigLabel}
+                                downloadLabel={copy.guideSection.downloadConfigLabel}
+                                filename={activeGuide.configFilename ?? `${activeGuide.id}-config.txt`}
+                              />
+                            </GuideSection>
+                          </div>
+                        ) : null}
+                    </>
+                  )}
+                />
+              ) : null}
+
+              {activeGuide.id !== 'windows' && activeGuide.notes?.length ? (
+                <GuideNotesSection label={copy.guideSection.notesLabel} notes={activeGuide.notes} />
+              ) : null}
+
+              {activeGuide.placeholder ? <p className={styles.subduedText}>{activeGuide.placeholder}</p> : null}
+            </article>
           </section>
         </main>
       </div>
