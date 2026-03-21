@@ -1,0 +1,190 @@
+export type Locale = 'en' | 'ko'
+type Copy = {
+  metaTitle: string
+  metaDescription: string
+  metaKeywords: string
+  eyebrow: string
+  heroTitle: string
+  heroLead: string
+  themeToggle: {
+    light: string
+    dark: string
+  }
+  localeSwitcherLabel: string
+  keySection: {
+    kicker: string
+    title: string
+    caption: string
+    labels: string[]
+  }
+  demoSection: {
+    kicker: string
+    title: string
+    body: string
+    hint: string
+    text: string
+  }
+  guideSection: {
+    kicker: string
+    title: string
+    intro: string
+    platforms: Array<{
+      id: 'windows' | 'mac' | 'linux'
+      title: string
+      placeholder: string
+    }>
+  }
+}
+
+export const supportedLocales: Locale[] = ['en', 'ko']
+
+export const localeLabels: Record<Locale, string> = {
+  en: 'English',
+  ko: '한국어',
+}
+
+export const defaultLocale: Locale = 'en'
+
+export const messages: Record<Locale, Copy> = {
+  en: {
+    metaTitle: 'No Capslock Anymore | Remap Caps Lock Better',
+    metaDescription:
+      'Turn Caps Lock into Control, Command, or Escape. Try a live demo and browse a multilingual landing page built for keyboard-first users.',
+    metaKeywords:
+      'caps lock remap, caps lock to control, caps lock to command, caps lock to escape, keyboard productivity, karabiner, keyd, powertoys',
+    eyebrow: 'Keyboard Productivity',
+    heroTitle: 'No Capslock Anymore!',
+    heroLead:
+      'Caps Lock is sitting on the best real estate on your keyboard. Remap it into a shortcut key that actually helps you move faster.',
+    themeToggle: {
+      light: 'Light mode',
+      dark: 'Dark mode',
+    },
+    localeSwitcherLabel: 'Language',
+    keySection: {
+      kicker: 'Visualize the remap',
+      title: 'The same key can do much better work',
+      caption: 'On this device, the most useful default is',
+      labels: ['Caps Lock', 'Command', 'Control', 'Escape'],
+    },
+    demoSection: {
+      kicker: 'Try the idea',
+      title: 'Simulate Caps Lock as a shortcut helper',
+      body: 'Inside this textarea, Caps Lock behaves like a Control helper for A, C, V, and X so you can test the habit without changing your whole system first.',
+      hint: 'Clipboard actions may ask for browser permission the first time.',
+      text: `Try this box with Caps Lock.
+
+Use Caps Lock + A to select all.
+Use Caps Lock + C to copy.
+Use Caps Lock + V to paste.
+Use Caps Lock + X to cut.
+
+This is only a browser-level simulation, but it is enough to feel the difference.`,
+    },
+    guideSection: {
+      kicker: 'Coming next',
+      title: 'Setup guides by operating system',
+      intro:
+        'We are keeping these sections intentionally lightweight for now so the final setup guidance can be reviewed carefully before publication.',
+      platforms: [
+        {
+          id: 'windows',
+          title: 'Windows',
+          placeholder: 'Windows setup details will be added after the registry and PowerToys steps are fully reviewed.',
+        },
+        {
+          id: 'mac',
+          title: 'macOS',
+          placeholder: 'macOS setup details will be added after the Karabiner-Elements and system settings guidance is reviewed.',
+        },
+        {
+          id: 'linux',
+          title: 'Linux',
+          placeholder: 'Linux setup details will be added after the keyd workflow and distro-specific notes are reviewed.',
+        },
+      ],
+    },
+  },
+  ko: {
+    metaTitle: 'No Capslock Anymore | 캡스락을 더 좋은 키로 바꾸기',
+    metaDescription:
+      '캡스락을 Control, Command, Escape로 바꾸는 이유를 소개하고, 브라우저에서 바로 체험할 수 있는 다국어 랜딩 페이지입니다.',
+    metaKeywords:
+      '캡스락 변경, caps lock remap, caps lock to control, caps lock to command, caps lock to escape, 키보드 생산성',
+    eyebrow: '키보드 생산성',
+    heroTitle: '이제 캡스락은 그만!',
+    heroLead:
+      '캡스락은 키보드에서 가장 아까운 자리를 차지하고 있습니다. 실제로 자주 쓰는 단축키용 키로 바꾸면 손의 이동이 훨씬 줄어듭니다.',
+    themeToggle: {
+      light: '라이트 모드',
+      dark: '다크 모드',
+    },
+    localeSwitcherLabel: '언어',
+    keySection: {
+      kicker: '바뀌는 모습을 보기',
+      title: '같은 키라도 훨씬 좋은 역할을 맡길 수 있습니다',
+      caption: '이 기기에서는 보통 이 기본값이 가장 유용합니다',
+      labels: ['Caps Lock', 'Command', 'Control', 'Escape'],
+    },
+    demoSection: {
+      kicker: '직접 체험하기',
+      title: 'Caps Lock을 단축키 보조키처럼 써보기',
+      body: '아래 텍스트 영역에서는 Caps Lock이 A, C, V, X에 대해 Control 보조키처럼 동작합니다. 시스템 전체를 바꾸기 전에 감각부터 먼저 확인할 수 있습니다.',
+      hint: '클립보드 관련 동작은 처음 한 번 브라우저 권한을 물어볼 수 있습니다.',
+      text: `이 박스에서 Caps Lock을 눌러 보세요.
+
+Caps Lock + A 는 전체 선택,
+Caps Lock + C 는 복사,
+Caps Lock + V 는 붙여넣기,
+Caps Lock + X 는 잘라내기처럼 동작합니다.
+
+브라우저 안에서만 흉내 내는 체험이지만, 손의 차이는 충분히 느낄 수 있습니다.`,
+    },
+    guideSection: {
+      kicker: '추가 예정',
+      title: '운영체제별 설정 가이드',
+      intro:
+        '이 부분은 실제 도입 방법을 충분히 검토한 뒤 공개하려고 하므로, 지금은 자리만 먼저 잡아 두었습니다.',
+      platforms: [
+        {
+          id: 'windows',
+          title: 'Windows',
+          placeholder: '레지스트리 수정과 PowerToys 안내는 검토가 끝나면 이곳에 정리할 예정입니다.',
+        },
+        {
+          id: 'mac',
+          title: 'macOS',
+          placeholder: 'Karabiner-Elements와 시스템 설정 안내는 검토 후 이곳에 정리할 예정입니다.',
+        },
+        {
+          id: 'linux',
+          title: 'Linux',
+          placeholder: 'keyd와 배포판별 주의사항은 검토 후 이곳에 정리할 예정입니다.',
+        },
+      ],
+    },
+  },
+}
+
+export function getLocaleFromPath(pathname: string): Locale | null {
+  if (pathname.startsWith('/ko')) return 'ko'
+  if (pathname.startsWith('/en')) return 'en'
+  return null
+}
+
+export function getLocalePath(locale: Locale): string {
+  return locale === 'ko' ? '/ko/' : '/en/'
+}
+
+export function detectPreferredLocale(): Locale {
+  if (typeof navigator === 'undefined') {
+    return defaultLocale
+  }
+
+  const candidates = [navigator.language, ...(navigator.languages ?? [])]
+    .filter(Boolean)
+    .map((value) => value.toLowerCase())
+
+  if (candidates.some((value) => value.startsWith('ko'))) return 'ko'
+  return 'en'
+}
