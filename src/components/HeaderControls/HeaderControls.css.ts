@@ -14,7 +14,7 @@ const controlBase = style({
 
 export const topbarActions = style({
   display: 'flex',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'flex-end',
   gap: 12,
   flexWrap: 'wrap',
@@ -23,10 +23,25 @@ export const topbarActions = style({
 export const localeSwitcher = style([
   controlBase,
   {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     gap: vars.control.gap,
     padding: `0 ${vars.control.paddingX}`,
+    selectors: {
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        right: 16,
+        top: '50%',
+        width: 8,
+        height: 8,
+        borderRight: `1.5px solid ${vars.color.textSoft}`,
+        borderBottom: `1.5px solid ${vars.color.textSoft}`,
+        transform: 'translateY(-62%) rotate(45deg)',
+        pointerEvents: 'none',
+      },
+    },
   },
 ])
 
@@ -50,17 +65,23 @@ export const localeLabel = style({
 })
 
 export const localeSelect = style({
+  appearance: 'none',
+  display: 'block',
+  height: vars.control.height,
+  lineHeight: vars.control.height,
   border: 0,
   background: 'transparent',
   color: vars.color.text,
   outline: 'none',
   cursor: 'pointer',
-  minHeight: '100%',
+  minHeight: 0,
+  paddingRight: 18,
 })
 
 export const themeToggle = style([
   controlBase,
   {
+    flexShrink: 0,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',

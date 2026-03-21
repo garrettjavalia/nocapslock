@@ -56,9 +56,9 @@ export const defaultLocale: Locale = 'en'
 
 export const messages: Record<Locale, Copy> = {
   en: {
-    metaTitle: 'No Capslock Anymore | Remap Caps Lock Better',
+    metaTitle: 'No Capslock Anymore | Turn Caps Lock into a Better Key',
     metaDescription:
-      'Turn Caps Lock into Control, Command, or Escape. Try a live demo and browse a multilingual landing page built for keyboard-first users.',
+      'A multilingual landing page that explains why remapping Caps Lock to Control, Command, or Escape is useful, and lets you try it right in the browser.',
     metaKeywords:
       'caps lock remap, caps lock to control, caps lock to command, caps lock to escape, keyboard productivity, karabiner, keyd, powertoys',
     brand: 'NoCapslock',
@@ -66,14 +66,14 @@ export const messages: Record<Locale, Copy> = {
     eyebrow: 'Keyboard Productivity',
     heroTitle: 'No Capslock Anymore!',
     heroLead:
-      'Caps Lock is sitting on the best real estate on your keyboard. Remap it into a shortcut key that actually helps you move faster.',
+      'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, your hands can move much less.',
     themeToggle: {
       light: 'Light mode',
       dark: 'Dark mode',
     },
     localeSwitcherLabel: 'Language',
     keySection: {
-      kicker: 'Visualize the remap',
+      kicker: 'Try remapping it',
       title: 'The same key can do much better work',
       captionTemplate: 'On {device}, the most useful default is {key}.',
       beforeLabel: 'Before',
@@ -93,10 +93,10 @@ export const messages: Record<Locale, Copy> = {
       labels: ['Caps Lock', 'Command', 'Control', 'Escape'],
     },
     demoSection: {
-      kicker: 'Try the idea',
-      title: 'Simulate Caps Lock as a shortcut helper',
+      kicker: 'Try it yourself',
+      title: 'Try using Caps Lock like a shortcut helper',
       bodyTemplate:
-        'Inside this textarea, {caps} behaves like a {control} helper for {a}, {c}, {v}, and {x} so you can test the habit without changing your whole system first. Clipboard actions may ask for browser permission the first time.',
+        'Inside this textarea, {caps} behaves like a {control} helper for {a}, {c}, {v}, and {x}. You can check the feel first before changing your whole system. Clipboard actions may ask for browser permission the first time.',
       text: `Try this box with Caps Lock.
 
 Use Caps Lock + A to select all.
@@ -110,7 +110,7 @@ This is only a browser-level simulation, but it is enough to feel the difference
       kicker: 'Coming next',
       title: 'Setup guides by operating system',
       intro:
-        'We are keeping these sections intentionally lightweight for now so the final setup guidance can be reviewed carefully before publication.',
+        'We want to review the actual setup methods carefully before publishing them, so for now this section is only holding the place.',
       platforms: [
         {
           id: 'windows',
@@ -148,7 +148,7 @@ This is only a browser-level simulation, but it is enough to feel the difference
     },
     localeSwitcherLabel: '언어',
     keySection: {
-      kicker: '바뀌는 모습을 보기',
+      kicker: '바꿔보세요',
       title: '같은 키라도 훨씬 좋은 역할을 맡길 수 있습니다',
       captionTemplate: '{device}에서는 보통 {key}가 가장 유용합니다.',
       beforeLabel: '변경 전',

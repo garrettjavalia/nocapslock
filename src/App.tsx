@@ -27,7 +27,14 @@ const osRoleMap: Record<PlatformId, OsKeyRole> = {
   other: 'Control',
 }
 
-const previewPlatforms: PlatformId[] = ['mac', 'ios', 'windows', 'linux', 'android', 'unix', 'other']
+const previewPlatforms: Exclude<PlatformId, 'other'>[] = [
+  'mac',
+  'ios',
+  'windows',
+  'linux',
+  'android',
+  'unix',
+]
 
 function detectPlatform(): PlatformId {
   if (typeof navigator === 'undefined') {

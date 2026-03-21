@@ -252,12 +252,18 @@ export const keyCaption = style([
 ])
 
 export const keyCaptionSelect = style({
+  display: 'inline-block',
+  height: 34,
   minHeight: 34,
+  lineHeight: '34px',
   padding: '0 34px 0 12px',
   borderRadius: 999,
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgStrong,
   color: vars.color.text,
+  fontWeight: 600,
+  lineHeight: 1,
+  verticalAlign: 'middle',
   outline: 'none',
   cursor: 'pointer',
   appearance: 'none',
