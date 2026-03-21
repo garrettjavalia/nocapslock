@@ -1,24 +1,34 @@
-import { useTranslation } from 'react-i18next'
-import { Keycap, type PlatformId } from '../Keycap'
+import { useEffect, useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+import { InlineTransKeycap, Keycap, type PlatformId } from '../Keycap'
 import { getShortcutRole, previewPlatforms } from '../Keycap/keyRoles'
 import * as styles from '../../styles/app.css'
 
+const heroKeyCycleIntervalMs = 2000
+
 type KeyPreviewPanelProps = {
   platform: PlatformId
-  activeKeyLabel: string
-  captionPlatform: PlatformId
-  onCaptionPlatformChange: (platform: PlatformId) => void
 }
 
-export function KeyPreviewPanel({
-  platform,
-  activeKeyLabel,
-  captionPlatform,
-  onCaptionPlatformChange,
-}: KeyPreviewPanelProps) {
+export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
   const { t } = useTranslation()
-  const captionParts = t('preview.captionTemplate').split(/(\{device\}|\{key\})/g)
+  const [keyCycleIndex, setKeyCycleIndex] = useState(0)
+  const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
+  const animatedKeyLabels = ['Command', 'Control', 'ESC'] as const
+  const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
   const recommendedKeyLabel = getShortcutRole(captionPlatform)
+
+  useEffect(() => {
+    setCaptionPlatform(platform)
+  }, [platform])
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setKeyCycleIndex((current) => (current + 1) % animatedKeyLabels.length)
+    }, heroKeyCycleIntervalMs)
+
+    return () => window.clearInterval(timer)
+  }, [animatedKeyLabels.length])
 
   return (
     <section className={`${styles.panel} ${styles.keyStage}`} aria-labelledby="hero-key-title">
@@ -43,14 +53,16 @@ export function KeyPreviewPanel({
           </div>
         </div>
         <p className={styles.keyCaption}>
-          {captionParts.map((part, index) => {
-            if (part === '{device}') {
-              return (
+          <Trans
+            i18nKey="preview.captionTemplate"
+            values={{ recommendedKey: recommendedKeyLabel }}
+            components={{
+              key: <InlineTransKeycap platform={captionPlatform} />,
+              deviceSelect: (
                 <select
-                  key={`device-${index}`}
                   className={styles.keyCaptionSelect}
                   value={captionPlatform}
-                  onChange={(event) => onCaptionPlatformChange(event.target.value as PlatformId)}
+                  onChange={(event) => setCaptionPlatform(event.target.value as PlatformId)}
                   aria-label={t('guide.title')}
                 >
                   {previewPlatforms.map((item) => (
@@ -59,22 +71,9 @@ export function KeyPreviewPanel({
                     </option>
                   ))}
                 </select>
-              )
-            }
-
-            if (part === '{key}') {
-              return (
-                <Keycap
-                  key={`key-${index}`}
-                  keyLabel={recommendedKeyLabel}
-                  mini
-                  platform={captionPlatform}
-                />
-              )
-            }
-
-            return <span key={`text-${index}`}>{part}</span>
-          })}
+              ),
+            }}
+          />
         </p>
       </div>
     </section>

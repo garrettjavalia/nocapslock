@@ -1,5 +1,3 @@
-import { sharedGuideCopy } from './shared'
-
 export const enTranslation = {
   meta: {
     title: 'No Capslock Anymore | Turn Caps Lock into a Better Key',
@@ -24,7 +22,7 @@ export const enTranslation = {
   preview: {
     kicker: 'Try remapping it',
     title: 'The same key can do much better work',
-    captionTemplate: 'On {device}, the most useful default is {key}.',
+    captionTemplate: 'On <deviceSelect/>, the most useful default is <key>{{recommendedKey}}</key>.',
     device: {
       mac: 'macOS',
       android: 'Android',
@@ -45,7 +43,7 @@ export const enTranslation = {
     kicker: 'Try it yourself',
     title: 'Try using Caps Lock like a shortcut helper',
     bodyTemplate:
-      'Inside this textarea, [[Caps Lock]] acts like a virtual [[{modifier}]] key for [[A]], [[C]], [[V]], and [[X]]. You can try the feel before changing your system settings. Clipboard actions may ask for browser permission the first time.',
+      'Inside this textarea, <key>Caps Lock</key> acts like a virtual <key>{{modifier}}</key> key for <key>A</key>, <key>C</key>, <key>V</key>, and <key>X</key>. You can try the feel before changing your system settings. Clipboard actions may ask for browser permission the first time.',
     virtualModifierPrefix: 'virtual',
     status: {
       prefix: 'Status',
@@ -53,9 +51,9 @@ export const enTranslation = {
       armed: 'Virtual modifier active',
     },
     instructions:
-      'Press [[Caps Lock]] once, then press one of [[A]], [[C]], [[V]], or [[X]] within 1 second. In this demo, the next supported key acts like a [[{modifier}]] shortcut. You need to press [[Caps Lock]] again for each shortcut.',
+      'Press <key>Caps Lock</key> once, then press one of <key>A</key>, <key>C</key>, <key>V</key>, or <key>X</key> within 1 second. In this demo, the next supported key acts like a <key>{{modifier}}</key> shortcut. You need to press <key>Caps Lock</key> again for each shortcut.',
     restoreNote:
-      'After trying the demo, turn [[Caps Lock]] back to its normal state so it does not affect your next task. There may still be browser- and operating-system-specific bugs.',
+      'After trying the demo, turn <key>Caps Lock</key> back to its normal state so it does not affect your next task. There may still be browser- and operating-system-specific bugs.',
     text: `Try this box with Caps Lock.
 
 Use Caps Lock + A to select all.
@@ -115,7 +113,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
     windows: {
       title: 'Windows',
       summary:
-        'On Windows, the easiest path is PowerToys Keyboard Manager. If you want a system-wide remap for [[Caps Lock]] that does not depend on PowerToys running in the background, you can use the registry-based Scancode Map approach below.',
+        'On Windows, the easiest path is PowerToys Keyboard Manager. If you want a system-wide remap for <key>Caps Lock</key> that does not depend on PowerToys running in the background, you can use the registry-based Scancode Map approach below.',
       methodChoiceIntro: 'On Windows, choose either PowerToys or the registry route.',
       method: {
         prosLabel: 'Advantages',
@@ -124,8 +122,8 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           title: 'PowerToys Keyboard Manager',
           summary:
             'This is the easiest route if you want a graphical UI and expect to tweak mappings again later.',
-          referenceLabel1: sharedGuideCopy.en.powerToysInstallationLabel,
-          referenceLabel2: sharedGuideCopy.en.powerToysKeyboardManagerLabel,
+          referenceLabel1: 'PowerToys installation',
+          referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: 'It is the quickest setup path and easy to edit later from a graphical settings screen.',
           pro2: 'It can remap a key to another key or even to a shortcut, not only to another physical key position.',
           pro3: 'Microsoft documents that remaps apply immediately after you confirm them.',
@@ -139,11 +137,11 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             },
             step02: {
               title: '2. Open Keyboard Manager and choose Remap a key',
-              body: 'In PowerToys Settings, open Keyboard Manager and select Remap a key. Then add a new row for [[Caps Lock]].',
+              body: 'In PowerToys Settings, open Keyboard Manager and select Remap a key. Then add a new row for <key>Caps Lock</key>.',
             },
             step03: {
               title: '3. Choose the target key you want',
-              body: 'Map [[Caps Lock]] to [[Control]], [[Escape]], [[Alt]], or any other key you prefer. If you want the classic productivity setup, [[Control]] is the most common target.',
+              body: 'Map <key>Caps Lock</key> to <key>Control</key>, <key>Escape</key>, <key>Alt</key>, or any other key you prefer. If you want the classic productivity setup, <key>Control</key> is the most common target.',
             },
             step04: {
               title: '4. Save and test the new mapping',
@@ -152,19 +150,21 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           },
           note1:
             'If a target app is running as administrator and PowerToys is not, remapping may not apply there until PowerToys is also run with elevation.',
-          note2: sharedGuideCopy.en.keepCapsLockNote,
+          note2:
+            'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
         },
         registry: {
           title: 'Registry-based Scancode Map',
           summary:
             'This route is better when you want a system-level remap that works without PowerToys and can stay active on sign-in screens too.',
-          referenceLabel1: sharedGuideCopy.en.scanCodeTablePdfLabel,
+          referenceLabel1: 'Microsoft PDF: USB HID to PS/2 Scan Code Translation Table',
           pro1: 'It gives you a system-wide remap without depending on PowerToys.',
           pro2: 'It does not depend on keeping a background utility running.',
           pro3: 'The remap and revert files are easy to archive so you can reproduce or undo the setup later.',
           con1: 'It is less convenient than a GUI and usually needs sign-out or a restart before it is fully applied.',
           con2: 'It only remaps physical key positions, so it is less flexible than PowerToys for shortcut-style remaps.',
-          con3: sharedGuideCopy.en.rightAltWarning,
+          con3:
+            'Changing <key>Right Alt</key> can affect multilingual input behavior on some non-English keyboard layouts.',
           steps: {
             step01: {
               title: '1. Choose the key swaps you want below',
@@ -185,14 +185,15 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           },
           note1:
             'Review the generated preview before downloading it if you want to double-check the scan code pairs by hand.',
-          note2: sharedGuideCopy.en.keepCapsLockNote,
+          note2:
+            'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
         },
       },
     },
     mac: {
       title: 'macOS',
       summary:
-        'On macOS, Karabiner-Elements is the standard way to remap [[Caps Lock]] while keeping the rest of your keyboard behavior predictable.',
+        'On macOS, Karabiner-Elements is the standard way to remap <key>Caps Lock</key> while keeping the rest of your keyboard behavior predictable.',
       referenceLabel1: 'Karabiner-Elements homepage',
       referenceLabel2: 'Karabiner installation guide',
       referenceLabel3: 'Karabiner simple modifications',
@@ -205,28 +206,28 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           body: 'Install Karabiner-Elements first, then make sure the background service, Input Monitoring permission, and driver extension are all allowed. Karabiner’s official documentation calls these required macOS settings.',
         },
         step02: {
-          title: '2. Remap [[Caps Lock]] in Simple Modifications',
-          body: 'Open Karabiner-Elements, choose Simple Modifications, select the keyboard you want to edit, and change [[Caps Lock]] to [[Left Control]]. If you prefer [[Escape]] instead, you can choose that here too.',
+          title: '2. Remap <key>Caps Lock</key> in Simple Modifications',
+          body: 'Open Karabiner-Elements, choose Simple Modifications, select the keyboard you want to edit, and change <key>Caps Lock</key> to <key>Left Control</key>. If you prefer <key>Escape</key> instead, you can choose that here too.',
         },
         step03: {
           title: '3. Optional: make the same mapping work before login',
           body: 'If you want the same mapping on the password screen before login, open the Misc tab in Karabiner Settings and use “Copy the current configuration to the system default configuration.” Karabiner’s official guide documents this for use before logging in.',
         },
         step04: {
-          title: '4. Optional: only continue if [[Caps Lock]] is already your language-switch key',
-          body: 'The next steps are only for multilingual setups that already depend on [[Caps Lock]] for input-source switching. Moving input-source switching to another key lets you keep a separate language-switch key even after remapping [[Caps Lock]], and it can reduce the occasional glitches that come with relying on a short [[Caps Lock]] tap to switch modes. If [[Caps Lock]] is not doing that job on your Mac, you can stop after the basic remap and skip the rest of this section.',
+          title: '4. Optional: only continue if <key>Caps Lock</key> is already your language-switch key',
+          body: 'The next steps are only for multilingual setups that already depend on <key>Caps Lock</key> for input-source switching. Moving input-source switching to another key lets you keep a separate language-switch key even after remapping <key>Caps Lock</key>, and it can reduce the occasional glitches that come with relying on a short <key>Caps Lock</key> tap to switch modes. If <key>Caps Lock</key> is not doing that job on your Mac, you can stop after the basic remap and skip the rest of this section.',
           substeps: {
             step04_1: {
               title: '4-1. Pick a spare right-side modifier',
-              body: 'Choose a spare right-side modifier for language switching first. A common choice is [[Right Command]] -> [[F18]]. You can also use [[Right Option]] -> [[F18]] instead, as long as that key is not already important in your layout.',
+              body: 'Choose a spare right-side modifier for language switching first. A common choice is <key>Right Command</key> -> <key>F18</key>. You can also use <key>Right Option</key> -> <key>F18</key> instead, as long as that key is not already important in your layout.',
             },
             step04_2: {
-              title: '4-2. Map that right-side key to [[F18]] in Karabiner',
-              body: 'In Simple Modifications, add either [[Right Command]] -> [[F18]] or [[Right Option]] -> [[F18]], depending on which key you picked in the previous step. This frees [[Caps Lock]] for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
+              title: '4-2. Map that right-side key to <key>F18</key> in Karabiner',
+              body: 'In Simple Modifications, add either <key>Right Command</key> -> <key>F18</key> or <key>Right Option</key> -> <key>F18</key>, depending on which key you picked in the previous step. This frees <key>Caps Lock</key> for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
             },
             step04_3: {
-              title: '4-3. Assign [[F18]] to input-source switching in macOS',
-              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign [[F18]] to “Select next source in Input menu.” This recreates a reliable language-switch key after [[Caps Lock]] has been repurposed. [[F18]] is used here as a practical example. Apple documents that [[F1]] through [[F12]] are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, [[F18]] has been a safe choice because it tends not to overlap with those built-in roles.',
+              title: '4-3. Assign <key>F18</key> to input-source switching in macOS',
+              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. Apple documents that <key>F1</key> through <key>F12</key> are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, <key>F18</key> has been a safe choice because it tends not to overlap with those built-in roles.',
             },
           },
         },
@@ -234,13 +235,14 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       note1:
         'If you want to verify key names before saving changes, Karabiner’s EventViewer is the official tool for checking what macOS and Karabiner see from each key.',
       note2:
-        'Apple also documents a built-in option to use [[Caps Lock]] to switch to and from the last used Latin input source. If you want to keep your [[Caps Lock]] remap, using a separate language-switch key such as [[Right Command]] -> [[F18]] is more flexible.',
-      note3: sharedGuideCopy.en.keepCapsLockNote,
+        'Apple also documents a built-in option to use <key>Caps Lock</key> to switch to and from the last used Latin input source. If you want to keep your <key>Caps Lock</key> remap, using a separate language-switch key such as <key>Right Command</key> -> <key>F18</key> is more flexible.',
+      note3:
+        'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
     },
     linux: {
       title: 'Linux',
       summary:
-        'For Linux, keyd is a strong system-wide way to remap [[Caps Lock]] into [[Control]] or [[Escape]] without depending on a specific desktop environment.',
+        'For Linux, keyd is a strong system-wide way to remap <key>Caps Lock</key> into <key>Control</key> or <key>Escape</key> without depending on a specific desktop environment.',
       referenceLabel1: 'keyd repository',
       referenceLabel2: 'keyd README quickstart',
       referenceLabel3: 'keyd releases',
@@ -267,7 +269,7 @@ esc = capslock`,
         },
         step02: {
           title: '2. Create /etc/keyd/default.conf',
-          body: 'Create /etc/keyd/default.conf and start with a simple overload mapping. This setup makes [[Caps Lock]] send [[Escape]] when tapped and [[Control]] when held.',
+          body: 'Create /etc/keyd/default.conf and start with a simple overload mapping. This setup makes <key>Caps Lock</key> send <key>Escape</key> when tapped and <key>Control</key> when held.',
         },
         step03: {
           title: '3. Reload the daemon',
@@ -279,14 +281,15 @@ esc = capslock`,
         },
         step05: {
           title: '5. Keep the emergency stop sequence in mind',
-          body: 'If you make a bad config and need to recover quickly, the official documentation notes that [[Backspace]] + [[Escape]] + [[Enter]] should terminate keyd.',
+          body: 'If you make a bad config and need to recover quickly, the official documentation notes that <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> should terminate keyd.',
         },
       },
       note1:
         'The upstream README says master is the development branch, while tagged releases should be considered stable.',
       note2:
         'Debian 13+ and Ubuntu 25.04+ are also documented as supporting apt install keyd, but the source install above is the most portable option.',
-      note3: sharedGuideCopy.en.keepCapsLockNote,
+      note3:
+        'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
     },
   },
 } as const

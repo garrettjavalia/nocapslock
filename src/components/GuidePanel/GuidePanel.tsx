@@ -1,17 +1,32 @@
 import { useTranslation } from 'react-i18next'
-import type { GuidePlatformId } from '../../i18n'
+import { useEffect, useState } from 'react'
 import { LinuxGuidePanel } from './LinuxGuidePanel'
 import { MacGuidePanel } from './MacGuidePanel'
 import { WindowsGuidePanel } from './WindowsGuidePanel'
 import * as styles from '../../styles/app.css'
+import type { PlatformId } from '../Keycap'
 
 type GuidePanelProps = {
-  guidePlatform: GuidePlatformId
-  onGuidePlatformChange: (platform: GuidePlatformId) => void
+  platform: PlatformId
 }
 
-export function GuidePanel({ guidePlatform, onGuidePlatformChange }: GuidePanelProps) {
+export function GuidePanel({ platform }: GuidePanelProps) {
   const { t } = useTranslation()
+  const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('linux')
+
+  useEffect(() => {
+    if (platform === 'mac') {
+      setGuidePlatform('mac')
+      return
+    }
+
+    if (platform === 'windows') {
+      setGuidePlatform('windows')
+      return
+    }
+
+    setGuidePlatform('linux')
+  }, [platform])
 
   const activeContent =
     guidePlatform === 'windows' ? (
@@ -41,7 +56,7 @@ export function GuidePanel({ guidePlatform, onGuidePlatformChange }: GuidePanelP
               ? `${styles.guideTab} ${styles.guideTabActive}`
               : styles.guideTab
           }
-          onClick={() => onGuidePlatformChange('windows')}
+          onClick={() => setGuidePlatform('windows')}
         >
           {t('guide.windows.title')}
         </button>
@@ -52,7 +67,7 @@ export function GuidePanel({ guidePlatform, onGuidePlatformChange }: GuidePanelP
           className={
             guidePlatform === 'mac' ? `${styles.guideTab} ${styles.guideTabActive}` : styles.guideTab
           }
-          onClick={() => onGuidePlatformChange('mac')}
+          onClick={() => setGuidePlatform('mac')}
         >
           {t('guide.mac.title')}
         </button>
@@ -65,7 +80,7 @@ export function GuidePanel({ guidePlatform, onGuidePlatformChange }: GuidePanelP
               ? `${styles.guideTab} ${styles.guideTabActive}`
               : styles.guideTab
           }
-          onClick={() => onGuidePlatformChange('linux')}
+          onClick={() => setGuidePlatform('linux')}
         >
           {t('guide.linux.title')}
         </button>

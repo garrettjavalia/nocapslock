@@ -1,6 +1,6 @@
-import type { CSSProperties, Dispatch, SetStateAction } from 'react'
+import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getLocalePath, localeLabels, supportedLocales, type Locale } from '../../i18n'
+import { localeLabels, supportedLocales, type Locale } from '../../i18n'
 import * as styles from './HeaderControls.css'
 
 type ThemeMode = 'light' | 'dark'
@@ -8,16 +8,16 @@ type ThemeMode = 'light' | 'dark'
 type HeaderControlsProps = {
   githubUrl: string
   locale: Locale
-  navigate: (to: string) => void
-  setTheme: Dispatch<SetStateAction<ThemeMode>>
+  onLocaleChange: (locale: Locale) => void
+  onThemeToggle: () => void
   theme: ThemeMode
 }
 
 export function HeaderControls({
   githubUrl,
   locale,
-  navigate,
-  setTheme,
+  onLocaleChange,
+  onThemeToggle,
   theme,
 }: HeaderControlsProps) {
   const { t } = useTranslation()
@@ -36,7 +36,7 @@ export function HeaderControls({
         <select
           className={styles.localeSelect}
           value={locale}
-          onChange={(event) => navigate(getLocalePath(event.target.value as Locale))}
+          onChange={(event) => onLocaleChange(event.target.value as Locale)}
           aria-label={localeSwitcherLabel}
         >
           {supportedLocales.map((item) => (
@@ -50,7 +50,7 @@ export function HeaderControls({
       <button
         className={styles.themeToggle}
         type="button"
-        onClick={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
+        onClick={onThemeToggle}
         aria-label={themeToggleLabel}
         title={themeToggleLabel}
       >
