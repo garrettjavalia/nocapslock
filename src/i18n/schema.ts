@@ -32,6 +32,7 @@ export type Copy = {
     kicker: string
     title: string
     bodyTemplate: string
+    virtualModifierPrefix: string
     statusIdle: string
     statusArmed: string
     statusPrefix: string

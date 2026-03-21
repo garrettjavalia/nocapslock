@@ -501,7 +501,14 @@ export function App() {
             </p>
             <div className={styles.demoStatusCard}>
               <p className={styles.demoStatusLine}>
-                <span className={styles.demoStatusPrefix}>{copy.demoSection.statusPrefix}</span>
+                <Keycap
+                  keyLabel={demoModifierLabel}
+                  mini
+                  miniSize="sm"
+                  platform={platform}
+                  prefixText={copy.demoSection.virtualModifierPrefix}
+                />
+                <span className={styles.demoStatusPrefix}>{copy.demoSection.statusPrefix}:</span>
                 <span
                   className={
                     capsHeld ? `${styles.demoStatusBadge} ${styles.demoStatusBadgeActive}` : styles.demoStatusBadge
@@ -509,7 +516,6 @@ export function App() {
                 >
                   {capsHeld ? copy.demoSection.statusArmed : copy.demoSection.statusIdle}
                 </span>
-                <Keycap keyLabel={demoModifierLabel} mini miniSize="sm" platform={platform} />
               </p>
               <p className={styles.demoStatusText}>
                 <GuideRichText text={demoInstructionsText} platform={platform} />

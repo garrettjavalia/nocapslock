@@ -22,7 +22,7 @@ export const sharedGuideCopy = {
   },
   ko: {
     keepCapsLockNote:
-      '[[Caps Lock]]이 가끔은 꼭 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 [[Caps Lock]]으로 남겨두는 편이 안전합니다.',
+      '[[Caps Lock]]이 가끔 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 [[Caps Lock]]으로 남겨두는 편이 안전합니다.',
     rightAltWarning:
       '영문 외 레이아웃에서는 [[Right Alt]] 변경이 다국어 관련 동작에 영향을 줄 수 있습니다.',
     powerToysInstallationLabel: 'PowerToys 설치',

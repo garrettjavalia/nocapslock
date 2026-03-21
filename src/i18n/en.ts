@@ -12,7 +12,7 @@ export const enMessages: Copy = {
   eyebrow: 'Keyboard Productivity',
   heroTitle: 'No Capslock Anymore!',
   heroLead:
-    'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, your hands will feel much more comfortable.',
+    'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, typing feels much more comfortable.',
   themeToggle: {
     light: 'Light mode',
     dark: 'Dark mode',
@@ -42,12 +42,13 @@ export const enMessages: Copy = {
     kicker: 'Try it yourself',
     title: 'Try using Caps Lock like a shortcut helper',
     bodyTemplate:
-      'Inside this textarea, [[Caps Lock]] acts like a virtual [[{modifier}]] key for [[A]], [[C]], [[V]], and [[X]]. You can try the feel before changing your whole system. Clipboard actions may ask for browser permission the first time.',
+      'Inside this textarea, [[Caps Lock]] acts like a virtual [[{modifier}]] key for [[A]], [[C]], [[V]], and [[X]]. You can try the feel before changing your system settings. Clipboard actions may ask for browser permission the first time.',
+    virtualModifierPrefix: 'virtual',
     statusIdle: 'Waiting',
     statusArmed: 'Virtual modifier active',
     statusPrefix: 'Status',
     instructions:
-      'Press [[Caps Lock]] once, then press one of [[A]], [[C]], [[V]], or [[X]] within 1 second. You need to press [[Caps Lock]] again for each shortcut. In this demo, the next supported key acts like a [[{modifier}]] shortcut.',
+      'Press [[Caps Lock]] once, then press one of [[A]], [[C]], [[V]], or [[X]] within 1 second. In this demo, the next supported key acts like a [[{modifier}]] shortcut. You need to press [[Caps Lock]] again for each shortcut.',
     restoreNote:
       'After trying the demo, turn [[Caps Lock]] back to its normal state so it does not affect your next task. There may still be browser- and operating-system-specific bugs.',
     text: `Try this box with Caps Lock.
@@ -57,13 +58,13 @@ Use Caps Lock + C to copy.
 Use Caps Lock + V to paste.
 Use Caps Lock + X to cut.
 
-This is only a browser demo, but it is enough to feel the difference.`,
+This is only a browser demo, but it is enough to feel the convenience.`,
   },
   guideSection: {
     kicker: 'Setup guide',
     title: 'Setup guides by operating system',
     intro:
-      'Pick the operating system you use and follow the setup steps that match it.',
+      'Pick the operating system you use and follow the steps that match it.',
     linksLabel: 'Official sources',
     commandLabel: 'Install script',
     copyCommandLabel: 'Copy script',
@@ -133,7 +134,7 @@ This is only a browser demo, but it is enough to feel the difference.`,
           steps: [
             {
               title: '1. Install PowerToys',
-              body: 'Install PowerToys from the Microsoft Store, GitHub release page, or winget. Microsoft documents all three routes in its installation guide.',
+              body: 'Install PowerToys from the Microsoft Store, the GitHub release page, or winget. Microsoft documents all three routes in its installation guide.',
             },
             {
               title: '2. Open Keyboard Manager and choose Remap a key',
@@ -189,11 +190,11 @@ This is only a browser demo, but it is enough to feel the difference.`,
             },
             {
               title: '3. Apply the remap file with administrator approval',
-              body: 'Open the generated .reg file and allow Windows to merge it into the registry. Because this writes to the system keyboard layout, administrator confirmation is expected.',
+              body: 'Open the generated .reg file and allow Windows to merge it into the registry. Because this changes the system keyboard layout, administrator confirmation is expected.',
             },
             {
               title: '4. Sign out or restart Windows, then test it',
-              body: 'After Windows reloads the keyboard layout, test the new positions in normal apps and on the sign-in path you care about. If needed, run the revert file and restart again.',
+              body: 'After Windows reloads the keyboard layout, test the new positions in your usual apps and on the sign-in path you care about. If needed, run the revert file and restart again.',
             },
           ],
           notes: [
@@ -281,7 +282,7 @@ This is only a browser demo, but it is enough to feel the difference.`,
           },
           {
             title: '2. Remap [[Caps Lock]] in Simple Modifications',
-            body: 'Open Karabiner-Elements, choose Simple Modifications, select the keyboard you want to edit, and change [[Caps Lock]] to [[Left Control]]. If you prefer a different target such as [[Escape]], you can choose that here too.',
+            body: 'Open Karabiner-Elements, choose Simple Modifications, select the keyboard you want to edit, and change [[Caps Lock]] to [[Left Control]]. If you prefer [[Escape]] instead, you can choose that here too.',
           },
           {
             title: '3. Optional: only continue if [[Caps Lock]] is already your language-switch key',
@@ -289,7 +290,7 @@ This is only a browser demo, but it is enough to feel the difference.`,
           },
           {
             title: '4. Optional: pick a spare right-side modifier',
-            body: 'Choose a spare right-side modifier for language switching first. A common choice is [[Right Command]] -> [[F18]]. If you prefer, you can also use [[Right Option]] -> [[F18]] instead, as long as that key is not already important in your layout.',
+            body: 'Choose a spare right-side modifier for language switching first. A common choice is [[Right Command]] -> [[F18]]. You can also use [[Right Option]] -> [[F18]] instead, as long as that key is not already important in your layout.',
           },
           {
             title: '5. Optional: map that right-side key to [[F18]] in Karabiner',
@@ -297,7 +298,7 @@ This is only a browser demo, but it is enough to feel the difference.`,
           },
           {
             title: '6. Optional: assign [[F18]] to input-source switching in macOS',
-            body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign [[F18]] to “Select next source in Input menu.” This recreates a reliable language-switch key after [[Caps Lock]] has been repurposed. [[F18]] is suggested here because Apple already uses the top-row [[F1]] through [[F12]] keys for built-in features, and Karabiner documents special handling for them.',
+            body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign [[F18]] to “Select next source in Input menu.” This recreates a reliable language-switch key after [[Caps Lock]] has been repurposed. [[F18]] is used here as an example. Apple and Karabiner both document that [[F1]] through [[F12]] are more tightly tied to system features, so a higher-numbered function key is usually the safer choice for input-source switching.',
           },
         ],
         notes: [
@@ -368,7 +369,7 @@ esc = capslock`,
         ],
         notes: [
           'The upstream README says master is the development branch, while tagged releases should be considered stable.',
-          'Debian 13+ and Ubuntu 25.04+ are also documented as supporting apt install keyd, but the source install above is the most broadly portable option.',
+          'Debian 13+ and Ubuntu 25.04+ are also documented as supporting apt install keyd, but the source install above is the most portable option.',
           sharedGuideCopy.en.keepCapsLockNote,
         ],
         placeholder: '',

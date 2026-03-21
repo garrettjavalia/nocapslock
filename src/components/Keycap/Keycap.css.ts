@@ -126,7 +126,7 @@ export const keycapLabelStatic = style({
 })
 
 export const keycapLabelWide = style({
-  fontSize: 'clamp(1.7rem, 4.6vw, 2.7rem)',
+  fontSize: 'clamp(1.95rem, 4.9vw, 3.05rem)',
   textTransform: 'none',
 })
 
@@ -142,7 +142,7 @@ export const commandKeycap = style({
 const appleModifierGlyphBase = style({
   position: 'absolute',
   top: 20,
-  fontSize: '2.15rem',
+  fontSize: '2.5rem',
   lineHeight: 1,
   letterSpacing: '-0.06em',
   willChange: 'transform, opacity',
@@ -177,7 +177,7 @@ export const commandLabel = style({
   alignSelf: 'end',
   justifySelf: 'center',
   paddingLeft: 0,
-  fontSize: '1.95rem',
+  fontSize: '2.5rem',
   fontWeight: 700,
   letterSpacing: '-0.04em',
   textTransform: 'lowercase',
@@ -242,86 +242,5 @@ export const inlineMiniKeycapXSmall = style([
     padding: '1px 6px',
     borderRadius: 8,
     fontSize: '0.66rem',
-  },
-])
-
-export const inlineMiniKeycapCommand = style([
-  inlineMiniKeycap,
-  {
-    minWidth: 102,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 10,
-    padding: '8px 12px',
-  },
-])
-
-export const inlineMiniKeycapCommandSmall = style([
-  inlineMiniKeycapCommand,
-  {
-    minWidth: 82,
-    minHeight: 32,
-    padding: '4px 10px',
-    borderRadius: 11,
-    gap: 8,
-  },
-])
-
-export const inlineMiniKeycapCommandXSmall = style([
-  inlineMiniKeycapCommand,
-  {
-    minWidth: 52,
-    minHeight: 22,
-    padding: '1px 6px',
-    borderRadius: 8,
-    gap: 4,
-  },
-])
-
-export const inlineMiniCommandGlyph = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '1.05rem',
-  lineHeight: 1,
-})
-
-export const inlineMiniCommandGlyphSmall = style([
-  inlineMiniCommandGlyph,
-  {
-    fontSize: '0.92rem',
-  },
-])
-
-export const inlineMiniCommandGlyphXSmall = style([
-  inlineMiniCommandGlyph,
-  {
-    fontSize: '0.72rem',
-  },
-])
-
-export const inlineMiniCommandLabel = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '0.88rem',
-  fontWeight: 700,
-  lineHeight: 1,
-  letterSpacing: '-0.03em',
-  textTransform: 'lowercase',
-})
-
-export const inlineMiniCommandLabelSmall = style([
-  inlineMiniCommandLabel,
-  {
-    fontSize: '0.76rem',
-  },
-])
-
-export const inlineMiniCommandLabelXSmall = style([
-  inlineMiniCommandLabel,
-  {
-    fontSize: '0.58rem',
-    letterSpacing: '-0.02em',
   },
 ])

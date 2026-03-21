@@ -10,6 +10,7 @@ type KeycapProps = {
   mini?: boolean
   miniSize?: 'xs' | 'sm' | 'md'
   selectable?: boolean
+  prefixText?: string
   muted?: boolean
   crossed?: boolean
   wide?: boolean
@@ -36,6 +37,7 @@ function renderMini(
   crossed?: boolean,
   miniSize: 'xs' | 'sm' | 'md' = 'md',
   selectable = true,
+  prefixText?: string,
 ) {
   const miniKeycapClass =
     miniSize === 'xs'
@@ -43,46 +45,19 @@ function renderMini(
       : miniSize === 'sm'
         ? styles.inlineMiniKeycapSmall
         : styles.inlineMiniKeycap
-  const miniModifierClass =
-    miniSize === 'xs'
-      ? styles.inlineMiniKeycapCommandXSmall
-      : miniSize === 'sm'
-        ? styles.inlineMiniKeycapCommandSmall
-        : styles.inlineMiniKeycapCommand
-  const miniGlyphClass =
-    miniSize === 'xs'
-      ? styles.inlineMiniCommandGlyphXSmall
-      : miniSize === 'sm'
-        ? styles.inlineMiniCommandGlyphSmall
-        : styles.inlineMiniCommandGlyph
-  const miniLabelClass =
-    miniSize === 'xs'
-      ? styles.inlineMiniCommandLabelXSmall
-      : miniSize === 'sm'
-        ? styles.inlineMiniCommandLabelSmall
-        : styles.inlineMiniCommandLabel
 
   const selectionClass = selectable
     ? styles.inlineMiniKeycapSelectable
     : styles.inlineMiniKeycapNonSelectable
 
   if (isAppleModifierKeycap(platform, label)) {
-    const content =
-      label === 'Command' ? (
-        <span className={`${miniModifierClass} ${selectionClass}`} aria-label="Command key">
-          <span className={miniGlyphClass} aria-hidden="true">
-            ⌘
-          </span>
-          <span className={miniLabelClass}>command</span>
-        </span>
-      ) : (
-        <span className={`${miniModifierClass} ${selectionClass}`} aria-label="Control key">
-          <span className={miniGlyphClass} aria-hidden="true">
-            ⌃
-          </span>
-          <span className={miniLabelClass}>control</span>
-        </span>
-      )
+    const modifierText = label === 'Command' ? '⌘ command' : '⌃ control'
+    const labelText = prefixText ? `${prefixText} ${modifierText}` : modifierText
+    const content = (
+      <span className={`${miniKeycapClass} ${selectionClass}`} aria-label={`${label} key`}>
+        {labelText}
+      </span>
+    )
 
     return crossed ? (
       <span className={styles.inlineMiniKeycapWrap}>
@@ -94,7 +69,12 @@ function renderMini(
     )
   }
 
-  const content = <span className={`${miniKeycapClass} ${selectionClass}`}>{label}</span>
+  const content = (
+    <span className={`${miniKeycapClass} ${selectionClass}`}>
+      {prefixText ? `${prefixText} ` : ''}
+      {label}
+    </span>
+  )
   return crossed ? (
     <span className={styles.inlineMiniKeycapWrap}>
       <span className={styles.inlineMiniKeycapCross} />
@@ -111,12 +91,13 @@ export function Keycap({
   mini = false,
   miniSize = 'md',
   selectable = true,
+  prefixText,
   muted = false,
   platform,
   wide = false,
 }: KeycapProps) {
   if (mini) {
-    return renderMini(keyLabel, platform, crossed, miniSize, selectable)
+    return renderMini(keyLabel, platform, crossed, miniSize, selectable, prefixText)
   }
 
   const classes = [styles.keycap]
