@@ -48,6 +48,12 @@ export const pathText = style({
   wordBreak: 'break-word',
 })
 
+export const sourceLink = style({
+  color: vars.color.text,
+  fontWeight: 600,
+  textDecorationColor: vars.color.border,
+})
+
 export const mappingCard = style({
   display: 'grid',
   gap: 12,

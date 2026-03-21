@@ -58,6 +58,9 @@ type Copy = {
       intro: string
       sourceLabel: string
       targetLabel: string
+      scanCodeSourceLabel: string
+      scanCodeSourceText: string
+      scanCodeSourceHref: string
       remapPreviewLabel: string
       revertPreviewLabel: string
       downloadRemapLabel: string
@@ -209,6 +212,10 @@ This is only a browser-level simulation, but it is enough to feel the difference
           'Use this generator if you want a downloadable .reg file that rewrites the Windows Scancode Map directly. It is useful when you want a system-wide remap without keeping PowerToys running.',
         sourceLabel: 'Physical key position',
         targetLabel: 'Send this key instead',
+        scanCodeSourceLabel: 'Scan code source',
+        scanCodeSourceText: 'Microsoft scan code table',
+        scanCodeSourceHref:
+          'https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf',
         remapPreviewLabel: 'Generated remap file',
         revertPreviewLabel: 'Revert file',
         downloadRemapLabel: 'Download remap .reg',
@@ -580,6 +587,10 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
           'PowerToys를 계속 켜 두지 않고 시스템 전체에 적용되는 방식이 필요하다면, 아래 생성기로 Windows Scancode Map용 .reg 파일을 바로 만들 수 있습니다.',
         sourceLabel: '현재 키 위치',
         targetLabel: '대신 보낼 키',
+        scanCodeSourceLabel: '스캔 코드 출처',
+        scanCodeSourceText: 'Microsoft 스캔 코드 표',
+        scanCodeSourceHref:
+          'https://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/translate.pdf',
         remapPreviewLabel: '생성된 변경용 .reg 파일',
         revertPreviewLabel: '원복용 .reg 파일',
         downloadRemapLabel: '변경용 .reg 다운로드',
