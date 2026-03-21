@@ -4,7 +4,7 @@ import { InlineTransKeycap } from '../Keycap'
 import { WindowsRegistryGenerator } from '../WindowsRegistryGenerator'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
-import * as comparisonStyles from '../WindowsGuideMethods/WindowsGuideMethods.css'
+import * as comparisonStyles from './WindowsGuidePanel.css'
 
 type WindowsMethodId = 'powertoys' | 'registry'
 

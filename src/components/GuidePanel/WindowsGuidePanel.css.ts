@@ -1,11 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
-export const wrapper = style({
-  display: 'grid',
-  gap: 18,
-})
-
 export const intro = style({
   margin: 0,
   color: vars.color.textSoft,
