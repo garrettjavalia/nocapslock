@@ -138,7 +138,7 @@ export function WindowsRegistryGenerator({ copy }: WindowsRegistryGeneratorProps
   return (
     <section className={styles.generator}>
       <div className={styles.header}>
-        <div>
+        <div className={styles.headerBlock}>
           <h4 className={styles.title}>{copy.title}</h4>
         </div>
         <button

@@ -12,14 +12,20 @@ export const generator = style({
 
 export const header = style({
   display: 'flex',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'space-between',
   gap: 12,
   flexWrap: 'wrap',
 })
 
+export const headerBlock = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 6,
+})
+
 export const title = style({
-  marginBottom: 8,
+  margin: 0,
   fontSize: '1.05rem',
 })
 
@@ -36,7 +42,7 @@ export const resetButton = style({
 })
 
 export const pathText = style({
-  marginBottom: 0,
+  margin: 0,
   color: vars.color.textSoft,
   lineHeight: 1.6,
   wordBreak: 'break-word',
@@ -158,7 +164,7 @@ export const previewHeader = style({
 })
 
 export const previewLabel = style({
-  marginBottom: 0,
+  margin: 0,
   color: vars.color.textSoft,
   fontSize: '0.82rem',
   fontWeight: 700,
@@ -203,7 +209,7 @@ export const codeBlock = style({
 })
 
 export const emptyState = style({
-  marginBottom: 0,
+  margin: 0,
   padding: '16px 18px',
   borderRadius: 18,
   border: `1px dashed ${vars.color.border}`,
@@ -213,7 +219,7 @@ export const emptyState = style({
 })
 
 export const note = style({
-  marginBottom: 0,
+  margin: 0,
   color: vars.color.textSoft,
   lineHeight: 1.65,
 })
