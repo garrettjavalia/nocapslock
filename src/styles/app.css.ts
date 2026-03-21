@@ -1,24 +1,5 @@
-import { keyframes, style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css'
 import { vars } from './theme.css'
-
-const labelFlip = keyframes({
-  '0%': {
-    opacity: 0,
-    transform: 'translateY(16px) scale(0.95)',
-  },
-  '18%': {
-    opacity: 1,
-    transform: 'translateY(0) scale(1)',
-  },
-  '82%': {
-    opacity: 1,
-    transform: 'translateY(0) scale(1)',
-  },
-  '100%': {
-    opacity: 0.88,
-    transform: 'translateY(-6px) scale(1.02)',
-  },
-})
 
 export const pageShell = style({
   width: 'min(1120px, calc(100% - 32px))',
@@ -93,96 +74,6 @@ export const mastheadTitles = style({
   paddingTop: 0,
 })
 
-export const topbarActions = style({
-  display: 'flex',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-end',
-  gap: 12,
-  flexWrap: 'wrap',
-})
-
-export const compactHeroBadge = style({
-  position: 'absolute',
-  left: 0,
-  top: '50%',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: 10,
-  minHeight: 40,
-  padding: 0,
-  border: 0,
-  background: 'transparent',
-  boxShadow: 'none',
-  opacity: 'var(--compact-opacity, 0)',
-  transform: 'translateY(-50%)',
-  cursor: 'pointer',
-  userSelect: 'none',
-  willChange: 'opacity',
-  transition: 'opacity 120ms linear',
-})
-
-export const compactHeroMiniKeycap = style({
-  position: 'relative',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  minWidth: 88,
-  minHeight: 40,
-  padding: '8px 12px',
-  borderRadius: 14,
-  border: `1px solid ${vars.color.border}`,
-  background: vars.color.bg,
-  color: vars.color.text,
-  boxShadow: 'inset 0 -6px 10px rgba(0, 0, 0, 0.06)',
-})
-
-export const compactHeroBadgeLabel = style({
-  position: 'relative',
-  zIndex: 1,
-  fontSize: '0.9rem',
-  lineHeight: 1,
-  letterSpacing: '-0.03em',
-  fontWeight: 700,
-})
-
-export const compactHeroMiniArrow = style({
-  color: vars.color.textSoft,
-  fontSize: '0.95rem',
-  lineHeight: 1,
-})
-
-export const compactHeroBadgeTarget = style({
-  position: 'relative',
-  zIndex: 1,
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  minWidth: 34,
-  fontSize: '0.92rem',
-  lineHeight: 1,
-  fontWeight: 700,
-  letterSpacing: '-0.03em',
-})
-
-export const compactHeroBadgeCross = style({
-  position: 'absolute',
-  inset: 0,
-  selectors: {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      left: '14%',
-      right: '14%',
-      top: '51%',
-      height: 2.5,
-      borderRadius: 999,
-      background: 'linear-gradient(90deg, rgba(217, 93, 57, 0.92), rgba(217, 93, 57, 0.55))',
-      transform: 'rotate(-11deg)',
-    },
-  },
-})
-
 export const hero = style({
   padding: '18px 0 24px',
 })
@@ -235,102 +126,6 @@ export const heroLead = style([
     lineHeight: 1.7,
   },
 ])
-
-const controlBase = style({
-  border: `1px solid ${vars.color.border}`,
-  background: vars.color.bgElevated,
-  color: vars.color.text,
-  minHeight: vars.control.height,
-  borderRadius: vars.control.radius,
-  boxShadow: vars.shadow.panel,
-  backdropFilter: 'blur(16px)',
-  transition: 'background-color 180ms ease, border-color 180ms ease, transform 180ms ease',
-})
-
-export const localeSwitcher = style([
-  controlBase,
-  {
-    display: 'flex',
-    alignItems: 'center',
-    gap: vars.control.gap,
-    padding: `0 ${vars.control.paddingX}`,
-  },
-])
-
-export const githubLink = style([
-  controlBase,
-  {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: vars.control.gap,
-    padding: `0 ${vars.control.paddingX}`,
-    color: vars.color.text,
-    textDecoration: 'none',
-    fontWeight: 600,
-  },
-])
-
-export const localeLabel = style({
-  fontSize: '0.92rem',
-  color: vars.color.textSoft,
-})
-
-export const localeSelect = style({
-  border: 0,
-  background: 'transparent',
-  color: vars.color.text,
-  outline: 'none',
-  cursor: 'pointer',
-  minHeight: '100%',
-})
-
-export const themeToggle = style([
-  controlBase,
-  {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: vars.control.height,
-    height: vars.control.height,
-    padding: 0,
-    cursor: 'pointer',
-  },
-])
-
-export const themeToggleTrack = style({
-  position: 'relative',
-  display: 'inline-flex',
-  alignItems: 'center',
-  width: 28,
-  height: 28,
-  justifyContent: 'center',
-})
-
-export const themeToggleThumb = style({
-  display: 'grid',
-  placeItems: 'center',
-  width: 24,
-  height: 24,
-  borderRadius: 999,
-  background: 'transparent',
-  color: vars.color.textSoft,
-  transition: 'color 180ms ease, transform 180ms ease',
-  selectors: {
-    ':root[data-theme="dark"] &': {
-      color: vars.color.textSoft,
-    },
-    [`${themeToggle}:hover &`]: {
-      color: vars.color.text,
-      transform: 'scale(1.04)',
-    },
-  },
-})
-
-export const themeIcon = style({
-  width: 15,
-  height: 15,
-})
 
 export const contentGrid = style({
   display: 'grid',
@@ -437,133 +232,6 @@ export const keyFlowDot = style({
   },
 })
 
-export const keycap = style({
-  position: 'relative',
-  display: 'grid',
-  placeItems: 'center',
-  width: 'min(320px, 100%)',
-  aspectRatio: '1.9 / 1',
-  padding: 24,
-  borderRadius: 30,
-  background: vars.color.bg,
-  border: `1px solid ${vars.color.border}`,
-  boxShadow: 'none',
-  userSelect: 'none',
-  selectors: {
-    '&::before': {
-      content: 'none',
-    },
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      inset: 12,
-      zIndex: 1,
-      borderRadius: 22,
-      border: `1px solid ${vars.color.border}`,
-    },
-  },
-  '@media': {
-    '(max-width: 640px)': {
-      borderRadius: 24,
-    },
-  },
-})
-
-export const keycapMuted = style({
-  opacity: 0.86,
-  filter: 'saturate(0.78)',
-})
-
-export const keycapCross = style({
-  position: 'absolute',
-  inset: 0,
-  zIndex: 3,
-  selectors: {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      left: '12%',
-      right: '12%',
-      top: '49%',
-      height: 3,
-      borderRadius: 999,
-      background: 'linear-gradient(90deg, rgba(217, 93, 57, 0.9), rgba(217, 93, 57, 0.5))',
-      transform: 'rotate(-12deg)',
-      boxShadow: '0 0 12px rgba(217, 93, 57, 0.18)',
-    },
-  },
-})
-
-export const keycapLabel = style({
-  display: 'inline-block',
-  position: 'relative',
-  zIndex: 2,
-  fontSize: 'clamp(1.8rem, 5vw, 3rem)',
-  fontWeight: 700,
-  letterSpacing: '-0.05em',
-  animation: `${labelFlip} 1.8s ease`,
-})
-
-export const keycapLabelStatic = style({
-  animation: 'none',
-})
-
-export const keycapLabelWide = style({
-  fontSize: 'clamp(1.7rem, 4.6vw, 2.7rem)',
-  textTransform: 'none',
-})
-
-export const commandKeycap = style({
-  position: 'relative',
-  zIndex: 2,
-  display: 'grid',
-  width: '100%',
-  height: '100%',
-  padding: '22px 20px 18px',
-})
-
-const appleModifierGlyphBase = style({
-  position: 'absolute',
-  top: 20,
-  fontSize: '2.15rem',
-  lineHeight: 1,
-  letterSpacing: '-0.06em',
-  animation: `${labelFlip} 1.8s ease`,
-})
-
-export const commandGlyphLeft = style([
-  appleModifierGlyphBase,
-  {
-    left: 22,
-  },
-])
-
-export const commandGlyphRight = style([
-  appleModifierGlyphBase,
-  {
-    right: 22,
-  },
-])
-
-export const commandGlyph = style({
-  justifySelf: 'start',
-  alignSelf: 'start',
-  fontSize: '2.35rem',
-  lineHeight: 1,
-  letterSpacing: '-0.06em',
-  animation: `${labelFlip} 1.8s ease`,
-})
-
-export const commandLabel = style({
-  alignSelf: 'end',
-  justifySelf: 'center',
-  fontSize: '1.95rem',
-  fontWeight: 700,
-  letterSpacing: '-0.04em',
-  textTransform: 'lowercase',
-  animation: `${labelFlip} 1.8s ease`,
-})
-
 export const panelCopy = style([
   subduedText,
   {
@@ -583,57 +251,31 @@ export const keyCaption = style([
   },
 ])
 
-export const inlineMiniKeycap = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  minWidth: 78,
-  minHeight: 42,
-  padding: '8px 14px',
-  borderRadius: 14,
+export const keyCaptionSelect = style({
+  minHeight: 34,
+  padding: '0 34px 0 12px',
+  borderRadius: 999,
   border: `1px solid ${vars.color.border}`,
-  background: vars.color.bg,
+  background: vars.color.bgStrong,
   color: vars.color.text,
-  fontSize: '0.95rem',
-  fontWeight: 700,
-  letterSpacing: '-0.03em',
-  boxShadow: 'inset 0 -6px 10px rgba(0, 0, 0, 0.06)',
-  userSelect: 'none',
-})
-
-export const inlineMiniKeycapCommand = style([
-  inlineMiniKeycap,
-  {
-    minWidth: 102,
-    justifyContent: 'center',
-    gap: 10,
-    padding: '8px 12px',
-  },
-])
-
-export const inlineMiniCommandGlyph = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '1.05rem',
-  lineHeight: 1,
-})
-
-export const inlineMiniCommandLabel = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '0.88rem',
-  fontWeight: 700,
-  lineHeight: 1,
-  letterSpacing: '-0.03em',
-  textTransform: 'lowercase',
+  outline: 'none',
+  cursor: 'pointer',
+  appearance: 'none',
+  WebkitAppearance: 'none',
+  MozAppearance: 'none',
+  backgroundImage:
+    'linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%)',
+  backgroundPosition: 'calc(100% - 18px) 14px, calc(100% - 12px) 14px',
+  backgroundSize: '6px 6px, 6px 6px',
+  backgroundRepeat: 'no-repeat',
 })
 
 export const demoTextarea = style({
   width: '100%',
   minHeight: 240,
   resize: 'vertical',
+  scrollbarWidth: 'thin',
+  scrollbarColor: `${vars.color.textSoft} ${vars.color.bgStrong}`,
   borderRadius: 22,
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgStrong,
@@ -647,6 +289,22 @@ export const demoTextarea = style({
     '&:focus': {
       borderColor: vars.color.accent,
       boxShadow: `0 0 0 4px ${vars.color.accentSoft}, inset 0 1px 2px rgba(0, 0, 0, 0.08)`,
+    },
+    '&::-webkit-scrollbar': {
+      width: 12,
+      height: 12,
+    },
+    '&::-webkit-scrollbar-track': {
+      background: vars.color.bgStrong,
+      borderRadius: 999,
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: vars.color.textSoft,
+      borderRadius: 999,
+      border: `3px solid ${vars.color.bgStrong}`,
+    },
+    '&::-webkit-scrollbar-corner': {
+      background: vars.color.bgStrong,
     },
   },
 })

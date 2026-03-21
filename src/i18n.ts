@@ -30,8 +30,7 @@ type Copy = {
   demoSection: {
     kicker: string
     title: string
-    body: string
-    hint: string
+    bodyTemplate: string
     text: string
   }
   guideSection: {
@@ -96,8 +95,8 @@ export const messages: Record<Locale, Copy> = {
     demoSection: {
       kicker: 'Try the idea',
       title: 'Simulate Caps Lock as a shortcut helper',
-      body: 'Inside this textarea, Caps Lock behaves like a Control helper for A, C, V, and X so you can test the habit without changing your whole system first.',
-      hint: 'Clipboard actions may ask for browser permission the first time.',
+      bodyTemplate:
+        'Inside this textarea, {caps} behaves like a {control} helper for {a}, {c}, {v}, and {x} so you can test the habit without changing your whole system first. Clipboard actions may ask for browser permission the first time.',
       text: `Try this box with Caps Lock.
 
 Use Caps Lock + A to select all.
@@ -171,8 +170,8 @@ This is only a browser-level simulation, but it is enough to feel the difference
     demoSection: {
       kicker: '직접 체험하기',
       title: 'Caps Lock을 단축키 보조키처럼 써보기',
-      body: '아래 텍스트 영역에서는 Caps Lock이 A, C, V, X에 대해 Control 보조키처럼 동작합니다. 시스템 전체를 바꾸기 전에 감각부터 먼저 확인할 수 있습니다.',
-      hint: '클립보드 관련 동작은 처음 한 번 브라우저 권한을 물어볼 수 있습니다.',
+      bodyTemplate:
+        '아래 텍스트 영역에서는 {caps}이 {a}, {c}, {v}, {x}에 대해 {control} 보조키처럼 동작합니다. 시스템 전체를 바꾸기 전에 감각부터 먼저 확인할 수 있습니다. 클립보드 관련 동작은 처음 한 번 브라우저 권한을 물어볼 수 있습니다.',
       text: `이 박스에서 Caps Lock을 눌러 보세요.
 
 Caps Lock + A 는 전체 선택,

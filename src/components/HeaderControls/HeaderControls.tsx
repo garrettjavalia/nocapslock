@@ -1,6 +1,6 @@
 import type { CSSProperties, Dispatch, SetStateAction } from 'react'
-import { getLocalePath, localeLabels, supportedLocales, type Locale } from '../i18n'
-import * as styles from '../styles/app.css'
+import { getLocalePath, localeLabels, supportedLocales, type Locale } from '../../i18n'
+import * as styles from './HeaderControls.css'
 
 type ThemeMode = 'light' | 'dark'
 

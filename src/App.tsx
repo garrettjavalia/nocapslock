@@ -27,6 +27,8 @@ const osRoleMap: Record<PlatformId, OsKeyRole> = {
   other: 'Control',
 }
 
+const previewPlatforms: PlatformId[] = ['mac', 'ios', 'windows', 'linux', 'android', 'unix', 'other']
+
 function detectPlatform(): PlatformId {
   if (typeof navigator === 'undefined') {
     return 'other'
@@ -75,6 +77,7 @@ export function App() {
   const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('windows')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [keyCycleIndex, setKeyCycleIndex] = useState(0)
+  const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
 
   const locale = routeLocale ?? defaultLocale
   const copy = messages[locale]
@@ -83,6 +86,10 @@ export function App() {
   useEffect(() => {
     setPlatform(detectPlatform())
   }, [])
+
+  useEffect(() => {
+    setCaptionPlatform(platform)
+  }, [platform])
 
   useEffect(() => {
     setTextValue(copy.demoSection.text)
@@ -152,11 +159,12 @@ export function App() {
   }, [platform])
 
   const animatedKeyLabels = useMemo(() => ['Command', 'Control', 'ESC'], [])
-  const recommendedKeyLabel = platform === 'mac' || platform === 'ios' ? 'Command' : 'Control'
+  const recommendedKeyLabel = osRoleMap[captionPlatform]
   const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
-  const deviceLabel = copy.keySection.deviceLabels[platform]
-  const captionTemplate = copy.keySection.captionTemplate.replace('{device}', deviceLabel)
-  const [captionBeforeKey, captionAfterKey] = captionTemplate.split('{key}')
+  const captionParts = copy.keySection.captionTemplate.split(/(\{device\}|\{key\})/g)
+  const demoBodyParts = copy.demoSection.bodyTemplate.split(
+    /(\{caps\}|\{control\}|\{a\}|\{c\}|\{v\}|\{x\})/g,
+  )
   const compactProgress = Math.max(0, Math.min(1, (scrollProgress - 0.42) / 0.38))
 
   const mastheadStyle = {
@@ -307,9 +315,38 @@ export function App() {
                 </div>
               </div>
               <p className={styles.keyCaption}>
-                <span>{captionBeforeKey}</span>
-                <Keycap keyLabel={recommendedKeyLabel} mini platform={platform} />
-                <span>{captionAfterKey}</span>
+                {captionParts.map((part, index) => {
+                  if (part === '{device}') {
+                    return (
+                      <select
+                        key={`device-${index}`}
+                        className={styles.keyCaptionSelect}
+                        value={captionPlatform}
+                        onChange={(event) => setCaptionPlatform(event.target.value as PlatformId)}
+                        aria-label={copy.guideSection.title}
+                      >
+                        {previewPlatforms.map((item) => (
+                          <option key={item} value={item}>
+                            {copy.keySection.deviceLabels[item]}
+                          </option>
+                        ))}
+                      </select>
+                    )
+                  }
+
+                  if (part === '{key}') {
+                    return (
+                      <Keycap
+                        key={`key-${index}`}
+                        keyLabel={recommendedKeyLabel}
+                        mini
+                        platform={captionPlatform}
+                      />
+                    )
+                  }
+
+                  return <span key={`text-${index}`}>{part}</span>
+                })}
               </p>
             </div>
           </section>
@@ -322,15 +359,28 @@ export function App() {
               </h2>
             </div>
             <p className={styles.panelCopy}>
-              {copy.demoSection.body.split(/(Caps Lock|A|C|V|X)/g).map((part, index) => {
-                if (['Caps Lock', 'A', 'C', 'V', 'X'].includes(part)) {
+              {demoBodyParts.map((part, index) => {
+                if (part === '{caps}') {
                   return (
-                    <kbd key={`${part}-${index}`} className={styles.keyboardKey}>
-                      {part}
-                    </kbd>
+                    <Keycap key={`caps-${index}`} keyLabel="Caps Lock" mini miniSize="xs" platform={platform} />
                   )
                 }
-
+                if (part === '{control}') {
+                  return (
+                    <Keycap key={`control-${index}`} keyLabel="Control" mini miniSize="xs" platform={platform} />
+                  )
+                }
+                if (part === '{a}' || part === '{c}' || part === '{v}' || part === '{x}') {
+                  return (
+                    <Keycap
+                      key={`${part}-${index}`}
+                      keyLabel={part.replace(/[{}]/g, '').toUpperCase()}
+                      mini
+                      miniSize="xs"
+                      platform={platform}
+                    />
+                  )
+                }
                 return part
               })}
             </p>
@@ -342,7 +392,6 @@ export function App() {
               onKeyUp={handleDemoKeyUp}
               spellCheck={false}
             />
-            <p className={styles.demoHint}>{copy.demoSection.hint}</p>
           </section>
 
           <section className={styles.panel} aria-labelledby="guide-title">

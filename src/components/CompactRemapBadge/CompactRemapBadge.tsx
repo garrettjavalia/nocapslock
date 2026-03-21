@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import * as styles from '../styles/app.css'
-import type { PlatformId, RemapKey } from './Keycap'
+import { Keycap } from '../Keycap'
+import * as styles from './CompactRemapBadge.css'
+import type { PlatformId, RemapKey } from '../Keycap'
 
 type CompactRemapBadgeProps = {
   label: string
@@ -13,11 +14,6 @@ function getChoices(platform: PlatformId): RemapKey[] {
   }
 
   return ['Control', 'ESC']
-}
-
-function renderLabel(key: RemapKey) {
-  if (key === 'Command') return '⌘'
-  return key
 }
 
 export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
@@ -57,16 +53,11 @@ export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
 
   return (
     <button type="button" className={styles.compactHeroBadge} aria-label={label} onClick={handleClick}>
-      <span className={styles.compactHeroMiniKeycap}>
-        {displayKey === null ? (
-          <>
-            <span className={styles.compactHeroBadgeCross} />
-            <span className={styles.compactHeroBadgeLabel}>Caps Lock</span>
-          </>
-        ) : (
-          <span className={styles.compactHeroBadgeTarget}>{renderLabel(displayKey)}</span>
-        )}
-      </span>
+      {displayKey === null ? (
+        <Keycap crossed keyLabel="Caps Lock" mini platform={platform} />
+      ) : (
+        <Keycap keyLabel={displayKey} mini platform={platform} />
+      )}
     </button>
   )
 }
