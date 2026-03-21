@@ -1,16 +1,17 @@
-import { useTranslation } from 'react-i18next'
-import { GuideRichText } from '../GuideRichText'
+import { Trans, useTranslation } from 'react-i18next'
+import { InlineTransKeycap } from '../Keycap'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
 
 export function MacGuidePanel() {
   const { t } = useTranslation()
+  const keyComponents = { key: <InlineTransKeycap platform="mac" /> }
 
   return (
     <article className={styles.guideCard}>
       <h3 className={styles.guideCardTitle}>{t('guide.mac.title')}</h3>
       <p className={styles.panelCopy}>
-        <GuideRichText text={t('guide.mac.summary')} platform="mac" />
+        <Trans i18nKey="guide.mac.summary" components={keyComponents} />
       </p>
 
       <section className={guideStyles.section}>
@@ -18,82 +19,64 @@ export function MacGuidePanel() {
         <div className={guideStyles.stepList}>
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.mac.steps.step01.title')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step01.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.mac.steps.step01.body')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step01.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.mac.steps.step02.title')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step02.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.mac.steps.step02.body')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step02.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.mac.steps.step03.title')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step03.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.mac.steps.step03.body')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step03.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.mac.steps.step04.title')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step04.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.mac.steps.step04.body')} platform="mac" />
+              <Trans i18nKey="guide.mac.steps.step04.body" components={keyComponents} />
             </p>
 
             <div className={guideStyles.substepGroup}>
               <section className={guideStyles.stepItem}>
                 <h4 className={guideStyles.stepTitle}>
-                  <GuideRichText
-                    text={t('guide.mac.steps.step04.substeps.step04_1.title')}
-                    platform="mac"
-                  />
+                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_1.title" components={keyComponents} />
                 </h4>
                 <p className={guideStyles.stepBody}>
-                  <GuideRichText
-                    text={t('guide.mac.steps.step04.substeps.step04_1.body')}
-                    platform="mac"
-                  />
+                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_1.body" components={keyComponents} />
                 </p>
               </section>
 
               <section className={guideStyles.stepItem}>
                 <h4 className={guideStyles.stepTitle}>
-                  <GuideRichText
-                    text={t('guide.mac.steps.step04.substeps.step04_2.title')}
-                    platform="mac"
-                  />
+                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_2.title" components={keyComponents} />
                 </h4>
                 <p className={guideStyles.stepBody}>
-                  <GuideRichText
-                    text={t('guide.mac.steps.step04.substeps.step04_2.body')}
-                    platform="mac"
-                  />
+                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_2.body" components={keyComponents} />
                 </p>
               </section>
 
               <section className={guideStyles.stepItem}>
                 <h4 className={guideStyles.stepTitle}>
-                  <GuideRichText
-                    text={t('guide.mac.steps.step04.substeps.step04_3.title')}
-                    platform="mac"
-                  />
+                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_3.title" components={keyComponents} />
                 </h4>
                 <p className={guideStyles.stepBody}>
-                  <GuideRichText
-                    text={t('guide.mac.steps.step04.substeps.step04_3.body')}
-                    platform="mac"
-                  />
+                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_3.body" components={keyComponents} />
                 </p>
               </section>
             </div>
@@ -105,13 +88,13 @@ export function MacGuidePanel() {
         <p className={guideStyles.label}>{t('guide.label.notes')}</p>
         <ul className={guideStyles.notesList}>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.mac.note1')} platform="mac" />
+            <Trans i18nKey="guide.mac.note1" components={keyComponents} />
           </li>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.mac.note2')} platform="mac" />
+            <Trans i18nKey="guide.mac.note2" components={keyComponents} />
           </li>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.mac.note3')} platform="mac" />
+            <Trans i18nKey="guide.mac.note3" components={keyComponents} />
           </li>
         </ul>
       </section>

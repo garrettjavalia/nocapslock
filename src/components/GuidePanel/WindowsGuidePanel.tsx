@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { GuideRichText } from '../GuideRichText'
+import { Trans, useTranslation } from 'react-i18next'
+import { InlineTransKeycap } from '../Keycap'
 import { WindowsRegistryGenerator } from '../WindowsRegistryGenerator'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
@@ -10,6 +10,7 @@ type WindowsMethodId = 'powertoys' | 'registry'
 
 function WindowsPowerToysGuide() {
   const { t } = useTranslation()
+  const keyComponents = { key: <InlineTransKeycap platform="windows" /> }
 
   return (
     <>
@@ -18,37 +19,37 @@ function WindowsPowerToysGuide() {
         <div className={guideStyles.stepList}>
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step01.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step01.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step01.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step01.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step02.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step02.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step02.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step02.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step03.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step03.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step03.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step03.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step04.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step04.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.powertoys.steps.step04.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.steps.step04.body" components={keyComponents} />
             </p>
           </section>
         </div>
@@ -58,10 +59,10 @@ function WindowsPowerToysGuide() {
         <p className={guideStyles.label}>{t('guide.label.notes')}</p>
         <ul className={guideStyles.notesList}>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.windows.method.powertoys.note1')} platform="windows" />
+            <Trans i18nKey="guide.windows.method.powertoys.note1" components={keyComponents} />
           </li>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.windows.method.powertoys.note2')} platform="windows" />
+            <Trans i18nKey="guide.windows.method.powertoys.note2" components={keyComponents} />
           </li>
         </ul>
       </section>
@@ -93,6 +94,7 @@ function WindowsPowerToysGuide() {
 
 function WindowsRegistryGuide() {
   const { t } = useTranslation()
+  const keyComponents = { key: <InlineTransKeycap platform="windows" /> }
 
   return (
     <>
@@ -101,37 +103,37 @@ function WindowsRegistryGuide() {
         <div className={guideStyles.stepList}>
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step01.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step01.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step01.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step01.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step02.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step02.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step02.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step02.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step03.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step03.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step03.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step03.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step04.title')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step04.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.windows.method.registry.steps.step04.body')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.steps.step04.body" components={keyComponents} />
             </p>
           </section>
         </div>
@@ -143,10 +145,10 @@ function WindowsRegistryGuide() {
         <p className={guideStyles.label}>{t('guide.label.notes')}</p>
         <ul className={guideStyles.notesList}>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.windows.method.registry.note1')} platform="windows" />
+            <Trans i18nKey="guide.windows.method.registry.note1" components={keyComponents} />
           </li>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.windows.method.registry.note2')} platform="windows" />
+            <Trans i18nKey="guide.windows.method.registry.note2" components={keyComponents} />
           </li>
         </ul>
       </section>
@@ -171,12 +173,13 @@ function WindowsRegistryGuide() {
 export function WindowsGuidePanel() {
   const { t } = useTranslation()
   const [activeMethod, setActiveMethod] = useState<WindowsMethodId>('powertoys')
+  const keyComponents = { key: <InlineTransKeycap platform="windows" /> }
 
   return (
     <article className={styles.guideCard}>
       <h3 className={styles.guideCardTitle}>{t('guide.windows.title')}</h3>
       <p className={styles.panelCopy}>
-        <GuideRichText text={t('guide.windows.summary')} platform="windows" />
+        <Trans i18nKey="guide.windows.summary" components={keyComponents} />
       </p>
 
       <p className={comparisonStyles.intro}>{t('guide.windows.methodChoiceIntro')}</p>
@@ -196,7 +199,7 @@ export function WindowsGuidePanel() {
               {t('guide.windows.method.powertoys.title')}
             </h4>
             <p className={comparisonStyles.comparisonSummary}>
-              <GuideRichText text={t('guide.windows.method.powertoys.summary')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.powertoys.summary" components={keyComponents} />
             </p>
           </div>
 
@@ -204,13 +207,13 @@ export function WindowsGuidePanel() {
             <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.prosLabel')}</p>
             <ul className={comparisonStyles.bulletList}>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.powertoys.pro1')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.powertoys.pro1" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.powertoys.pro2')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.powertoys.pro2" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.powertoys.pro3')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.powertoys.pro3" components={keyComponents} />
               </li>
             </ul>
           </div>
@@ -219,13 +222,13 @@ export function WindowsGuidePanel() {
             <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.consLabel')}</p>
             <ul className={comparisonStyles.bulletList}>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.powertoys.con1')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.powertoys.con1" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.powertoys.con2')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.powertoys.con2" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.powertoys.con3')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.powertoys.con3" components={keyComponents} />
               </li>
             </ul>
           </div>
@@ -245,7 +248,7 @@ export function WindowsGuidePanel() {
               {t('guide.windows.method.registry.title')}
             </h4>
             <p className={comparisonStyles.comparisonSummary}>
-              <GuideRichText text={t('guide.windows.method.registry.summary')} platform="windows" />
+              <Trans i18nKey="guide.windows.method.registry.summary" components={keyComponents} />
             </p>
           </div>
 
@@ -253,13 +256,13 @@ export function WindowsGuidePanel() {
             <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.prosLabel')}</p>
             <ul className={comparisonStyles.bulletList}>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.registry.pro1')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.registry.pro1" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.registry.pro2')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.registry.pro2" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.registry.pro3')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.registry.pro3" components={keyComponents} />
               </li>
             </ul>
           </div>
@@ -268,13 +271,13 @@ export function WindowsGuidePanel() {
             <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.consLabel')}</p>
             <ul className={comparisonStyles.bulletList}>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.registry.con1')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.registry.con1" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.registry.con2')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.registry.con2" components={keyComponents} />
               </li>
               <li className={comparisonStyles.bulletItem}>
-                <GuideRichText text={t('guide.windows.method.registry.con3')} platform="windows" />
+                <Trans i18nKey="guide.windows.method.registry.con3" components={keyComponents} />
               </li>
             </ul>
           </div>

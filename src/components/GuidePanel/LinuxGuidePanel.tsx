@@ -1,17 +1,18 @@
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { GuideCodeBlock } from '../GuideCodeBlock'
-import { GuideRichText } from '../GuideRichText'
+import { InlineTransKeycap } from '../Keycap'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
 
 export function LinuxGuidePanel() {
   const { t } = useTranslation()
+  const keyComponents = { key: <InlineTransKeycap platform="linux" /> }
 
   return (
     <article className={styles.guideCard}>
       <h3 className={styles.guideCardTitle}>{t('guide.linux.title')}</h3>
       <p className={styles.panelCopy}>
-        <GuideRichText text={t('guide.linux.summary')} platform="linux" />
+        <Trans i18nKey="guide.linux.summary" components={keyComponents} />
       </p>
 
       <section className={guideStyles.section}>
@@ -19,10 +20,10 @@ export function LinuxGuidePanel() {
         <div className={guideStyles.stepList}>
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.linux.steps.step01.title')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step01.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.linux.steps.step01.body')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step01.body" components={keyComponents} />
             </p>
           </section>
 
@@ -41,10 +42,10 @@ export function LinuxGuidePanel() {
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.linux.steps.step02.title')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step02.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.linux.steps.step02.body')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step02.body" components={keyComponents} />
             </p>
           </section>
 
@@ -63,28 +64,28 @@ export function LinuxGuidePanel() {
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.linux.steps.step03.title')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step03.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.linux.steps.step03.body')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step03.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.linux.steps.step04.title')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step04.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.linux.steps.step04.body')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step04.body" components={keyComponents} />
             </p>
           </section>
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
-              <GuideRichText text={t('guide.linux.steps.step05.title')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step05.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <GuideRichText text={t('guide.linux.steps.step05.body')} platform="linux" />
+              <Trans i18nKey="guide.linux.steps.step05.body" components={keyComponents} />
             </p>
           </section>
         </div>
@@ -94,13 +95,13 @@ export function LinuxGuidePanel() {
         <p className={guideStyles.label}>{t('guide.label.notes')}</p>
         <ul className={guideStyles.notesList}>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.linux.note1')} platform="linux" />
+            <Trans i18nKey="guide.linux.note1" components={keyComponents} />
           </li>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.linux.note2')} platform="linux" />
+            <Trans i18nKey="guide.linux.note2" components={keyComponents} />
           </li>
           <li className={guideStyles.noteItem}>
-            <GuideRichText text={t('guide.linux.note3')} platform="linux" />
+            <Trans i18nKey="guide.linux.note3" components={keyComponents} />
           </li>
         </ul>
       </section>
