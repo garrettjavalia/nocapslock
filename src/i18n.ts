@@ -1,8 +1,12 @@
 export type Locale = 'en' | 'ko'
+type DeviceLabelKey = 'mac' | 'android' | 'ios' | 'windows' | 'linux' | 'unix' | 'other'
+
 type Copy = {
   metaTitle: string
   metaDescription: string
   metaKeywords: string
+  brand: string
+  githubLabel: string
   eyebrow: string
   heroTitle: string
   heroLead: string
@@ -14,7 +18,13 @@ type Copy = {
   keySection: {
     kicker: string
     title: string
-    caption: string
+    captionTemplate: string
+    beforeLabel: string
+    afterLabel: string
+    remapLabel: string
+    disabledLabel: string
+    alternativeLabel: string
+    deviceLabels: Record<DeviceLabelKey, string>
     labels: string[]
   }
   demoSection: {
@@ -52,6 +62,8 @@ export const messages: Record<Locale, Copy> = {
       'Turn Caps Lock into Control, Command, or Escape. Try a live demo and browse a multilingual landing page built for keyboard-first users.',
     metaKeywords:
       'caps lock remap, caps lock to control, caps lock to command, caps lock to escape, keyboard productivity, karabiner, keyd, powertoys',
+    brand: 'NoCapslock',
+    githubLabel: 'GitHub',
     eyebrow: 'Keyboard Productivity',
     heroTitle: 'No Capslock Anymore!',
     heroLead:
@@ -64,7 +76,21 @@ export const messages: Record<Locale, Copy> = {
     keySection: {
       kicker: 'Visualize the remap',
       title: 'The same key can do much better work',
-      caption: 'On this device, the most useful default is',
+      captionTemplate: 'On {device}, the most useful default is {key}.',
+      beforeLabel: 'Before',
+      afterLabel: 'After',
+      remapLabel: 'Remap',
+      disabledLabel: 'Caps Lock mode off',
+      alternativeLabel: 'Alternative',
+      deviceLabels: {
+        mac: 'MacOS',
+        android: 'Android',
+        ios: 'iOS',
+        windows: 'Windows',
+        linux: 'Linux',
+        unix: 'Unix',
+        other: 'this machine',
+      },
       labels: ['Caps Lock', 'Command', 'Control', 'Escape'],
     },
     demoSection: {
@@ -111,6 +137,8 @@ This is only a browser-level simulation, but it is enough to feel the difference
       '캡스락을 Control, Command, Escape로 바꾸는 이유를 소개하고, 브라우저에서 바로 체험할 수 있는 다국어 랜딩 페이지입니다.',
     metaKeywords:
       '캡스락 변경, caps lock remap, caps lock to control, caps lock to command, caps lock to escape, 키보드 생산성',
+    brand: '노캡스락',
+    githubLabel: 'GitHub',
     eyebrow: '키보드 생산성',
     heroTitle: '이제 캡스락은 그만!',
     heroLead:
@@ -123,7 +151,21 @@ This is only a browser-level simulation, but it is enough to feel the difference
     keySection: {
       kicker: '바뀌는 모습을 보기',
       title: '같은 키라도 훨씬 좋은 역할을 맡길 수 있습니다',
-      caption: '이 기기에서는 보통 이 기본값이 가장 유용합니다',
+      captionTemplate: '{device}에서는 보통 {key}가 가장 유용합니다.',
+      beforeLabel: '변경 전',
+      afterLabel: '변경 후',
+      remapLabel: '변경',
+      disabledLabel: 'Caps Lock 모드 끄기',
+      alternativeLabel: '다른 선택지',
+      deviceLabels: {
+        mac: 'MacOS',
+        android: 'Android',
+        ios: 'iOS',
+        windows: 'Windows',
+        linux: 'Linux',
+        unix: 'Unix',
+        other: '이 기기',
+      },
       labels: ['Caps Lock', 'Command', 'Control', 'Escape'],
     },
     demoSection: {

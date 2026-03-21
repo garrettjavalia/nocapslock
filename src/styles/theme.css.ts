@@ -17,6 +17,12 @@ export const vars = createGlobalTheme(':root', {
     panelDark: '0 18px 60px rgba(0, 0, 0, 0.28)',
     keycap: 'inset 0 -10px 16px rgba(0, 0, 0, 0.08), 0 18px 32px rgba(0, 0, 0, 0.12)',
   },
+  control: {
+    height: '46px',
+    radius: '999px',
+    paddingX: '16px',
+    gap: '10px',
+  },
 })
 
 globalStyle(':root', {
@@ -30,7 +36,7 @@ globalStyle(':root[data-theme="dark"]', {
     [vars.color.bgStrong]: '#1e1e1e',
     [vars.color.text]: '#f5efe6',
     [vars.color.textSoft]: '#c0b5a7',
-    [vars.color.border]: 'rgba(255, 244, 232, 0.08)',
+    [vars.color.border]: 'rgba(148, 148, 148, 0.16)',
     [vars.color.accent]: '#ff8a5b',
     [vars.color.accentStrong]: '#ffb18d',
     [vars.color.accentSoft]: 'rgba(255, 138, 91, 0.16)',

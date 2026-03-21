@@ -1,26 +1,29 @@
-import { useEffect, useMemo, useState, type KeyboardEvent } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
+import { CompactRemapBadge } from './components/CompactRemapBadge'
+import { HeaderControls } from './components/HeaderControls'
+import { Keycap, type PlatformId, type RemapKey } from './components/Keycap'
 import {
   defaultLocale,
   detectPreferredLocale,
   getLocaleFromPath,
   getLocalePath,
-  localeLabels,
   messages,
   supportedLocales,
-  type Locale,
 } from './i18n'
 import * as styles from './styles/app.css'
 
 type ThemeMode = 'light' | 'dark'
-type PlatformId = 'windows' | 'mac' | 'linux' | 'other'
 type OsKeyRole = 'Command' | 'Control'
 
 const osRoleMap: Record<PlatformId, OsKeyRole> = {
   mac: 'Command',
+  ios: 'Command',
   windows: 'Control',
   linux: 'Control',
+  android: 'Control',
+  unix: 'Control',
   other: 'Control',
 }
 
@@ -30,9 +33,20 @@ function detectPlatform(): PlatformId {
   }
 
   const source = `${navigator.userAgent} ${navigator.platform}`.toLowerCase()
+  if (source.includes('android')) return 'android'
+  if (source.includes('iphone') || source.includes('ipad') || source.includes('ipod')) return 'ios'
   if (source.includes('mac')) return 'mac'
   if (source.includes('win')) return 'windows'
   if (source.includes('linux') || source.includes('x11')) return 'linux'
+  if (
+    source.includes('freebsd') ||
+    source.includes('openbsd') ||
+    source.includes('netbsd') ||
+    source.includes('sunos') ||
+    source.includes('aix')
+  ) {
+    return 'unix'
+  }
   return 'other'
 }
 
@@ -59,9 +73,12 @@ export function App() {
   const [capsHeld, setCapsHeld] = useState(false)
   const [textValue, setTextValue] = useState(messages.en.demoSection.text)
   const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('windows')
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [keyCycleIndex, setKeyCycleIndex] = useState(0)
 
   const locale = routeLocale ?? defaultLocale
   const copy = messages[locale]
+  const githubUrl = 'https://github.com/garrettjavalia/nocapslock'
 
   useEffect(() => {
     setPlatform(detectPlatform())
@@ -90,6 +107,28 @@ export function App() {
   }, [])
 
   useEffect(() => {
+    let frame = 0
+
+    const updateProgress = () => {
+      frame = 0
+      setScrollProgress(Math.max(0, Math.min(1, window.scrollY / 180)))
+    }
+
+    const onScroll = () => {
+      if (frame) return
+      frame = window.requestAnimationFrame(updateProgress)
+    }
+
+    updateProgress()
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
+  useEffect(() => {
     if (location.pathname !== '/') {
       return
     }
@@ -112,25 +151,27 @@ export function App() {
     setGuidePlatform('windows')
   }, [platform])
 
-  const keyLabels = useMemo(() => {
-    const role = osRoleMap[platform]
-    return copy.keySection.labels.map((label) => {
-      if (label === 'Command' || label === 'Control') {
-        return role
-      }
-      return label
-    })
-  }, [copy.keySection.labels, platform])
+  const animatedKeyLabels = useMemo(() => ['Command', 'Control', 'ESC'], [])
+  const recommendedKeyLabel = platform === 'mac' || platform === 'ios' ? 'Command' : 'Control'
+  const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
+  const deviceLabel = copy.keySection.deviceLabels[platform]
+  const captionTemplate = copy.keySection.captionTemplate.replace('{device}', deviceLabel)
+  const [captionBeforeKey, captionAfterKey] = captionTemplate.split('{key}')
+  const compactProgress = Math.max(0, Math.min(1, (scrollProgress - 0.42) / 0.38))
 
-  const [keyLabelIndex, setKeyLabelIndex] = useState(0)
+  const mastheadStyle = {
+    '--hero-opacity': `${Math.max(0, 1 - scrollProgress * 1.15)}`,
+    '--compact-opacity': `${compactProgress}`,
+    '--surface-opacity': `${compactProgress}`,
+  } as CSSProperties
 
   useEffect(() => {
-    const keyTimer = window.setInterval(() => {
-      setKeyLabelIndex((current) => (current + 1) % keyLabels.length)
+    const timer = window.setInterval(() => {
+      setKeyCycleIndex((current) => (current + 1) % animatedKeyLabels.length)
     }, 1800)
 
-    return () => window.clearInterval(keyTimer)
-  }, [keyLabels.length])
+    return () => window.clearInterval(timer)
+  }, [animatedKeyLabels.length])
 
   const handleDemoKeyDown = async (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'CapsLock') {
@@ -212,40 +253,36 @@ export function App() {
       </Head>
 
       <div className={styles.pageShell}>
-        <header className={styles.hero}>
-          <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>{copy.eyebrow}</p>
-            <h1 className={styles.heroTitle}>{copy.heroTitle}</h1>
-            <p className={styles.heroLead}>{copy.heroLead}</p>
-          </div>
+        <header className={styles.masthead} style={mastheadStyle}>
+          <div className={styles.mastheadSurface}>
+            <div className={styles.mastheadTop}>
+              <div className={styles.mastheadTitles}>
+                <CompactRemapBadge label={copy.heroTitle} platform={platform} />
+              </div>
 
-          <div className={styles.heroActions}>
-            <label className={styles.localeSwitcher}>
-              <span className={styles.localeLabel}>{copy.localeSwitcherLabel}</span>
-              <select
-                className={styles.localeSelect}
-                value={locale}
-                onChange={(event) => navigate(getLocalePath(event.target.value as Locale))}
-                aria-label={copy.localeSwitcherLabel}
-              >
-                {supportedLocales.map((item) => (
-                  <option key={item} value={item}>
-                    {localeLabels[item]}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <button
-              className={styles.themeToggle}
-              type="button"
-              onClick={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
-              aria-label="Toggle theme"
-            >
-              <span>{theme === 'light' ? copy.themeToggle.dark : copy.themeToggle.light}</span>
-            </button>
+              <HeaderControls
+                githubLabel={copy.githubLabel}
+                githubUrl={githubUrl}
+                locale={locale}
+                localeSwitcherLabel={copy.localeSwitcherLabel}
+                navigate={navigate}
+                setTheme={setTheme}
+                theme={theme}
+                themeToggleLabel={theme === 'light' ? copy.themeToggle.dark : copy.themeToggle.light}
+              />
+            </div>
           </div>
         </header>
+
+        <section className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <h1 className={`${styles.heroTitle} ${styles.heroTitleFloating}`}>{copy.heroTitle}</h1>
+          </div>
+        </section>
+
+        <section className={styles.heroLeadSection}>
+          <p className={styles.heroLead}>{copy.heroLead}</p>
+        </section>
 
         <main className={styles.contentGrid}>
           <section className={`${styles.panel} ${styles.keyStage}`} aria-labelledby="hero-key-title">
@@ -256,13 +293,23 @@ export function App() {
               </h2>
             </div>
             <div className={styles.keyRail} aria-hidden="true">
-              <div className={styles.keycap}>
-                <span key={keyLabels[keyLabelIndex]} className={styles.keycapLabel}>
-                  {keyLabels[keyLabelIndex]}
-                </span>
+              <div className={styles.keyNarrative}>
+                <div className={styles.keyStateColumn}>
+                  <Keycap crossed keyLabel="Caps Lock" muted platform={platform} />
+                </div>
+
+                <div className={styles.keyFlowArrow}>
+                  <span className={styles.keyFlowDot} />
+                </div>
+
+                <div className={styles.keyStateColumn}>
+                  <Keycap keyLabel={activeKeyLabel} platform={platform} wide />
+                </div>
               </div>
               <p className={styles.keyCaption}>
-                {copy.keySection.caption} <strong>{osRoleMap[platform]}</strong>.
+                <span>{captionBeforeKey}</span>
+                <Keycap keyLabel={recommendedKeyLabel} mini platform={platform} />
+                <span>{captionAfterKey}</span>
               </p>
             </div>
           </section>
