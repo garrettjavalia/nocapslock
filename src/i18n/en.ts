@@ -99,11 +99,9 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       noChangesLabel: 'Choose at least one different target to generate a remap file.',
       registryPathLabel:
         'Registry path: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
-      restartNote:
-        'This registry method changes keys globally. If the new mapping does not appear immediately, sign out or restart Windows.',
       resetLabel: 'Reset selections',
       key: {
-        capsLock: 'Caps Lock',
+        capslock: 'Caps Lock',
         leftCtrl: 'Left Ctrl',
         rightCtrl: 'Right Ctrl',
         leftAlt: 'Left Alt',

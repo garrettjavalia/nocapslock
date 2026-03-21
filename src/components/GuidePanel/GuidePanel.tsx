@@ -10,32 +10,29 @@ type GuidePanelProps = {
   platform: PlatformId
 }
 
+const guideTabs = [
+  { id: 'windows', titleKey: 'guide.windows.title' },
+  { id: 'mac', titleKey: 'guide.mac.title' },
+  { id: 'linux', titleKey: 'guide.linux.title' },
+] as const
+
+const defaultGuidePlatformByDevice: Record<PlatformId, 'windows' | 'mac' | 'linux'> = {
+  android: 'linux',
+  ios: 'mac',
+  linux: 'linux',
+  mac: 'mac',
+  other: 'linux',
+  unix: 'linux',
+  windows: 'windows',
+}
+
 export function GuidePanel({ platform }: GuidePanelProps) {
   const { t } = useTranslation()
   const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('linux')
 
   useEffect(() => {
-    if (platform === 'mac') {
-      setGuidePlatform('mac')
-      return
-    }
-
-    if (platform === 'windows') {
-      setGuidePlatform('windows')
-      return
-    }
-
-    setGuidePlatform('linux')
+    setGuidePlatform(defaultGuidePlatformByDevice[platform])
   }, [platform])
-
-  const activeContent =
-    guidePlatform === 'windows' ? (
-      <WindowsGuidePanel />
-    ) : guidePlatform === 'mac' ? (
-      <MacGuidePanel />
-    ) : (
-      <LinuxGuidePanel />
-    )
 
   return (
     <section className={styles.panel} aria-labelledby="guide-title">
@@ -47,45 +44,26 @@ export function GuidePanel({ platform }: GuidePanelProps) {
       </div>
       <p className={styles.guideIntro}>{t('guide.intro')}</p>
       <div className={styles.guideTabs} role="tablist" aria-label={t('guide.title')}>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={guidePlatform === 'windows'}
-          className={
-            guidePlatform === 'windows'
-              ? `${styles.guideTab} ${styles.guideTabActive}`
-              : styles.guideTab
-          }
-          onClick={() => setGuidePlatform('windows')}
-        >
-          {t('guide.windows.title')}
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={guidePlatform === 'mac'}
-          className={
-            guidePlatform === 'mac' ? `${styles.guideTab} ${styles.guideTabActive}` : styles.guideTab
-          }
-          onClick={() => setGuidePlatform('mac')}
-        >
-          {t('guide.mac.title')}
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={guidePlatform === 'linux'}
-          className={
-            guidePlatform === 'linux'
-              ? `${styles.guideTab} ${styles.guideTabActive}`
-              : styles.guideTab
-          }
-          onClick={() => setGuidePlatform('linux')}
-        >
-          {t('guide.linux.title')}
-        </button>
+        {guideTabs.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={guidePlatform === tab.id}
+            className={
+              guidePlatform === tab.id
+                ? `${styles.guideTab} ${styles.guideTabActive}`
+                : styles.guideTab
+            }
+            onClick={() => setGuidePlatform(tab.id)}
+          >
+            {t(tab.titleKey)}
+          </button>
+        ))}
       </div>
-      {activeContent}
+      {guidePlatform === 'windows' && <WindowsGuidePanel />}
+      {guidePlatform === 'mac' && <MacGuidePanel />}
+      {guidePlatform === 'linux' && <LinuxGuidePanel />}
     </section>
   )
 }

@@ -6,6 +6,35 @@ import * as styles from '../../styles/app.css'
 export function MacGuidePanel() {
   const { t } = useTranslation()
   const keyComponents = { key: <InlineTransKeycap platform="mac" /> }
+  const steps = ['step01', 'step02', 'step03'] as const
+  const substeps = ['step04_1', 'step04_2', 'step04_3'] as const
+  const notes = ['note1', 'note2', 'note3'] as const
+  const references = [
+    {
+      key: 'referenceLabel1',
+      href: 'https://karabiner-elements.pqrs.org/',
+    },
+    {
+      key: 'referenceLabel2',
+      href: 'https://karabiner-elements.pqrs.org/docs/getting-started/installation/',
+    },
+    {
+      key: 'referenceLabel3',
+      href: 'https://karabiner-elements.pqrs.org/docs/manual/configuration/configure-simple-modifications/',
+    },
+    {
+      key: 'referenceLabel4',
+      href: 'https://karabiner-elements.pqrs.org/docs/manual/misc/required-macos-settings/',
+    },
+    {
+      key: 'referenceLabel5',
+      href: 'https://karabiner-elements.pqrs.org/docs/help/how-to/use-before-logging-in/',
+    },
+    {
+      key: 'referenceLabel6',
+      href: 'https://support.apple.com/guide/mac-help/change-input-sources-settings-on-mac-mchl84525d76/mac',
+    },
+  ] as const
 
   return (
     <article className={styles.guideCard}>
@@ -17,32 +46,16 @@ export function MacGuidePanel() {
       <section className={guideStyles.section}>
         <p className={guideStyles.label}>{t('guide.label.steps')}</p>
         <div className={guideStyles.stepList}>
-          <section className={guideStyles.stepItem}>
-            <h4 className={guideStyles.stepTitle}>
-              <Trans i18nKey="guide.mac.steps.step01.title" components={keyComponents} />
-            </h4>
-            <p className={guideStyles.stepBody}>
-              <Trans i18nKey="guide.mac.steps.step01.body" components={keyComponents} />
-            </p>
-          </section>
-
-          <section className={guideStyles.stepItem}>
-            <h4 className={guideStyles.stepTitle}>
-              <Trans i18nKey="guide.mac.steps.step02.title" components={keyComponents} />
-            </h4>
-            <p className={guideStyles.stepBody}>
-              <Trans i18nKey="guide.mac.steps.step02.body" components={keyComponents} />
-            </p>
-          </section>
-
-          <section className={guideStyles.stepItem}>
-            <h4 className={guideStyles.stepTitle}>
-              <Trans i18nKey="guide.mac.steps.step03.title" components={keyComponents} />
-            </h4>
-            <p className={guideStyles.stepBody}>
-              <Trans i18nKey="guide.mac.steps.step03.body" components={keyComponents} />
-            </p>
-          </section>
+          {steps.map((step) => (
+            <section key={step} className={guideStyles.stepItem}>
+              <h4 className={guideStyles.stepTitle}>
+                <Trans i18nKey={`guide.mac.steps.${step}.title`} components={keyComponents} />
+              </h4>
+              <p className={guideStyles.stepBody}>
+                <Trans i18nKey={`guide.mac.steps.${step}.body`} components={keyComponents} />
+              </p>
+            </section>
+          ))}
 
           <section className={guideStyles.stepItem}>
             <h4 className={guideStyles.stepTitle}>
@@ -53,32 +66,22 @@ export function MacGuidePanel() {
             </p>
 
             <div className={guideStyles.substepGroup}>
-              <section className={guideStyles.stepItem}>
-                <h4 className={guideStyles.stepTitle}>
-                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_1.title" components={keyComponents} />
-                </h4>
-                <p className={guideStyles.stepBody}>
-                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_1.body" components={keyComponents} />
-                </p>
-              </section>
-
-              <section className={guideStyles.stepItem}>
-                <h4 className={guideStyles.stepTitle}>
-                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_2.title" components={keyComponents} />
-                </h4>
-                <p className={guideStyles.stepBody}>
-                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_2.body" components={keyComponents} />
-                </p>
-              </section>
-
-              <section className={guideStyles.stepItem}>
-                <h4 className={guideStyles.stepTitle}>
-                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_3.title" components={keyComponents} />
-                </h4>
-                <p className={guideStyles.stepBody}>
-                  <Trans i18nKey="guide.mac.steps.step04.substeps.step04_3.body" components={keyComponents} />
-                </p>
-              </section>
+              {substeps.map((substep) => (
+                <section key={substep} className={guideStyles.stepItem}>
+                  <h4 className={guideStyles.stepTitle}>
+                    <Trans
+                      i18nKey={`guide.mac.steps.step04.substeps.${substep}.title`}
+                      components={keyComponents}
+                    />
+                  </h4>
+                  <p className={guideStyles.stepBody}>
+                    <Trans
+                      i18nKey={`guide.mac.steps.step04.substeps.${substep}.body`}
+                      components={keyComponents}
+                    />
+                  </p>
+                </section>
+              ))}
             </div>
           </section>
         </div>
@@ -87,69 +90,28 @@ export function MacGuidePanel() {
       <section className={guideStyles.section}>
         <p className={guideStyles.label}>{t('guide.label.notes')}</p>
         <ul className={guideStyles.notesList}>
-          <li className={guideStyles.noteItem}>
-            <Trans i18nKey="guide.mac.note1" components={keyComponents} />
-          </li>
-          <li className={guideStyles.noteItem}>
-            <Trans i18nKey="guide.mac.note2" components={keyComponents} />
-          </li>
-          <li className={guideStyles.noteItem}>
-            <Trans i18nKey="guide.mac.note3" components={keyComponents} />
-          </li>
+          {notes.map((note) => (
+            <li key={note} className={guideStyles.noteItem}>
+              <Trans i18nKey={`guide.mac.${note}`} components={keyComponents} />
+            </li>
+          ))}
         </ul>
       </section>
 
       <section className={guideStyles.section}>
         <p className={guideStyles.label}>{t('guide.label.references')}</p>
         <div className={guideStyles.linkList}>
-          <a
-            className={guideStyles.sourceLink}
-            href="https://karabiner-elements.pqrs.org/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('guide.mac.referenceLabel1')}
-          </a>
-          <a
-            className={guideStyles.sourceLink}
-            href="https://karabiner-elements.pqrs.org/docs/getting-started/installation/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('guide.mac.referenceLabel2')}
-          </a>
-          <a
-            className={guideStyles.sourceLink}
-            href="https://karabiner-elements.pqrs.org/docs/manual/configuration/configure-simple-modifications/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('guide.mac.referenceLabel3')}
-          </a>
-          <a
-            className={guideStyles.sourceLink}
-            href="https://karabiner-elements.pqrs.org/docs/manual/misc/required-macos-settings/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('guide.mac.referenceLabel4')}
-          </a>
-          <a
-            className={guideStyles.sourceLink}
-            href="https://karabiner-elements.pqrs.org/docs/help/how-to/use-before-logging-in/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('guide.mac.referenceLabel5')}
-          </a>
-          <a
-            className={guideStyles.sourceLink}
-            href="https://support.apple.com/guide/mac-help/change-input-sources-settings-on-mac-mchl84525d76/mac"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('guide.mac.referenceLabel6')}
-          </a>
+          {references.map((reference) => (
+            <a
+              key={reference.key}
+              className={guideStyles.sourceLink}
+              href={reference.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t(`guide.mac.${reference.key}`)}
+            </a>
+          ))}
         </div>
       </section>
     </article>

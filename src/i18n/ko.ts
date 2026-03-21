@@ -99,11 +99,9 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       noChangesLabel: '하나 이상 다른 키로 바꿔야 변경용 파일을 만들 수 있습니다.',
       registryPathLabel:
         '레지스트리 경로: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
-      restartNote:
-        '이 레지스트리 방식은 시스템 전체에 적용됩니다. 변경이 바로 보이지 않으면 로그아웃하거나 Windows를 다시 시작하세요.',
       resetLabel: '선택 초기화',
       key: {
-        capsLock: 'Caps Lock',
+        capslock: 'Caps Lock',
         leftCtrl: '왼쪽 Ctrl',
         rightCtrl: '오른쪽 Ctrl',
         leftAlt: '왼쪽 Alt',

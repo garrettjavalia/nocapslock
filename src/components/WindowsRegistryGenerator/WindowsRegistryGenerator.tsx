@@ -200,8 +200,6 @@ export function WindowsRegistryGenerator() {
           />
         </section>
       </div>
-
-      <p className={styles.note}>{t('guide.registryGenerator.restartNote')}</p>
     </section>
   )
 }
