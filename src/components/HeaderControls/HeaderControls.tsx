@@ -1,5 +1,7 @@
 import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
+import { getGuidePath } from '../../guides'
+import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
 import { localeLabels, supportedLocales, type Locale } from '../../i18n'
 import * as styles from './HeaderControls.css'
 
@@ -22,11 +24,18 @@ export function HeaderControls({
 }: HeaderControlsProps) {
   const { t } = useTranslation()
   const localeSwitcherLabel = t('chrome.language')
+  const localeRootLinkLabel = t('chrome.localeRootLink')
   const githubLabel = t('chrome.github')
   const themeToggleLabel = theme === 'light' ? t('theme.dark') : t('theme.light')
 
   return (
     <div className={styles.topbarActions}>
+      <DeepLinkIconButton
+        label={localeRootLinkLabel}
+        path={getGuidePath(locale)}
+        className={styles.iconControl}
+      />
+
       <a className={styles.githubLink} href={githubUrl} target="_blank" rel="noreferrer">
         {githubLabel}
       </a>

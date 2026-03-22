@@ -13,6 +13,7 @@ export const koTranslation = {
   chrome: {
     github: 'GitHub',
     language: '언어',
+    localeRootLink: '현재 언어 루트',
   },
   theme: {
     light: '라이트 모드',

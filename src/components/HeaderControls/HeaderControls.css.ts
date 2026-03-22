@@ -59,6 +59,28 @@ export const githubLink = style([
   },
 ])
 
+export const iconControl = style([
+  controlBase,
+  {
+    flexShrink: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: vars.control.height,
+    height: vars.control.height,
+    padding: 0,
+    color: vars.color.textSoft,
+    selectors: {
+      '&:hover': {
+        color: vars.color.text,
+      },
+      '&[data-copied="true"]': {
+        color: vars.color.accentStrong,
+      },
+    },
+  },
+])
+
 export const localeLabel = style({
   fontSize: '0.92rem',
   color: vars.color.textSoft,

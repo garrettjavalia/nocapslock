@@ -13,6 +13,7 @@ export const enTranslation = {
   chrome: {
     github: 'GitHub',
     language: 'Language',
+    localeRootLink: 'Current language root',
   },
   theme: {
     light: 'Light mode',
