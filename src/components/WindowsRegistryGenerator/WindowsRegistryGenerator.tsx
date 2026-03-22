@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { guideSectionIds } from '../../guideAnchors'
-import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
+import { HeadlineCopyLinkButton } from '../CopyLink'
 import { GuideCodeBlock } from '../GuideCodeBlock'
 import { Keycap } from '../Keycap'
 import * as styles from './WindowsRegistryGenerator.css'
@@ -125,7 +125,7 @@ export function WindowsRegistryGenerator() {
         <div className={styles.headerBlock}>
           <div className={styles.titleRow}>
             <h4 className={styles.title}>{t('guide.registryGenerator.title')}</h4>
-            <DeepLinkIconButton
+            <HeadlineCopyLinkButton
               label={t('guide.registryGenerator.title')}
               hash={guideSectionIds.windowsRegistryEditor}
             />

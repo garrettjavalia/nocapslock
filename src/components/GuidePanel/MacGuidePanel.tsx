@@ -2,7 +2,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { getGuidePath } from '../../guides'
 import { guideSectionIds } from '../../guideAnchors'
 import { InlineTransKeycap } from '../Keycap'
-import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
+import { HeadlineCopyLinkButton } from '../CopyLink'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
 import type { Locale } from '../../i18n'
@@ -48,7 +48,7 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
     <article id={guideSectionIds.mac} className={styles.guideCard}>
       <div className={styles.guideCardTitleRow}>
         <h3 className={styles.guideCardTitle}>{t('guide.mac.title')}</h3>
-        <DeepLinkIconButton
+        <HeadlineCopyLinkButton
           label={t('guide.mac.title')}
           path={getGuidePath(locale, 'mac')}
           hash={guideSectionIds.mac}
