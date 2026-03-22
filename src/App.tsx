@@ -5,6 +5,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
+import { trackPageView } from './analytics'
 import { DemoPanel } from './components/DemoPanel'
 import { GuidePanel } from './components/GuidePanel'
 import { HeroMasthead } from './components/HeroMasthead'
@@ -81,12 +82,14 @@ export function App({
 
   const [theme, setTheme] = useState<ThemeMode>(readInitialTheme)
   const [platform, setPlatform] = useState<PlatformId>('other')
+  const [hasDetectedPlatform, setHasDetectedPlatform] = useState(false)
   const { t } = useTranslation()
 
   const githubUrl = 'https://github.com/garrettjavalia/nocapslock'
 
   useEffect(() => {
     setPlatform(detectPlatform())
+    setHasDetectedPlatform(true)
   }, [])
 
   useEffect(() => {
@@ -160,6 +163,7 @@ export function App({
   }, [location.hash, location.pathname])
 
   const currentPath = getGuidePath(locale, guidePlatform, windowsMethod)
+  const pagePath = `${location.pathname}${location.search}`
   const rootTitle = t('hero.title')
   const guideTitle = guidePlatform === 'windows'
     ? t('guide.windows.title')
@@ -178,6 +182,19 @@ export function App({
     : windowsMethod !== null
       ? stripInlineMarkup(t(`guide.windows.method.${windowsMethod}.summary`))
       : stripInlineMarkup(t(guidePlatform === 'mac' ? 'guide.mac.summary' : `guide.${guidePlatform}.summary`))
+  const shouldTrackPageView = guidePlatform !== null
+    || (hasDetectedPlatform && getDefaultGuidePlatform(platform) === null)
+
+  useEffect(() => {
+    if (!shouldTrackPageView) {
+      return
+    }
+
+    trackPageView({
+      path: pagePath,
+      title: documentTitle,
+    })
+  }, [documentTitle, pagePath, shouldTrackPageView])
 
   return (
     <>
