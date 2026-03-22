@@ -27,11 +27,26 @@ const controlBase = style({
 })
 
 export const topbarActions = style({
+  display: 'grid',
+  justifyItems: 'end',
+  gap: 10,
+  minWidth: 0,
+})
+
+export const primaryControlsRow = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
   gap: 12,
   flexWrap: 'wrap',
+  minWidth: 0,
+})
+
+export const localeRow = style({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  width: '100%',
+  minWidth: 0,
 })
 
 export const localeSwitcher = style([

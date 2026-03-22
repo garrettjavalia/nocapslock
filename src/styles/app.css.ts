@@ -51,27 +51,27 @@ export const mastheadSurface = style({
 export const mastheadTop = style({
   position: 'relative',
   zIndex: 1,
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: 'clamp(156px, 18vw, 196px) minmax(0, 1fr)',
+  columnGap: 18,
   alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: 16,
   padding: '10px 14px 12px',
-  '@media': {
-    '(max-width: 840px)': {
-      flexDirection: 'column',
-      alignItems: 'stretch',
-    },
-  },
+})
+
+export const mastheadControlsRow = style({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  width: '100%',
+  minWidth: 0,
 })
 
 export const mastheadTitles = style({
   position: 'relative',
-  minHeight: '1.6rem',
-  width: 'min(720px, 100%)',
-  flex: '1 1 auto',
   display: 'flex',
+  justifyContent: 'flex-start',
   alignItems: 'center',
-  paddingTop: 0,
+  minWidth: 0,
+  overflow: 'hidden',
 })
 
 export const hero = style({
@@ -79,7 +79,7 @@ export const hero = style({
 })
 
 export const heroCopy = style({
-  maxWidth: 720,
+  maxWidth: 800,
   overflow: 'hidden',
 })
 

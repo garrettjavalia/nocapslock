@@ -3,10 +3,12 @@ import * as styles from './Keycap.css'
 
 export type RemapKey = 'Command' | 'Control' | 'ESC'
 export type PlatformId = 'windows' | 'mac' | 'linux' | 'android' | 'ios' | 'unix' | 'other'
+type KeycapSize = 'default' | 'badge'
 
 type KeycapProps = {
   keyLabel: string
   platform: PlatformId
+  size?: KeycapSize
   mini?: boolean
   miniSize?: 'xs' | 'sm' | 'md'
   selectable?: boolean
@@ -23,10 +25,14 @@ function isAppleModifierKeycap(platform: PlatformId, label: string) {
 function renderAppleModifier(label: 'Command' | 'Control') {
   return (
     <div className={styles.commandKeycap}>
-      <span className={styles.commandGlyphRight} aria-hidden="true">
-        {label === 'Command' ? '⌘' : '⌃'}
+      <span className={styles.commandGlyphRow}>
+        <span className={styles.commandGlyphRight} aria-hidden="true">
+          {label === 'Command' ? '⌘' : '⌃'}
+        </span>
       </span>
-      <span className={styles.commandLabel}>{label === 'Command' ? 'command' : 'control'}</span>
+      <span className={styles.commandLabel}>
+        {label === 'Command' ? 'command' : 'control'}
+      </span>
     </div>
   )
 }
@@ -88,6 +94,7 @@ function renderMini(
 export function Keycap({
   crossed,
   keyLabel,
+  size = 'default',
   mini = false,
   miniSize = 'md',
   selectable = true,
@@ -101,6 +108,7 @@ export function Keycap({
   }
 
   const classes = [styles.keycap]
+  if (size === 'badge') classes.push(styles.keycapBadge)
   if (muted) classes.push(styles.keycapMuted)
 
   let content: ReactNode

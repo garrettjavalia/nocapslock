@@ -1,7 +1,20 @@
-import { keyframes, style } from '@vanilla-extract/css'
+import { createVar, keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
 const keycapAnimationDuration = '1.6s'
+const keycapPadding = createVar()
+const keycapRadius = createVar()
+const keycapInnerInset = createVar()
+const keycapInnerRadius = createVar()
+const keycapCrossInset = createVar()
+const keycapCrossTop = createVar()
+const keycapCrossHeight = createVar()
+const keycapLabelFontSize = createVar()
+const keycapLabelWideFontSize = createVar()
+const commandPaddingInline = createVar()
+const commandPaddingBlock = createVar()
+const commandGlyphFontSize = createVar()
+const commandLabelFontSize = createVar()
 
 const labelFlip = keyframes({
   '0%': {
@@ -49,13 +62,28 @@ export const inlineMiniKeycapCross = style({
 })
 
 export const keycap = style({
+  vars: {
+    [keycapPadding]: '24px',
+    [keycapRadius]: '30px',
+    [keycapInnerInset]: '12px',
+    [keycapInnerRadius]: '22px',
+    [keycapCrossInset]: '12%',
+    [keycapCrossTop]: '49%',
+    [keycapCrossHeight]: '3px',
+    [keycapLabelFontSize]: 'clamp(1.8rem, 5vw, 3rem)',
+    [keycapLabelWideFontSize]: 'clamp(1.95rem, 4.9vw, 3.05rem)',
+    [commandPaddingInline]: '18px',
+    [commandPaddingBlock]: '14px',
+    [commandGlyphFontSize]: '2.35rem',
+    [commandLabelFontSize]: '2.35rem',
+  },
   position: 'relative',
   display: 'grid',
   placeItems: 'center',
   width: 'min(320px, 100%)',
   aspectRatio: '1.9 / 1',
-  padding: 24,
-  borderRadius: 30,
+  padding: keycapPadding,
+  borderRadius: keycapRadius,
   background: vars.color.keycapBg,
   border: `1px solid ${vars.color.keycapBorder}`,
   boxShadow: 'inset 0 -10px 16px rgba(0, 0, 0, 0.06)',
@@ -67,15 +95,17 @@ export const keycap = style({
     '&::after': {
       content: '""',
       position: 'absolute',
-      inset: 12,
+      inset: keycapInnerInset,
       zIndex: 1,
-      borderRadius: 22,
+      borderRadius: keycapInnerRadius,
       border: `1px solid ${vars.color.keycapBorder}`,
     },
   },
   '@media': {
     '(max-width: 640px)': {
-      borderRadius: 24,
+      vars: {
+        [keycapRadius]: '24px',
+      },
     },
   },
   '@supports': {
@@ -83,6 +113,28 @@ export const keycap = style({
       boxShadow: `inset 0 -10px 16px color-mix(in srgb, ${vars.color.text} 8%, transparent)`,
     },
   },
+})
+
+export const keycapBadge = style({
+  vars: {
+    [keycapPadding]: '14px',
+    [keycapRadius]: '24px',
+    [keycapInnerInset]: '8px',
+    [keycapInnerRadius]: '14px',
+    [keycapCrossInset]: '14%',
+    [keycapCrossTop]: '50%',
+    [keycapCrossHeight]: '2.5px',
+    [keycapLabelFontSize]: 'clamp(1.35rem, 2.05vw, 2rem)',
+    [keycapLabelWideFontSize]: 'clamp(1.3rem, 1.75vw, 1.8rem)',
+    [commandPaddingInline]: '12px',
+    [commandPaddingBlock]: '10px',
+    [commandGlyphFontSize]: '1.72rem',
+    [commandLabelFontSize]: '1.72rem',
+  },
+  width: '100%',
+  height: '100%',
+  aspectRatio: 'auto',
+  overflow: 'hidden',
 })
 
 export const keycapMuted = style({
@@ -98,10 +150,10 @@ export const keycapCross = style({
     '&::before': {
       content: '""',
       position: 'absolute',
-      left: '12%',
-      right: '12%',
-      top: '49%',
-      height: 3,
+      left: keycapCrossInset,
+      right: keycapCrossInset,
+      top: keycapCrossTop,
+      height: keycapCrossHeight,
       borderRadius: 999,
       background: 'linear-gradient(90deg, rgba(217, 93, 57, 0.9), rgba(217, 93, 57, 0.5))',
       transform: 'rotate(-12deg)',
@@ -114,7 +166,7 @@ export const keycapLabel = style({
   display: 'inline-block',
   position: 'relative',
   zIndex: 2,
-  fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+  fontSize: keycapLabelFontSize,
   fontWeight: 700,
   letterSpacing: '-0.05em',
   willChange: 'transform, opacity',
@@ -126,7 +178,7 @@ export const keycapLabelStatic = style({
 })
 
 export const keycapLabelWide = style({
-  fontSize: 'clamp(1.95rem, 4.9vw, 3.05rem)',
+  fontSize: keycapLabelWideFontSize,
   textTransform: 'none',
 })
 
@@ -134,39 +186,22 @@ export const commandKeycap = style({
   position: 'relative',
   zIndex: 2,
   display: 'grid',
+  gridTemplateRows: '1fr auto',
   width: '100%',
   height: '100%',
-  padding: '22px 20px 18px',
+  padding: `${commandPaddingBlock} ${commandPaddingInline}`,
 })
 
-const appleModifierGlyphBase = style({
-  position: 'absolute',
-  top: 20,
-  fontSize: '2.5rem',
-  lineHeight: 1,
-  letterSpacing: '-0.06em',
-  willChange: 'transform, opacity',
-  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
+export const commandGlyphRow = style({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'flex-start',
+  minWidth: 0,
+  minHeight: 0,
 })
 
-export const commandGlyphLeft = style([
-  appleModifierGlyphBase,
-  {
-    left: 22,
-  },
-])
-
-export const commandGlyphRight = style([
-  appleModifierGlyphBase,
-  {
-    right: 22,
-  },
-])
-
-export const commandGlyph = style({
-  justifySelf: 'start',
-  alignSelf: 'start',
-  fontSize: '2.35rem',
+export const commandGlyphRight = style({
+  fontSize: commandGlyphFontSize,
   lineHeight: 1,
   letterSpacing: '-0.06em',
   willChange: 'transform, opacity',
@@ -177,8 +212,9 @@ export const commandLabel = style({
   alignSelf: 'end',
   justifySelf: 'center',
   paddingLeft: 0,
-  fontSize: '2.5rem',
+  fontSize: commandLabelFontSize,
   fontWeight: 700,
+  lineHeight: 1,
   letterSpacing: '-0.04em',
   textTransform: 'lowercase',
   willChange: 'transform, opacity',
