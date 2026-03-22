@@ -66,13 +66,15 @@ export function HeroMasthead({
               <CompactRemapBadge label={t('hero.title')} platform={platform} />
             </div>
 
-            <HeaderControls
-              githubUrl={githubUrl}
-              locale={locale}
-              onLocaleChange={onLocaleChange}
-              onThemeToggle={onThemeToggle}
-              theme={theme}
-            />
+            <div className={styles.mastheadControlsRow}>
+              <HeaderControls
+                githubUrl={githubUrl}
+                locale={locale}
+                onLocaleChange={onLocaleChange}
+                onThemeToggle={onThemeToggle}
+                theme={theme}
+              />
+            </div>
           </div>
         </div>
       </header>

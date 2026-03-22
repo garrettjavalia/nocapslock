@@ -21,7 +21,7 @@ export const frFrTranslation = {
     dark: 'Mode sombre',
   },
   hero: {
-    title: 'No Capslock Anymore !',
+    title: "Caps Lock, c'est fini !",
     lead:
       'Caps Lock occupe l’une des places les plus précieuses de votre clavier. Si vous le remappez vers une touche de raccourci que vous utilisez vraiment, la saisie devient bien plus confortable.',
   },
