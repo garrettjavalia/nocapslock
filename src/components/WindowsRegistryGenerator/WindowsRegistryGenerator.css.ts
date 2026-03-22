@@ -8,6 +8,14 @@ export const generator = style({
   borderRadius: 20,
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgElevated,
+  scrollMarginTop: 128,
+  transition: 'border-color 160ms ease, box-shadow 160ms ease',
+  selectors: {
+    '&:target': {
+      borderColor: `color-mix(in srgb, ${vars.color.accent} 54%, ${vars.color.border})`,
+      boxShadow: `0 0 0 3px color-mix(in srgb, ${vars.color.accent} 20%, transparent)`,
+    },
+  },
 })
 
 export const header = style({
@@ -22,6 +30,13 @@ export const headerBlock = style({
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
+})
+
+export const titleRow = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  flexWrap: 'wrap',
 })
 
 export const title = style({

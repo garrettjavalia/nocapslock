@@ -3,7 +3,7 @@ import {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { DemoPanel } from './components/DemoPanel'
 import { GuidePanel } from './components/GuidePanel'
@@ -11,10 +11,15 @@ import { HeroMasthead } from './components/HeroMasthead'
 import { KeyPreviewPanel } from './components/KeyPreviewPanel'
 import { type PlatformId } from './components/Keycap'
 import {
-  getLocalePath,
+  getDefaultGuidePlatform,
+  getGuidePath,
+  type WindowsMethodId,
+} from './guides'
+import {
   supportedLocales,
   type Locale,
 } from './i18n'
+import type { GuidePlatformId } from './i18n/schema'
 import { siteOrigin } from './site'
 import * as styles from './styles/app.css'
 
@@ -58,10 +63,21 @@ function readInitialTheme(): ThemeMode {
 
 type AppProps = {
   locale: Locale
+  guidePlatform: GuidePlatformId | null
+  windowsMethod: WindowsMethodId | null
 }
 
-export function App({ locale }: AppProps) {
+function stripInlineMarkup(value: string) {
+  return value.replace(/<\/?key>/g, '')
+}
+
+export function App({
+  locale,
+  guidePlatform,
+  windowsMethod,
+}: AppProps) {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [theme, setTheme] = useState<ThemeMode>(readInitialTheme)
   const [platform, setPlatform] = useState<PlatformId>('other')
@@ -72,6 +88,22 @@ export function App({ locale }: AppProps) {
   useEffect(() => {
     setPlatform(detectPlatform())
   }, [])
+
+  useEffect(() => {
+    if (guidePlatform !== null) {
+      return
+    }
+
+    const nextGuidePlatform = getDefaultGuidePlatform(platform)
+    if (nextGuidePlatform === null) {
+      return
+    }
+
+    navigate(getGuidePath(locale, nextGuidePlatform), {
+      replace: true,
+      preventScrollReset: true,
+    })
+  }, [guidePlatform, locale, navigate, platform])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -91,31 +123,84 @@ export function App({ locale }: AppProps) {
     return () => media.removeEventListener('change', listener)
   }, [])
 
+  useEffect(() => {
+    if (!location.hash) {
+      return
+    }
+
+    const targetId = decodeURIComponent(location.hash.slice(1))
+    let frame = 0
+    let timeout = 0
+    let attempts = 0
+
+    const scrollToHashTarget = () => {
+      const target = document.getElementById(targetId)
+
+      if (target) {
+        target.scrollIntoView({ block: 'start' })
+        return
+      }
+
+      if (attempts >= 8) {
+        return
+      }
+
+      attempts += 1
+      timeout = window.setTimeout(() => {
+        frame = window.requestAnimationFrame(scrollToHashTarget)
+      }, 80)
+    }
+
+    frame = window.requestAnimationFrame(scrollToHashTarget)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(timeout)
+    }
+  }, [location.hash, location.pathname])
+
+  const currentPath = getGuidePath(locale, guidePlatform, windowsMethod)
+  const rootTitle = t('hero.title')
+  const guideTitleKey = guidePlatform === 'mac' ? 'guide.mac.title' : guidePlatform === null ? null : `guide.${guidePlatform}.title`
+  const documentTitle = guidePlatform === null
+    ? rootTitle
+    : windowsMethod !== null
+      ? `${t(`guide.windows.method.${windowsMethod}.title`)} | ${t('guide.windows.title')} | ${rootTitle}`
+      : `${t(guideTitleKey!)} | ${rootTitle}`
+  const pageDescription = guidePlatform === null
+    ? t('meta.description')
+    : windowsMethod !== null
+      ? stripInlineMarkup(t(`guide.windows.method.${windowsMethod}.summary`))
+      : stripInlineMarkup(t(guidePlatform === 'mac' ? 'guide.mac.summary' : `guide.${guidePlatform}.summary`))
+
   return (
     <>
       <Head>
         <html lang={locale} />
-        <title>{t('meta.title')}</title>
-        <meta name="description" content={t('meta.description')} />
+        <title>{documentTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta name="keywords" content={t('meta.keywords')} />
-        <link rel="canonical" href={`${siteOrigin}${getLocalePath(locale)}`} />
+        <link rel="canonical" href={`${siteOrigin}${currentPath}`} />
         {supportedLocales.map((item) => (
           <link
             key={item}
             rel="alternate"
             hrefLang={item}
-            href={`${siteOrigin}${getLocalePath(item)}`}
+            href={`${siteOrigin}${getGuidePath(item, guidePlatform, windowsMethod)}`}
           />
         ))}
-        <meta property="og:title" content={t('meta.title')} />
-        <meta property="og:description" content={t('meta.description')} />
+        <meta property="og:title" content={documentTitle} />
+        <meta property="og:description" content={pageDescription} />
       </Head>
 
       <div className={styles.pageShell}>
         <HeroMasthead
           githubUrl={githubUrl}
           locale={locale}
-          onLocaleChange={(nextLocale) => navigate(getLocalePath(nextLocale))}
+          onLocaleChange={(nextLocale) => navigate({
+            pathname: getGuidePath(nextLocale, guidePlatform, windowsMethod),
+            hash: location.hash,
+          })}
           onThemeToggle={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
           platform={platform}
           theme={theme}
@@ -126,7 +211,7 @@ export function App({ locale }: AppProps) {
 
           <DemoPanel platform={platform} />
 
-          <GuidePanel platform={platform} />
+          <GuidePanel locale={locale} guidePlatform={guidePlatform} windowsMethod={windowsMethod} />
         </main>
       </div>
     </>
