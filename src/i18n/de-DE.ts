@@ -7,7 +7,7 @@ export const deDeTranslation = {
   },
   meta: {
     description:
-      'Eine mehrsprachige Landingpage, die erklärt, warum es sinnvoll ist, Caps Lock auf Strg, Befehl oder Escape umzubelegen, und die du direkt im Browser ausprobieren kannst.',
+      'Nutze Caps Lock bequemer!',
     keywords:
       'Feststelltaste umbelegen, Caps Lock zu Strg, Caps Lock zu Befehl, Caps Lock zu Escape, Tastaturproduktivität, Karabiner, keyd, PowerToys',
   },

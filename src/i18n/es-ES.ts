@@ -7,7 +7,7 @@ export const esEsTranslation = {
   },
   meta: {
     description:
-      'Una página de inicio multilingüe que explica por qué reasignar Caps Lock a Control, Command o Escape es útil, y te permite probarlo directamente en el navegador.',
+      'Usa Caps Lock de forma más cómoda.',
     keywords:
       'reasignar caps lock, caps lock a control, caps lock a command, caps lock a escape, productividad con teclado, karabiner, keyd, powertoys',
   },

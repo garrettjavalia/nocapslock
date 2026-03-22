@@ -7,7 +7,7 @@ export const koTranslation = {
   },
   meta: {
     description:
-      '캡스락을 Control, Command, Escape로 바꾸는 이유를 소개하고, 브라우저에서 바로 체험할 수 있는 다국어 웹페이지입니다.',
+      'Caps Lock을 더 편하게 쓰세요!',
     keywords:
       '캡스락 변경, caps lock remap, caps lock to control, caps lock to command, caps lock to escape, 키보드 생산성',
   },
