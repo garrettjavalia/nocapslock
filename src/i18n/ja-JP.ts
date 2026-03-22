@@ -139,11 +139,11 @@ Caps Lock + X で切り取り。
           steps: {
             step01: {
               title: '1. PowerToys をインストールする',
-              body: 'PowerToys は Microsoft Store、GitHub のリリースページ、または winget からインストールできます。Microsoft のインストールガイドでは、この3つの方法が案内されています。',
+              body: 'PowerToys は Microsoft Store、GitHub のリリースページ、または winget からインストールできます。<powertoysInstallationGuide>Microsoft のインストールガイド</powertoysInstallationGuide>では、この3つの方法が案内されています。',
             },
             step02: {
               title: '2. Keyboard Manager を開いて Remap a key を選ぶ',
-              body: 'PowerToys の設定で Keyboard Manager を開き、Remap a key を選びます。そこに <key>Caps Lock</key> 用の新しい行を追加してください。',
+              body: 'PowerToys の設定で <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide> を開き、Remap a key を選びます。そこに <key>Caps Lock</key> 用の新しい行を追加してください。',
             },
             step03: {
               title: '3. 送信先のキーを選ぶ',
@@ -209,15 +209,15 @@ Caps Lock + X で切り取り。
       steps: {
         step01: {
           title: '1. Karabiner-Elements をインストールして権限を許可する',
-          body: 'まず Karabiner-Elements をインストールし、バックグラウンドサービス、入力監視権限、ドライバ拡張のすべてを許可してください。Karabiner の公式ドキュメントでも、これらは必要な macOS 設定として案内されています。',
+          body: 'まず <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> をインストールし、バックグラウンドサービス、入力監視権限、ドライバ拡張のすべてを許可してください。<karabinerRequiredSettingsGuide>Karabiner の公式ドキュメント</karabinerRequiredSettingsGuide>でも、これらは必要な macOS 設定として案内されています。',
         },
         step02: {
           title: '2. Simple Modifications で <key>Caps Lock</key> を再割り当てする',
-          body: 'Karabiner-Elements を開き、Simple Modifications を選び、編集したいキーボードを指定して、<key>Caps Lock</key> を <key>Left Control</key> に変更します。<key>Escape</key> のほうが使いやすければ、ここで選んでも構いません。',
+          body: 'Karabiner-Elements を開き、<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> を選び、編集したいキーボードを指定して、<key>Caps Lock</key> を <key>Left Control</key> に変更します。<key>Escape</key> のほうが使いやすければ、ここで選んでも構いません。',
         },
         step03: {
           title: '3. 必要ならログイン前でも同じ割り当てを使う',
-          body: 'ログイン前のパスワード画面でも同じ割り当てを使いたいなら、Karabiner Settings の Misc タブを開き、“Copy the current configuration to the system default configuration.” を実行してください。公式ガイドでも、これはログイン前に使う方法として説明されています。',
+          body: 'ログイン前のパスワード画面でも同じ割り当てを使いたいなら、Karabiner Settings の Misc タブを開き、“Copy the current configuration to the system default configuration.” を実行してください。<karabinerBeforeLoginGuide>公式ガイド</karabinerBeforeLoginGuide>でも、これはログイン前に使う方法として説明されています。',
         },
         step04: {
           title: '4. すでに言語切り替えに使っている場合だけ続ける',
@@ -229,11 +229,11 @@ Caps Lock + X で切り取り。
             },
             step04_2: {
               title: '4-2. その右側キーを Karabiner で <key>F18</key> に割り当てる',
-              body: 'Simple Modifications で、前の手順で選んだキーに応じて <key>Right Command</key> -> <key>F18</key> か <key>Right Option</key> -> <key>F18</key> を追加します。これで <key>Caps Lock</key> を別用途に変えながら、キーボード右側に専用の言語切り替えキーを残せます。',
+              body: '<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> で、前の手順で選んだキーに応じて <key>Right Command</key> -> <key>F18</key> か <key>Right Option</key> -> <key>F18</key> を追加します。これで <key>Caps Lock</key> を別用途に変えながら、キーボード右側に専用の言語切り替えキーを残せます。',
             },
             step04_3: {
               title: '4-3. macOS で <key>F18</key> を入力ソース切り替えに割り当てる',
-              body: 'Apple メニュー > システム設定 > キーボード > キーボードショートカット > 入力ソース を開き、“入力メニューで次のソースを選択” に <key>F18</key> を割り当ててください。これで <key>Caps Lock</key> を別の役割に変えたあとでも、信頼できる言語切り替えキーを再び用意できます。ここでは実用例として <key>F18</key> を使っています。Apple の文書では <key>F1</key> から <key>F12</key> が内蔵のシステム機能に結びついているため、入力ソース切り替えにはそれより大きい番号のファンクションキーのほうが扱いやすいことがあります。実際には、<key>F18</key> はそうした内蔵機能と重なりにくく、無難な選択です。',
+              body: 'Apple メニュー > システム設定 > キーボード > キーボードショートカット > 入力ソース を開き、“入力メニューで次のソースを選択” に <key>F18</key> を割り当ててください。これで <key>Caps Lock</key> を別の役割に変えたあとでも、信頼できる言語切り替えキーを再び用意できます。ここでは実用例として <key>F18</key> を使っています。<appleInputSourcesGuide>Apple の文書では</appleInputSourcesGuide> <key>F1</key> から <key>F12</key> が内蔵のシステム機能に結びついているため、入力ソース切り替えにはそれより大きい番号のファンクションキーのほうが扱いやすいことがあります。実際には、<key>F18</key> はそうした内蔵機能と重なりにくく、無難な選択です。',
             },
           },
         },

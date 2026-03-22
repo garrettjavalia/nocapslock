@@ -137,11 +137,11 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           steps: {
             step01: {
               title: '1. Install PowerToys',
-              body: 'Install PowerToys from the Microsoft Store, the GitHub release page, or winget. Microsoft documents all three routes in its installation guide.',
+              body: 'Install PowerToys from the Microsoft Store, the GitHub release page, or winget. Microsoft documents all three routes in its <powertoysInstallationGuide>installation guide</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Open Keyboard Manager and choose Remap a key',
-              body: 'In PowerToys Settings, open Keyboard Manager and select Remap a key. Then add a new row for <key>Caps Lock</key>.',
+              body: 'In PowerToys Settings, open <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide> and select Remap a key. Then add a new row for <key>Caps Lock</key>.',
             },
             step03: {
               title: '3. Choose the target key you want',
@@ -207,15 +207,15 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       steps: {
         step01: {
           title: '1. Install Karabiner-Elements and finish the permission prompts',
-          body: 'Install Karabiner-Elements first, then make sure the background service, Input Monitoring permission, and driver extension are all allowed. Karabiner’s official documentation calls these required macOS settings.',
+          body: 'Install <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> first, then make sure the background service, Input Monitoring permission, and driver extension are all allowed. <karabinerRequiredSettingsGuide>Karabiner’s official documentation</karabinerRequiredSettingsGuide> calls these required macOS settings.',
         },
         step02: {
           title: '2. Remap <key>Caps Lock</key> in Simple Modifications',
-          body: 'Open Karabiner-Elements, choose Simple Modifications, select the keyboard you want to edit, and change <key>Caps Lock</key> to <key>Left Control</key>. If you prefer <key>Escape</key> instead, you can choose that here too.',
+          body: 'Open Karabiner-Elements, choose <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, select the keyboard you want to edit, and change <key>Caps Lock</key> to <key>Left Control</key>. If you prefer <key>Escape</key> instead, you can choose that here too.',
         },
         step03: {
           title: '3. Optional: make the same mapping work before login',
-          body: 'If you want the same mapping on the password screen before login, open the Misc tab in Karabiner Settings and use “Copy the current configuration to the system default configuration.” Karabiner’s official guide documents this for use before logging in.',
+          body: 'If you want the same mapping on the password screen before login, open the Misc tab in Karabiner Settings and use “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>Karabiner’s official guide</karabinerBeforeLoginGuide> documents this for use before logging in.',
         },
         step04: {
           title: '4. Optional: only continue if <key>Caps Lock</key> is already your language-switch key',
@@ -227,11 +227,11 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             },
             step04_2: {
               title: '4-2. Map that right-side key to <key>F18</key> in Karabiner',
-              body: 'In Simple Modifications, add either <key>Right Command</key> -> <key>F18</key> or <key>Right Option</key> -> <key>F18</key>, depending on which key you picked in the previous step. This frees <key>Caps Lock</key> for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
+              body: 'In <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, add either <key>Right Command</key> -> <key>F18</key> or <key>Right Option</key> -> <key>F18</key>, depending on which key you picked in the previous step. This frees <key>Caps Lock</key> for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
             },
             step04_3: {
               title: '4-3. Assign <key>F18</key> to input-source switching in macOS',
-              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. Apple documents that <key>F1</key> through <key>F12</key> are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, <key>F18</key> has been a safe choice because it tends not to overlap with those built-in roles.',
+              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. <appleInputSourcesGuide>Apple documents that</appleInputSourcesGuide> <key>F1</key> through <key>F12</key> are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, <key>F18</key> has been a safe choice because it tends not to overlap with those built-in roles.',
             },
           },
         },
