@@ -1,5 +1,5 @@
 import type { PlatformId } from './components/Keycap'
-import type { GuidePlatformId, Locale } from './i18n'
+import { getLocalePath, type GuidePlatformId, type Locale } from './i18n'
 
 export type WindowsMethodId = 'powertoys' | 'registry'
 
@@ -8,7 +8,7 @@ export function getGuidePath(
   guidePlatform: GuidePlatformId | null = null,
   windowsMethod: WindowsMethodId | null = null,
 ): string {
-  const localeRoot = locale === 'ko' ? '/ko/' : '/en/'
+  const localeRoot = getLocalePath(locale)
 
   if (guidePlatform === null) {
     return localeRoot

@@ -1,10 +1,11 @@
+import type { TranslationMessages } from './schema'
+
 export const koTranslation = {
   linkCopy: {
     copy: '링크 복사',
     copied: '링크 복사됨',
   },
   meta: {
-    title: 'No Capslock Anymore | 캡스락을 더 좋은 키로 바꾸기',
     description:
       '캡스락을 Control, Command, Escape로 바꾸는 이유를 소개하고, 브라우저에서 바로 체험할 수 있는 다국어 웹페이지입니다.',
     keywords:
@@ -295,6 +296,6 @@ esc = capslock`,
         '<key>Caps Lock</key>이 가끔 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 <key>Caps Lock</key>으로 남겨두는 편이 안전합니다.',
     },
   },
-} as const
+} as const satisfies TranslationMessages
 
 export const koMessages = koTranslation
