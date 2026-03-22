@@ -1,4 +1,3 @@
-import { useEffect, useState, type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CompactRemapBadge } from '../CompactRemapBadge'
 import { HeaderControls } from '../HeaderControls'
@@ -26,40 +25,10 @@ export function HeroMasthead({
   theme,
 }: HeroMastheadProps) {
   const { t } = useTranslation()
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const compactProgress = Math.max(0, Math.min(1, (scrollProgress - 0.42) / 0.38))
-
-  useEffect(() => {
-    let frame = 0
-
-    const updateProgress = () => {
-      frame = 0
-      setScrollProgress(Math.max(0, Math.min(1, window.scrollY / 180)))
-    }
-
-    const onScroll = () => {
-      if (frame) return
-      frame = window.requestAnimationFrame(updateProgress)
-    }
-
-    updateProgress()
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame)
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [])
-
-  const mastheadStyle = {
-    '--hero-opacity': `${Math.max(0, 1 - scrollProgress * 1.15)}`,
-    '--compact-opacity': `${compactProgress}`,
-    '--surface-opacity': `${compactProgress}`,
-  } as CSSProperties
 
   return (
     <>
-      <div className={styles.heroStickyStack} style={mastheadStyle}>
+      <div className={styles.heroStickyStack}>
         <header className={styles.masthead}>
           <div className={styles.mastheadSurface}>
             <div className={styles.mastheadTop}>
@@ -79,7 +48,7 @@ export function HeroMasthead({
         </header>
       </div>
 
-      <section className={styles.hero} style={mastheadStyle}>
+      <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <h1 className={`${styles.heroTitle} ${styles.heroTitleFloating}`}>{t('hero.title')}</h1>
         </div>

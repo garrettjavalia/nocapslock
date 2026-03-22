@@ -1,5 +1,17 @@
-import { style } from '@vanilla-extract/css'
+import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from './theme.css'
+
+// Hero title fades out as you scroll from 0 → ~157 px
+const heroFadeOut = keyframes({
+  from: { opacity: 1 },
+  to: { opacity: 0 },
+})
+
+// Masthead surface fades in as you scroll from ~76 px → 144 px
+const surfaceFadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+})
 
 export const pageShell = style({
   width: 'min(1120px, calc(100% - 32px))',
@@ -66,9 +78,21 @@ export const mastheadSurface = style({
       border: `1px solid ${vars.color.border}`,
       boxShadow: vars.shadow.panel,
       backdropFilter: 'blur(18px)',
-      opacity: 'var(--surface-opacity, 0)',
-      transition: 'opacity 140ms linear',
+      opacity: 0,
       pointerEvents: 'none',
+    },
+  },
+  '@supports': {
+    '(animation-timeline: scroll())': {
+      selectors: {
+        '&::before': {
+          animationName: surfaceFadeIn,
+          animationTimingFunction: 'linear',
+          animationFillMode: 'both',
+          animationTimeline: 'scroll(root block)',
+          animationRange: '76px 144px',
+        },
+      },
     },
   },
 })
@@ -126,13 +150,21 @@ export const heroTitle = style({
 })
 
 export const heroTitleFloating = style({
-  opacity: 'var(--hero-opacity, 1)',
+  opacity: 1,
   willChange: 'opacity',
-  transition: 'opacity 120ms linear',
+  '@supports': {
+    '(animation-timeline: scroll())': {
+      animationName: heroFadeOut,
+      animationTimingFunction: 'linear',
+      animationFillMode: 'both',
+      animationTimeline: 'scroll(root block)',
+      animationRange: '0px 157px',
+    },
+  },
   '@media': {
     '(max-width: 780px)': {
+      animation: 'none',
       opacity: 1,
-      transition: 'none',
     },
   },
 })
