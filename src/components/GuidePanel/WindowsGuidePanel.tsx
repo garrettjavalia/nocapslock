@@ -4,7 +4,7 @@ import { getGuidePath, type WindowsMethodId } from '../../guides'
 import { guideSectionIds } from '../../guideAnchors'
 import type { Locale } from '../../i18n'
 import * as styles from '../../styles/app.css'
-import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
+import { HeadlineCopyLinkButton } from '../CopyLink'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import { InlineTransKeycap } from '../Keycap'
 import { WindowsRegistryGenerator } from '../WindowsRegistryGenerator'
@@ -171,7 +171,7 @@ export function WindowsGuidePanel({
     <article id={guideSectionIds.windows} className={styles.guideCard}>
       <div className={styles.guideCardTitleRow}>
         <h3 className={styles.guideCardTitle}>{t('guide.windows.title')}</h3>
-        <DeepLinkIconButton
+        <HeadlineCopyLinkButton
           label={t('guide.windows.title')}
           path={currentWindowsPath}
           hash={guideSectionIds.windows}
@@ -200,7 +200,7 @@ export function WindowsGuidePanel({
                   <h4 className={comparisonStyles.comparisonTitle}>
                     {t(`guide.windows.method.${method.id}.title`)}
                   </h4>
-                  <DeepLinkIconButton
+                  <HeadlineCopyLinkButton
                     label={t(`guide.windows.method.${method.id}.title`)}
                     path={method.path}
                     hash={method.anchorId}

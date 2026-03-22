@@ -1,8 +1,8 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { getGuidePath } from '../../guides'
 import { guideSectionIds } from '../../guideAnchors'
+import { HeadlineCopyLinkButton } from '../CopyLink'
 import { GuideCodeBlock } from '../GuideCodeBlock'
-import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
 import { InlineTransKeycap } from '../Keycap'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
@@ -35,7 +35,7 @@ export function LinuxGuidePanel({ locale }: LinuxGuidePanelProps) {
     <article id={guideSectionIds.linux} className={styles.guideCard}>
       <div className={styles.guideCardTitleRow}>
         <h3 className={styles.guideCardTitle}>{t('guide.linux.title')}</h3>
-        <DeepLinkIconButton
+        <HeadlineCopyLinkButton
           label={t('guide.linux.title')}
           path={getGuidePath(locale, 'linux')}
           hash={guideSectionIds.linux}

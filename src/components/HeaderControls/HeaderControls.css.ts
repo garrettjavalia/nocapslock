@@ -1,6 +1,9 @@
 import { style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
+const controlHoverBorder = `color-mix(in srgb, ${vars.color.accent} 16%, ${vars.color.border})`
+const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
+
 const controlBase = style({
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgElevated,
@@ -9,7 +12,18 @@ const controlBase = style({
   borderRadius: vars.control.radius,
   boxShadow: vars.shadow.panel,
   backdropFilter: 'blur(16px)',
-  transition: 'background-color 180ms ease, border-color 180ms ease, transform 180ms ease',
+  transition: 'background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease',
+  selectors: {
+    '&:hover': {
+      background: vars.color.bgStrong,
+      borderColor: controlHoverBorder,
+    },
+    '&:focus-visible': {
+      outline: 'none',
+      borderColor: vars.color.accent,
+      boxShadow: controlFocusShadow,
+    },
+  },
 })
 
 export const topbarActions = style({
@@ -29,6 +43,11 @@ export const localeSwitcher = style([
     gap: vars.control.gap,
     padding: `0 ${vars.control.paddingX}`,
     selectors: {
+      '&:focus-within': {
+        background: vars.color.bgStrong,
+        borderColor: vars.color.accent,
+        boxShadow: controlFocusShadow,
+      },
       '&::after': {
         content: '""',
         position: 'absolute',
@@ -40,6 +59,10 @@ export const localeSwitcher = style([
         borderBottom: `1.5px solid ${vars.color.textSoft}`,
         transform: 'translateY(-62%) rotate(45deg)',
         pointerEvents: 'none',
+      },
+      '&:hover::after, &:focus-within::after': {
+        borderRightColor: vars.color.text,
+        borderBottomColor: vars.color.text,
       },
     },
   },
@@ -72,14 +95,29 @@ export const iconControl = style([
     color: vars.color.textSoft,
     selectors: {
       '&:hover': {
+        background: vars.color.bgStrong,
+        borderColor: controlHoverBorder,
         color: vars.color.text,
       },
+      '&:focus-visible': {
+        outline: 'none',
+        borderColor: vars.color.accent,
+        boxShadow: controlFocusShadow,
+        color: vars.color.accentStrong,
+      },
       '&[data-copied="true"]': {
+        borderColor: controlHoverBorder,
+        background: vars.color.accentSoft,
         color: vars.color.accentStrong,
       },
     },
   },
 ])
+
+export const controlIcon = style({
+  width: 15,
+  height: 15,
+})
 
 export const localeLabel = style({
   fontSize: '0.92rem',
@@ -130,14 +168,16 @@ export const themeToggleThumb = style({
   borderRadius: 999,
   background: 'transparent',
   color: vars.color.textSoft,
-  transition: 'color 180ms ease, transform 180ms ease',
+  transition: 'color 180ms ease',
   selectors: {
     ':root[data-theme="dark"] &': {
       color: vars.color.textSoft,
     },
     [`${themeToggle}:hover &`]: {
       color: vars.color.text,
-      transform: 'scale(1.04)',
+    },
+    [`${themeToggle}:focus-visible &`]: {
+      color: vars.color.accentStrong,
     },
   },
 })

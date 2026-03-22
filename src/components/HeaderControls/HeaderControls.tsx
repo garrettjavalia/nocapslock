@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getGuidePath } from '../../guides'
-import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
+import { CopyLinkButton, LinkIcon } from '../CopyLink'
 import { localeLabels, supportedLocales, type Locale } from '../../i18n'
 import * as styles from './HeaderControls.css'
 
@@ -30,11 +30,13 @@ export function HeaderControls({
 
   return (
     <div className={styles.topbarActions}>
-      <DeepLinkIconButton
+      <CopyLinkButton
         label={localeRootLinkLabel}
         path={getGuidePath(locale)}
         className={styles.iconControl}
-      />
+      >
+        <LinkIcon className={styles.controlIcon} />
+      </CopyLinkButton>
 
       <a className={styles.githubLink} href={githubUrl} target="_blank" rel="noreferrer">
         {githubLabel}
