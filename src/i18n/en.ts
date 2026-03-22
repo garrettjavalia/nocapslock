@@ -4,7 +4,6 @@ export const enTranslation = {
     copied: 'Link copied',
   },
   meta: {
-    title: 'No Capslock Anymore | Turn Caps Lock into a Better Key',
     description:
       'A multilingual landing page that explains why remapping Caps Lock to Control, Command, or Escape is useful, and lets you try it right in the browser.',
     keywords:

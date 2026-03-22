@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { NavLink } from 'vite-react-ssg'
+import { NavLink, type NavLinkRenderProps } from 'react-router-dom'
 import { getGuidePath, type WindowsMethodId } from '../../guides'
 import type { Locale } from '../../i18n'
 import { LinuxGuidePanel } from './LinuxGuidePanel'
@@ -46,7 +46,7 @@ export function GuidePanel({
             role="tab"
             aria-selected={guidePlatform === tab.id}
             className={
-              ({ isActive }) => (
+              ({ isActive }: NavLinkRenderProps) => (
                 isActive
                   ? `${styles.guideTab} ${styles.guideTabActive}`
                   : styles.guideTab

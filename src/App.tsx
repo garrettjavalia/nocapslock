@@ -161,12 +161,18 @@ export function App({
 
   const currentPath = getGuidePath(locale, guidePlatform, windowsMethod)
   const rootTitle = t('hero.title')
-  const guideTitleKey = guidePlatform === 'mac' ? 'guide.mac.title' : guidePlatform === null ? null : `guide.${guidePlatform}.title`
+  const guideTitle = guidePlatform === 'windows'
+    ? t('guide.windows.title')
+    : guidePlatform === 'mac'
+      ? t('guide.mac.title')
+      : guidePlatform === 'linux'
+        ? t('guide.linux.title')
+        : null
   const documentTitle = guidePlatform === null
     ? rootTitle
     : windowsMethod !== null
       ? `${t(`guide.windows.method.${windowsMethod}.title`)} | ${t('guide.windows.title')} | ${rootTitle}`
-      : `${t(guideTitleKey!)} | ${rootTitle}`
+      : `${guideTitle!} | ${rootTitle}`
   const pageDescription = guidePlatform === null
     ? t('meta.description')
     : windowsMethod !== null

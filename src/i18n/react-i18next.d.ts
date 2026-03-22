@@ -1,10 +1,11 @@
 import 'i18next'
-import type { defaultLocale } from './shared'
-import type { resources } from './resources'
+import type { TranslationMessages } from './schema'
 
 declare module 'i18next' {
   interface CustomTypeOptions {
     defaultNS: 'translation'
-    resources: (typeof resources)[typeof defaultLocale]
+    resources: {
+      translation: TranslationMessages
+    }
   }
 }
