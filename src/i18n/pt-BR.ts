@@ -265,7 +265,7 @@ sudo systemctl enable --now keyd`,
 # Faz o Caps Lock agir como Escape ao tocar e como Control ao manter pressionado.
 capslock = overload(control, esc)
 
-# Opcional: coloca o Caps Lock de volta no Escape também.
+# Opcional: coloca o Caps Lock no Escape também.
 esc = capslock`,
       configFilename: 'default.conf',
       steps: {
