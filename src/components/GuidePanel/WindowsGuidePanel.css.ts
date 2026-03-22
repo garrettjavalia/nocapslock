@@ -19,25 +19,61 @@ export const comparisonGrid = style({
 })
 
 export const comparisonCard = style({
+  position: 'relative',
   display: 'grid',
-  gap: 12,
   padding: 16,
   borderRadius: 20,
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgElevated,
   color: vars.color.text,
   textAlign: 'left',
-  cursor: 'pointer',
-  appearance: 'none',
-  WebkitAppearance: 'none',
   boxShadow: 'none',
+  scrollMarginTop: 128,
   transition: 'border-color 140ms ease, background 140ms ease, box-shadow 140ms ease',
+  selectors: {
+    '&:target': {
+      borderColor: `color-mix(in srgb, ${vars.color.accent} 54%, ${vars.color.border})`,
+      boxShadow: `0 0 0 3px color-mix(in srgb, ${vars.color.accent} 20%, transparent)`,
+    },
+  },
+})
+
+export const comparisonContent = style({
+  position: 'relative',
+  zIndex: 2,
+  display: 'grid',
+  gap: 12,
+  pointerEvents: 'none',
+})
+
+export const comparisonOverlayLink = style({
+  position: 'absolute',
+  inset: 0,
+  borderRadius: 20,
+  zIndex: 1,
+  selectors: {
+    '&:focus-visible': {
+      outline: 'none',
+      boxShadow: `0 0 0 4px ${vars.color.accentSoft}`,
+    },
+  },
 })
 
 export const comparisonBlock = style({
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
+})
+
+export const comparisonTitleRow = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  flexWrap: 'wrap',
+})
+
+export const comparisonCopyButton = style({
+  pointerEvents: 'auto',
 })
 
 export const comparisonCardActive = style({

@@ -1,38 +1,31 @@
 import { useTranslation } from 'react-i18next'
-import { useEffect, useState } from 'react'
+import { NavLink } from 'vite-react-ssg'
+import { getGuidePath, type WindowsMethodId } from '../../guides'
+import type { Locale } from '../../i18n'
 import { LinuxGuidePanel } from './LinuxGuidePanel'
 import { MacGuidePanel } from './MacGuidePanel'
 import { WindowsGuidePanel } from './WindowsGuidePanel'
 import * as styles from '../../styles/app.css'
-import type { PlatformId } from '../Keycap'
+import type { GuidePlatformId } from '../../i18n/schema'
 
 type GuidePanelProps = {
-  platform: PlatformId
+  locale: Locale
+  guidePlatform: GuidePlatformId | null
+  windowsMethod: WindowsMethodId | null
 }
 
 const guideTabs = [
-  { id: 'windows', titleKey: 'guide.windows.title' },
-  { id: 'mac', titleKey: 'guide.mac.title' },
-  { id: 'linux', titleKey: 'guide.linux.title' },
+  { id: 'windows', titleKey: 'guide.windows.title', end: false },
+  { id: 'mac', titleKey: 'guide.mac.title', end: true },
+  { id: 'linux', titleKey: 'guide.linux.title', end: true },
 ] as const
 
-const defaultGuidePlatformByDevice: Record<PlatformId, 'windows' | 'mac' | 'linux'> = {
-  android: 'linux',
-  ios: 'mac',
-  linux: 'linux',
-  mac: 'mac',
-  other: 'linux',
-  unix: 'linux',
-  windows: 'windows',
-}
-
-export function GuidePanel({ platform }: GuidePanelProps) {
+export function GuidePanel({
+  locale,
+  guidePlatform,
+  windowsMethod,
+}: GuidePanelProps) {
   const { t } = useTranslation()
-  const [guidePlatform, setGuidePlatform] = useState<'windows' | 'mac' | 'linux'>('linux')
-
-  useEffect(() => {
-    setGuidePlatform(defaultGuidePlatformByDevice[platform])
-  }, [platform])
 
   return (
     <section className={styles.panel} aria-labelledby="guide-title">
@@ -45,25 +38,33 @@ export function GuidePanel({ platform }: GuidePanelProps) {
       <p className={styles.guideIntro}>{t('guide.intro')}</p>
       <div className={styles.guideTabs} role="tablist" aria-label={t('guide.title')}>
         {guideTabs.map((tab) => (
-          <button
+          <NavLink
             key={tab.id}
-            type="button"
+            to={getGuidePath(locale, tab.id)}
+            preventScrollReset
+            end={tab.end}
             role="tab"
             aria-selected={guidePlatform === tab.id}
             className={
-              guidePlatform === tab.id
-                ? `${styles.guideTab} ${styles.guideTabActive}`
-                : styles.guideTab
+              ({ isActive }) => (
+                isActive
+                  ? `${styles.guideTab} ${styles.guideTabActive}`
+                  : styles.guideTab
+              )
             }
-            onClick={() => setGuidePlatform(tab.id)}
           >
             {t(tab.titleKey)}
-          </button>
+          </NavLink>
         ))}
       </div>
-      {guidePlatform === 'windows' && <WindowsGuidePanel />}
-      {guidePlatform === 'mac' && <MacGuidePanel />}
-      {guidePlatform === 'linux' && <LinuxGuidePanel />}
+      {guidePlatform === null && (
+        <article className={styles.guideCard}>
+          <p className={styles.panelCopy}>{t('guide.selectionPrompt')}</p>
+        </article>
+      )}
+      {guidePlatform === 'windows' && <WindowsGuidePanel locale={locale} activeMethod={windowsMethod} />}
+      {guidePlatform === 'mac' && <MacGuidePanel locale={locale} />}
+      {guidePlatform === 'linux' && <LinuxGuidePanel locale={locale} />}
     </section>
   )
 }

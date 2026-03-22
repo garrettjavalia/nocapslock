@@ -1,10 +1,18 @@
 import { Trans, useTranslation } from 'react-i18next'
+import { getGuidePath } from '../../guides'
+import { guideSectionIds } from '../../guideAnchors'
 import { GuideCodeBlock } from '../GuideCodeBlock'
+import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
 import { InlineTransKeycap } from '../Keycap'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
+import type { Locale } from '../../i18n'
 
-export function LinuxGuidePanel() {
+type LinuxGuidePanelProps = {
+  locale: Locale
+}
+
+export function LinuxGuidePanel({ locale }: LinuxGuidePanelProps) {
   const { t } = useTranslation()
   const keyComponents = { key: <InlineTransKeycap platform="linux" /> }
   const notes = ['note1', 'note2', 'note3'] as const
@@ -24,8 +32,15 @@ export function LinuxGuidePanel() {
   ] as const
 
   return (
-    <article className={styles.guideCard}>
-      <h3 className={styles.guideCardTitle}>{t('guide.linux.title')}</h3>
+    <article id={guideSectionIds.linux} className={styles.guideCard}>
+      <div className={styles.guideCardTitleRow}>
+        <h3 className={styles.guideCardTitle}>{t('guide.linux.title')}</h3>
+        <DeepLinkIconButton
+          label={t('guide.linux.title')}
+          path={getGuidePath(locale, 'linux')}
+          hash={guideSectionIds.linux}
+        />
+      </div>
       <p className={styles.panelCopy}>
         <Trans i18nKey="guide.linux.summary" components={keyComponents} />
       </p>
