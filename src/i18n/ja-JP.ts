@@ -265,7 +265,7 @@ sudo systemctl enable --now keyd`,
 # Caps Lock をタップすると Escape、長押しすると Control になります。
 capslock = overload(control, esc)
 
-# 任意: Escape を Caps Lock に戻すこともできます。
+# 任意: Escape を Caps Lock として設定することもできます。
 esc = capslock`,
       configFilename: 'default.conf',
       steps: {

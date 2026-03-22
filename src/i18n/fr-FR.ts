@@ -265,7 +265,7 @@ sudo systemctl enable --now keyd`,
 # Mappe Caps Lock vers Escape au toucher et vers Control en maintenant la touche.
 capslock = overload(control, esc)
 
-# Facultatif : remettre Caps Lock sur Escape aussi.
+# Facultatif : mettre Caps Lock sur Escape aussi.
 esc = capslock`,
       configFilename: 'default.conf',
       steps: {
