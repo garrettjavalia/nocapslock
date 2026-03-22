@@ -168,7 +168,8 @@ export function App({
       : guidePlatform === 'linux'
         ? t('guide.linux.title')
         : null
-  const documentTitle = guidePlatform === null
+  const pageTitle = rootTitle
+  const analyticsTitle = guidePlatform === null
     ? rootTitle
     : windowsMethod !== null
       ? `${t(`guide.windows.method.${windowsMethod}.title`)} | ${t('guide.windows.title')} | ${rootTitle}`
@@ -184,15 +185,15 @@ export function App({
 
     trackPageView({
       path: pagePath,
-      title: documentTitle,
+      title: analyticsTitle,
     })
-  }, [documentTitle, pagePath, shouldTrackPageView])
+  }, [analyticsTitle, pagePath, shouldTrackPageView])
 
   return (
     <>
       <Head>
         <html lang={locale} />
-        <title>{documentTitle}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content={t('meta.keywords')} />
         <link rel="canonical" href={`${siteOrigin}${currentPath}`} />
@@ -204,7 +205,7 @@ export function App({
             href={`${siteOrigin}${getGuidePath(item, guidePlatform, windowsMethod)}`}
           />
         ))}
-        <meta property="og:title" content={documentTitle} />
+        <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
       </Head>
 
