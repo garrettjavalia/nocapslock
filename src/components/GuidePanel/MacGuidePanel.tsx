@@ -1,9 +1,17 @@
 import { Trans, useTranslation } from 'react-i18next'
+import { getGuidePath } from '../../guides'
+import { guideSectionIds } from '../../guideAnchors'
 import { InlineTransKeycap } from '../Keycap'
+import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import * as styles from '../../styles/app.css'
+import type { Locale } from '../../i18n'
 
-export function MacGuidePanel() {
+type MacGuidePanelProps = {
+  locale: Locale
+}
+
+export function MacGuidePanel({ locale }: MacGuidePanelProps) {
   const { t } = useTranslation()
   const keyComponents = { key: <InlineTransKeycap platform="mac" /> }
   const steps = ['step01', 'step02', 'step03'] as const
@@ -37,8 +45,15 @@ export function MacGuidePanel() {
   ] as const
 
   return (
-    <article className={styles.guideCard}>
-      <h3 className={styles.guideCardTitle}>{t('guide.mac.title')}</h3>
+    <article id={guideSectionIds.mac} className={styles.guideCard}>
+      <div className={styles.guideCardTitleRow}>
+        <h3 className={styles.guideCardTitle}>{t('guide.mac.title')}</h3>
+        <DeepLinkIconButton
+          label={t('guide.mac.title')}
+          path={getGuidePath(locale, 'mac')}
+          hash={guideSectionIds.mac}
+        />
+      </div>
       <p className={styles.panelCopy}>
         <Trans i18nKey="guide.mac.summary" components={keyComponents} />
       </p>

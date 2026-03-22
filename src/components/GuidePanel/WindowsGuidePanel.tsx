@@ -1,8 +1,10 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { NavLink } from 'vite-react-ssg'
 import { getGuidePath, type WindowsMethodId } from '../../guides'
+import { guideSectionIds } from '../../guideAnchors'
 import type { Locale } from '../../i18n'
 import * as styles from '../../styles/app.css'
+import { DeepLinkIconButton } from '../DeepLinkIconButton/DeepLinkIconButton'
 import * as guideStyles from '../GuideSections/GuideSections.css'
 import { InlineTransKeycap } from '../Keycap'
 import { WindowsRegistryGenerator } from '../WindowsRegistryGenerator'
@@ -152,16 +154,29 @@ export function WindowsGuidePanel({
 }: WindowsGuidePanelProps) {
   const { t } = useTranslation()
   const keyComponents = { key: <InlineTransKeycap platform="windows" /> }
+  const currentWindowsPath = getGuidePath(locale, 'windows', activeMethod)
   const methodCards = windowsMethodIds.map((method) => ({
     id: method,
+    anchorId:
+      method === 'powertoys'
+        ? guideSectionIds.windowsPowertoysMethod
+        : guideSectionIds.windowsRegistryMethod,
+    path: getGuidePath(locale, 'windows', method),
     guide: method === 'powertoys' ? <WindowsPowerToysGuide /> : <WindowsRegistryGuide />,
     pros: ['pro1', 'pro2', 'pro3'] as const,
     cons: ['con1', 'con2', 'con3'] as const,
   }))
 
   return (
-    <article className={styles.guideCard}>
-      <h3 className={styles.guideCardTitle}>{t('guide.windows.title')}</h3>
+    <article id={guideSectionIds.windows} className={styles.guideCard}>
+      <div className={styles.guideCardTitleRow}>
+        <h3 className={styles.guideCardTitle}>{t('guide.windows.title')}</h3>
+        <DeepLinkIconButton
+          label={t('guide.windows.title')}
+          path={currentWindowsPath}
+          hash={guideSectionIds.windows}
+        />
+      </div>
       <p className={styles.panelCopy}>
         <Trans i18nKey="guide.windows.summary" components={keyComponents} />
       </p>
@@ -170,49 +185,65 @@ export function WindowsGuidePanel({
 
       <div className={comparisonStyles.comparisonGrid}>
         {methodCards.map((method) => (
-          <NavLink
+          <div
             key={method.id}
-            to={getGuidePath(locale, 'windows', method.id)}
-            preventScrollReset
-            end
-            className={({ isActive }) => (
-              isActive
+            id={method.anchorId}
+            className={
+              activeMethod === method.id
                 ? `${comparisonStyles.comparisonCard} ${comparisonStyles.comparisonCardActive}`
                 : comparisonStyles.comparisonCard
-            )}
-            aria-current={activeMethod === method.id ? 'page' : undefined}
+            }
           >
-            <div className={comparisonStyles.comparisonBlock}>
-              <h4 className={comparisonStyles.comparisonTitle}>
-                {t(`guide.windows.method.${method.id}.title`)}
-              </h4>
-              <p className={comparisonStyles.comparisonSummary}>
-                <Trans i18nKey={`guide.windows.method.${method.id}.summary`} components={keyComponents} />
-              </p>
+            <div className={comparisonStyles.comparisonContent}>
+              <div className={comparisonStyles.comparisonBlock}>
+                <div className={comparisonStyles.comparisonTitleRow}>
+                  <h4 className={comparisonStyles.comparisonTitle}>
+                    {t(`guide.windows.method.${method.id}.title`)}
+                  </h4>
+                  <DeepLinkIconButton
+                    label={t(`guide.windows.method.${method.id}.title`)}
+                    path={method.path}
+                    hash={method.anchorId}
+                    className={comparisonStyles.comparisonCopyButton}
+                  />
+                </div>
+                <p className={comparisonStyles.comparisonSummary}>
+                  <Trans i18nKey={`guide.windows.method.${method.id}.summary`} components={keyComponents} />
+                </p>
+              </div>
+
+              <div className={comparisonStyles.comparisonBlock}>
+                <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.prosLabel')}</p>
+                <ul className={comparisonStyles.bulletList}>
+                  {method.pros.map((item) => (
+                    <li key={item} className={comparisonStyles.bulletItem}>
+                      <Trans i18nKey={`guide.windows.method.${method.id}.${item}`} components={keyComponents} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={comparisonStyles.comparisonBlock}>
+                <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.consLabel')}</p>
+                <ul className={comparisonStyles.bulletList}>
+                  {method.cons.map((item) => (
+                    <li key={item} className={comparisonStyles.bulletItem}>
+                      <Trans i18nKey={`guide.windows.method.${method.id}.${item}`} components={keyComponents} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className={comparisonStyles.comparisonBlock}>
-              <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.prosLabel')}</p>
-              <ul className={comparisonStyles.bulletList}>
-                {method.pros.map((item) => (
-                  <li key={item} className={comparisonStyles.bulletItem}>
-                    <Trans i18nKey={`guide.windows.method.${method.id}.${item}`} components={keyComponents} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className={comparisonStyles.comparisonBlock}>
-              <p className={comparisonStyles.comparisonLabel}>{t('guide.windows.method.consLabel')}</p>
-              <ul className={comparisonStyles.bulletList}>
-                {method.cons.map((item) => (
-                  <li key={item} className={comparisonStyles.bulletItem}>
-                    <Trans i18nKey={`guide.windows.method.${method.id}.${item}`} components={keyComponents} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </NavLink>
+            <NavLink
+              to={method.path}
+              preventScrollReset
+              end
+              className={comparisonStyles.comparisonOverlayLink}
+              aria-current={activeMethod === method.id ? 'page' : undefined}
+              aria-label={t(`guide.windows.method.${method.id}.title`)}
+            />
+          </div>
         ))}
       </div>
 

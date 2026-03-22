@@ -1,4 +1,8 @@
 export const koTranslation = {
+  linkCopy: {
+    copy: '링크 복사',
+    copied: '링크 복사됨',
+  },
   meta: {
     title: 'No Capslock Anymore | 캡스락을 더 좋은 키로 바꾸기',
     description:

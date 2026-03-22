@@ -1,4 +1,8 @@
 export const enTranslation = {
+  linkCopy: {
+    copy: 'Copy link',
+    copied: 'Link copied',
+  },
   meta: {
     title: 'No Capslock Anymore | Turn Caps Lock into a Better Key',
     description:

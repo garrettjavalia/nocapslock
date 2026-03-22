@@ -432,10 +432,26 @@ export const guideCard = style({
   border: `1px solid ${vars.color.border}`,
   display: 'grid',
   gap: 18,
+  scrollMarginTop: 128,
+  transition: 'border-color 160ms ease, box-shadow 160ms ease',
+  selectors: {
+    '&:target': {
+      borderColor: `color-mix(in srgb, ${vars.color.accent} 54%, ${vars.color.border})`,
+      boxShadow: `0 0 0 3px color-mix(in srgb, ${vars.color.accent} 20%, transparent)`,
+    },
+  },
+})
+
+export const guideCardTitleRow = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  flexWrap: 'wrap',
+  marginBottom: 10,
 })
 
 export const guideCardTitle = style({
-  marginBottom: 10,
+  margin: 0,
   fontSize: '1.4rem',
 })
 

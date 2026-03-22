@@ -63,8 +63,8 @@ export function GuidePanel({
         </article>
       )}
       {guidePlatform === 'windows' && <WindowsGuidePanel locale={locale} activeMethod={windowsMethod} />}
-      {guidePlatform === 'mac' && <MacGuidePanel />}
-      {guidePlatform === 'linux' && <LinuxGuidePanel />}
+      {guidePlatform === 'mac' && <MacGuidePanel locale={locale} />}
+      {guidePlatform === 'linux' && <LinuxGuidePanel locale={locale} />}
     </section>
   )
 }

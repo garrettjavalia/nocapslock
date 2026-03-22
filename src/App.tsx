@@ -3,7 +3,7 @@ import {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { DemoPanel } from './components/DemoPanel'
 import { GuidePanel } from './components/GuidePanel'
@@ -77,6 +77,7 @@ export function App({
   windowsMethod,
 }: AppProps) {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [theme, setTheme] = useState<ThemeMode>(readInitialTheme)
   const [platform, setPlatform] = useState<PlatformId>('other')
@@ -122,6 +123,42 @@ export function App({
     return () => media.removeEventListener('change', listener)
   }, [])
 
+  useEffect(() => {
+    if (!location.hash) {
+      return
+    }
+
+    const targetId = decodeURIComponent(location.hash.slice(1))
+    let frame = 0
+    let timeout = 0
+    let attempts = 0
+
+    const scrollToHashTarget = () => {
+      const target = document.getElementById(targetId)
+
+      if (target) {
+        target.scrollIntoView({ block: 'start' })
+        return
+      }
+
+      if (attempts >= 8) {
+        return
+      }
+
+      attempts += 1
+      timeout = window.setTimeout(() => {
+        frame = window.requestAnimationFrame(scrollToHashTarget)
+      }, 80)
+    }
+
+    frame = window.requestAnimationFrame(scrollToHashTarget)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(timeout)
+    }
+  }, [location.hash, location.pathname])
+
   const currentPath = getGuidePath(locale, guidePlatform, windowsMethod)
   const rootTitle = t('hero.title')
   const guideTitleKey = guidePlatform === 'mac' ? 'guide.mac.title' : guidePlatform === null ? null : `guide.${guidePlatform}.title`
@@ -160,7 +197,10 @@ export function App({
         <HeroMasthead
           githubUrl={githubUrl}
           locale={locale}
-          onLocaleChange={(nextLocale) => navigate(getGuidePath(nextLocale, guidePlatform, windowsMethod))}
+          onLocaleChange={(nextLocale) => navigate({
+            pathname: getGuidePath(nextLocale, guidePlatform, windowsMethod),
+            hash: location.hash,
+          })}
           onThemeToggle={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
           platform={platform}
           theme={theme}
