@@ -1,23 +1,28 @@
 import { style } from '@vanilla-extract/css'
 
-const badgeWidth = 'clamp(156px, 18vw, 196px)'
-const badgeHeight = `calc(${badgeWidth} / 1.9)`
-
 export const compactHeroBadge = style({
+  position: 'absolute',
+  left: 0,
+  top: '50%',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: badgeWidth,
-  height: badgeHeight,
-  flex: '0 0 auto',
+  minHeight: 40,
   padding: 0,
   border: 0,
   background: 'transparent',
   boxShadow: 'none',
+  transform: 'translateY(-50%)',
   lineHeight: 0,
   opacity: 'var(--compact-opacity, 0)',
   cursor: 'pointer',
   userSelect: 'none',
   willChange: 'opacity',
   transition: 'opacity 120ms linear',
+  '@media': {
+    '(max-width: 780px)': {
+      opacity: 1,
+      transition: 'none',
+    },
+  },
 })
