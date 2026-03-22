@@ -1,5 +1,5 @@
 import { Trans, useTranslation } from 'react-i18next'
-import { NavLink } from 'vite-react-ssg'
+import { NavLink } from 'react-router-dom'
 import { getGuidePath, type WindowsMethodId } from '../../guides'
 import { guideSectionIds } from '../../guideAnchors'
 import type { Locale } from '../../i18n'
