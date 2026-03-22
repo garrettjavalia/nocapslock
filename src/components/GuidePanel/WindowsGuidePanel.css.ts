@@ -27,6 +27,7 @@ export const comparisonCard = style({
   background: vars.color.bgElevated,
   color: vars.color.text,
   textAlign: 'left',
+  textDecoration: 'none',
   cursor: 'pointer',
   appearance: 'none',
   WebkitAppearance: 'none',

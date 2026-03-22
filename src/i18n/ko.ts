@@ -67,6 +67,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
     kicker: '설정 가이드',
     title: '운영체제별 설정 가이드',
     intro: '사용 중인 운영체제를 골라, 그에 맞는 설정 방법을 차근차근 따라가 보세요.',
+    selectionPrompt: '사용 중인 운영체제를 골라 해당 가이드를 열어 보세요.',
     label: {
       references: '참고 자료',
       steps: '단계별 안내',
@@ -113,6 +114,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       summary:
         'Windows에서는 PowerToys Keyboard Manager가 가장 간단한 방법이고, <key>Caps Lock</key>을 PowerToys 없이 시스템 전체에서 바꾸고 싶을 때는 아래 레지스트리 기반 Scancode Map 방식을 쓸 수 있습니다.',
       methodChoiceIntro: 'Windows에서는 PowerToys와 레지스트리 방식 중 하나만 고르면 됩니다.',
+      methodSelectionPrompt: '자세한 단계는 위에서 원하는 Windows 방식을 골라 확인해 보세요.',
       method: {
         prosLabel: '장점',
         consLabel: '알아둘 점',

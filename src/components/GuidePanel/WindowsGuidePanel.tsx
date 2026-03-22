@@ -1,12 +1,12 @@
-import { useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
+import { NavLink } from 'vite-react-ssg'
+import { getGuidePath, type WindowsMethodId } from '../../guides'
+import type { Locale } from '../../i18n'
+import * as styles from '../../styles/app.css'
+import * as guideStyles from '../GuideSections/GuideSections.css'
 import { InlineTransKeycap } from '../Keycap'
 import { WindowsRegistryGenerator } from '../WindowsRegistryGenerator'
-import * as guideStyles from '../GuideSections/GuideSections.css'
-import * as styles from '../../styles/app.css'
 import * as comparisonStyles from './WindowsGuidePanel.css'
-
-type WindowsMethodId = 'powertoys' | 'registry'
 
 const windowsMethodIds = ['powertoys', 'registry'] as const
 
@@ -141,9 +141,16 @@ function WindowsRegistryGuide() {
   )
 }
 
-export function WindowsGuidePanel() {
+type WindowsGuidePanelProps = {
+  locale: Locale
+  activeMethod: WindowsMethodId | null
+}
+
+export function WindowsGuidePanel({
+  locale,
+  activeMethod,
+}: WindowsGuidePanelProps) {
   const { t } = useTranslation()
-  const [activeMethod, setActiveMethod] = useState<WindowsMethodId>('powertoys')
   const keyComponents = { key: <InlineTransKeycap platform="windows" /> }
   const methodCards = windowsMethodIds.map((method) => ({
     id: method,
@@ -163,15 +170,17 @@ export function WindowsGuidePanel() {
 
       <div className={comparisonStyles.comparisonGrid}>
         {methodCards.map((method) => (
-          <button
+          <NavLink
             key={method.id}
-            type="button"
-            className={
-              activeMethod === method.id
+            to={getGuidePath(locale, 'windows', method.id)}
+            preventScrollReset
+            end
+            className={({ isActive }) => (
+              isActive
                 ? `${comparisonStyles.comparisonCard} ${comparisonStyles.comparisonCardActive}`
                 : comparisonStyles.comparisonCard
-            }
-            onClick={() => setActiveMethod(method.id)}
+            )}
+            aria-current={activeMethod === method.id ? 'page' : undefined}
           >
             <div className={comparisonStyles.comparisonBlock}>
               <h4 className={comparisonStyles.comparisonTitle}>
@@ -203,12 +212,16 @@ export function WindowsGuidePanel() {
                 ))}
               </ul>
             </div>
-          </button>
+          </NavLink>
         ))}
       </div>
 
       <div className={comparisonStyles.detailStack}>
-        {methodCards.find((method) => method.id === activeMethod)?.guide}
+        {activeMethod === null ? (
+          <p className={styles.panelCopy}>{t('guide.windows.methodSelectionPrompt')}</p>
+        ) : (
+          methodCards.find((method) => method.id === activeMethod)?.guide
+        )}
       </div>
     </article>
   )

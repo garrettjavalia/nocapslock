@@ -407,12 +407,16 @@ export const guideTabs = style({
 })
 
 export const guideTab = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   border: `1px solid ${vars.color.border}`,
   background: 'transparent',
   color: vars.color.text,
   borderRadius: 999,
   padding: '10px 16px',
   cursor: 'pointer',
+  textDecoration: 'none',
 })
 
 export const guideTabActive = style({

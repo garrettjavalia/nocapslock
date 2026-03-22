@@ -67,6 +67,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
     kicker: 'Setup guide',
     title: 'Setup guides by operating system',
     intro: 'Pick the operating system you use and follow the steps that match it.',
+    selectionPrompt: 'Choose your operating system to open the matching guide.',
     label: {
       references: 'References',
       steps: 'Step by step',
@@ -113,6 +114,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       summary:
         'On Windows, the easiest path is PowerToys Keyboard Manager. If you want a system-wide remap for <key>Caps Lock</key> that does not depend on PowerToys running in the background, you can use the registry-based Scancode Map approach below.',
       methodChoiceIntro: 'On Windows, choose either PowerToys or the registry route.',
+      methodSelectionPrompt: 'To see the detailed steps, choose the Windows method you want above.',
       method: {
         prosLabel: 'Advantages',
         consLabel: 'What to keep in mind',
