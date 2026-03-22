@@ -68,10 +68,6 @@ type AppProps = {
   windowsMethod: WindowsMethodId | null
 }
 
-function stripInlineMarkup(value: string) {
-  return value.replace(/<\/?key>/g, '')
-}
-
 export function App({
   locale,
   guidePlatform,
@@ -177,11 +173,7 @@ export function App({
     : windowsMethod !== null
       ? `${t(`guide.windows.method.${windowsMethod}.title`)} | ${t('guide.windows.title')} | ${rootTitle}`
       : `${guideTitle!} | ${rootTitle}`
-  const pageDescription = guidePlatform === null
-    ? t('meta.description')
-    : windowsMethod !== null
-      ? stripInlineMarkup(t(`guide.windows.method.${windowsMethod}.summary`))
-      : stripInlineMarkup(t(guidePlatform === 'mac' ? 'guide.mac.summary' : `guide.${guidePlatform}.summary`))
+  const pageDescription = t('meta.description')
   const shouldTrackPageView = guidePlatform !== null
     || (hasDetectedPlatform && getDefaultGuidePlatform(platform) === null)
 
