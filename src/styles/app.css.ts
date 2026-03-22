@@ -25,6 +25,31 @@ export const masthead = style({
     '(max-width: 640px)': {
       width: 'min(100% - 20px, 1120px)',
     },
+    '(max-width: 780px)': {
+      position: 'static',
+      left: 'auto',
+      top: 'auto',
+      transform: 'none',
+      width: '100%',
+      paddingBottom: 0,
+    },
+  },
+})
+
+export const heroStickyStack = style({
+  '@media': {
+    '(max-width: 780px)': {
+      position: 'sticky',
+      top: 32,
+      zIndex: 20,
+      width: '100vw',
+      marginLeft: 'calc(50% - 50vw)',
+      marginRight: 'calc(50% - 50vw)',
+      paddingBottom: 16,
+    },
+    '(max-width: 640px)': {
+      top: 18,
+    },
   },
 })
 
@@ -51,35 +76,36 @@ export const mastheadSurface = style({
 export const mastheadTop = style({
   position: 'relative',
   zIndex: 1,
-  display: 'grid',
-  gridTemplateColumns: 'clamp(156px, 18vw, 196px) minmax(0, 1fr)',
-  columnGap: 18,
-  alignItems: 'center',
-  padding: '10px 14px 12px',
-})
-
-export const mastheadControlsRow = style({
   display: 'flex',
-  justifyContent: 'flex-end',
-  width: '100%',
-  minWidth: 0,
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 16,
+  padding: '10px 14px 12px',
+  '@media': {
+    '(max-width: 780px)': {
+      padding: '10px 8px 12px',
+    },
+  },
 })
 
 export const mastheadTitles = style({
   position: 'relative',
+  minHeight: '1.6rem',
+  width: 'min(720px, 100%)',
+  flex: '1 1 auto',
   display: 'flex',
-  justifyContent: 'flex-start',
   alignItems: 'center',
-  minWidth: 0,
-  overflow: 'hidden',
+  paddingTop: 0,
 })
 
 export const hero = style({
   padding: '18px 0 24px',
+  position: 'relative',
+  zIndex: 1,
 })
 
 export const heroCopy = style({
-  maxWidth: 800,
+  maxWidth: 720,
   overflow: 'hidden',
 })
 
@@ -94,7 +120,7 @@ export const heroTitle = style({
   letterSpacing: '-0.05em',
   '@media': {
     '(max-width: 640px)': {
-      fontSize: 'clamp(2.6rem, 14vw, 4rem)',
+      fontSize: 'clamp(2.6rem, 8vw, 3.2rem)',
     },
   },
 })
@@ -103,6 +129,12 @@ export const heroTitleFloating = style({
   opacity: 'var(--hero-opacity, 1)',
   willChange: 'opacity',
   transition: 'opacity 120ms linear',
+  '@media': {
+    '(max-width: 780px)': {
+      opacity: 1,
+      transition: 'none',
+    },
+  },
 })
 
 export const subduedText = style({
