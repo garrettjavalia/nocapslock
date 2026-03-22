@@ -7,7 +7,7 @@ export const jaJpTranslation = {
   },
   meta: {
     description:
-      'Caps Lock を Control、Command、Escape に再割り当てすると何が便利なのかを説明し、ブラウザ上でそのまま試せる多言語ランディングページです。',
+      'Caps Lockをもっと快適に使いましょう！',
     keywords:
       'caps lock remap, caps lock to control, caps lock to command, caps lock to escape, keyboard productivity, karabiner, keyd, powertoys',
   },

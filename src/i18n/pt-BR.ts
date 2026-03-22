@@ -7,7 +7,7 @@ export const ptBrTranslation = {
   },
   meta: {
     description:
-      'Uma página de destino multilíngue que explica por que remapear o Caps Lock para Control, Command ou Escape é útil, e permite testar isso direto no navegador.',
+      'Use o Caps Lock com mais conforto.',
     keywords:
       'remapeamento do caps lock, caps lock para control, caps lock para command, caps lock para escape, produtividade no teclado, karabiner, keyd, powertoys',
   },

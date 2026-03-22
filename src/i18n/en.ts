@@ -5,7 +5,7 @@ export const enTranslation = {
   },
   meta: {
     description:
-      'A multilingual landing page that explains why remapping Caps Lock to Control, Command, or Escape is useful, and lets you try it right in the browser.',
+      'Use Caps Lock more comfortably!',
     keywords:
       'caps lock remap, caps lock to control, caps lock to command, caps lock to escape, keyboard productivity, karabiner, keyd, powertoys',
   },
