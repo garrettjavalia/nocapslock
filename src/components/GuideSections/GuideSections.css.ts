@@ -35,6 +35,24 @@ export const sourceLink = style({
   fontWeight: 600,
 })
 
+export const inlineLink = style({
+  color: vars.color.accentStrong,
+  fontWeight: 600,
+  textDecorationLine: 'underline',
+  textDecorationThickness: '0.08em',
+  textUnderlineOffset: '0.14em',
+  selectors: {
+    '&:hover': {
+      color: vars.color.accent,
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${vars.color.accent}`,
+      outlineOffset: 2,
+      borderRadius: 4,
+    },
+  },
+})
+
 export const stepList = style({
   display: 'flex',
   flexDirection: 'column',

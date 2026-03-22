@@ -1,8 +1,28 @@
-import { style } from '@vanilla-extract/css'
+import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
 const controlHoverBorder = `color-mix(in srgb, ${vars.color.accent} 16%, ${vars.color.border})`
 const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
+const menuOpenFromBottom = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-4px) scale(0.98)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0) scale(1)',
+  },
+})
+const menuOpenFromTop = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(4px) scale(0.98)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0) scale(1)',
+  },
+})
 
 const controlBase = style({
   border: `1px solid ${vars.color.border}`,
@@ -27,75 +47,13 @@ const controlBase = style({
 })
 
 export const topbarActions = style({
-  display: 'grid',
-  justifyItems: 'end',
-  gap: 10,
-  minWidth: 0,
-})
-
-export const primaryControlsRow = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
   gap: 12,
-  flexWrap: 'wrap',
+  flexWrap: 'nowrap',
   minWidth: 0,
 })
-
-export const localeRow = style({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  width: '100%',
-  minWidth: 0,
-})
-
-export const localeSwitcher = style([
-  controlBase,
-  {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    gap: vars.control.gap,
-    padding: `0 ${vars.control.paddingX}`,
-    selectors: {
-      '&:focus-within': {
-        background: vars.color.bgStrong,
-        borderColor: vars.color.accent,
-        boxShadow: controlFocusShadow,
-      },
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        right: 16,
-        top: '50%',
-        width: 8,
-        height: 8,
-        borderRight: `1.5px solid ${vars.color.textSoft}`,
-        borderBottom: `1.5px solid ${vars.color.textSoft}`,
-        transform: 'translateY(-62%) rotate(45deg)',
-        pointerEvents: 'none',
-      },
-      '&:hover::after, &:focus-within::after': {
-        borderRightColor: vars.color.text,
-        borderBottomColor: vars.color.text,
-      },
-    },
-  },
-])
-
-export const githubLink = style([
-  controlBase,
-  {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: vars.control.gap,
-    padding: `0 ${vars.control.paddingX}`,
-    color: vars.color.text,
-    textDecoration: 'none',
-    fontWeight: 600,
-  },
-])
 
 export const iconControl = style([
   controlBase,
@@ -129,27 +87,104 @@ export const iconControl = style([
   },
 ])
 
+export const githubIconLink = style([
+  iconControl,
+  {
+    textDecoration: 'none',
+  },
+])
+
 export const controlIcon = style({
   width: 15,
   height: 15,
 })
 
-export const localeLabel = style({
-  fontSize: '0.92rem',
-  color: vars.color.textSoft,
+export const localeMenuTrigger = style([
+  iconControl,
+  {
+    selectors: {
+      '&[data-state="open"]': {
+        borderColor: controlHoverBorder,
+        background: vars.color.accentSoft,
+        color: vars.color.accentStrong,
+        boxShadow: controlFocusShadow,
+      },
+    },
+  },
+])
+
+export const localeMenuContent = style({
+  minWidth: 188,
+  padding: 8,
+  borderRadius: 18,
+  border: `1px solid ${vars.color.border}`,
+  background: vars.color.bgElevated,
+  boxShadow: vars.shadow.panel,
+  backdropFilter: 'blur(18px)',
+  zIndex: 30,
+  transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
+  animation: `${menuOpenFromBottom} 160ms ease`,
+  selectors: {
+    '&[data-side="top"]': {
+      animationName: menuOpenFromTop,
+    },
+  },
 })
 
-export const localeSelect = style({
-  appearance: 'none',
-  display: 'block',
-  height: vars.control.height,
-  border: 0,
-  background: 'transparent',
+export const localeMenuHeading = style({
+  padding: '8px 10px 6px',
+  color: vars.color.textSoft,
+  fontSize: '0.78rem',
+  fontWeight: 700,
+  letterSpacing: '0.06em',
+  textTransform: 'uppercase',
+})
+
+export const localeMenuItem = style({
+  display: 'grid',
+  gridTemplateColumns: '16px minmax(0, 1fr)',
+  alignItems: 'center',
+  gap: 10,
+  minHeight: 38,
+  padding: '0 10px',
+  borderRadius: 12,
   color: vars.color.text,
-  outline: 'none',
   cursor: 'pointer',
-  minHeight: 0,
-  paddingRight: 18,
+  outline: 'none',
+  userSelect: 'none',
+  selectors: {
+    '&[data-highlighted]': {
+      background: vars.color.accentSoft,
+      color: vars.color.accentStrong,
+    },
+    '&[data-state="checked"]': {
+      fontWeight: 600,
+    },
+  },
+})
+
+export const localeMenuIndicatorSlot = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 16,
+  height: 16,
+})
+
+export const localeMenuIndicator = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: vars.color.accentStrong,
+})
+
+export const menuIndicatorIcon = style({
+  width: 13,
+  height: 13,
+})
+
+export const localeMenuItemLabel = style({
+  whiteSpace: 'nowrap',
 })
 
 export const themeToggle = style([

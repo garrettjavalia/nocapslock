@@ -139,11 +139,11 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
           steps: {
             step01: {
               title: '1. PowerToys installieren',
-              body: 'Installiere PowerToys aus dem Microsoft Store, von der GitHub-Release-Seite oder per winget. Microsoft dokumentiert alle drei Wege in der Installationsanleitung.',
+              body: 'Installiere PowerToys aus dem Microsoft Store, von der GitHub-Release-Seite oder per winget. Microsoft dokumentiert alle drei Wege in der <powertoysInstallationGuide>Installationsanleitung</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Keyboard Manager öffnen und „Remap a key“ wählen',
-              body: 'Öffne in den PowerToys-Einstellungen Keyboard Manager und wähle Remap a key. Füge dann eine neue Zeile für <key>Caps Lock</key> hinzu.',
+              body: 'Öffne in den PowerToys-Einstellungen <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide> und wähle Remap a key. Füge dann eine neue Zeile für <key>Caps Lock</key> hinzu.',
             },
             step03: {
               title: '3. Die gewünschte Zieltaste wählen',
@@ -209,15 +209,15 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       steps: {
         step01: {
           title: '1. Karabiner-Elements installieren und Berechtigungen freigeben',
-          body: 'Installiere zuerst Karabiner-Elements und erlaube dann den Hintergrunddienst, die Input-Monitoring-Berechtigung und die Treibererweiterung. Karabiners offizielle Dokumentation führt diese als erforderliche macOS-Einstellungen auf.',
+          body: 'Installiere zuerst <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> und erlaube dann den Hintergrunddienst, die Input-Monitoring-Berechtigung und die Treibererweiterung. <karabinerRequiredSettingsGuide>Karabiners offizielle Dokumentation</karabinerRequiredSettingsGuide> führt diese als erforderliche macOS-Einstellungen auf.',
         },
         step02: {
           title: '2. <key>Caps Lock</key> in Simple Modifications neu belegen',
-          body: 'Öffne Karabiner-Elements, gehe zu Simple Modifications, wähle die Tastatur aus, die du ändern möchtest, und lege <key>Caps Lock</key> auf <key>Left Control</key>. Wenn dir <key>Escape</key> lieber ist, kannst du auch diese Taste wählen.',
+          body: 'Öffne Karabiner-Elements, gehe zu <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, wähle die Tastatur aus, die du ändern möchtest, und lege <key>Caps Lock</key> auf <key>Left Control</key>. Wenn dir <key>Escape</key> lieber ist, kannst du auch diese Taste wählen.',
         },
         step03: {
           title: '3. Optional: dieselbe Zuordnung schon vor dem Login nutzen',
-          body: 'Wenn die gleiche Zuordnung auch auf dem Kennwortbildschirm vor dem Login gelten soll, öffne in Karabiner die Registerkarte Misc und klicke auf „Copy the current configuration to the system default configuration“. Laut offizieller Dokumentation gilt diese Kopie auch vor dem Login.',
+          body: 'Wenn die gleiche Zuordnung auch auf dem Kennwortbildschirm vor dem Login gelten soll, öffne in Karabiner die Registerkarte Misc und klicke auf „Copy the current configuration to the system default configuration“. Laut <karabinerBeforeLoginGuide>offizieller Dokumentation</karabinerBeforeLoginGuide> gilt diese Kopie auch vor dem Login.',
         },
         step04: {
           title: '4. Optional: nur weiter, wenn <key>Caps Lock</key> bereits die Sprachwechsel-Taste ist',
@@ -229,11 +229,11 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
             },
             step04_2: {
               title: '4-2. Die rechte Taste in Karabiner auf <key>F18</key> legen',
-              body: 'Füge in Simple Modifications je nach gewählter Taste entweder <key>Right Command</key> -> <key>F18</key> oder <key>Right Option</key> -> <key>F18</key> hinzu. So bleibt <key>Caps Lock</key> für die Umbelegung frei, und rechts auf der Tastatur hast du weiterhin eine eigene Sprachwechsel-Taste.',
+              body: 'Füge in <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> je nach gewählter Taste entweder <key>Right Command</key> -> <key>F18</key> oder <key>Right Option</key> -> <key>F18</key> hinzu. So bleibt <key>Caps Lock</key> für die Umbelegung frei, und rechts auf der Tastatur hast du weiterhin eine eigene Sprachwechsel-Taste.',
             },
             step04_3: {
               title: '4-3. <key>F18</key> in macOS dem Wechsel der Eingabequelle zuweisen',
-              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. Apple dokumentiert, dass <key>F1</key> bis <key>F12</key> an integrierte Systemfunktionen gebunden sind; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. In der Praxis ist <key>F18</key> eine sichere Wahl, weil sie meist nicht mit diesen integrierten Rollen kollidiert.',
+              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. <appleInputSourcesGuide>Apple dokumentiert, dass</appleInputSourcesGuide> <key>F1</key> bis <key>F12</key> an integrierte Systemfunktionen gebunden sind; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. In der Praxis ist <key>F18</key> eine sichere Wahl, weil sie meist nicht mit diesen integrierten Rollen kollidiert.',
             },
           },
         },

@@ -139,11 +139,11 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
           steps: {
             step01: {
               title: '1. PowerToys 설치',
-              body: 'Microsoft Store, GitHub 릴리스 페이지, 또는 winget 중 편한 경로로 PowerToys를 설치합니다. Microsoft 설치 안내 문서에 이 경로들이 모두 정리되어 있습니다.',
+              body: 'Microsoft Store, GitHub 릴리스 페이지, 또는 winget 중 편한 경로로 PowerToys를 설치합니다. <powertoysInstallationGuide>Microsoft 설치 안내 문서</powertoysInstallationGuide>에 이 경로들이 모두 정리되어 있습니다.',
             },
             step02: {
               title: '2. Keyboard Manager에서 Remap a key 열기',
-              body: 'PowerToys 설정에서 Keyboard Manager로 들어가 Remap a key를 누른 뒤, <key>Caps Lock</key>용 새 매핑 행을 추가합니다.',
+              body: 'PowerToys 설정에서 <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide>로 들어가 Remap a key를 누른 뒤, <key>Caps Lock</key>용 새 매핑 행을 추가합니다.',
             },
             step03: {
               title: '3. 원하는 목표 키 선택',
@@ -209,15 +209,15 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       steps: {
         step01: {
           title: '1. Karabiner-Elements 설치와 권한 허용',
-          body: '먼저 Karabiner-Elements를 설치한 뒤, 백그라운드 서비스, 입력 모니터링 권한, 드라이버 확장을 모두 허용합니다. Karabiner 공식 문서도 이 항목들을 필수 macOS 설정으로 안내합니다.',
+          body: '먼저 <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>를 설치한 뒤, 백그라운드 서비스, 입력 모니터링 권한, 드라이버 확장을 모두 허용합니다. <karabinerRequiredSettingsGuide>Karabiner 공식 문서</karabinerRequiredSettingsGuide>도 이 항목들을 필수 macOS 설정으로 안내합니다.',
         },
         step02: {
           title: '2. Simple Modifications에서 <key>Caps Lock</key> 변경',
-          body: 'Karabiner-Elements를 열고 Simple Modifications로 들어간 뒤, 수정할 키보드를 고르고 <key>Caps Lock</key>을 <key>Left Control</key>로 바꿉니다. <key>Escape</key>가 더 편하다면 그 키를 골라도 됩니다.',
+          body: 'Karabiner-Elements를 열고 <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>로 들어간 뒤, 수정할 키보드를 고르고 <key>Caps Lock</key>을 <key>Left Control</key>로 바꿉니다. <key>Escape</key>가 더 편하다면 그 키를 골라도 됩니다.',
         },
         step03: {
           title: '3. 선택 사항: 로그인 창에서도 같은 매핑 쓰기',
-          body: '로그인 전에 뜨는 암호 입력 화면에서도 같은 키 매핑을 쓰고 싶다면, Karabiner 설정의 Misc 탭에서 “Copy the current configuration to the system default configuration” 버튼을 누르세요. 공식 문서에 따르면 이렇게 복사한 설정은 로그인 전 화면에도 적용됩니다.',
+          body: '로그인 전에 뜨는 암호 입력 화면에서도 같은 키 매핑을 쓰고 싶다면, Karabiner 설정의 Misc 탭에서 “Copy the current configuration to the system default configuration” 버튼을 누르세요. <karabinerBeforeLoginGuide>공식 문서</karabinerBeforeLoginGuide>에 따르면 이렇게 복사한 설정은 로그인 전 화면에도 적용됩니다.',
         },
         step04: {
           title: '4. 선택 사항: <key>Caps Lock</key>이 이미 언어 전환 키일 때만 이어서 보기',
@@ -229,11 +229,11 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
             },
             step04_2: {
               title: '4-2. Karabiner에서 그 오른쪽 키를 <key>F18</key>로 바꾸기',
-              body: 'Simple Modifications에서 앞 단계에서 고른 키를 <key>Right Command</key> -> <key>F18</key> 또는 <key>Right Option</key> -> <key>F18</key>으로 추가합니다. 이렇게 하면 <key>Caps Lock</key>을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
+              body: '<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>에서 앞 단계에서 고른 키를 <key>Right Command</key> -> <key>F18</key> 또는 <key>Right Option</key> -> <key>F18</key>으로 추가합니다. 이렇게 하면 <key>Caps Lock</key>을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
             },
             step04_3: {
               title: '4-3. macOS에서 <key>F18</key>을 입력 소스 전환 키로 배정',
-              body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 <key>F18</key>을 지정합니다. 그러면 <key>Caps Lock</key>을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 <key>F18</key>을 실사용 예시로 사용합니다. Apple 문서상 <key>F1</key>부터 <key>F12</key>까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 <key>F18</key>은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
+              body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 <key>F18</key>을 지정합니다. 그러면 <key>Caps Lock</key>을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 <key>F18</key>을 실사용 예시로 사용합니다. <appleInputSourcesGuide>Apple 문서상</appleInputSourcesGuide> <key>F1</key>부터 <key>F12</key>까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 <key>F18</key>은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
             },
           },
         },

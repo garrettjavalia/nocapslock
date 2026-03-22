@@ -58,15 +58,15 @@ export function HeroMasthead({
   } as CSSProperties
 
   return (
-    <div style={mastheadStyle}>
-      <header className={styles.masthead}>
-        <div className={styles.mastheadSurface}>
-          <div className={styles.mastheadTop}>
-            <div className={styles.mastheadTitles}>
-              <CompactRemapBadge label={t('hero.title')} platform={platform} />
-            </div>
+    <>
+      <div className={styles.heroStickyStack} style={mastheadStyle}>
+        <header className={styles.masthead}>
+          <div className={styles.mastheadSurface}>
+            <div className={styles.mastheadTop}>
+              <div className={styles.mastheadTitles}>
+                <CompactRemapBadge label={t('hero.title')} platform={platform} />
+              </div>
 
-            <div className={styles.mastheadControlsRow}>
               <HeaderControls
                 githubUrl={githubUrl}
                 locale={locale}
@@ -76,10 +76,10 @@ export function HeroMasthead({
               />
             </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
-      <section className={styles.hero}>
+      <section className={styles.hero} style={mastheadStyle}>
         <div className={styles.heroCopy}>
           <h1 className={`${styles.heroTitle} ${styles.heroTitleFloating}`}>{t('hero.title')}</h1>
         </div>
@@ -88,6 +88,6 @@ export function HeroMasthead({
       <section className={styles.heroLeadSection}>
         <p className={styles.heroLead}>{t('hero.lead')}</p>
       </section>
-    </div>
+    </>
   )
 }

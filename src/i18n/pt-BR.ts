@@ -139,11 +139,11 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
           steps: {
             step01: {
               title: '1. Instale o PowerToys',
-              body: 'Instale o PowerToys pela Microsoft Store, pela página de releases no GitHub ou com winget. A documentação oficial da Microsoft descreve as três opções na guia de instalação.',
+              body: 'Instale o PowerToys pela Microsoft Store, pela página de releases no GitHub ou com winget. A documentação oficial da Microsoft descreve as três opções no <powertoysInstallationGuide>guia de instalação</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Abra o Keyboard Manager e escolha Remap a key',
-              body: 'Nas configurações do PowerToys, abra o Keyboard Manager e selecione Remap a key. Depois adicione uma nova linha para <key>Caps Lock</key>.',
+              body: 'Nas configurações do PowerToys, abra o <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide> e selecione Remap a key. Depois adicione uma nova linha para <key>Caps Lock</key>.',
             },
             step03: {
               title: '3. Escolha a tecla de destino desejada',
@@ -209,15 +209,15 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
       steps: {
         step01: {
           title: '1. Instale o Karabiner-Elements e conclua as solicitações de permissão',
-          body: 'Instale o Karabiner-Elements primeiro e depois confirme que o serviço em segundo plano, a permissão de Input Monitoring e a extensão do driver estão liberados. A documentação oficial do Karabiner chama esses itens de configurações obrigatórias do macOS.',
+          body: 'Instale o <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> primeiro e depois confirme que o serviço em segundo plano, a permissão de Input Monitoring e a extensão do driver estão liberados. <karabinerRequiredSettingsGuide>A documentação oficial do Karabiner</karabinerRequiredSettingsGuide> chama esses itens de configurações obrigatórias do macOS.',
         },
         step02: {
           title: '2. Remapeie o <key>Caps Lock</key> em Simple Modifications',
-          body: 'Abra o Karabiner-Elements, escolha Simple Modifications, selecione o teclado que você quer editar e troque <key>Caps Lock</key> por <key>Left Control</key>. Se preferir <key>Escape</key>, você também pode escolher essa opção aqui.',
+          body: 'Abra o Karabiner-Elements, escolha <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, selecione o teclado que você quer editar e troque <key>Caps Lock</key> por <key>Left Control</key>. Se preferir <key>Escape</key>, você também pode escolher essa opção aqui.',
         },
         step03: {
           title: '3. Opcional: faça o mesmo mapeamento funcionar antes do login',
-          body: 'Se você quiser o mesmo mapeamento na tela de senha antes do login, abra a aba Misc nas configurações do Karabiner e use “Copy the current configuration to the system default configuration.” A documentação oficial do Karabiner descreve isso para uso antes do login.',
+          body: 'Se você quiser o mesmo mapeamento na tela de senha antes do login, abra a aba Misc nas configurações do Karabiner e use “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>A documentação oficial do Karabiner</karabinerBeforeLoginGuide> descreve isso para uso antes do login.',
         },
         step04: {
           title: '4. Opcional: continue apenas se o <key>Caps Lock</key> já for sua tecla de troca de idioma',
@@ -229,11 +229,11 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
             },
             step04_2: {
               title: '4-2. Mapeie essa tecla direita para <key>F18</key> no Karabiner',
-              body: 'Em Simple Modifications, adicione <key>Right Command</key> -> <key>F18</key> ou <key>Right Option</key> -> <key>F18</key>, dependendo da tecla escolhida no passo anterior. Isso libera o <key>Caps Lock</key> para remapeamento e ainda mantém uma tecla dedicada de troca de idioma do lado direito do teclado.',
+              body: 'Em <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, adicione <key>Right Command</key> -> <key>F18</key> ou <key>Right Option</key> -> <key>F18</key>, dependendo da tecla escolhida no passo anterior. Isso libera o <key>Caps Lock</key> para remapeamento e ainda mantém uma tecla dedicada de troca de idioma do lado direito do teclado.',
             },
             step04_3: {
               title: '4-3. Atribua <key>F18</key> à troca de fonte de entrada no macOS',
-              body: 'Abra Menu Apple > Ajustes do Sistema > Teclado > Atalhos de Teclado > Fontes de Entrada e atribua <key>F18</key> a “Selecionar a próxima fonte no menu de entrada”. Isso recria uma tecla confiável de troca de idioma depois que o <key>Caps Lock</key> foi reaproveitado. Aqui, <key>F18</key> é usado como exemplo prático. A Apple documenta que <key>F1</key> a <key>F12</key> estão ligados a recursos internos do sistema, então uma tecla de função com número mais alto costuma ser mais fácil de usar para troca de fonte de entrada. Na prática, <key>F18</key> costuma ser uma escolha segura porque tende a não colidir com essas funções internas.',
+              body: 'Abra Menu Apple > Ajustes do Sistema > Teclado > Atalhos de Teclado > Fontes de Entrada e atribua <key>F18</key> a “Selecionar a próxima fonte no menu de entrada”. Isso recria uma tecla confiável de troca de idioma depois que o <key>Caps Lock</key> foi reaproveitado. Aqui, <key>F18</key> é usado como exemplo prático. <appleInputSourcesGuide>A Apple documenta que</appleInputSourcesGuide> <key>F1</key> a <key>F12</key> estão ligados a recursos internos do sistema, então uma tecla de função com número mais alto costuma ser mais fácil de usar para troca de fonte de entrada. Na prática, <key>F18</key> costuma ser uma escolha segura porque tende a não colidir com essas funções internas.',
             },
           },
         },
