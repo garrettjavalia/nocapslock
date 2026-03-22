@@ -68,10 +68,6 @@ type AppProps = {
   windowsMethod: WindowsMethodId | null
 }
 
-function stripInlineMarkup(value: string) {
-  return value.replace(/<\/?key>/g, '')
-}
-
 export function App({
   locale,
   guidePlatform,
@@ -172,16 +168,13 @@ export function App({
       : guidePlatform === 'linux'
         ? t('guide.linux.title')
         : null
-  const documentTitle = guidePlatform === null
+  const pageTitle = rootTitle
+  const analyticsTitle = guidePlatform === null
     ? rootTitle
     : windowsMethod !== null
       ? `${t(`guide.windows.method.${windowsMethod}.title`)} | ${t('guide.windows.title')} | ${rootTitle}`
       : `${guideTitle!} | ${rootTitle}`
-  const pageDescription = guidePlatform === null
-    ? t('meta.description')
-    : windowsMethod !== null
-      ? stripInlineMarkup(t(`guide.windows.method.${windowsMethod}.summary`))
-      : stripInlineMarkup(t(guidePlatform === 'mac' ? 'guide.mac.summary' : `guide.${guidePlatform}.summary`))
+  const pageDescription = t('meta.description')
   const shouldTrackPageView = guidePlatform !== null
     || (hasDetectedPlatform && getDefaultGuidePlatform(platform) === null)
 
@@ -192,15 +185,15 @@ export function App({
 
     trackPageView({
       path: pagePath,
-      title: documentTitle,
+      title: analyticsTitle,
     })
-  }, [documentTitle, pagePath, shouldTrackPageView])
+  }, [analyticsTitle, pagePath, shouldTrackPageView])
 
   return (
     <>
       <Head>
         <html lang={locale} />
-        <title>{documentTitle}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content={t('meta.keywords')} />
         <link rel="canonical" href={`${siteOrigin}${currentPath}`} />
@@ -212,7 +205,7 @@ export function App({
             href={`${siteOrigin}${getGuidePath(item, guidePlatform, windowsMethod)}`}
           />
         ))}
-        <meta property="og:title" content={documentTitle} />
+        <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
       </Head>
 
