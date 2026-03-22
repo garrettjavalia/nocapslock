@@ -139,11 +139,11 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
           steps: {
             step01: {
               title: '1. Instala PowerToys',
-              body: 'Instala PowerToys desde Microsoft Store, la página de lanzamientos de GitHub o winget. Microsoft documenta las tres rutas en su guía de instalación.',
+              body: 'Instala PowerToys desde Microsoft Store, la página de lanzamientos de GitHub o winget. Microsoft documenta las tres rutas en su <powertoysInstallationGuide>guía de instalación</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Abre Keyboard Manager y elige Remap a key',
-          body: 'En la configuración de PowerToys, abre Keyboard Manager y selecciona Remap a key. Luego añade una nueva fila para <key>Caps Lock</key>.',
+          body: 'En la configuración de PowerToys, abre <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide> y selecciona Remap a key. Luego añade una nueva fila para <key>Caps Lock</key>.',
             },
             step03: {
               title: '3. Elige la tecla destino',
@@ -209,15 +209,15 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
       steps: {
         step01: {
           title: '1. Instala Karabiner-Elements y completa los permisos',
-          body: 'Instala primero Karabiner-Elements y luego asegúrate de permitir el servicio en segundo plano, el permiso de Input Monitoring y la extensión del controlador. La documentación oficial de Karabiner los indica como ajustes necesarios de macOS.',
+          body: 'Instala primero <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> y luego asegúrate de permitir el servicio en segundo plano, el permiso de Input Monitoring y la extensión del controlador. <karabinerRequiredSettingsGuide>La documentación oficial de Karabiner</karabinerRequiredSettingsGuide> los indica como ajustes necesarios de macOS.',
         },
         step02: {
           title: '2. Reasigna <key>Caps Lock</key> en Simple Modifications',
-          body: 'Abre Karabiner-Elements, elige Simple Modifications, selecciona el teclado que quieras editar y cambia <key>Caps Lock</key> a <key>Left Control</key>. Si prefieres <key>Escape</key>, también puedes elegirlo aquí.',
+          body: 'Abre Karabiner-Elements, elige <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, selecciona el teclado que quieras editar y cambia <key>Caps Lock</key> a <key>Left Control</key>. Si prefieres <key>Escape</key>, también puedes elegirlo aquí.',
         },
         step03: {
           title: '3. Opcional: aplica la misma asignación antes de iniciar sesión',
-          body: 'Si quieres la misma asignación en la pantalla de contraseña antes de iniciar sesión, abre la pestaña Misc en la configuración de Karabiner y usa “Copy the current configuration to the system default configuration.” La guía oficial de Karabiner documenta este flujo para usarlo antes de iniciar sesión.',
+          body: 'Si quieres la misma asignación en la pantalla de contraseña antes de iniciar sesión, abre la pestaña Misc en la configuración de Karabiner y usa “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>La guía oficial de Karabiner</karabinerBeforeLoginGuide> documenta este flujo para usarlo antes de iniciar sesión.',
         },
         step04: {
           title: '4. Opcional: sigue solo si <key>Caps Lock</key> ya cambia de idioma',
@@ -229,11 +229,11 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
             },
             step04_2: {
               title: '4-2. Asígnale <key>F18</key> en Karabiner',
-              body: 'En Simple Modifications, añade <key>Right Command</key> -> <key>F18</key> o <key>Right Option</key> -> <key>F18</key>, según la tecla que elegiste antes. Así liberas <key>Caps Lock</key> para reasignarlo y mantienes una tecla dedicada para cambiar de idioma a la derecha del teclado.',
+              body: 'En <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, añade <key>Right Command</key> -> <key>F18</key> o <key>Right Option</key> -> <key>F18</key>, según la tecla que elegiste antes. Así liberas <key>Caps Lock</key> para reasignarlo y mantienes una tecla dedicada para cambiar de idioma a la derecha del teclado.',
             },
             step04_3: {
               title: '4-3. Asigna <key>F18</key> al cambio de idioma en macOS',
-              body: 'Abre el menú Apple > Ajustes del Sistema > Teclado > Atajos de teclado > Fuentes de entrada y asigna <key>F18</key> a “Seleccionar la siguiente fuente en el menú de entrada.” Así recreas una tecla fiable para cambiar de idioma después de reutilizar <key>Caps Lock</key>. Aquí se usa <key>F18</key> como ejemplo práctico. Apple documenta que <key>F1</key> a <key>F12</key> están vinculadas a funciones integradas del sistema, así que una tecla de función de número más alto suele ser más fácil de usar para cambiar de fuente de entrada. En la práctica, <key>F18</key> ha sido una elección segura porque suele no solaparse con esas funciones integradas.',
+              body: 'Abre el menú Apple > Ajustes del Sistema > Teclado > Atajos de teclado > Fuentes de entrada y asigna <key>F18</key> a “Seleccionar la siguiente fuente en el menú de entrada.” Así recreas una tecla fiable para cambiar de idioma después de reutilizar <key>Caps Lock</key>. Aquí se usa <key>F18</key> como ejemplo práctico. <appleInputSourcesGuide>Apple documenta que</appleInputSourcesGuide> <key>F1</key> a <key>F12</key> están vinculadas a funciones integradas del sistema, así que una tecla de función de número más alto suele ser más fácil de usar para cambiar de fuente de entrada. En la práctica, <key>F18</key> ha sido una elección segura porque suele no solaparse con esas funciones integradas.',
             },
           },
         },

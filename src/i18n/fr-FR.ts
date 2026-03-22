@@ -139,11 +139,11 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
           steps: {
             step01: {
               title: '1. Installez PowerToys',
-              body: 'Installez PowerToys depuis le Microsoft Store, la page des versions GitHub ou winget. Microsoft documente ces trois méthodes dans son guide d’installation.',
+              body: 'Installez PowerToys depuis le Microsoft Store, la page des versions GitHub ou winget. Microsoft documente ces trois méthodes dans son <powertoysInstallationGuide>guide d’installation</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Ouvrez Keyboard Manager puis Remap a key',
-              body: 'Dans les paramètres PowerToys, ouvrez Keyboard Manager et sélectionnez Remap a key. Ajoutez ensuite une ligne pour <key>Caps Lock</key>.',
+              body: 'Dans les paramètres PowerToys, ouvrez <keyboardManagerGuide>Keyboard Manager</keyboardManagerGuide> et sélectionnez Remap a key. Ajoutez ensuite une ligne pour <key>Caps Lock</key>.',
             },
             step03: {
               title: '3. Choisissez la touche cible',
@@ -209,15 +209,15 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       steps: {
         step01: {
           title: '1. Installez Karabiner-Elements et autorisez-le',
-          body: 'Installez d’abord Karabiner-Elements, puis assurez-vous que le service d’arrière-plan, l’autorisation de surveillance des saisies et l’extension de pilote sont tous autorisés. La documentation officielle de Karabiner les présente comme des réglages macOS requis.',
+          body: 'Installez d’abord <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>, puis assurez-vous que le service d’arrière-plan, l’autorisation de surveillance des saisies et l’extension de pilote sont tous autorisés. <karabinerRequiredSettingsGuide>La documentation officielle de Karabiner</karabinerRequiredSettingsGuide> les présente comme des réglages macOS requis.',
         },
         step02: {
           title: '2. Remappez <key>Caps Lock</key> dans Simple Modifications',
-          body: 'Ouvrez Karabiner-Elements, choisissez Simple Modifications, sélectionnez le clavier à modifier, puis changez <key>Caps Lock</key> en <key>Left Control</key>. Si vous préférez <key>Escape</key>, vous pouvez le choisir ici aussi.',
+          body: 'Ouvrez Karabiner-Elements, choisissez <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, sélectionnez le clavier à modifier, puis changez <key>Caps Lock</key> en <key>Left Control</key>. Si vous préférez <key>Escape</key>, vous pouvez le choisir ici aussi.',
         },
         step03: {
           title: '3. Facultatif : appliquer le même mappage avant la connexion',
-          body: 'Si vous voulez le même mappage sur l’écran de mot de passe avant connexion, ouvrez l’onglet Misc dans Karabiner Settings et utilisez “Copy the current configuration to the system default configuration.” Le guide officiel de Karabiner documente cette procédure pour l’utilisation avant connexion.',
+          body: 'Si vous voulez le même mappage sur l’écran de mot de passe avant connexion, ouvrez l’onglet Misc dans Karabiner Settings et utilisez “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>Le guide officiel de Karabiner</karabinerBeforeLoginGuide> documente cette procédure pour l’utilisation avant connexion.',
         },
         step04: {
           title: '4. Facultatif : si <key>Caps Lock</key> sert déjà à changer de langue',
@@ -229,11 +229,11 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
             },
             step04_2: {
               title: '4-2. Mappez cette touche de droite vers <key>F18</key> dans Karabiner',
-              body: 'Dans Simple Modifications, ajoutez soit <key>Right Command</key> -> <key>F18</key>, soit <key>Right Option</key> -> <key>F18</key>, selon la touche choisie à l’étape précédente. Cela libère <key>Caps Lock</key> pour le remappage tout en gardant une touche dédiée au changement de langue sur le côté droit du clavier.',
+              body: 'Dans <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, ajoutez soit <key>Right Command</key> -> <key>F18</key>, soit <key>Right Option</key> -> <key>F18</key>, selon la touche choisie à l’étape précédente. Cela libère <key>Caps Lock</key> pour le remappage tout en gardant une touche dédiée au changement de langue sur le côté droit du clavier.',
             },
             step04_3: {
               title: '4-3. Attribuez <key>F18</key> au changement de source de saisie dans macOS',
-              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Apple documente que <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, donc une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. En pratique, <key>F18</key> est un choix sûr car il a peu de chances d’entrer en conflit avec ces rôles intégrés.',
+              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. <appleInputSourcesGuide>Apple documente que</appleInputSourcesGuide> <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, donc une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. En pratique, <key>F18</key> est un choix sûr car il a peu de chances d’entrer en conflit avec ces rôles intégrés.',
             },
           },
         },

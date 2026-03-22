@@ -14,6 +14,49 @@ type MacGuidePanelProps = {
 export function MacGuidePanel({ locale }: MacGuidePanelProps) {
   const { t } = useTranslation()
   const keyComponents = { key: <InlineTransKeycap platform="mac" /> }
+  const stepComponents = {
+    ...keyComponents,
+    karabinerInstallationGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://karabiner-elements.pqrs.org/docs/getting-started/installation/"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+    karabinerRequiredSettingsGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://karabiner-elements.pqrs.org/docs/manual/misc/required-macos-settings/"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+    karabinerSimpleModificationsGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://karabiner-elements.pqrs.org/docs/manual/configuration/configure-simple-modifications/"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+    karabinerBeforeLoginGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://karabiner-elements.pqrs.org/docs/help/how-to/use-before-logging-in/"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+    appleInputSourcesGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://support.apple.com/guide/mac-help/change-input-sources-settings-on-mac-mchl84525d76/mac"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+  }
   const steps = ['step01', 'step02', 'step03'] as const
   const substeps = ['step04_1', 'step04_2', 'step04_3'] as const
   const notes = ['note1', 'note2', 'note3'] as const
@@ -67,7 +110,7 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
                 <Trans i18nKey={`guide.mac.steps.${step}.title`} components={keyComponents} />
               </h4>
               <p className={guideStyles.stepBody}>
-                <Trans i18nKey={`guide.mac.steps.${step}.body`} components={keyComponents} />
+                <Trans i18nKey={`guide.mac.steps.${step}.body`} components={stepComponents} />
               </p>
             </section>
           ))}
@@ -77,7 +120,7 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
               <Trans i18nKey="guide.mac.steps.step04.title" components={keyComponents} />
             </h4>
             <p className={guideStyles.stepBody}>
-              <Trans i18nKey="guide.mac.steps.step04.body" components={keyComponents} />
+              <Trans i18nKey="guide.mac.steps.step04.body" components={stepComponents} />
             </p>
 
             <div className={guideStyles.substepGroup}>
@@ -92,7 +135,7 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
                   <p className={guideStyles.stepBody}>
                     <Trans
                       i18nKey={`guide.mac.steps.step04.substeps.${substep}.body`}
-                      components={keyComponents}
+                      components={stepComponents}
                     />
                   </p>
                 </section>

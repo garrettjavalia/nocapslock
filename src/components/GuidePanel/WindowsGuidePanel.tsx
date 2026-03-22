@@ -15,6 +15,25 @@ const windowsMethodIds = ['powertoys', 'registry'] as const
 function WindowsPowerToysGuide() {
   const { t } = useTranslation()
   const keyComponents = { key: <InlineTransKeycap platform="windows" /> }
+  const stepComponents = {
+    ...keyComponents,
+    powertoysInstallationGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://learn.microsoft.com/en-us/windows/powertoys/install"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+    keyboardManagerGuide: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://learn.microsoft.com/en-us/windows/powertoys/keyboard-manager"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+  }
   const steps = ['step01', 'step02', 'step03', 'step04'] as const
   const notes = ['note1', 'note2'] as const
   const references = [
@@ -44,7 +63,7 @@ function WindowsPowerToysGuide() {
               <p className={guideStyles.stepBody}>
                 <Trans
                   i18nKey={`guide.windows.method.powertoys.steps.${step}.body`}
-                  components={keyComponents}
+                  components={stepComponents}
                 />
               </p>
             </section>
