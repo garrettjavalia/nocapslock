@@ -3,27 +3,56 @@ import { Keycap } from '../Keycap'
 import * as styles from './CompactRemapBadge.css'
 import type { PlatformId, RemapKey } from '../Keycap'
 
+type HeroBadgeChoice = RemapKey | 'Ctrl' | 'no-caps-lock'
+
 type CompactRemapBadgeProps = {
   label: string
-  platform: PlatformId
 }
 
-function getChoices(platform: PlatformId): RemapKey[] {
-  if (platform === 'mac' || platform === 'ios') {
-    return ['Command', 'Control', 'ESC']
+const heroRemapChoices: HeroBadgeChoice[] = [
+  'no-caps-lock',
+  'Command',
+  'Control',
+  'Ctrl',
+  'ESC',
+  'Win',
+  'Super',
+  'Meta',
+]
+
+function renderMiniKey(label: string, miniSize: 'xs' | 'sm' | 'md' = 'md', platform: PlatformId = 'other') {
+  return (
+    <Keycap
+      keyLabel={label}
+      mini
+      miniSize={miniSize}
+      platform={platform}
+      selectable={false}
+      ariaHidden
+    />
+  )
+}
+
+function renderChoice(choice: HeroBadgeChoice | null) {
+  if (choice === null || choice === 'no-caps-lock') {
+    return <Keycap crossed keyLabel="Caps Lock" mini platform="other" selectable={false} ariaHidden />
   }
 
-  return ['Control', 'ESC']
+  if (choice === 'Command') {
+    return renderMiniKey('Command', 'md', 'mac')
+  }
+
+  if (choice === 'Control') {
+    return renderMiniKey('Control', 'md', 'mac')
+  }
+
+  return renderMiniKey(choice)
 }
 
-export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
-  const [displayKey, setDisplayKey] = useState<RemapKey | null>(null)
+export function CompactRemapBadge({ label }: CompactRemapBadgeProps) {
+  const [displayKey, setDisplayKey] = useState<HeroBadgeChoice | null>(null)
   const timerRef = useRef<number | null>(null)
   const stopRef = useRef<number | null>(null)
-
-  useEffect(() => {
-    setDisplayKey(null)
-  }, [platform])
 
   useEffect(() => {
     return () => {
@@ -33,7 +62,7 @@ export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
   }, [])
 
   const handleClick = () => {
-    const pool = getChoices(platform)
+    const pool = heroRemapChoices
 
     if (timerRef.current) window.clearInterval(timerRef.current)
     if (stopRef.current) window.clearTimeout(stopRef.current)
@@ -53,11 +82,7 @@ export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
 
   return (
     <button type="button" className={styles.compactHeroBadge} aria-label={label} onClick={handleClick}>
-      {displayKey === null ? (
-        <Keycap crossed keyLabel="Caps Lock" mini platform={platform} selectable={false} />
-      ) : (
-        <Keycap keyLabel={displayKey} mini platform={platform} selectable={false} />
-      )}
+      {renderChoice(displayKey)}
     </button>
   )
 }

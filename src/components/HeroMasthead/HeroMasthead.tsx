@@ -2,7 +2,6 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CompactRemapBadge } from '../CompactRemapBadge'
 import { HeaderControls } from '../HeaderControls'
-import type { PlatformId } from '../Keycap'
 import type { Locale } from '../../i18n'
 import * as styles from '../../styles/app.css'
 
@@ -13,7 +12,6 @@ type HeroMastheadProps = {
   locale: Locale
   onLocaleChange: (locale: Locale) => void
   onThemeToggle: () => void
-  platform: PlatformId
   theme: ThemeMode
 }
 
@@ -22,7 +20,6 @@ export function HeroMasthead({
   locale,
   onLocaleChange,
   onThemeToggle,
-  platform,
   theme,
 }: HeroMastheadProps) {
   const { t } = useTranslation()
@@ -64,7 +61,7 @@ export function HeroMasthead({
           <div className={styles.mastheadSurface}>
             <div className={styles.mastheadTop}>
               <div className={styles.mastheadTitles}>
-                <CompactRemapBadge label={t('hero.title')} platform={platform} />
+                <CompactRemapBadge label={t('hero.title')} />
               </div>
 
               <HeaderControls

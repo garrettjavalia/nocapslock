@@ -4,6 +4,7 @@ export const frFrTranslation = {
   linkCopy: {
     copy: 'Copier le lien',
     copied: 'Lien copié',
+    share: 'Partager le lien',
   },
   meta: {
     description:
@@ -132,14 +133,14 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
           referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: 'C’est la mise en place la plus rapide et elle se modifie facilement plus tard depuis une interface graphique.',
           pro2: 'Elle peut remapper une touche vers une autre touche, ou même vers un raccourci, pas seulement vers une autre position physique.',
-          pro3: 'Microsoft documente que les remappages s’appliquent immédiatement après validation.',
+          pro3: 'Les remappages s’appliquent immédiatement après validation.',
           con1: 'PowerToys doit rester actif en arrière-plan, sinon le remappage cesse de s’appliquer.',
-          con2: 'Microsoft documente que Keyboard Manager ne fonctionne pas sur l’écran de connexion Windows ni sur les autres invites de mot de passe.',
+          con2: 'Keyboard Manager ne fonctionne pas sur l’écran de connexion Windows ni sur les autres invites de mot de passe.',
           con3: 'Les remappages de touches modificatrices peuvent encore interférer avec certains gestes, touches spéciales ou applications élevées.',
           steps: {
             step01: {
               title: '1. Installez PowerToys',
-              body: 'Installez PowerToys depuis le Microsoft Store, la page des versions GitHub ou winget. Microsoft documente ces trois méthodes dans son <powertoysInstallationGuide>guide d’installation</powertoysInstallationGuide>.',
+              body: 'Installez PowerToys depuis le Microsoft Store, la page des versions GitHub ou winget. Vous pouvez utiliser l’une ou l’autre des trois méthodes du <powertoysInstallationGuide>guide d’installation</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Ouvrez Keyboard Manager puis Remap a key',
@@ -209,7 +210,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       steps: {
         step01: {
           title: '1. Installez Karabiner-Elements et autorisez-le',
-          body: 'Installez d’abord <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>, puis assurez-vous que le service d’arrière-plan, l’autorisation de surveillance des saisies et l’extension de pilote sont tous autorisés. <karabinerRequiredSettingsGuide>La documentation officielle de Karabiner</karabinerRequiredSettingsGuide> les présente comme des réglages macOS requis.',
+          body: 'Installez d’abord <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>, puis assurez-vous que le service d’arrière-plan, l’autorisation de surveillance des saisies et l’extension de pilote sont tous autorisés. Ce sont les réglages macOS requis.',
         },
         step02: {
           title: '2. Remappez <key>Caps Lock</key> dans Simple Modifications',
@@ -217,7 +218,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
         },
         step03: {
           title: '3. Facultatif : appliquer le même mappage avant la connexion',
-          body: 'Si vous voulez le même mappage sur l’écran de mot de passe avant connexion, ouvrez l’onglet Misc dans Karabiner Settings et utilisez “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>Le guide officiel de Karabiner</karabinerBeforeLoginGuide> documente cette procédure pour l’utilisation avant connexion.',
+          body: 'Si vous voulez le même mappage sur l’écran de mot de passe avant connexion, ouvrez l’onglet Misc dans Karabiner Settings et utilisez “Copy the current configuration to the system default configuration.” Le même mappage sera alors disponible avant la connexion.',
         },
         step04: {
           title: '4. Facultatif : si <key>Caps Lock</key> sert déjà à changer de langue',
@@ -233,15 +234,15 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
             },
             step04_3: {
               title: '4-3. Attribuez <key>F18</key> au changement de source de saisie dans macOS',
-              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. <appleInputSourcesGuide>Apple documente que</appleInputSourcesGuide> <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, donc une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. En pratique, <key>F18</key> est un choix sûr car il a peu de chances d’entrer en conflit avec ces rôles intégrés.',
+              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Comme <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. Parmi elles, <key>F18</key> fait partie des touches qu’on peut généralement utiliser sans problème.',
             },
           },
         },
       },
       note1:
-        'Si vous voulez vérifier les noms de touches avant d’enregistrer les changements, EventViewer de Karabiner est l’outil officiel pour voir ce que macOS et Karabiner détectent pour chaque touche.',
+        'Si vous voulez vérifier les noms de touches avant d’enregistrer les changements, EventViewer de Karabiner montre ce que macOS et Karabiner détectent pour chaque touche.',
       note2:
-        'Apple documente aussi une option intégrée permettant d’utiliser <key>Caps Lock</key> pour basculer vers et depuis la dernière source de saisie latine utilisée. Si vous voulez conserver votre remappage de <key>Caps Lock</key>, une touche dédiée au changement de langue comme <key>Right Command</key> -> <key>F18</key> est plus flexible.',
+        'macOS propose aussi une option intégrée permettant d’utiliser <key>Caps Lock</key> pour basculer vers et depuis la dernière source de saisie latine utilisée. Si vous voulez conserver votre remappage de <key>Caps Lock</key>, une touche dédiée au changement de langue comme <key>Right Command</key> -> <key>F18</key> est plus flexible.',
       note3:
         'Si vous avez encore besoin de <key>Caps Lock</key> de temps en temps, gardez-le sur une autre touche que vous utilisez rarement au lieu de le supprimer complètement.',
     },
@@ -271,7 +272,7 @@ esc = capslock`,
       steps: {
         step01: {
           title: '1. Installez keyd',
-          body: 'Installez d’abord keyd. Le projet officiel documente une installation depuis les sources avec git clone, make, sudo make install et sudo systemctl enable --now keyd. Si vous préférez une version taguée, vous pouvez partir de la page des versions officielles.',
+          body: 'Installez d’abord keyd. Le flux d’installation depuis les sources est git clone, make, sudo make install et sudo systemctl enable --now keyd. Si vous préférez une version taguée, vous pouvez partir de la page des versions.',
         },
         step02: {
           title: '2. Créez /etc/keyd/default.conf',
@@ -287,13 +288,13 @@ esc = capslock`,
         },
         step05: {
           title: '5. Gardez en tête la séquence d’arrêt d’urgence',
-          body: 'Si vous faites une mauvaise configuration et devez vous en sortir vite, la documentation officielle indique que <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> doit arrêter keyd.',
+          body: 'Si vous faites une mauvaise configuration et devez vous en sortir vite, utilisez <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> pour arrêter keyd.',
         },
       },
       note1:
-        'Le README en amont indique que master est la branche de développement, tandis que les versions taguées doivent être considérées comme stables.',
+        'Utilisez master comme branche de développement et les versions taguées comme versions stables.',
       note2:
-        'Debian 13+ et Ubuntu 25.04+ sont aussi documentés comme pouvant utiliser apt install keyd, mais l’installation par les sources ci-dessus reste l’option la plus portable.',
+        'Debian 13+ et Ubuntu 25.04+ peuvent aussi utiliser apt install keyd, mais l’installation par les sources ci-dessus reste l’option la plus portable.',
       note3:
         'Si vous avez encore besoin de <key>Caps Lock</key> de temps en temps, gardez-le sur une autre touche que vous utilisez rarement au lieu de le supprimer complètement.',
     },

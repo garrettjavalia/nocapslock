@@ -1,26 +1,23 @@
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { InlineTransKeycap, Keycap, type PlatformId } from '../Keycap'
+import { InlineTransKeycap, Keycap, KeycapFace, type PlatformId } from '../Keycap'
 import { getShortcutRole, previewPlatforms } from '../Keycap/keyRoles'
 import * as styles from '../../styles/app.css'
 
 const heroKeyCycleIntervalMs = 2000
+const animatedKeyLabels = ['Command', 'Control', 'ESC'] as const
 
 type KeyPreviewPanelProps = {
   platform: PlatformId
 }
 
-export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
-  const { t } = useTranslation()
-  const [keyCycleIndex, setKeyCycleIndex] = useState(0)
-  const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
-  const animatedKeyLabels = ['Command', 'Control', 'ESC'] as const
-  const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
-  const recommendedKeyLabel = getShortcutRole(captionPlatform)
+type CyclingPreviewKeycapProps = {
+  platform: PlatformId
+}
 
-  useEffect(() => {
-    setCaptionPlatform(platform)
-  }, [platform])
+function CyclingPreviewKeycap({ platform }: CyclingPreviewKeycapProps) {
+  const [keyCycleIndex, setKeyCycleIndex] = useState(0)
+  const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -28,7 +25,28 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
     }, heroKeyCycleIntervalMs)
 
     return () => window.clearInterval(timer)
-  }, [animatedKeyLabels.length])
+  }, [])
+
+  return (
+    <Keycap keyLabel={activeKeyLabel} platform={platform} wide>
+      <KeycapFace
+        key={`${platform}-${activeKeyLabel}`}
+        keyLabel={activeKeyLabel}
+        platform={platform}
+        wide
+      />
+    </Keycap>
+  )
+}
+
+export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
+  const { t } = useTranslation()
+  const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
+  const recommendedKeyLabel = getShortcutRole(captionPlatform)
+
+  useEffect(() => {
+    setCaptionPlatform(platform)
+  }, [platform])
 
   return (
     <section className={`${styles.panel} ${styles.keyStage}`} aria-labelledby="hero-key-title">
@@ -38,8 +56,8 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
           {t('preview.title')}
         </h2>
       </div>
-      <div className={styles.keyRail} aria-hidden="true">
-        <div className={styles.keyNarrative}>
+      <div className={styles.keyRail}>
+        <div className={styles.keyNarrative} aria-hidden="true">
           <div className={styles.keyStateColumn}>
             <Keycap crossed keyLabel="Caps Lock" muted platform={platform} />
           </div>
@@ -49,7 +67,7 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
           </div>
 
           <div className={styles.keyStateColumn}>
-            <Keycap key={`${platform}-${activeKeyLabel}`} keyLabel={activeKeyLabel} platform={platform} wide />
+            <CyclingPreviewKeycap platform={platform} />
           </div>
         </div>
         <p className={styles.keyCaption}>

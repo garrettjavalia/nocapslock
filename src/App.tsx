@@ -218,7 +218,6 @@ export function App({
             hash: location.hash,
           })}
           onThemeToggle={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
-          platform={platform}
           theme={theme}
         />
 
