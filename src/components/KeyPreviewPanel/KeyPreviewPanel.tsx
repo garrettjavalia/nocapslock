@@ -57,7 +57,7 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
         </h2>
       </div>
       <div className={styles.keyRail}>
-        <div className={styles.keyNarrative}>
+        <div className={styles.keyNarrative} aria-hidden="true">
           <div className={styles.keyStateColumn}>
             <Keycap crossed keyLabel="Caps Lock" muted platform={platform} />
           </div>

@@ -21,12 +21,21 @@ const heroRemapChoices: HeroBadgeChoice[] = [
 ]
 
 function renderMiniKey(label: string, miniSize: 'xs' | 'sm' | 'md' = 'md', platform: PlatformId = 'other') {
-  return <Keycap keyLabel={label} mini miniSize={miniSize} platform={platform} selectable={false} />
+  return (
+    <Keycap
+      keyLabel={label}
+      mini
+      miniSize={miniSize}
+      platform={platform}
+      selectable={false}
+      ariaHidden
+    />
+  )
 }
 
 function renderChoice(choice: HeroBadgeChoice | null) {
   if (choice === null || choice === 'no-caps-lock') {
-    return <Keycap crossed keyLabel="Caps Lock" mini platform="other" selectable={false} />
+    return <Keycap crossed keyLabel="Caps Lock" mini platform="other" selectable={false} ariaHidden />
   }
 
   if (choice === 'Command') {

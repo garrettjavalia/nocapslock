@@ -9,6 +9,7 @@ type KeycapProps = {
   platform: PlatformId
   className?: string
   style?: CSSProperties
+  ariaHidden?: boolean
   mini?: boolean
   miniSize?: 'xs' | 'sm' | 'md'
   selectable?: boolean
@@ -94,6 +95,7 @@ function renderMini(
   miniSize: 'xs' | 'sm' | 'md' = 'md',
   selectable = true,
   prefixText?: string,
+  ariaHidden = false,
 ) {
   const miniKeycapClass =
     miniSize === 'xs'
@@ -110,14 +112,18 @@ function renderMini(
     const modifierText = label === 'Command' ? '⌘ command' : '⌃ control'
     const labelText = prefixText ? `${prefixText} ${modifierText}` : modifierText
     const content = (
-      <span className={`${miniKeycapClass} ${selectionClass}`} aria-label={`${label} key`}>
+      <span
+        className={`${miniKeycapClass} ${selectionClass}`}
+        aria-hidden={ariaHidden || undefined}
+        aria-label={ariaHidden ? undefined : `${label} key`}
+      >
         {labelText}
       </span>
     )
 
     return crossed ? (
-      <span className={styles.inlineMiniKeycapWrap}>
-        <span className={styles.inlineMiniKeycapCross} />
+      <span className={styles.inlineMiniKeycapWrap} aria-hidden={ariaHidden || undefined}>
+        <span className={styles.inlineMiniKeycapCross} aria-hidden="true" />
         {content}
       </span>
     ) : (
@@ -126,14 +132,14 @@ function renderMini(
   }
 
   const content = (
-    <span className={`${miniKeycapClass} ${selectionClass}`}>
+    <span className={`${miniKeycapClass} ${selectionClass}`} aria-hidden={ariaHidden || undefined}>
       {prefixText ? `${prefixText} ` : ''}
       {label}
     </span>
   )
   return crossed ? (
-    <span className={styles.inlineMiniKeycapWrap}>
-      <span className={styles.inlineMiniKeycapCross} />
+    <span className={styles.inlineMiniKeycapWrap} aria-hidden={ariaHidden || undefined}>
+      <span className={styles.inlineMiniKeycapCross} aria-hidden="true" />
       {content}
     </span>
   ) : (
@@ -142,6 +148,7 @@ function renderMini(
 }
 
 export function Keycap({
+  ariaHidden = false,
   children,
   className,
   crossed,
@@ -156,7 +163,7 @@ export function Keycap({
   wide = false,
 }: KeycapProps) {
   if (mini) {
-    return renderMini(keyLabel, platform, crossed, miniSize, selectable, prefixText)
+    return renderMini(keyLabel, platform, crossed, miniSize, selectable, prefixText, ariaHidden)
   }
 
   const classes = [styles.keycap]
@@ -168,9 +175,9 @@ export function Keycap({
   )
 
   return (
-    <div className={classes.join(' ')} style={style}>
+    <div className={classes.join(' ')} style={style} aria-hidden={ariaHidden || undefined}>
       <div className={styles.keycapSurface}>
-        {crossed ? <span className={styles.keycapCross} /> : null}
+        {crossed ? <span className={styles.keycapCross} aria-hidden="true" /> : null}
         {content}
       </div>
     </div>
