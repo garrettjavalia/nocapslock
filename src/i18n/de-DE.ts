@@ -233,7 +233,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
             },
             step04_3: {
               title: '4-3. <key>F18</key> in macOS dem Wechsel der Eingabequelle zuweisen',
-              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. <key>F1</key> bis <key>F12</key> sind an integrierte Systemfunktionen gebunden; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. In der Praxis ist <key>F18</key> eine sichere Wahl, weil sie meist nicht mit diesen integrierten Rollen kollidiert.',
+              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. <key>F1</key> bis <key>F12</key> sind an integrierte Systemfunktionen gebunden; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. Darunter ist <key>F18</key> eine der Tasten, die sich meist problemlos verwenden lassen.',
             },
           },
         },

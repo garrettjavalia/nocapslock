@@ -231,7 +231,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             },
             step04_3: {
               title: '4-3. Assign <key>F18</key> to input-source switching in macOS',
-              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. Because <key>F1</key> through <key>F12</key> are tied to built-in system features, a higher-numbered function key is often easier to use for input-source switching. In practice, <key>F18</key> has been a safe choice because it tends not to overlap with those built-in roles.',
+              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. Because <key>F1</key> through <key>F12</key> are tied to built-in system features, a higher-numbered function key is often easier to use for input-source switching. Among them, <key>F18</key> is one of the keys that is usually safe to use.',
             },
           },
         },

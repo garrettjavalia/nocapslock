@@ -233,7 +233,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
             },
             step04_3: {
               title: '4-3. Attribuez <key>F18</key> au changement de source de saisie dans macOS',
-              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Comme <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. En pratique, <key>F18</key> est un choix sûr car il a peu de chances d’entrer en conflit avec ces rôles intégrés.',
+              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Comme <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. Parmi elles, <key>F18</key> fait partie des touches qu’on peut généralement utiliser sans problème.',
             },
           },
         },

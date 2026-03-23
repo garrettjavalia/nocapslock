@@ -233,7 +233,7 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
             },
             step04_3: {
               title: '4-3. Atribua <key>F18</key> à troca de fonte de entrada no macOS',
-              body: 'Abra Menu Apple > Ajustes do Sistema > Teclado > Atalhos de Teclado > Fontes de Entrada e atribua <key>F18</key> a “Selecionar a próxima fonte no menu de entrada”. Isso recria uma tecla confiável de troca de idioma depois que o <key>Caps Lock</key> foi reaproveitado. Aqui, <key>F18</key> é usado como exemplo prático. Como <key>F1</key> a <key>F12</key> estão ligados a recursos internos do sistema, uma tecla de função com número mais alto costuma ser mais fácil de usar para troca de fonte de entrada. Na prática, <key>F18</key> costuma ser uma escolha segura porque tende a não colidir com essas funções internas.',
+              body: 'Abra Menu Apple > Ajustes do Sistema > Teclado > Atalhos de Teclado > Fontes de Entrada e atribua <key>F18</key> a “Selecionar a próxima fonte no menu de entrada”. Isso recria uma tecla confiável de troca de idioma depois que o <key>Caps Lock</key> foi reaproveitado. Aqui, <key>F18</key> é usado como exemplo prático. Como <key>F1</key> a <key>F12</key> estão ligados a recursos internos do sistema, uma tecla de função com número mais alto costuma ser mais fácil de usar para troca de fonte de entrada. Entre elas, <key>F18</key> é uma das teclas que costuma dar para usar sem problemas.',
             },
           },
         },
