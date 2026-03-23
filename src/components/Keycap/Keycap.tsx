@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import * as styles from './Keycap.css'
 
 export type RemapKey = 'Command' | 'Control' | 'ESC'
@@ -9,6 +9,8 @@ type KeycapProps = {
   keyLabel: string
   platform: PlatformId
   size?: KeycapSize
+  className?: string
+  style?: CSSProperties
   mini?: boolean
   miniSize?: 'xs' | 'sm' | 'md'
   selectable?: boolean
@@ -16,24 +18,70 @@ type KeycapProps = {
   muted?: boolean
   crossed?: boolean
   wide?: boolean
+  children?: ReactNode
+}
+
+type KeycapFaceProps = {
+  keyLabel: string
+  platform: PlatformId
+  crossed?: boolean
+  wide?: boolean
+  animated?: boolean
 }
 
 function isAppleModifierKeycap(platform: PlatformId, label: string) {
   return (platform === 'mac' || platform === 'ios') && (label === 'Command' || label === 'Control')
 }
 
-function renderAppleModifier(label: 'Command' | 'Control') {
+function renderAppleModifier(label: 'Command' | 'Control', animated = true) {
   return (
     <div className={styles.commandKeycap}>
       <span className={styles.commandGlyphRow}>
-        <span className={styles.commandGlyphRight} aria-hidden="true">
+        <span
+          className={[styles.commandGlyphRight, animated ? '' : styles.keycapLabelStatic]
+            .filter(Boolean)
+            .join(' ')}
+          aria-hidden="true"
+        >
           {label === 'Command' ? '⌘' : '⌃'}
         </span>
       </span>
-      <span className={styles.commandLabel}>
+      <span
+        className={[styles.commandLabel, animated ? '' : styles.keycapLabelStatic]
+          .filter(Boolean)
+          .join(' ')}
+      >
         {label === 'Command' ? 'command' : 'control'}
       </span>
     </div>
+  )
+}
+
+export function KeycapFace({
+  keyLabel,
+  platform,
+  crossed = false,
+  wide = false,
+  animated = !crossed,
+}: KeycapFaceProps) {
+  if (isAppleModifierKeycap(platform, keyLabel)) {
+    return renderAppleModifier(keyLabel as 'Command' | 'Control', animated)
+  }
+
+  return (
+    <span className={styles.keycapFace}>
+      <span
+        className={[
+          styles.keycapLabel,
+          wide ? styles.keycapLabelWide : '',
+          animated ? '' : styles.keycapLabelStatic,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+      >
+        {keyLabel}
+      </span>
+    </span>
   )
 }
 
@@ -92,9 +140,12 @@ function renderMini(
 }
 
 export function Keycap({
+  children,
+  className,
   crossed,
   keyLabel,
   size = 'default',
+  style,
   mini = false,
   miniSize = 'md',
   selectable = true,
@@ -108,32 +159,20 @@ export function Keycap({
   }
 
   const classes = [styles.keycap]
+  if (className) classes.push(className)
   if (size === 'badge') classes.push(styles.keycapBadge)
   if (muted) classes.push(styles.keycapMuted)
 
-  let content: ReactNode
-  if (isAppleModifierKeycap(platform, keyLabel)) {
-    content = renderAppleModifier(keyLabel as 'Command' | 'Control')
-  } else {
-    content = (
-      <span
-        className={[
-          styles.keycapLabel,
-          wide ? styles.keycapLabelWide : '',
-          crossed ? styles.keycapLabelStatic : '',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        {keyLabel}
-      </span>
-    )
-  }
+  const content: ReactNode = children ?? (
+    <KeycapFace keyLabel={keyLabel} platform={platform} wide={wide} crossed={crossed} />
+  )
 
   return (
-    <div className={classes.join(' ')}>
-      {crossed ? <span className={styles.keycapCross} /> : null}
-      {content}
+    <div className={classes.join(' ')} style={style}>
+      <div className={styles.keycapSurface}>
+        {crossed ? <span className={styles.keycapCross} /> : null}
+        {content}
+      </div>
     </div>
   )
 }
