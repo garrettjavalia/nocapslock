@@ -206,6 +206,8 @@ export const commandKeycap = style([
   keycapFace,
   {
     gridTemplateRows: '1fr auto',
+    alignItems: 'stretch',
+    justifyItems: 'stretch',
     padding: `${commandPaddingBlock} ${commandPaddingInline}`,
   },
 ])
@@ -214,6 +216,7 @@ export const commandGlyphRow = style({
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'flex-start',
+  width: '100%',
   minWidth: 0,
   minHeight: 0,
 })
