@@ -18,6 +18,7 @@ const heroRemapChoices: HeroBadgeChoice[] = [
   'ESC',
   'Win',
   'Super',
+  'Meta',
 ]
 
 function renderMiniKey(label: string, miniSize: 'xs' | 'sm' | 'md' = 'md', platform: PlatformId = 'other') {
