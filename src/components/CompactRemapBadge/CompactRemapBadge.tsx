@@ -7,7 +7,6 @@ type HeroBadgeChoice = RemapKey | 'Ctrl' | 'no-caps-lock'
 
 type CompactRemapBadgeProps = {
   label: string
-  platform: PlatformId
 }
 
 const heroRemapChoices: HeroBadgeChoice[] = [
@@ -41,14 +40,10 @@ function renderChoice(choice: HeroBadgeChoice | null) {
   return renderMiniKey(choice)
 }
 
-export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
+export function CompactRemapBadge({ label }: CompactRemapBadgeProps) {
   const [displayKey, setDisplayKey] = useState<HeroBadgeChoice | null>(null)
   const timerRef = useRef<number | null>(null)
   const stopRef = useRef<number | null>(null)
-
-  useEffect(() => {
-    setDisplayKey(null)
-  }, [platform])
 
   useEffect(() => {
     return () => {
