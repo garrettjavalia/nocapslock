@@ -4,6 +4,7 @@ export const ptBrTranslation = {
   linkCopy: {
     copy: 'Copiar link',
     copied: 'Link copiado',
+    share: 'Compartilhar link',
   },
   meta: {
     description:

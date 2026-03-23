@@ -4,6 +4,7 @@ export const frFrTranslation = {
   linkCopy: {
     copy: 'Copier le lien',
     copied: 'Lien copié',
+    share: 'Partager le lien',
   },
   meta: {
     description:

@@ -1,3 +1,5 @@
+export * from './AdaptiveShareLinkButton'
 export * from './CopyLinkButton'
 export * from './HeadlineCopyLinkButton'
 export * from './LinkIcon'
+export * from './ShareIcon'

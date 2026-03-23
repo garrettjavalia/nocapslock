@@ -4,6 +4,7 @@ export const deDeTranslation = {
   linkCopy: {
     copy: 'Link kopieren',
     copied: 'Link kopiert',
+    share: 'Link teilen',
   },
   meta: {
     description:

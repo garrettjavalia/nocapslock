@@ -4,6 +4,7 @@ export const koTranslation = {
   linkCopy: {
     copy: '링크 복사',
     copied: '링크 복사됨',
+    share: '링크 공유',
   },
   meta: {
     description:

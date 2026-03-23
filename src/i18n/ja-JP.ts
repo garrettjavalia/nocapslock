@@ -4,6 +4,7 @@ export const jaJpTranslation = {
   linkCopy: {
     copy: 'リンクをコピー',
     copied: 'リンクをコピーしました',
+    share: 'リンクを共有',
   },
   meta: {
     description:

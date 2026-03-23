@@ -2,6 +2,7 @@ export const enTranslation = {
   linkCopy: {
     copy: 'Copy link',
     copied: 'Link copied',
+    share: 'Share link',
   },
   meta: {
     description:
