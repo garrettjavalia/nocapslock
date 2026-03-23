@@ -29,31 +29,14 @@ function renderChoice(choice: HeroBadgeChoice | null) {
   }
 
   if (choice === 'Command') {
-    return (
-      <span className={styles.compactHeroBadgeKeyRow}>
-        {renderMiniKey('Win', 'xs')}
-        {renderMiniKey('Super', 'xs')}
-        {renderMiniKey('Command', 'md', 'mac')}
-      </span>
-    )
+    return renderMiniKey('Command', 'md', 'mac')
   }
 
-  if (choice === 'Win') {
+  if (choice === 'Control') {
     return (
       <span className={styles.compactHeroBadgeKeyRow}>
-        {renderMiniKey('⌘', 'xs')}
-        {renderMiniKey('Super', 'xs')}
-        {renderMiniKey('Win')}
-      </span>
-    )
-  }
-
-  if (choice === 'Super') {
-    return (
-      <span className={styles.compactHeroBadgeKeyRow}>
-        {renderMiniKey('⌘', 'xs')}
-        {renderMiniKey('Win', 'xs')}
-        {renderMiniKey('Super')}
+        {renderMiniKey('Control', 'md', 'mac')}
+        {renderMiniKey('Ctrl')}
       </span>
     )
   }
