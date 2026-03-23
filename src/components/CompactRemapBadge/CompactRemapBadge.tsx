@@ -3,7 +3,7 @@ import { Keycap } from '../Keycap'
 import * as styles from './CompactRemapBadge.css'
 import type { PlatformId, RemapKey } from '../Keycap'
 
-type HeroBadgeChoice = RemapKey | 'no-caps-lock'
+type HeroBadgeChoice = RemapKey | 'Ctrl' | 'no-caps-lock'
 
 type CompactRemapBadgeProps = {
   label: string
@@ -14,6 +14,7 @@ const heroRemapChoices: HeroBadgeChoice[] = [
   'no-caps-lock',
   'Command',
   'Control',
+  'Ctrl',
   'ESC',
   'Win',
   'Super',
@@ -33,12 +34,7 @@ function renderChoice(choice: HeroBadgeChoice | null) {
   }
 
   if (choice === 'Control') {
-    return (
-      <span className={styles.compactHeroBadgeKeyRow}>
-        {renderMiniKey('Control', 'md', 'mac')}
-        {renderMiniKey('Ctrl')}
-      </span>
-    )
+    return renderMiniKey('Control', 'md', 'mac')
   }
 
   return renderMiniKey(choice)
