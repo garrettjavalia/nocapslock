@@ -132,14 +132,14 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
           referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: 'Es ist der schnellste Weg und lässt sich später in einer grafischen Oberfläche leicht anpassen.',
           pro2: 'Er kann eine Taste nicht nur auf eine andere Taste, sondern auch auf einen Shortcut abbilden.',
-          pro3: 'Microsoft dokumentiert, dass Zuordnungen sofort nach dem Bestätigen wirksam werden.',
+          pro3: 'Zuordnungen werden sofort wirksam, sobald du sie bestätigst.',
           con1: 'PowerToys muss im Hintergrund laufen, sonst greift die Zuordnung nicht.',
-          con2: 'Microsoft dokumentiert, dass Keyboard Manager auf dem Windows-Anmeldebildschirm und anderen Kennwortabfragen nicht funktioniert.',
+          con2: 'Keyboard Manager funktioniert auf dem Windows-Anmeldebildschirm und anderen Kennwortabfragen nicht.',
           con3: 'Zuordnungen von Zusatztasten können dennoch mit manchen Gesten, Sondertasten oder Apps mit erhöhten Rechten kollidieren.',
           steps: {
             step01: {
               title: '1. PowerToys installieren',
-              body: 'Installiere PowerToys aus dem Microsoft Store, von der GitHub-Release-Seite oder per winget. Microsoft dokumentiert alle drei Wege in der <powertoysInstallationGuide>Installationsanleitung</powertoysInstallationGuide>.',
+              body: 'Installiere PowerToys aus dem Microsoft Store, von der GitHub-Release-Seite oder per winget. In der <powertoysInstallationGuide>Installationsanleitung</powertoysInstallationGuide> kannst du alle drei Wege nutzen.',
             },
             step02: {
               title: '2. Keyboard Manager öffnen und „Remap a key“ wählen',
@@ -209,7 +209,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       steps: {
         step01: {
           title: '1. Karabiner-Elements installieren und Berechtigungen freigeben',
-          body: 'Installiere zuerst <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> und erlaube dann den Hintergrunddienst, die Input-Monitoring-Berechtigung und die Treibererweiterung. <karabinerRequiredSettingsGuide>Karabiners offizielle Dokumentation</karabinerRequiredSettingsGuide> führt diese als erforderliche macOS-Einstellungen auf.',
+          body: 'Installiere zuerst <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> und erlaube dann den Hintergrunddienst, die Input-Monitoring-Berechtigung und die Treibererweiterung. Das sind die erforderlichen macOS-Einstellungen.',
         },
         step02: {
           title: '2. <key>Caps Lock</key> in Simple Modifications neu belegen',
@@ -217,7 +217,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
         },
         step03: {
           title: '3. Optional: dieselbe Zuordnung schon vor dem Login nutzen',
-          body: 'Wenn die gleiche Zuordnung auch auf dem Kennwortbildschirm vor dem Login gelten soll, öffne in Karabiner die Registerkarte Misc und klicke auf „Copy the current configuration to the system default configuration“. Laut <karabinerBeforeLoginGuide>offizieller Dokumentation</karabinerBeforeLoginGuide> gilt diese Kopie auch vor dem Login.',
+          body: 'Wenn die gleiche Zuordnung auch auf dem Kennwortbildschirm vor dem Login gelten soll, öffne in Karabiner die Registerkarte Misc und klicke auf „Copy the current configuration to the system default configuration“. Damit gilt dieselbe Zuordnung auch vor dem Login.',
         },
         step04: {
           title: '4. Optional: nur weiter, wenn <key>Caps Lock</key> bereits die Sprachwechsel-Taste ist',
@@ -233,15 +233,15 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
             },
             step04_3: {
               title: '4-3. <key>F18</key> in macOS dem Wechsel der Eingabequelle zuweisen',
-              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. <appleInputSourcesGuide>Apple dokumentiert, dass</appleInputSourcesGuide> <key>F1</key> bis <key>F12</key> an integrierte Systemfunktionen gebunden sind; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. In der Praxis ist <key>F18</key> eine sichere Wahl, weil sie meist nicht mit diesen integrierten Rollen kollidiert.',
+              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. <key>F1</key> bis <key>F12</key> sind an integrierte Systemfunktionen gebunden; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. In der Praxis ist <key>F18</key> eine sichere Wahl, weil sie meist nicht mit diesen integrierten Rollen kollidiert.',
             },
           },
         },
       },
       note1:
-        'Wenn du die Tastennamen vor dem Speichern überprüfen willst, ist Karabiners EventViewer das offizielle Werkzeug dafür.',
+        'Wenn du die Tastennamen vor dem Speichern überprüfen willst, zeigt dir Karabiners EventViewer, was macOS und Karabiner von jeder Taste sehen.',
       note2:
-        'Apple dokumentiert auch eine eingebaute Option, mit der du mit <key>Caps Lock</key> zur zuletzt verwendeten lateinischen Eingabequelle und wieder zurück wechseln kannst. Wenn du deine <key>Caps Lock</key>-Umbelegung behalten willst, ist eine separate Sprachwechsel-Taste wie <key>Right Command</key> -> <key>F18</key> flexibler.',
+        'macOS hat auch eine eingebaute Option, mit der du mit <key>Caps Lock</key> zur zuletzt verwendeten lateinischen Eingabequelle und wieder zurück wechseln kannst. Wenn du deine <key>Caps Lock</key>-Umbelegung behalten willst, ist eine separate Sprachwechsel-Taste wie <key>Right Command</key> -> <key>F18</key> flexibler.',
       note3:
         'Wenn du <key>Caps Lock</key> manchmal noch brauchst, lege sie lieber auf eine andere selten genutzte Taste, statt sie komplett zu entfernen.',
     },
@@ -271,7 +271,7 @@ esc = capslock`,
       steps: {
         step01: {
           title: '1. keyd installieren',
-          body: 'Installiere zuerst keyd. Das offizielle Projekt beschreibt eine Installation aus dem Quellcode mit git clone, make, sudo make install und sudo systemctl enable --now keyd. Wenn du eine getaggte Version bevorzugst, kannst du auf der offiziellen Releases-Seite anfangen.',
+          body: 'Installiere zuerst keyd. Der Quellcode-Installationsweg ist git clone, make, sudo make install und sudo systemctl enable --now keyd. Wenn du eine getaggte Version bevorzugst, kannst du auf der Releases-Seite anfangen.',
         },
         step02: {
           title: '2. /etc/keyd/default.conf anlegen',
@@ -287,13 +287,13 @@ esc = capslock`,
         },
         step05: {
           title: '5. Die Not-Aus-Sequenz merken',
-          body: 'Wenn du eine schlechte Konfiguration erstellt hast und schnell zurück musst, weist die offizielle Dokumentation darauf hin, dass <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> keyd beenden sollte.',
+          body: 'Wenn du eine schlechte Konfiguration erstellt hast und schnell zurück musst, nutze <key>Backspace</key> + <key>Escape</key> + <key>Enter</key>, um keyd zu beenden.',
         },
       },
       note1:
-        'Die Upstream-README beschreibt master als Entwicklungszweig, während getaggte Releases als stabil gelten sollten.',
+        'Nutze master als Entwicklungszweig und getaggte Releases als stabile Versionen.',
       note2:
-        'Außerdem wird dokumentiert, dass apt install keyd unter Debian 13+ und Ubuntu 25.04+ unterstützt wird, aber die Installation aus dem Quellcode oben ist die portabelste Option.',
+        'Unter Debian 13+ und Ubuntu 25.04+ funktioniert auch apt install keyd, aber die Installation aus dem Quellcode oben ist die portabelste Option.',
       note3:
         'Wenn du <key>Caps Lock</key> manchmal noch brauchst, lege sie lieber auf eine andere selten genutzte Taste, statt sie komplett zu entfernen.',
     },

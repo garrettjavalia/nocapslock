@@ -132,14 +132,14 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
           referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: '설정 화면에서 바로 바꿀 수 있어 빠르고, 나중에 수정하거나 되돌리기도 쉽습니다.',
           pro2: '키를 다른 키로 보내는 것뿐 아니라 단축키로 보내는 방식까지 다룰 수 있습니다.',
-          pro3: 'Microsoft 문서 기준으로 저장하면 바로 적용됩니다.',
+          pro3: '저장하면 바로 적용됩니다.',
           con1: 'PowerToys가 백그라운드에서 계속 실행 중이어야 매핑이 유지됩니다.',
-          con2: 'Microsoft 문서 기준으로 로그인 화면이나 암호 입력 화면에서는 동작하지 않습니다.',
+          con2: '로그인 화면이나 암호 입력 화면에서는 동작하지 않습니다.',
           con3: '보조키 재배치는 일부 제스처, 특수키, 관리자 권한 앱과 충돌할 수 있습니다.',
           steps: {
             step01: {
               title: '1. PowerToys 설치',
-              body: 'Microsoft Store, GitHub 릴리스 페이지, 또는 winget 중 편한 경로로 PowerToys를 설치합니다. <powertoysInstallationGuide>Microsoft 설치 안내 문서</powertoysInstallationGuide>에 이 경로들이 모두 정리되어 있습니다.',
+              body: 'Microsoft Store, GitHub 릴리스 페이지, 또는 winget 중 편한 경로로 PowerToys를 설치합니다. <powertoysInstallationGuide>설치 안내</powertoysInstallationGuide>에서 셋 중 편한 경로를 고르면 됩니다.',
             },
             step02: {
               title: '2. Keyboard Manager에서 Remap a key 열기',
@@ -209,7 +209,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       steps: {
         step01: {
           title: '1. Karabiner-Elements 설치와 권한 허용',
-          body: '먼저 <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>를 설치한 뒤, 백그라운드 서비스, 입력 모니터링 권한, 드라이버 확장을 모두 허용합니다. <karabinerRequiredSettingsGuide>Karabiner 공식 문서</karabinerRequiredSettingsGuide>도 이 항목들을 필수 macOS 설정으로 안내합니다.',
+          body: '먼저 <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>를 설치한 뒤, 백그라운드 서비스, 입력 모니터링 권한, 드라이버 확장을 모두 허용합니다. 이 항목들이 필수 macOS 설정입니다.',
         },
         step02: {
           title: '2. Simple Modifications에서 <key>Caps Lock</key> 변경',
@@ -217,7 +217,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
         },
         step03: {
           title: '3. 선택 사항: 로그인 창에서도 같은 매핑 쓰기',
-          body: '로그인 전에 뜨는 암호 입력 화면에서도 같은 키 매핑을 쓰고 싶다면, Karabiner 설정의 Misc 탭에서 “Copy the current configuration to the system default configuration” 버튼을 누르세요. <karabinerBeforeLoginGuide>공식 문서</karabinerBeforeLoginGuide>에 따르면 이렇게 복사한 설정은 로그인 전 화면에도 적용됩니다.',
+          body: '로그인 전에 뜨는 암호 입력 화면에서도 같은 키 매핑을 쓰고 싶다면, Karabiner 설정의 Misc 탭에서 “Copy the current configuration to the system default configuration” 버튼을 누르세요. 이렇게 복사하면 로그인 전 화면에도 같은 설정을 쓸 수 있습니다.',
         },
         step04: {
           title: '4. 선택 사항: <key>Caps Lock</key>이 이미 언어 전환 키일 때만 이어서 보기',
@@ -233,14 +233,14 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
             },
             step04_3: {
               title: '4-3. macOS에서 <key>F18</key>을 입력 소스 전환 키로 배정',
-              body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 <key>F18</key>을 지정합니다. 그러면 <key>Caps Lock</key>을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 <key>F18</key>을 실사용 예시로 사용합니다. <appleInputSourcesGuide>Apple 문서상</appleInputSourcesGuide> <key>F1</key>부터 <key>F12</key>까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 <key>F18</key>은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
+              body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 <key>F18</key>을 지정합니다. 그러면 <key>Caps Lock</key>을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 <key>F18</key>을 실사용 예시로 사용합니다. <key>F1</key>부터 <key>F12</key>까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 <key>F18</key>은 특수 기능과 겹치지 않아 무난하게 쓸 수 있었습니다.',
             },
           },
         },
       },
-      note1: '저장 전에 실제 키 이름을 확인하고 싶다면 Karabiner 공식 도구인 EventViewer가 가장 정확합니다.',
+      note1: '저장 전에 실제 키 이름을 확인하고 싶다면 EventViewer로 macOS와 Karabiner가 인식한 입력을 바로 확인할 수 있습니다.',
       note2:
-        'Apple은 <key>Caps Lock</key>으로 마지막으로 사용한 라틴 입력 소스로 전환하는 기본 기능도 문서화하고 있습니다. 하지만 <key>Caps Lock</key> 자체를 재배치하고 싶다면 <key>Right Command</key> -> <key>F18</key> 같은 별도 입력 전환 키를 두는 쪽이 더 유연합니다.',
+        'macOS에는 <key>Caps Lock</key>으로 마지막으로 사용한 라틴 입력 소스로 전환하는 기본 기능도 있습니다. 하지만 <key>Caps Lock</key> 자체를 재배치하고 싶다면 <key>Right Command</key> -> <key>F18</key> 같은 별도 입력 전환 키를 두는 쪽이 더 유연합니다.',
       note3:
         '<key>Caps Lock</key>이 가끔 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 <key>Caps Lock</key>으로 남겨두는 편이 안전합니다.',
     },
@@ -270,7 +270,7 @@ esc = capslock`,
       steps: {
         step01: {
           title: '1. keyd 설치',
-          body: '먼저 keyd를 설치합니다. 공식 프로젝트는 git clone, make, sudo make install, sudo systemctl enable --now keyd 순서의 소스 설치 방법을 안내합니다. 안정 버전을 선호한다면 공식 릴리스 페이지에서 태그된 버전을 고르면 됩니다.',
+          body: '먼저 keyd를 설치합니다. 소스 설치 흐름은 git clone, make, sudo make install, sudo systemctl enable --now keyd 순서입니다. 안정 버전을 선호한다면 릴리스 페이지에서 태그된 버전을 고르면 됩니다.',
         },
         step02: {
           title: '2. /etc/keyd/default.conf 작성',
@@ -286,12 +286,12 @@ esc = capslock`,
         },
         step05: {
           title: '5. 비상 종료 키 기억해두기',
-          body: '설정이 잘못되어 키보드가 불편해졌다면 <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> 조합으로 keyd를 종료할 수 있다고 공식 문서에 적혀 있습니다.',
+          body: '설정이 잘못되어 키보드가 불편해졌다면 <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> 조합으로 keyd를 종료할 수 있습니다.',
         },
       },
-      note1: '공식 README는 master 브랜치를 개발 브랜치로 설명하고, 태그된 릴리스를 안정 버전으로 보라고 안내합니다.',
+      note1: 'master 브랜치는 개발용으로 보고, 태그된 릴리스를 안정 버전으로 쓰면 됩니다.',
       note2:
-        'README에는 Debian 13 이상과 Ubuntu 25.04 이상에서 apt install keyd도 안내되어 있지만, 위 스크립트는 배포판 전반에 설명하기 쉬운 흐름입니다.',
+        'Debian 13 이상과 Ubuntu 25.04 이상에서는 apt install keyd도 쓸 수 있지만, 위 스크립트가 배포판 전반에 설명하기 쉬운 흐름입니다.',
       note3:
         '<key>Caps Lock</key>이 가끔 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 <key>Caps Lock</key>으로 남겨두는 편이 안전합니다.',
     },

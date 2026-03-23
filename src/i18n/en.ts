@@ -130,14 +130,14 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: 'It is the quickest setup path and easy to edit later from a graphical settings screen.',
           pro2: 'It can remap a key to another key or even to a shortcut, not only to another physical key position.',
-          pro3: 'Microsoft documents that remaps apply immediately after you confirm them.',
+          pro3: 'Remaps apply immediately after you confirm them.',
           con1: 'PowerToys must keep running in the background or the remap stops applying.',
-          con2: 'Microsoft documents that Keyboard Manager does not work on the Windows sign-in screen or other password prompts.',
+          con2: 'Keyboard Manager does not work on the Windows sign-in screen or other password prompts.',
           con3: 'Modifier-key remaps can still interfere with some gestures, special keys, or elevated apps.',
           steps: {
             step01: {
               title: '1. Install PowerToys',
-              body: 'Install PowerToys from the Microsoft Store, the GitHub release page, or winget. Microsoft documents all three routes in its <powertoysInstallationGuide>installation guide</powertoysInstallationGuide>.',
+              body: 'Install PowerToys from the Microsoft Store, the GitHub release page, or winget. You can use any of the three routes in the <powertoysInstallationGuide>installation guide</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Open Keyboard Manager and choose Remap a key',
@@ -207,7 +207,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       steps: {
         step01: {
           title: '1. Install Karabiner-Elements and finish the permission prompts',
-          body: 'Install <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> first, then make sure the background service, Input Monitoring permission, and driver extension are all allowed. <karabinerRequiredSettingsGuide>Karabiner’s official documentation</karabinerRequiredSettingsGuide> calls these required macOS settings.',
+          body: 'Install <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> first, then make sure the background service, Input Monitoring permission, and driver extension are all allowed. These are the required macOS settings.',
         },
         step02: {
           title: '2. Remap <key>Caps Lock</key> in Simple Modifications',
@@ -215,7 +215,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
         },
         step03: {
           title: '3. Optional: make the same mapping work before login',
-          body: 'If you want the same mapping on the password screen before login, open the Misc tab in Karabiner Settings and use “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>Karabiner’s official guide</karabinerBeforeLoginGuide> documents this for use before logging in.',
+          body: 'If you want the same mapping on the password screen before login, open the Misc tab in Karabiner Settings and use “Copy the current configuration to the system default configuration.” This makes the same mapping available before logging in.',
         },
         step04: {
           title: '4. Optional: only continue if <key>Caps Lock</key> is already your language-switch key',
@@ -231,15 +231,15 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             },
             step04_3: {
               title: '4-3. Assign <key>F18</key> to input-source switching in macOS',
-              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. <appleInputSourcesGuide>Apple documents that</appleInputSourcesGuide> <key>F1</key> through <key>F12</key> are tied to built-in system features, so a higher-numbered function key is often easier to work with for input-source switching. In practice, <key>F18</key> has been a safe choice because it tends not to overlap with those built-in roles.',
+              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. Because <key>F1</key> through <key>F12</key> are tied to built-in system features, a higher-numbered function key is often easier to use for input-source switching. In practice, <key>F18</key> has been a safe choice because it tends not to overlap with those built-in roles.',
             },
           },
         },
       },
       note1:
-        'If you want to verify key names before saving changes, Karabiner’s EventViewer is the official tool for checking what macOS and Karabiner see from each key.',
+        'If you want to verify key names before saving changes, Karabiner’s EventViewer shows what macOS and Karabiner see from each key.',
       note2:
-        'Apple also documents a built-in option to use <key>Caps Lock</key> to switch to and from the last used Latin input source. If you want to keep your <key>Caps Lock</key> remap, using a separate language-switch key such as <key>Right Command</key> -> <key>F18</key> is more flexible.',
+        'macOS also has a built-in option to use <key>Caps Lock</key> to switch to and from the last used Latin input source. If you want to keep your <key>Caps Lock</key> remap, using a separate language-switch key such as <key>Right Command</key> -> <key>F18</key> is more flexible.',
       note3:
         'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
     },
@@ -269,7 +269,7 @@ esc = capslock`,
       steps: {
         step01: {
           title: '1. Install keyd',
-          body: 'Install keyd first. The official project documents a source install flow with git clone, make, sudo make install, and sudo systemctl enable --now keyd. If you prefer a tagged version, you can start from the official releases page.',
+          body: 'Install keyd first. The source install flow is git clone, make, sudo make install, and sudo systemctl enable --now keyd. If you prefer a tagged version, you can start from the releases page.',
         },
         step02: {
           title: '2. Create /etc/keyd/default.conf',
@@ -285,13 +285,13 @@ esc = capslock`,
         },
         step05: {
           title: '5. Keep the emergency stop sequence in mind',
-          body: 'If you make a bad config and need to recover quickly, the official documentation notes that <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> should terminate keyd.',
+          body: 'If you make a bad config and need to recover quickly, use <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> to terminate keyd.',
         },
       },
       note1:
-        'The upstream README says master is the development branch, while tagged releases should be considered stable.',
+        'Treat master as the development branch and tagged releases as the stable option.',
       note2:
-        'Debian 13+ and Ubuntu 25.04+ are also documented as supporting apt install keyd, but the source install above is the most portable option.',
+        'Debian 13+ and Ubuntu 25.04+ also support apt install keyd, but the source install above is the most portable option.',
       note3:
         'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
     },

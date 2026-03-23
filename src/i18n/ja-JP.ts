@@ -132,14 +132,14 @@ Caps Lock + X で切り取り。
           referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: '設定までの流れが早く、あとから GUI 画面で簡単に編集できます。',
           pro2: '1つのキーを別のキーへ送るだけでなく、ショートカットへの再割り当てもできます。',
-          pro3: 'Microsoft の文書では、確認するとすぐに再割り当てが適用されると案内されています。',
+          pro3: '確認するとすぐに再割り当てが適用されます。',
           con1: 'PowerToys はバックグラウンドで動き続ける必要があり、止まると再割り当ても止まります。',
-          con2: 'Microsoft の文書では、Keyboard Manager は Windows のサインイン画面やパスワード入力画面では動作しません。',
+          con2: 'Keyboard Manager は Windows のサインイン画面やパスワード入力画面では動作しません。',
           con3: '修飾キーの再割り当ては、特定のジェスチャー、特殊キー、管理者権限のアプリと干渉することがあります。',
           steps: {
             step01: {
               title: '1. PowerToys をインストールする',
-              body: 'PowerToys は Microsoft Store、GitHub のリリースページ、または winget からインストールできます。<powertoysInstallationGuide>Microsoft のインストールガイド</powertoysInstallationGuide>では、この3つの方法が案内されています。',
+              body: 'PowerToys は Microsoft Store、GitHub のリリースページ、または winget からインストールできます。<powertoysInstallationGuide>インストールガイド</powertoysInstallationGuide>から、この3つの方法のどれでも選べます。',
             },
             step02: {
               title: '2. Keyboard Manager を開いて Remap a key を選ぶ',
@@ -209,7 +209,7 @@ Caps Lock + X で切り取り。
       steps: {
         step01: {
           title: '1. Karabiner-Elements をインストールして権限を許可する',
-          body: 'まず <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> をインストールし、バックグラウンドサービス、入力監視権限、ドライバ拡張のすべてを許可してください。<karabinerRequiredSettingsGuide>Karabiner の公式ドキュメント</karabinerRequiredSettingsGuide>でも、これらは必要な macOS 設定として案内されています。',
+          body: 'まず <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> をインストールし、バックグラウンドサービス、入力監視権限、ドライバ拡張のすべてを許可してください。これらは必要な macOS 設定です。',
         },
         step02: {
           title: '2. Simple Modifications で <key>Caps Lock</key> を再割り当てする',
@@ -217,7 +217,7 @@ Caps Lock + X で切り取り。
         },
         step03: {
           title: '3. 必要ならログイン前でも同じ割り当てを使う',
-          body: 'ログイン前のパスワード画面でも同じ割り当てを使いたいなら、Karabiner Settings の Misc タブを開き、“Copy the current configuration to the system default configuration.” を実行してください。<karabinerBeforeLoginGuide>公式ガイド</karabinerBeforeLoginGuide>でも、これはログイン前に使う方法として説明されています。',
+          body: 'ログイン前のパスワード画面でも同じ割り当てを使いたいなら、Karabiner Settings の Misc タブを開き、“Copy the current configuration to the system default configuration.” を実行してください。これで同じ割り当てをログイン前にも使えます。',
         },
         step04: {
           title: '4. すでに言語切り替えに使っている場合だけ続ける',
@@ -233,13 +233,13 @@ Caps Lock + X で切り取り。
             },
             step04_3: {
               title: '4-3. macOS で <key>F18</key> を入力ソース切り替えに割り当てる',
-              body: 'Apple メニュー > システム設定 > キーボード > キーボードショートカット > 入力ソース を開き、“入力メニューで次のソースを選択” に <key>F18</key> を割り当ててください。これで <key>Caps Lock</key> を別の役割に変えたあとでも、信頼できる言語切り替えキーを再び用意できます。ここでは実用例として <key>F18</key> を使っています。<appleInputSourcesGuide>Apple の文書では</appleInputSourcesGuide> <key>F1</key> から <key>F12</key> が内蔵のシステム機能に結びついているため、入力ソース切り替えにはそれより大きい番号のファンクションキーのほうが扱いやすいことがあります。実際には、<key>F18</key> はそうした内蔵機能と重なりにくく、無難な選択です。',
+              body: 'Apple メニュー > システム設定 > キーボード > キーボードショートカット > 入力ソース を開き、“入力メニューで次のソースを選択” に <key>F18</key> を割り当ててください。これで <key>Caps Lock</key> を別の役割に変えたあとでも、信頼できる言語切り替えキーを再び用意できます。ここでは実用例として <key>F18</key> を使っています。<key>F1</key> から <key>F12</key> は内蔵のシステム機能に結びついているため、入力ソース切り替えにはそれより大きい番号のファンクションキーのほうが扱いやすいことがあります。実際には、<key>F18</key> はそうした内蔵機能と重なりにくく、無難な選択です。',
             },
           },
         },
       },
       note1:
-        '変更を保存する前にキー名を確認したいなら、Karabiner の EventViewer が macOS と Karabiner に見えている入力を確認する公式ツールです。',
+        '変更を保存する前にキー名を確認したいなら、Karabiner の EventViewer で macOS と Karabiner に見えている入力を確認できます。',
       note2:
         'Apple には、<key>Caps Lock</key> で最後に使ったラテン入力ソースへ切り替える標準機能もあります。<key>Caps Lock</key> の再割り当てを残したいなら、<key>Right Command</key> -> <key>F18</key> のように別の言語切り替えキーを用意するほうが柔軟です。',
       note3:
@@ -271,7 +271,7 @@ esc = capslock`,
       steps: {
         step01: {
           title: '1. keyd をインストールする',
-          body: 'まず keyd をインストールします。公式プロジェクトでは、git clone、make、sudo make install、sudo systemctl enable --now keyd の順で入れるソースインストール手順が案内されています。タグ付きの安定版を使いたいなら、公式リリースページから始めることもできます。',
+          body: 'まず keyd をインストールします。ソースインストールの流れは、git clone、make、sudo make install、sudo systemctl enable --now keyd の順です。タグ付きの安定版を使いたいなら、リリースページから始めることもできます。',
         },
         step02: {
           title: '2. /etc/keyd/default.conf を作成する',
@@ -287,13 +287,13 @@ esc = capslock`,
         },
         step05: {
           title: '5. 緊急停止の手順を覚えておく',
-          body: '設定を誤ってすぐに復旧したいときは、公式ドキュメントによると <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> で keyd を終了できます。',
+          body: '設定を誤ってすぐに復旧したいときは、<key>Backspace</key> + <key>Escape</key> + <key>Enter</key> で keyd を終了できます。',
         },
       },
       note1:
-        '上流の README では master が開発ブランチで、タグ付きリリースを安定版として扱うべきだと説明されています。',
+        'master は開発ブランチとして扱い、タグ付きリリースを安定版として使ってください。',
       note2:
-        'Debian 13 以降と Ubuntu 25.04 以降では apt install keyd も案内されていますが、上のソースインストールはもっとも移植性が高い方法です。',
+        'Debian 13 以降と Ubuntu 25.04 以降では apt install keyd も使えますが、上のソースインストールはもっとも移植性が高い方法です。',
       note3:
         '<key>Caps Lock</key> をときどき使いたいなら、完全に消してしまうのではなく、あまり使わない別のキーに残しておくと安心です。',
     },
