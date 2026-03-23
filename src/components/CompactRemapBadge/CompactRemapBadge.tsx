@@ -8,19 +8,7 @@ type CompactRemapBadgeProps = {
   platform: PlatformId
 }
 
-function getChoices(platform: PlatformId): RemapKey[] {
-  if (platform === 'mac' || platform === 'ios') {
-    return ['Command', 'Control', 'ESC']
-  }
-
-  if (platform === 'windows' || platform === 'android') {
-    return ['Control', 'Win', 'ESC']
-  }
-
-  if (platform === 'linux' || platform === 'unix' || platform === 'other') {
-    return ['Control', 'Super', 'ESC']
-  }
-}
+const heroRemapChoices: RemapKey[] = ['Command', 'Control', 'ESC', 'Win', 'Super']
 
 export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
   const [displayKey, setDisplayKey] = useState<RemapKey | null>(null)
@@ -39,7 +27,7 @@ export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
   }, [])
 
   const handleClick = () => {
-    const pool = getChoices(platform)
+    const pool = heroRemapChoices
 
     if (timerRef.current) window.clearInterval(timerRef.current)
     if (stopRef.current) window.clearTimeout(stopRef.current)
