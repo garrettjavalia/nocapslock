@@ -13,15 +13,13 @@ function getChoices(platform: PlatformId): RemapKey[] {
     return ['Command', 'Control', 'ESC']
   }
 
-  if (platform === 'windows') {
+  if (platform === 'windows' || platform === 'android') {
     return ['Control', 'Win', 'ESC']
   }
 
-  if (platform === 'linux' || platform === 'unix') {
+  if (platform === 'linux' || platform === 'unix' || platform === 'other') {
     return ['Control', 'Super', 'ESC']
   }
-
-  return ['Control', 'ESC']
 }
 
 export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
