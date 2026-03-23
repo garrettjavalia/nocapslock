@@ -199,6 +199,7 @@ export const keyRail = style({
   display: 'grid',
   placeItems: 'center',
   gap: 18,
+  minWidth: 0,
   minHeight: 320,
   padding: 24,
   borderRadius: 24,
@@ -214,9 +215,10 @@ export const keyRail = style({
 
 export const keyNarrative = style({
   display: 'grid',
-  gridTemplateColumns: '1fr auto 1fr',
+  gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
   gap: 18,
   width: '100%',
+  minWidth: 0,
   alignItems: 'center',
   '@media': {
     '(max-width: 780px)': {
@@ -227,6 +229,8 @@ export const keyNarrative = style({
 
 export const keyStateColumn = style({
   display: 'grid',
+  width: '100%',
+  minWidth: 0,
   justifyItems: 'center',
 })
 

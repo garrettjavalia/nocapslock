@@ -1,5 +1,6 @@
 import { useEffect, useState, type MouseEvent, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
+import { buildLinkUrl } from './linkUrl'
 
 export type CopyLinkButtonProps = {
   label: string
@@ -36,11 +37,7 @@ export function CopyLinkButton({
     event.stopPropagation()
 
     try {
-      const url = path
-        ? new URL(path, window.location.origin)
-        : new URL(window.location.href)
-
-      url.hash = hash ?? ''
+      const url = buildLinkUrl(path, hash)
       await navigator.clipboard.writeText(url.toString())
       setCopied(true)
     } catch {

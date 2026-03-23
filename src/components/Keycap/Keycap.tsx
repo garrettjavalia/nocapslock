@@ -1,14 +1,15 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import * as styles from './Keycap.css'
 
-export type RemapKey = 'Command' | 'Control' | 'ESC'
+export type RemapKey = 'Command' | 'Control' | 'ESC' | 'Win' | 'Super' | 'Meta'
 export type PlatformId = 'windows' | 'mac' | 'linux' | 'android' | 'ios' | 'unix' | 'other'
-type KeycapSize = 'default' | 'badge'
 
 type KeycapProps = {
   keyLabel: string
   platform: PlatformId
-  size?: KeycapSize
+  className?: string
+  style?: CSSProperties
+  ariaHidden?: boolean
   mini?: boolean
   miniSize?: 'xs' | 'sm' | 'md'
   selectable?: boolean
@@ -16,24 +17,74 @@ type KeycapProps = {
   muted?: boolean
   crossed?: boolean
   wide?: boolean
+  children?: ReactNode
+}
+
+type KeycapFaceProps = {
+  keyLabel: string
+  platform: PlatformId
+  crossed?: boolean
+  wide?: boolean
+  animated?: boolean
 }
 
 function isAppleModifierKeycap(platform: PlatformId, label: string) {
   return (platform === 'mac' || platform === 'ios') && (label === 'Command' || label === 'Control')
 }
 
-function renderAppleModifier(label: 'Command' | 'Control') {
+function renderAppleModifier(label: 'Command' | 'Control', animated = true) {
   return (
-    <div className={styles.commandKeycap}>
-      <span className={styles.commandGlyphRow}>
-        <span className={styles.commandGlyphRight} aria-hidden="true">
-          {label === 'Command' ? '⌘' : '⌃'}
+    <div className={styles.keycapFace}>
+      <div className={styles.appleModifierFace}>
+        <span className={styles.appleModifierGlyphRow}>
+          <span
+            className={[styles.appleModifierGlyph, animated ? '' : styles.keycapFaceStatic]
+              .filter(Boolean)
+              .join(' ')}
+            aria-hidden="true"
+          >
+            {label === 'Command' ? '⌘' : '⌃'}
+          </span>
+        </span>
+        <span
+          className={[styles.appleModifierLabel, animated ? '' : styles.keycapFaceStatic]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          {label === 'Command' ? 'command' : 'control'}
+        </span>
+      </div>
+    </div>
+  )
+}
+
+export function KeycapFace({
+  keyLabel,
+  platform,
+  crossed = false,
+  wide = false,
+  animated = !crossed,
+}: KeycapFaceProps) {
+  if (isAppleModifierKeycap(platform, keyLabel)) {
+    return renderAppleModifier(keyLabel as 'Command' | 'Control', animated)
+  }
+
+  return (
+    <span className={styles.keycapFace}>
+      <span className={styles.keycapFaceContent}>
+        <span
+          className={[
+            styles.keycapLabel,
+            wide ? styles.keycapLabelWide : '',
+            animated ? '' : styles.keycapFaceStatic,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          {keyLabel}
         </span>
       </span>
-      <span className={styles.commandLabel}>
-        {label === 'Command' ? 'command' : 'control'}
-      </span>
-    </div>
+    </span>
   )
 }
 
@@ -44,6 +95,7 @@ function renderMini(
   miniSize: 'xs' | 'sm' | 'md' = 'md',
   selectable = true,
   prefixText?: string,
+  ariaHidden = false,
 ) {
   const miniKeycapClass =
     miniSize === 'xs'
@@ -60,14 +112,18 @@ function renderMini(
     const modifierText = label === 'Command' ? '⌘ command' : '⌃ control'
     const labelText = prefixText ? `${prefixText} ${modifierText}` : modifierText
     const content = (
-      <span className={`${miniKeycapClass} ${selectionClass}`} aria-label={`${label} key`}>
+      <span
+        className={`${miniKeycapClass} ${selectionClass}`}
+        aria-hidden={ariaHidden || undefined}
+        aria-label={ariaHidden ? undefined : `${label} key`}
+      >
         {labelText}
       </span>
     )
 
     return crossed ? (
-      <span className={styles.inlineMiniKeycapWrap}>
-        <span className={styles.inlineMiniKeycapCross} />
+      <span className={styles.inlineMiniKeycapWrap} aria-hidden={ariaHidden || undefined}>
+        <span className={styles.inlineMiniKeycapCross} aria-hidden="true" />
         {content}
       </span>
     ) : (
@@ -76,14 +132,14 @@ function renderMini(
   }
 
   const content = (
-    <span className={`${miniKeycapClass} ${selectionClass}`}>
+    <span className={`${miniKeycapClass} ${selectionClass}`} aria-hidden={ariaHidden || undefined}>
       {prefixText ? `${prefixText} ` : ''}
       {label}
     </span>
   )
   return crossed ? (
-    <span className={styles.inlineMiniKeycapWrap}>
-      <span className={styles.inlineMiniKeycapCross} />
+    <span className={styles.inlineMiniKeycapWrap} aria-hidden={ariaHidden || undefined}>
+      <span className={styles.inlineMiniKeycapCross} aria-hidden="true" />
       {content}
     </span>
   ) : (
@@ -92,9 +148,12 @@ function renderMini(
 }
 
 export function Keycap({
+  ariaHidden = false,
+  children,
+  className,
   crossed,
   keyLabel,
-  size = 'default',
+  style,
   mini = false,
   miniSize = 'md',
   selectable = true,
@@ -104,36 +163,23 @@ export function Keycap({
   wide = false,
 }: KeycapProps) {
   if (mini) {
-    return renderMini(keyLabel, platform, crossed, miniSize, selectable, prefixText)
+    return renderMini(keyLabel, platform, crossed, miniSize, selectable, prefixText, ariaHidden)
   }
 
   const classes = [styles.keycap]
-  if (size === 'badge') classes.push(styles.keycapBadge)
+  if (className) classes.push(className)
   if (muted) classes.push(styles.keycapMuted)
 
-  let content: ReactNode
-  if (isAppleModifierKeycap(platform, keyLabel)) {
-    content = renderAppleModifier(keyLabel as 'Command' | 'Control')
-  } else {
-    content = (
-      <span
-        className={[
-          styles.keycapLabel,
-          wide ? styles.keycapLabelWide : '',
-          crossed ? styles.keycapLabelStatic : '',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        {keyLabel}
-      </span>
-    )
-  }
+  const content: ReactNode = children ?? (
+    <KeycapFace keyLabel={keyLabel} platform={platform} wide={wide} crossed={crossed} />
+  )
 
   return (
-    <div className={classes.join(' ')}>
-      {crossed ? <span className={styles.keycapCross} /> : null}
-      {content}
+    <div className={classes.join(' ')} style={style} aria-hidden={ariaHidden || undefined}>
+      <div className={styles.keycapSurface}>
+        {crossed ? <span className={styles.keycapCross} aria-hidden="true" /> : null}
+        {content}
+      </div>
     </div>
   )
 }
