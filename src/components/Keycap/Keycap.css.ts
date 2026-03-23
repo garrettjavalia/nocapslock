@@ -108,9 +108,6 @@ export const keycapSurface = style({
   userSelect: 'none',
   overflow: 'hidden',
   selectors: {
-    '&::before': {
-      content: 'none',
-    },
     '&::after': {
       content: '""',
       position: 'absolute',
@@ -125,28 +122,6 @@ export const keycapSurface = style({
       boxShadow: `inset 0 -10px 16px color-mix(in srgb, ${vars.color.text} 8%, transparent)`,
     },
   },
-})
-
-export const keycapBadge = style({
-  vars: {
-    [keycapPadding]: 'clamp(10px, 10cqmin, 18px)',
-    [keycapRadius]: 'clamp(12px, 12cqmin, 28px)',
-    [keycapInnerInset]: 'clamp(5px, 4.5cqmin, 10px)',
-    [keycapInnerRadius]: 'clamp(8px, 7cqmin, 18px)',
-    [keycapCrossInset]: '14%',
-    [keycapCrossTop]: '50%',
-    [keycapCrossHeight]: 'clamp(2px, 1.75cqmin, 4px)',
-    [keycapLabelFontSize]: 'clamp(1rem, 16cqmin, 2.6rem)',
-    [keycapLabelWideFontSize]: 'clamp(0.95rem, 14.5cqmin, 2.2rem)',
-    [appleModifierPaddingInline]: 'clamp(8px, 6cqmin, 14px)',
-    [appleModifierPaddingBlock]: 'clamp(6px, 5cqmin, 12px)',
-    [appleModifierGlyphFontSize]: 'clamp(1.1rem, 13.76cqmin, 2.2rem)',
-    [appleModifierLabelFontSize]: 'clamp(1rem, 13.76cqmin, 2.2rem)',
-  },
-  width: '100%',
-  height: '100%',
-  maxWidth: 'none',
-  aspectRatio: 'auto',
 })
 
 export const keycapMuted = style({
@@ -218,7 +193,6 @@ export const keycapFaceContent = style({
   minInlineSize: '60%',
   maxInlineSize: '100%',
   blockSize: '100%',
-  maxBlockSize: '100%',
   minWidth: 0,
   minHeight: 0,
 })

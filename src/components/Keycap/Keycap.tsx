@@ -3,12 +3,10 @@ import * as styles from './Keycap.css'
 
 export type RemapKey = 'Command' | 'Control' | 'ESC' | 'Win' | 'Super' | 'Meta'
 export type PlatformId = 'windows' | 'mac' | 'linux' | 'android' | 'ios' | 'unix' | 'other'
-type KeycapSize = 'default' | 'badge'
 
 type KeycapProps = {
   keyLabel: string
   platform: PlatformId
-  size?: KeycapSize
   className?: string
   style?: CSSProperties
   mini?: boolean
@@ -148,7 +146,6 @@ export function Keycap({
   className,
   crossed,
   keyLabel,
-  size = 'default',
   style,
   mini = false,
   miniSize = 'md',
@@ -164,7 +161,6 @@ export function Keycap({
 
   const classes = [styles.keycap]
   if (className) classes.push(className)
-  if (size === 'badge') classes.push(styles.keycapBadge)
   if (muted) classes.push(styles.keycapMuted)
 
   const content: ReactNode = children ?? (
