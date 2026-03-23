@@ -12,19 +12,24 @@ type AdaptiveShareLinkButtonProps = {
   shareChildren: ReactNode
 }
 
-function canUseNativeShare() {
+function isLikelyMobileShareSurface() {
   if (typeof window === 'undefined' || typeof navigator === 'undefined') {
-    return false
-  }
-
-  if (typeof navigator.share !== 'function') {
     return false
   }
 
   const userAgent = navigator.userAgent
   const isMobileUserAgent = /Android|iPhone|iPad|iPod|Mobile/i.test(userAgent)
   const isIPadOSDesktopMode = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1
-  return isMobileUserAgent || isIPadOSDesktopMode
+  const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches
+  return isMobileUserAgent || isIPadOSDesktopMode || hasCoarsePointer
+}
+
+function canUseNativeShare() {
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+    return false
+  }
+
+  return typeof navigator.share === 'function' && window.isSecureContext
 }
 
 export function AdaptiveShareLinkButton({
@@ -36,13 +41,28 @@ export function AdaptiveShareLinkButton({
   shareChildren,
 }: AdaptiveShareLinkButtonProps) {
   const { t } = useTranslation()
+  const [copied, setCopied] = useState(false)
+  const [showsShareIcon, setShowsShareIcon] = useState(false)
   const [supportsNativeShare, setSupportsNativeShare] = useState(false)
 
   useEffect(() => {
+    if (!copied) {
+      return
+    }
+
+    const timeout = window.setTimeout(() => {
+      setCopied(false)
+    }, 1800)
+
+    return () => window.clearTimeout(timeout)
+  }, [copied])
+
+  useEffect(() => {
+    setShowsShareIcon(isLikelyMobileShareSurface())
     setSupportsNativeShare(canUseNativeShare())
   }, [])
 
-  if (!supportsNativeShare) {
+  if (!showsShareIcon) {
     return (
       <CopyLinkButton label={label} path={path} hash={hash} className={className}>
         {copyChildren}
@@ -50,7 +70,8 @@ export function AdaptiveShareLinkButton({
     )
   }
 
-  const accessibleLabel = `${t('linkCopy.share')}: ${label}`
+  const actionLabel = copied ? t('linkCopy.copied') : t('linkCopy.share')
+  const accessibleLabel = `${actionLabel}: ${label}`
 
   const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
@@ -58,15 +79,23 @@ export function AdaptiveShareLinkButton({
 
     try {
       const url = buildLinkUrl(path, hash).toString()
-      await navigator.share({
-        title: document.title,
-        text: label,
-        url,
-      })
+      if (supportsNativeShare) {
+        await navigator.share({
+          title: document.title,
+          text: label,
+          url,
+        })
+        return
+      }
+
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
     } catch (error) {
       if (error instanceof DOMException && error.name === 'AbortError') {
         return
       }
+
+      setCopied(false)
     }
   }
 
@@ -77,6 +106,7 @@ export function AdaptiveShareLinkButton({
       onClick={handleClick}
       aria-label={accessibleLabel}
       title={accessibleLabel}
+      data-copied={copied ? 'true' : 'false'}
     >
       {shareChildren}
     </button>
