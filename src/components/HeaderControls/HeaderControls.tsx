@@ -3,7 +3,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { useState, type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getGuidePath } from '../../guides'
-import { CopyLinkButton, LinkIcon } from '../CopyLink'
+import { AdaptiveShareLinkButton, LinkIcon, ShareIcon } from '../CopyLink'
 import { localeLabels, supportedLocales, type Locale } from '../../i18n'
 import * as styles from './HeaderControls.css'
 
@@ -34,13 +34,14 @@ export function HeaderControls({
 
   return (
     <div className={styles.topbarActions}>
-      <CopyLinkButton
+      <AdaptiveShareLinkButton
         label={localeRootLinkLabel}
         path={getGuidePath(locale)}
         className={styles.iconControl}
+        copyChildren={<LinkIcon className={styles.controlIcon} />}
+        shareChildren={<ShareIcon className={styles.controlIcon} />}
       >
-        <LinkIcon className={styles.controlIcon} />
-      </CopyLinkButton>
+      </AdaptiveShareLinkButton>
 
       <a
         className={styles.githubIconLink}

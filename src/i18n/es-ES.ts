@@ -4,6 +4,7 @@ export const esEsTranslation = {
   linkCopy: {
     copy: 'Copiar enlace',
     copied: 'Enlace copiado',
+    share: 'Compartir enlace',
   },
   meta: {
     description:
@@ -132,14 +133,14 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
           referenceLabel2: 'PowerToys Keyboard Manager',
           pro1: 'Es la configuración más rápida y luego es fácil de ajustar desde la interfaz gráfica.',
           pro2: 'Puede reasignar una tecla a otra tecla o incluso a un atajo, no solo a otra posición física.',
-          pro3: 'Microsoft documenta que las reasignaciones se aplican inmediatamente después de confirmarlas.',
+          pro3: 'Las reasignaciones se aplican inmediatamente después de confirmarlas.',
           con1: 'PowerToys tiene que seguir ejecutándose en segundo plano o la reasignación dejará de funcionar.',
-          con2: 'Microsoft documenta que Keyboard Manager no funciona en la pantalla de inicio de sesión de Windows ni en otros avisos de contraseña.',
+          con2: 'Keyboard Manager no funciona en la pantalla de inicio de sesión de Windows ni en otros avisos de contraseña.',
           con3: 'Las reasignaciones de teclas modificadoras todavía pueden interferir con algunos gestos, teclas especiales o apps elevadas.',
           steps: {
             step01: {
               title: '1. Instala PowerToys',
-              body: 'Instala PowerToys desde Microsoft Store, la página de lanzamientos de GitHub o winget. Microsoft documenta las tres rutas en su <powertoysInstallationGuide>guía de instalación</powertoysInstallationGuide>.',
+              body: 'Instala PowerToys desde Microsoft Store, la página de lanzamientos de GitHub o winget. Puedes usar cualquiera de las tres rutas de la <powertoysInstallationGuide>guía de instalación</powertoysInstallationGuide>.',
             },
             step02: {
               title: '2. Abre Keyboard Manager y elige Remap a key',
@@ -209,7 +210,7 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
       steps: {
         step01: {
           title: '1. Instala Karabiner-Elements y completa los permisos',
-          body: 'Instala primero <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> y luego asegúrate de permitir el servicio en segundo plano, el permiso de Input Monitoring y la extensión del controlador. <karabinerRequiredSettingsGuide>La documentación oficial de Karabiner</karabinerRequiredSettingsGuide> los indica como ajustes necesarios de macOS.',
+          body: 'Instala primero <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> y luego asegúrate de permitir el servicio en segundo plano, el permiso de Input Monitoring y la extensión del controlador. Esos son los ajustes necesarios de macOS.',
         },
         step02: {
           title: '2. Reasigna <key>Caps Lock</key> en Simple Modifications',
@@ -217,7 +218,7 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
         },
         step03: {
           title: '3. Opcional: aplica la misma asignación antes de iniciar sesión',
-          body: 'Si quieres la misma asignación en la pantalla de contraseña antes de iniciar sesión, abre la pestaña Misc en la configuración de Karabiner y usa “Copy the current configuration to the system default configuration.” <karabinerBeforeLoginGuide>La guía oficial de Karabiner</karabinerBeforeLoginGuide> documenta este flujo para usarlo antes de iniciar sesión.',
+          body: 'Si quieres la misma asignación en la pantalla de contraseña antes de iniciar sesión, abre la pestaña Misc en la configuración de Karabiner y usa “Copy the current configuration to the system default configuration.” Así la misma asignación también funciona antes de iniciar sesión.',
         },
         step04: {
           title: '4. Opcional: sigue solo si <key>Caps Lock</key> ya cambia de idioma',
@@ -233,15 +234,15 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
             },
             step04_3: {
               title: '4-3. Asigna <key>F18</key> al cambio de idioma en macOS',
-              body: 'Abre el menú Apple > Ajustes del Sistema > Teclado > Atajos de teclado > Fuentes de entrada y asigna <key>F18</key> a “Seleccionar la siguiente fuente en el menú de entrada.” Así recreas una tecla fiable para cambiar de idioma después de reutilizar <key>Caps Lock</key>. Aquí se usa <key>F18</key> como ejemplo práctico. <appleInputSourcesGuide>Apple documenta que</appleInputSourcesGuide> <key>F1</key> a <key>F12</key> están vinculadas a funciones integradas del sistema, así que una tecla de función de número más alto suele ser más fácil de usar para cambiar de fuente de entrada. En la práctica, <key>F18</key> ha sido una elección segura porque suele no solaparse con esas funciones integradas.',
+              body: 'Abre el menú Apple > Ajustes del Sistema > Teclado > Atajos de teclado > Fuentes de entrada y asigna <key>F18</key> a “Seleccionar la siguiente fuente en el menú de entrada.” Así recreas una tecla fiable para cambiar de idioma después de reutilizar <key>Caps Lock</key>. Aquí se usa <key>F18</key> como ejemplo práctico. Como <key>F1</key> a <key>F12</key> están vinculadas a funciones integradas del sistema, una tecla de función de número más alto suele ser más fácil de usar para cambiar de fuente de entrada. Entre ellas, <key>F18</key> es una de las teclas que suele poder usarse sin problemas.',
             },
           },
         },
       },
       note1:
-        'Si quieres verificar los nombres de las teclas antes de guardar los cambios, EventViewer de Karabiner es la herramienta oficial para comprobar lo que macOS y Karabiner ven de cada tecla.',
+        'Si quieres verificar los nombres de las teclas antes de guardar los cambios, EventViewer de Karabiner te muestra lo que macOS y Karabiner ven de cada tecla.',
       note2:
-        'Apple también documenta una opción integrada para usar <key>Caps Lock</key> para cambiar hacia y desde la última fuente de entrada latina usada. Si quieres mantener tu reasignación de <key>Caps Lock</key>, usar una tecla separada para cambiar de idioma como <key>Right Command</key> -> <key>F18</key> es más flexible.',
+        'macOS también tiene una opción integrada para usar <key>Caps Lock</key> para cambiar hacia y desde la última fuente de entrada latina usada. Si quieres mantener tu reasignación de <key>Caps Lock</key>, usar una tecla separada para cambiar de idioma como <key>Right Command</key> -> <key>F18</key> es más flexible.',
       note3:
         'Si aún necesitas <key>Caps Lock</key> a veces, asígnalo a otra tecla que uses poco en lugar de eliminarlo por completo.',
     },
@@ -271,7 +272,7 @@ esc = capslock`,
       steps: {
         step01: {
           title: '1. Instala keyd',
-          body: 'Instala primero keyd. El proyecto oficial documenta un flujo de instalación desde código fuente con git clone, make, sudo make install y sudo systemctl enable --now keyd. Si prefieres una versión etiquetada, puedes empezar desde la página oficial de lanzamientos.',
+          body: 'Instala primero keyd. El flujo de instalación desde código fuente es git clone, make, sudo make install y sudo systemctl enable --now keyd. Si prefieres una versión etiquetada, puedes empezar desde la página de lanzamientos.',
         },
         step02: {
           title: '2. Crea /etc/keyd/default.conf',
@@ -287,13 +288,13 @@ esc = capslock`,
         },
         step05: {
           title: '5. Recuerda la secuencia de emergencia',
-          body: 'Si haces una configuración mala y necesitas recuperarte rápido, la documentación oficial indica que <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> debería terminar keyd.',
+          body: 'Si haces una configuración mala y necesitas recuperarte rápido, usa <key>Backspace</key> + <key>Escape</key> + <key>Enter</key> para terminar keyd.',
         },
       },
       note1:
-        'El README de upstream dice que master es la rama de desarrollo, mientras que los lanzamientos etiquetados deben considerarse estables.',
+        'Usa master como rama de desarrollo y los lanzamientos etiquetados como versiones estables.',
       note2:
-        'También se documenta que Debian 13+ y Ubuntu 25.04+ admiten apt install keyd, pero la instalación desde código fuente de arriba es la opción más portable.',
+        'Debian 13+ y Ubuntu 25.04+ también admiten apt install keyd, pero la instalación desde código fuente de arriba es la opción más portable.',
       note3:
         'Si aún necesitas <key>Caps Lock</key> a veces, asígnalo a otra tecla que uses poco en lugar de eliminarlo por completo.',
     },
