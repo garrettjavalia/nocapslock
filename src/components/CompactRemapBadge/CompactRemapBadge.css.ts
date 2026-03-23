@@ -26,3 +26,9 @@ export const compactHeroBadge = style({
     },
   },
 })
+
+export const compactHeroBadgeKeyRow = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 4,
+})

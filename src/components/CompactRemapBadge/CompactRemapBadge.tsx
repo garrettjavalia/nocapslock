@@ -19,12 +19,46 @@ const heroRemapChoices: HeroBadgeChoice[] = [
   'Super',
 ]
 
-function renderChoice(choice: HeroBadgeChoice | null, platform: PlatformId) {
+function renderMiniKey(label: string, miniSize: 'xs' | 'sm' | 'md' = 'md', platform: PlatformId = 'other') {
+  return <Keycap keyLabel={label} mini miniSize={miniSize} platform={platform} selectable={false} />
+}
+
+function renderChoice(choice: HeroBadgeChoice | null) {
   if (choice === null || choice === 'no-caps-lock') {
-    return <Keycap crossed keyLabel="Caps Lock" mini platform={platform} selectable={false} />
+    return <Keycap crossed keyLabel="Caps Lock" mini platform="other" selectable={false} />
   }
 
-  return <Keycap keyLabel={choice} mini platform={platform} selectable={false} />
+  if (choice === 'Command') {
+    return (
+      <span className={styles.compactHeroBadgeKeyRow}>
+        {renderMiniKey('Win', 'xs')}
+        {renderMiniKey('Super', 'xs')}
+        {renderMiniKey('Command', 'md', 'mac')}
+      </span>
+    )
+  }
+
+  if (choice === 'Win') {
+    return (
+      <span className={styles.compactHeroBadgeKeyRow}>
+        {renderMiniKey('⌘', 'xs')}
+        {renderMiniKey('Super', 'xs')}
+        {renderMiniKey('Win')}
+      </span>
+    )
+  }
+
+  if (choice === 'Super') {
+    return (
+      <span className={styles.compactHeroBadgeKeyRow}>
+        {renderMiniKey('⌘', 'xs')}
+        {renderMiniKey('Win', 'xs')}
+        {renderMiniKey('Super')}
+      </span>
+    )
+  }
+
+  return renderMiniKey(choice)
 }
 
 export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
@@ -64,7 +98,7 @@ export function CompactRemapBadge({ label, platform }: CompactRemapBadgeProps) {
 
   return (
     <button type="button" className={styles.compactHeroBadge} aria-label={label} onClick={handleClick}>
-      {renderChoice(displayKey, platform)}
+      {renderChoice(displayKey)}
     </button>
   )
 }
