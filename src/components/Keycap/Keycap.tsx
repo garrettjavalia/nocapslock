@@ -35,24 +35,26 @@ function isAppleModifierKeycap(platform: PlatformId, label: string) {
 
 function renderAppleModifier(label: 'Command' | 'Control', animated = true) {
   return (
-    <div className={styles.commandKeycap}>
-      <span className={styles.commandGlyphRow}>
+    <div className={styles.keycapFace}>
+      <div className={styles.commandKeycap}>
+        <span className={styles.commandGlyphRow}>
+          <span
+            className={[styles.commandGlyphRight, animated ? '' : styles.keycapLabelStatic]
+              .filter(Boolean)
+              .join(' ')}
+            aria-hidden="true"
+          >
+            {label === 'Command' ? '⌘' : '⌃'}
+          </span>
+        </span>
         <span
-          className={[styles.commandGlyphRight, animated ? '' : styles.keycapLabelStatic]
+          className={[styles.commandLabel, animated ? '' : styles.keycapLabelStatic]
             .filter(Boolean)
             .join(' ')}
-          aria-hidden="true"
         >
-          {label === 'Command' ? '⌘' : '⌃'}
+          {label === 'Command' ? 'command' : 'control'}
         </span>
-      </span>
-      <span
-        className={[styles.commandLabel, animated ? '' : styles.keycapLabelStatic]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        {label === 'Command' ? 'command' : 'control'}
-      </span>
+      </div>
     </div>
   )
 }
@@ -70,16 +72,18 @@ export function KeycapFace({
 
   return (
     <span className={styles.keycapFace}>
-      <span
-        className={[
-          styles.keycapLabel,
-          wide ? styles.keycapLabelWide : '',
-          animated ? '' : styles.keycapLabelStatic,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        {keyLabel}
+      <span className={styles.keycapFaceContent}>
+        <span
+          className={[
+            styles.keycapLabel,
+            wide ? styles.keycapLabelWide : '',
+            animated ? '' : styles.keycapLabelStatic,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          {keyLabel}
+        </span>
       </span>
     </span>
   )

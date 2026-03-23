@@ -202,8 +202,22 @@ export const keycapFace = style({
   minHeight: 0,
 })
 
+export const keycapFaceContent = style({
+  display: 'grid',
+  placeItems: 'center',
+  justifySelf: 'center',
+  alignSelf: 'center',
+  inlineSize: 'fit-content',
+  minInlineSize: '82%',
+  maxInlineSize: '100%',
+  minBlockSize: '82%',
+  maxBlockSize: '100%',
+  minWidth: 0,
+  minHeight: 0,
+})
+
 export const commandKeycap = style([
-  keycapFace,
+  keycapFaceContent,
   {
     gridTemplateRows: '1fr auto',
     alignItems: 'stretch',
