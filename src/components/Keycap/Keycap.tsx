@@ -36,10 +36,10 @@ function isAppleModifierKeycap(platform: PlatformId, label: string) {
 function renderAppleModifier(label: 'Command' | 'Control', animated = true) {
   return (
     <div className={styles.keycapFace}>
-      <div className={styles.commandKeycap}>
-        <span className={styles.commandGlyphRow}>
+      <div className={styles.appleModifierFace}>
+        <span className={styles.appleModifierGlyphRow}>
           <span
-            className={[styles.commandGlyphRight, animated ? '' : styles.keycapLabelStatic]
+            className={[styles.appleModifierGlyph, animated ? '' : styles.keycapFaceStatic]
               .filter(Boolean)
               .join(' ')}
             aria-hidden="true"
@@ -48,7 +48,7 @@ function renderAppleModifier(label: 'Command' | 'Control', animated = true) {
           </span>
         </span>
         <span
-          className={[styles.commandLabel, animated ? '' : styles.keycapLabelStatic]
+          className={[styles.appleModifierLabel, animated ? '' : styles.keycapFaceStatic]
             .filter(Boolean)
             .join(' ')}
         >
@@ -77,7 +77,7 @@ export function KeycapFace({
           className={[
             styles.keycapLabel,
             wide ? styles.keycapLabelWide : '',
-            animated ? '' : styles.keycapLabelStatic,
+            animated ? '' : styles.keycapFaceStatic,
           ]
             .filter(Boolean)
             .join(' ')}

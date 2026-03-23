@@ -11,12 +11,12 @@ const keycapCrossTop = createVar()
 const keycapCrossHeight = createVar()
 const keycapLabelFontSize = createVar()
 const keycapLabelWideFontSize = createVar()
-const commandPaddingInline = createVar()
-const commandPaddingBlock = createVar()
-const commandGlyphFontSize = createVar()
-const commandLabelFontSize = createVar()
+const appleModifierPaddingInline = createVar()
+const appleModifierPaddingBlock = createVar()
+const appleModifierGlyphFontSize = createVar()
+const appleModifierLabelFontSize = createVar()
 
-const labelFlip = keyframes({
+const faceFlip = keyframes({
   '0%': {
     opacity: 0,
     transform: 'scale(0.88)',
@@ -35,6 +35,12 @@ const labelFlip = keyframes({
   },
 })
 
+const animatedFaceItem = {
+  willChange: 'transform, opacity' as const,
+  animation: `${faceFlip} ${keycapAnimationDuration} ease`,
+}
+
+// Inline mini keycaps
 export const inlineMiniKeycapWrap = style({
   position: 'relative',
   display: 'inline-flex',
@@ -72,10 +78,10 @@ export const keycap = style({
     [keycapCrossHeight]: 'clamp(2px, 1.875cqmin, 5px)',
     [keycapLabelFontSize]: 'clamp(1.2rem, 30cqmin, 5rem)',
     [keycapLabelWideFontSize]: 'clamp(1.15rem, 30.5cqmin, 5rem)',
-    [commandPaddingInline]: 'clamp(10px, 11.25cqmin, 36px)',
-    [commandPaddingBlock]: 'clamp(8px, 8.75cqmin, 28px)',
-    [commandGlyphFontSize]: 'clamp(1.3rem, 23.5cqmin, 4.5rem)',
-    [commandLabelFontSize]: 'clamp(1.2rem, 23.5cqmin, 4.5rem)',
+    [appleModifierPaddingInline]: 'clamp(10px, 11.25cqmin, 36px)',
+    [appleModifierPaddingBlock]: 'clamp(8px, 8.75cqmin, 28px)',
+    [appleModifierGlyphFontSize]: 'clamp(1.3rem, 23.5cqmin, 4.5rem)',
+    [appleModifierLabelFontSize]: 'clamp(1.2rem, 23.5cqmin, 4.5rem)',
   },
   position: 'relative',
   width: '100%',
@@ -85,6 +91,7 @@ export const keycap = style({
   containerType: 'size',
 })
 
+// Large keycap shell
 export const keycapSurface = style({
   position: 'relative',
   display: 'grid',
@@ -131,10 +138,10 @@ export const keycapBadge = style({
     [keycapCrossHeight]: 'clamp(2px, 1.75cqmin, 4px)',
     [keycapLabelFontSize]: 'clamp(1rem, 16cqmin, 2.6rem)',
     [keycapLabelWideFontSize]: 'clamp(0.95rem, 14.5cqmin, 2.2rem)',
-    [commandPaddingInline]: 'clamp(8px, 6cqmin, 14px)',
-    [commandPaddingBlock]: 'clamp(6px, 5cqmin, 12px)',
-    [commandGlyphFontSize]: 'clamp(1.1rem, 13.76cqmin, 2.2rem)',
-    [commandLabelFontSize]: 'clamp(1rem, 13.76cqmin, 2.2rem)',
+    [appleModifierPaddingInline]: 'clamp(8px, 6cqmin, 14px)',
+    [appleModifierPaddingBlock]: 'clamp(6px, 5cqmin, 12px)',
+    [appleModifierGlyphFontSize]: 'clamp(1.1rem, 13.76cqmin, 2.2rem)',
+    [appleModifierLabelFontSize]: 'clamp(1rem, 13.76cqmin, 2.2rem)',
   },
   width: '100%',
   height: '100%',
@@ -167,6 +174,7 @@ export const keycapCross = style({
   },
 })
 
+// Large keycap faces
 export const keycapLabel = style({
   display: 'inline-block',
   position: 'relative',
@@ -178,11 +186,10 @@ export const keycapLabel = style({
   letterSpacing: '-0.05em',
   textAlign: 'center',
   whiteSpace: 'nowrap',
-  willChange: 'transform, opacity',
-  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
+  ...animatedFaceItem,
 })
 
-export const keycapLabelStatic = style({
+export const keycapFaceStatic = style({
   animation: 'none',
 })
 
@@ -216,17 +223,17 @@ export const keycapFaceContent = style({
   minHeight: 0,
 })
 
-export const commandKeycap = style([
+export const appleModifierFace = style([
   keycapFaceContent,
   {
     gridTemplateRows: '1fr auto',
     alignItems: 'stretch',
     justifyItems: 'stretch',
-    padding: `${commandPaddingBlock} ${commandPaddingInline}`,
+    padding: `${appleModifierPaddingBlock} ${appleModifierPaddingInline}`,
   },
 ])
 
-export const commandGlyphRow = style({
+export const appleModifierGlyphRow = style({
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'flex-start',
@@ -235,29 +242,27 @@ export const commandGlyphRow = style({
   minHeight: 0,
 })
 
-export const commandGlyphRight = style({
-  fontSize: commandGlyphFontSize,
+export const appleModifierGlyph = style({
+  fontSize: appleModifierGlyphFontSize,
   lineHeight: 1,
   letterSpacing: '-0.06em',
   textAlign: 'right',
-  willChange: 'transform, opacity',
-  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
+  ...animatedFaceItem,
 })
 
-export const commandLabel = style({
+export const appleModifierLabel = style({
   alignSelf: 'end',
   justifySelf: 'center',
   maxWidth: '100%',
   paddingLeft: 0,
-  fontSize: commandLabelFontSize,
+  fontSize: appleModifierLabelFontSize,
   fontWeight: 700,
   lineHeight: 1,
   letterSpacing: '-0.04em',
   textAlign: 'center',
   whiteSpace: 'nowrap',
   textTransform: 'lowercase',
-  willChange: 'transform, opacity',
-  animation: `${labelFlip} ${keycapAnimationDuration} ease`,
+  ...animatedFaceItem,
 })
 
 export const inlineMiniKeycap = style({
