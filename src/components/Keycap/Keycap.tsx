@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import * as styles from './Keycap.css'
 
-export type RemapKey = 'Command' | 'Control' | 'ESC'
+export type RemapKey = 'Command' | 'Control' | 'ESC' | 'Win' | 'Super'
 export type PlatformId = 'windows' | 'mac' | 'linux' | 'android' | 'ios' | 'unix' | 'other'
 type KeycapSize = 'default' | 'badge'
 

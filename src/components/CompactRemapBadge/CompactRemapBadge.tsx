@@ -13,6 +13,14 @@ function getChoices(platform: PlatformId): RemapKey[] {
     return ['Command', 'Control', 'ESC']
   }
 
+  if (platform === 'windows') {
+    return ['Control', 'Win', 'ESC']
+  }
+
+  if (platform === 'linux' || platform === 'unix') {
+    return ['Control', 'Super', 'ESC']
+  }
+
   return ['Control', 'ESC']
 }
 
