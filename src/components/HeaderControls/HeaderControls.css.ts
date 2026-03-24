@@ -3,7 +3,6 @@ import { vars } from '../../styles/theme.css'
 
 const controlHoverBorder = vars.color.borderAccent
 const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
-const iconButtonSize = vars.control.height
 const menuOpenFromBottom = keyframes({
   from: {
     opacity: 0,
@@ -62,19 +61,10 @@ export const iconControl = style([
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: iconButtonSize,
-    height: iconButtonSize,
-    minWidth: iconButtonSize,
-    minHeight: iconButtonSize,
+    width: vars.control.height,
+    height: vars.control.height,
     padding: 0,
-    borderRadius: 999,
-    border: `1px solid ${vars.color.border}`,
-    background: vars.color.bgElevated,
-    boxShadow: `inset 0 1px 0 ${vars.color.bgStrong}`,
     color: vars.color.textSoft,
-    lineHeight: 1,
-    appearance: 'none',
-    WebkitAppearance: 'none',
     selectors: {
       '&:hover': {
         background: vars.color.bgStrong,
@@ -104,8 +94,8 @@ export const githubIconLink = style([
 ])
 
 export const controlIcon = style({
-  width: 16,
-  height: 16,
+  width: 15,
+  height: 15,
 })
 
 export const localeMenuTrigger = style([
@@ -202,18 +192,9 @@ export const themeToggle = style([
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: iconButtonSize,
-    height: iconButtonSize,
-    minWidth: iconButtonSize,
-    minHeight: iconButtonSize,
+    width: vars.control.height,
+    height: vars.control.height,
     padding: 0,
-    borderRadius: 999,
-    border: `1px solid ${vars.color.border}`,
-    background: vars.color.bgElevated,
-    boxShadow: `inset 0 1px 0 ${vars.color.bgStrong}`,
-    lineHeight: 1,
-    appearance: 'none',
-    WebkitAppearance: 'none',
     cursor: 'pointer',
   },
 ])
@@ -233,7 +214,7 @@ export const themeToggleThumb = style({
   width: 24,
   height: 24,
   borderRadius: 999,
-  background: vars.color.bgElevated,
+  background: 'none',
   color: vars.color.textSoft,
   transition: 'color 180ms ease',
   selectors: {

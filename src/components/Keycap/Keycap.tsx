@@ -17,7 +17,6 @@ type KeycapProps = {
   muted?: boolean
   crossed?: boolean
   wide?: boolean
-  shadow?: boolean
   children?: ReactNode
 }
 
@@ -162,7 +161,6 @@ export function Keycap({
   muted = false,
   platform,
   wide = false,
-  shadow = true,
 }: KeycapProps) {
   if (mini) {
     return renderMini(keyLabel, platform, crossed, miniSize, selectable, prefixText, ariaHidden)
@@ -171,7 +169,6 @@ export function Keycap({
   const classes = [styles.keycap]
   if (className) classes.push(className)
   if (muted) classes.push(styles.keycapMuted)
-  if (!shadow) classes.push(styles.keycapNoShadow)
 
   const content: ReactNode = children ?? (
     <KeycapFace keyLabel={keyLabel} platform={platform} wide={wide} crossed={crossed} />

@@ -22,7 +22,7 @@ export const vars = createGlobalTheme(':root', {
   shadow: {
     panel: '0 18px 50px #e5e0d8',
     panelDark: '0 18px 60px #0e0e0e',
-    keycap: 'inset 0 -10px 16px #f0f0f0, 0 18px 32px #dfdfde',
+    keycap: 'inset 0 -10px 16px #f0f0f0',
     keycapMini: 'inset 0 -6px 10px #f0f0f0',
   },
   control: {
@@ -57,7 +57,7 @@ globalStyle(':root[data-theme="dark"]', {
     [vars.color.accentSoft]: '#3f2c24',
     [vars.shadow.panel]: '0 18px 60px #0e0e0e',
     [vars.shadow.panelDark]: '0 18px 60px #0e0e0e',
-    [vars.shadow.keycap]: 'inset 0 -10px 16px #232323, 0 18px 32px #141414',
+    [vars.shadow.keycap]: 'inset 0 -10px 16px #232323',
     [vars.shadow.keycapMini]: 'inset 0 -4px 8px #232323',
   },
 })

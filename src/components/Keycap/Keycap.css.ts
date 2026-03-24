@@ -1,4 +1,4 @@
-import { createVar, globalStyle, keyframes, style } from '@vanilla-extract/css'
+import { createVar, keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
 const keycapAnimationDuration = '1.6s'
@@ -121,12 +121,6 @@ export const keycapSurface = style({
 
 export const keycapMuted = style({
   color: vars.color.textSoft,
-})
-
-export const keycapNoShadow = style({})
-
-globalStyle(`${keycapNoShadow} .${keycapSurface}`, {
-  boxShadow: 'none',
 })
 
 export const keycapCross = style({
