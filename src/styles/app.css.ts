@@ -62,13 +62,15 @@ export const mastheadSurface = style({
       position: 'absolute',
       inset: 0,
       borderRadius: 22,
-      background: `color-mix(in srgb, ${vars.color.bgElevated} 36%, transparent)`,
+      background: vars.color.bgElevated,
       border: `1px solid ${vars.color.border}`,
-      boxShadow: vars.shadow.panel,
-      backdropFilter: 'blur(18px)',
+      boxShadow: '0 10px 26px #e8e1d6',
       opacity: 'var(--surface-opacity, 0)',
       transition: 'opacity 140ms linear',
       pointerEvents: 'none',
+    },
+    ':root[data-theme="dark"] &::before': {
+      boxShadow: '0 10px 26px #151515',
     },
   },
 })
@@ -161,7 +163,6 @@ export const panel = style({
   borderRadius: 28,
   background: vars.color.bgElevated,
   boxShadow: vars.shadow.panel,
-  backdropFilter: 'blur(18px)',
   padding: 28,
   '@media': {
     '(max-width: 840px)': {
@@ -306,8 +307,7 @@ export const keyCaptionSelect = style({
   appearance: 'none',
   WebkitAppearance: 'none',
   MozAppearance: 'none',
-  backgroundImage:
-    'linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%)',
+  backgroundImage: `linear-gradient(45deg, ${vars.color.bgStrong} 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, ${vars.color.bgStrong} 50%)`,
   backgroundPosition: 'calc(100% - 18px) 14px, calc(100% - 12px) 14px',
   backgroundSize: '6px 6px, 6px 6px',
   backgroundRepeat: 'no-repeat',
@@ -383,13 +383,13 @@ export const demoTextarea = style({
   color: vars.color.text,
   padding: 20,
   lineHeight: 1.7,
-  boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.06)',
+  boxShadow: `inset 0 1px 2px ${vars.color.bgElevated}`,
   outline: 'none',
   transition: 'border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease',
   selectors: {
     '&:focus': {
       borderColor: vars.color.accent,
-      boxShadow: `0 0 0 4px ${vars.color.accentSoft}, inset 0 1px 2px rgba(0, 0, 0, 0.08)`,
+      boxShadow: `0 0 0 4px ${vars.color.accentSoft}, inset 0 1px 2px ${vars.color.bgElevated}`,
     },
     '&::-webkit-scrollbar': {
       width: 12,
@@ -412,7 +412,7 @@ export const demoTextarea = style({
 
 export const demoTextareaActive = style({
   borderColor: vars.color.accent,
-  boxShadow: `0 0 0 4px ${vars.color.accentSoft}, inset 0 1px 2px rgba(0, 0, 0, 0.08)`,
+  boxShadow: `0 0 0 4px ${vars.color.accentSoft}, inset 0 1px 2px ${vars.color.bgElevated}`,
 })
 
 export const demoHint = style([
@@ -447,7 +447,7 @@ export const guideTab = style({
   alignItems: 'center',
   justifyContent: 'center',
   border: `1px solid ${vars.color.border}`,
-  background: 'transparent',
+  background: vars.color.bgElevated,
   color: vars.color.text,
   borderRadius: 999,
   padding: '10px 16px',
@@ -472,8 +472,8 @@ export const guideCard = style({
   transition: 'border-color 160ms ease, box-shadow 160ms ease',
   selectors: {
     '&:target': {
-      borderColor: `color-mix(in srgb, ${vars.color.accent} 54%, ${vars.color.border})`,
-      boxShadow: `0 0 0 3px color-mix(in srgb, ${vars.color.accent} 20%, transparent)`,
+      borderColor: vars.color.accent,
+      boxShadow: `0 0 0 3px ${vars.color.accentSoft}`,
     },
   },
 })

@@ -241,7 +241,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       },
       note1: '저장 전에 실제 키 이름을 확인하고 싶다면 EventViewer로 macOS와 Karabiner가 인식한 입력을 바로 확인할 수 있습니다.',
       note2:
-        'macOS에는 <key>Caps Lock</key>으로 마지막으로 사용한 라틴 입력 소스로 전환하는 기본 기능도 있습니다. 하지만 <key>Caps Lock</key> 자체를 재배치하고 싶다면 <key>Right Command</key> -> <key>F18</key> 같은 별도 입력 전환 키를 두는 쪽이 더 유연합니다.',
+        'macOS에서는 <key>Command</key> 키를 입력 소스 전환용으로 지정할 수 없습니다.',
       note3:
         '<key>Caps Lock</key>이 가끔 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 <key>Caps Lock</key>으로 남겨두는 편이 안전합니다.',
     },

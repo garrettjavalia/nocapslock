@@ -12,8 +12,8 @@ export const generator = style({
   transition: 'border-color 160ms ease, box-shadow 160ms ease',
   selectors: {
     '&:target': {
-      borderColor: `color-mix(in srgb, ${vars.color.accent} 54%, ${vars.color.border})`,
-      boxShadow: `0 0 0 3px color-mix(in srgb, ${vars.color.accent} 20%, transparent)`,
+      borderColor: vars.color.accent,
+      boxShadow: `0 0 0 3px ${vars.color.accentSoft}`,
     },
   },
 })
@@ -152,8 +152,7 @@ export const targetSelect = style({
   appearance: 'none',
   WebkitAppearance: 'none',
   MozAppearance: 'none',
-  backgroundImage:
-    'linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%)',
+  backgroundImage: `linear-gradient(45deg, ${vars.color.bgStrong} 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, ${vars.color.bgStrong} 50%)`,
   backgroundPosition: 'calc(100% - 18px) 19px, calc(100% - 12px) 19px',
   backgroundSize: '6px 6px, 6px 6px',
   backgroundRepeat: 'no-repeat',

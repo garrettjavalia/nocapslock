@@ -1,7 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
-const controlHoverBorder = `color-mix(in srgb, ${vars.color.accent} 16%, ${vars.color.border})`
+const controlHoverBorder = vars.color.accent
 const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
 const menuOpenFromBottom = keyframes({
   from: {
@@ -31,7 +31,6 @@ const controlBase = style({
   minHeight: vars.control.height,
   borderRadius: vars.control.radius,
   boxShadow: vars.shadow.panel,
-  backdropFilter: 'blur(16px)',
   transition: 'background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease',
   selectors: {
     '&:hover': {
@@ -120,7 +119,6 @@ export const localeMenuContent = style({
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgElevated,
   boxShadow: vars.shadow.panel,
-  backdropFilter: 'blur(18px)',
   zIndex: 30,
   transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
   animation: `${menuOpenFromBottom} 160ms ease`,
@@ -216,7 +214,7 @@ export const themeToggleThumb = style({
   width: 24,
   height: 24,
   borderRadius: 999,
-  background: 'transparent',
+  background: 'none',
   color: vars.color.textSoft,
   transition: 'color 180ms ease',
   selectors: {
