@@ -46,6 +46,7 @@ const controlBase = style({
 })
 
 export const topbarActions = style({
+  position: 'relative',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
