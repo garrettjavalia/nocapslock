@@ -33,6 +33,20 @@ export const sourceLink = style({
   color: vars.color.text,
   textDecoration: 'none',
   fontWeight: 600,
+  transition: 'border-color 140ms ease, background 140ms ease, color 140ms ease, box-shadow 140ms ease',
+  selectors: {
+    '&:hover': {
+      borderColor: vars.color.accent,
+      background: vars.color.accentSoft,
+      color: vars.color.accentStrong,
+    },
+    '&:focus-visible': {
+      outline: 'none',
+      borderColor: vars.color.accent,
+      boxShadow: `0 0 0 3px ${vars.color.accentSoft}`,
+      color: vars.color.accentStrong,
+    },
+  },
 })
 
 export const inlineLink = style({

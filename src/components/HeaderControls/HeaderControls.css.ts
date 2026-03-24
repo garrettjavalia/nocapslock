@@ -1,7 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
-const controlHoverBorder = vars.color.borderAccent
+const controlHoverBorder = vars.color.accent
 const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
 const menuOpenFromBottom = keyframes({
   from: {

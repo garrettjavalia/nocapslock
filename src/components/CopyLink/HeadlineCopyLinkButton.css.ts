@@ -20,9 +20,9 @@ export const button = style({
   transition: 'border-color 140ms ease, background 140ms ease, color 140ms ease, box-shadow 140ms ease',
   selectors: {
     '&:hover': {
-      background: vars.color.bgElevated,
-      borderColor: vars.color.borderAccent,
-      color: vars.color.text,
+      background: vars.color.accentSoft,
+      borderColor: vars.color.accent,
+      color: vars.color.accentStrong,
     },
     '&:focus-visible': {
       outline: 'none',
@@ -31,7 +31,7 @@ export const button = style({
       color: vars.color.accentStrong,
     },
     '&[data-copied="true"]': {
-      borderColor: vars.color.borderAccent,
+      borderColor: vars.color.accent,
       background: vars.color.accentSoft,
       color: vars.color.accentStrong,
     },
