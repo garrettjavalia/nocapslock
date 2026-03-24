@@ -242,7 +242,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       note1:
         'Si vous voulez vérifier les noms de touches avant d’enregistrer les changements, EventViewer de Karabiner montre ce que macOS et Karabiner détectent pour chaque touche.',
       note2:
-        'macOS propose aussi une option intégrée permettant d’utiliser <key>Caps Lock</key> pour basculer vers et depuis la dernière source de saisie latine utilisée. Si vous voulez conserver votre remappage de <key>Caps Lock</key>, une touche dédiée au changement de langue comme <key>Right Command</key> -> <key>F18</key> est plus flexible.',
+        'Sur macOS, vous ne pouvez pas attribuer la touche <key>Command</key> au changement de source de saisie.',
       note3:
         'Si vous avez encore besoin de <key>Caps Lock</key> de temps en temps, gardez-le sur une autre touche que vous utilisez rarement au lieu de le supprimer complètement.',
     },

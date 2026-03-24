@@ -5,7 +5,15 @@ import { getShortcutRole, previewPlatforms } from '../Keycap/keyRoles'
 import * as styles from '../../styles/app.css'
 
 const heroKeyCycleIntervalMs = 2000
-const animatedKeyLabels = ['Command', 'Control', 'ESC'] as const
+const macPreviewKeyLabels = ['Command', 'Control', 'ESC'] as const
+const windowsPreviewKeyLabels = ['Win', 'Ctrl', 'ESC'] as const
+const linuxPreviewKeyLabels = ['Super', 'Ctrl', 'ESC'] as const
+
+function getAnimatedKeyLabels(platform: PlatformId) {
+  if (platform === 'mac' || platform === 'ios') return macPreviewKeyLabels
+  if (platform === 'windows' || platform === 'android') return windowsPreviewKeyLabels
+  return linuxPreviewKeyLabels
+}
 
 type KeyPreviewPanelProps = {
   platform: PlatformId
@@ -17,7 +25,12 @@ type CyclingPreviewKeycapProps = {
 
 function CyclingPreviewKeycap({ platform }: CyclingPreviewKeycapProps) {
   const [keyCycleIndex, setKeyCycleIndex] = useState(0)
-  const activeKeyLabel = animatedKeyLabels[keyCycleIndex]
+  const animatedKeyLabels = getAnimatedKeyLabels(platform)
+  const activeKeyLabel = animatedKeyLabels[keyCycleIndex % animatedKeyLabels.length]
+
+  useEffect(() => {
+    setKeyCycleIndex(0)
+  }, [platform])
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -25,7 +38,7 @@ function CyclingPreviewKeycap({ platform }: CyclingPreviewKeycapProps) {
     }, heroKeyCycleIntervalMs)
 
     return () => window.clearInterval(timer)
-  }, [])
+  }, [animatedKeyLabels])
 
   return (
     <Keycap keyLabel={activeKeyLabel} platform={platform} wide>

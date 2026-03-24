@@ -10,7 +10,7 @@ export const compactHeroBadge = style({
   minHeight: 40,
   padding: 0,
   border: 0,
-  background: 'transparent',
+  background: 'none',
   boxShadow: 'none',
   transform: 'translateY(-50%)',
   lineHeight: 0,
