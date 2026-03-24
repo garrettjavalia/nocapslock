@@ -240,7 +240,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       note1:
         'If you want to verify key names before saving changes, Karabiner’s EventViewer shows what macOS and Karabiner see from each key.',
       note2:
-        'On macOS, you cannot assign the Command key to input-source switching.',
+        'On macOS, you cannot assign the <key>Command</key> key to input-source switching.',
       note3:
         'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
     },
