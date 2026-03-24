@@ -242,7 +242,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       note1:
         'Wenn du die Tastennamen vor dem Speichern überprüfen willst, zeigt dir Karabiners EventViewer, was macOS und Karabiner von jeder Taste sehen.',
       note2:
-        'macOS hat auch eine eingebaute Option, mit der du mit <key>Caps Lock</key> zur zuletzt verwendeten lateinischen Eingabequelle und wieder zurück wechseln kannst. Wenn du deine <key>Caps Lock</key>-Umbelegung behalten willst, ist eine separate Sprachwechsel-Taste wie <key>Right Command</key> -> <key>F18</key> flexibler.',
+        'Unter macOS kannst du die <key>Command</key>-Taste nicht für den Wechsel der Eingabequelle festlegen.',
       note3:
         'Wenn du <key>Caps Lock</key> manchmal noch brauchst, lege sie lieber auf eine andere selten genutzte Taste, statt sie komplett zu entfernen.',
     },

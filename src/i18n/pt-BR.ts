@@ -242,7 +242,7 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
       note1:
         'Se você quiser conferir os nomes das teclas antes de salvar as mudanças, o EventViewer mostra exatamente o que o macOS e o Karabiner recebem de cada tecla.',
       note2:
-        'O macOS também tem uma opção nativa para usar o <key>Caps Lock</key> para alternar para a última fonte de entrada latina usada e voltar dela. Mas, se você quer manter o remapeamento do <key>Caps Lock</key>, usar uma tecla separada de troca de idioma, como <key>Right Command</key> -> <key>F18</key>, é mais flexível.',
+        'No macOS, você não pode atribuir a tecla <key>Command</key> à troca de fonte de entrada.',
       note3:
         'Se você ainda precisar do <key>Caps Lock</key> às vezes, mantenha-o em outra tecla que você quase não usa em vez de removê-lo completamente.',
     },

@@ -242,7 +242,7 @@ Caps Lock + X で切り取り。
       note1:
         '変更を保存する前にキー名を確認したいなら、Karabiner の EventViewer で macOS と Karabiner に見えている入力を確認できます。',
       note2:
-        'Apple には、<key>Caps Lock</key> で最後に使ったラテン入力ソースへ切り替える標準機能もあります。<key>Caps Lock</key> の再割り当てを残したいなら、<key>Right Command</key> -> <key>F18</key> のように別の言語切り替えキーを用意するほうが柔軟です。',
+        'macOS では <key>Command</key> キーを入力ソース切り替え用に割り当てることはできません。',
       note3:
         '<key>Caps Lock</key> をときどき使いたいなら、完全に消してしまうのではなく、あまり使わない別のキーに残しておくと安心です。',
     },
