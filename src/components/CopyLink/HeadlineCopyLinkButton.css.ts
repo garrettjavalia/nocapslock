@@ -11,15 +11,17 @@ export const button = style({
   height: 30,
   padding: 0,
   borderRadius: 999,
-  border: '1px solid transparent',
-  background: 'transparent',
+  border: `1px solid ${vars.color.border}`,
+  background: vars.color.bgStrong,
+  boxShadow: `inset 0 1px 0 ${vars.color.bgElevated}`,
   color: vars.color.textSoft,
   cursor: 'pointer',
   flexShrink: 0,
   transition: 'border-color 140ms ease, background 140ms ease, color 140ms ease, box-shadow 140ms ease',
   selectors: {
     '&:hover': {
-      background: vars.color.bg,
+      background: vars.color.bgElevated,
+      borderColor: vars.color.borderAccent,
       color: vars.color.text,
     },
     '&:focus-visible': {
@@ -29,6 +31,7 @@ export const button = style({
       color: vars.color.accentStrong,
     },
     '&[data-copied="true"]': {
+      borderColor: vars.color.borderAccent,
       background: vars.color.accentSoft,
       color: vars.color.accentStrong,
     },

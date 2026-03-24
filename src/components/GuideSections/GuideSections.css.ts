@@ -70,7 +70,7 @@ export const substepGroup = style({
   flexDirection: 'column',
   gap: 18,
   paddingLeft: 18,
-  borderLeft: `1px solid color-mix(in srgb, ${vars.color.border} 72%, transparent)`,
+  borderLeft: `1px solid ${vars.color.border}`,
 })
 
 export const stepTitle = style({

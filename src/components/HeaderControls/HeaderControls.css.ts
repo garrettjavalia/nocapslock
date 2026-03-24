@@ -1,8 +1,9 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
-const controlHoverBorder = `color-mix(in srgb, ${vars.color.accent} 16%, ${vars.color.border})`
+const controlHoverBorder = vars.color.borderAccent
 const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
+const iconButtonSize = 32
 const menuOpenFromBottom = keyframes({
   from: {
     opacity: 0,
@@ -31,7 +32,6 @@ const controlBase = style({
   minHeight: vars.control.height,
   borderRadius: vars.control.radius,
   boxShadow: vars.shadow.panel,
-  backdropFilter: 'blur(16px)',
   transition: 'background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease',
   selectors: {
     '&:hover': {
@@ -62,10 +62,19 @@ export const iconControl = style([
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: vars.control.height,
-    height: vars.control.height,
+    width: iconButtonSize,
+    height: iconButtonSize,
+    minWidth: iconButtonSize,
+    minHeight: iconButtonSize,
     padding: 0,
+    borderRadius: 999,
+    border: `1px solid ${vars.color.border}`,
+    background: vars.color.bgElevated,
+    boxShadow: `inset 0 1px 0 ${vars.color.bgStrong}`,
     color: vars.color.textSoft,
+    lineHeight: 1,
+    appearance: 'none',
+    WebkitAppearance: 'none',
     selectors: {
       '&:hover': {
         background: vars.color.bgStrong,
@@ -120,7 +129,6 @@ export const localeMenuContent = style({
   border: `1px solid ${vars.color.border}`,
   background: vars.color.bgElevated,
   boxShadow: vars.shadow.panel,
-  backdropFilter: 'blur(18px)',
   zIndex: 30,
   transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
   animation: `${menuOpenFromBottom} 160ms ease`,
@@ -194,9 +202,18 @@ export const themeToggle = style([
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: vars.control.height,
-    height: vars.control.height,
+    width: iconButtonSize,
+    height: iconButtonSize,
+    minWidth: iconButtonSize,
+    minHeight: iconButtonSize,
     padding: 0,
+    borderRadius: 999,
+    border: `1px solid ${vars.color.border}`,
+    background: vars.color.bgElevated,
+    boxShadow: `inset 0 1px 0 ${vars.color.bgStrong}`,
+    lineHeight: 1,
+    appearance: 'none',
+    WebkitAppearance: 'none',
     cursor: 'pointer',
   },
 ])
@@ -216,7 +233,7 @@ export const themeToggleThumb = style({
   width: 24,
   height: 24,
   borderRadius: 999,
-  background: 'transparent',
+  background: vars.color.bgElevated,
   color: vars.color.textSoft,
   transition: 'color 180ms ease',
   selectors: {

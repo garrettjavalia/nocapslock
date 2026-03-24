@@ -32,8 +32,8 @@ export const comparisonCard = style({
   transition: 'border-color 140ms ease, background 140ms ease, box-shadow 140ms ease',
   selectors: {
     '&:target': {
-      borderColor: `color-mix(in srgb, ${vars.color.accent} 54%, ${vars.color.border})`,
-      boxShadow: `0 0 0 3px color-mix(in srgb, ${vars.color.accent} 20%, transparent)`,
+      borderColor: vars.color.accent,
+      boxShadow: `0 0 0 3px ${vars.color.accentSoft}`,
     },
   },
 })

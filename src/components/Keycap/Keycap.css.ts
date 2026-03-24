@@ -1,4 +1,4 @@
-import { createVar, keyframes, style } from '@vanilla-extract/css'
+import { createVar, globalStyle, keyframes, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
 
 const keycapAnimationDuration = '1.6s'
@@ -61,7 +61,7 @@ export const inlineMiniKeycapCross = style({
       top: '51%',
       height: 2.5,
       borderRadius: 999,
-      background: 'linear-gradient(90deg, rgba(217, 93, 57, 0.92), rgba(217, 93, 57, 0.55))',
+      background: `linear-gradient(90deg, ${vars.color.keycapStrikeStart}, ${vars.color.keycapStrikeEnd})`,
       transform: 'rotate(-11deg)',
     },
   },
@@ -104,7 +104,7 @@ export const keycapSurface = style({
   borderRadius: keycapRadius,
   background: vars.color.keycapBg,
   border: `1px solid ${vars.color.keycapBorder}`,
-  boxShadow: 'inset 0 -10px 16px rgba(0, 0, 0, 0.06)',
+  boxShadow: vars.shadow.keycap,
   userSelect: 'none',
   overflow: 'hidden',
   selectors: {
@@ -117,16 +117,15 @@ export const keycapSurface = style({
       border: `1px solid ${vars.color.keycapBorder}`,
     },
   },
-  '@supports': {
-    '(color: color-mix(in srgb, black, white))': {
-      boxShadow: `inset 0 -10px 16px color-mix(in srgb, ${vars.color.text} 8%, transparent)`,
-    },
-  },
 })
 
 export const keycapMuted = style({
-  opacity: 0.86,
-  filter: 'saturate(0.78)',
+  color: vars.color.textSoft,
+})
+
+globalStyle(`${keycapMuted} .${keycapSurface}`, {
+  background: vars.color.bgElevated,
+  borderColor: vars.color.border,
 })
 
 export const keycapCross = style({
@@ -142,9 +141,8 @@ export const keycapCross = style({
       top: keycapCrossTop,
       height: keycapCrossHeight,
       borderRadius: 999,
-      background: 'linear-gradient(90deg, rgba(217, 93, 57, 0.9), rgba(217, 93, 57, 0.5))',
+      background: `linear-gradient(90deg, ${vars.color.keycapStrikeStart}, ${vars.color.keycapStrikeEnd})`,
       transform: 'rotate(-12deg)',
-      boxShadow: '0 0 12px rgba(217, 93, 57, 0.18)',
     },
   },
 })
@@ -255,16 +253,11 @@ export const inlineMiniKeycap = style({
   fontSize: '0.95rem',
   fontWeight: 700,
   letterSpacing: '-0.03em',
-  boxShadow: 'inset 0 -6px 10px rgba(0, 0, 0, 0.06)',
+  boxShadow: vars.shadow.keycapMini,
   userSelect: 'text',
   WebkitUserSelect: 'text',
   position: 'relative',
   zIndex: 0,
-  selectors: {
-    ':root[data-theme="dark"] &': {
-      boxShadow: 'inset 0 -4px 8px rgba(0, 0, 0, 0.18)',
-    },
-  },
 })
 
 export const inlineMiniKeycapSelectable = style({
