@@ -64,10 +64,13 @@ export const mastheadSurface = style({
       borderRadius: 22,
       background: vars.color.bgElevated,
       border: `1px solid ${vars.color.border}`,
-      boxShadow: vars.shadow.panel,
+      boxShadow: '0 10px 26px #e8e1d6',
       opacity: 'var(--surface-opacity, 0)',
       transition: 'opacity 140ms linear',
       pointerEvents: 'none',
+    },
+    ':root[data-theme="dark"] &::before': {
+      boxShadow: '0 10px 26px #151515',
     },
   },
 })

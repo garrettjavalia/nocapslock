@@ -123,9 +123,10 @@ export const keycapMuted = style({
   color: vars.color.textSoft,
 })
 
-globalStyle(`${keycapMuted} .${keycapSurface}`, {
-  background: vars.color.bgElevated,
-  borderColor: vars.color.border,
+export const keycapNoShadow = style({})
+
+globalStyle(`${keycapNoShadow} .${keycapSurface}`, {
+  boxShadow: 'none',
 })
 
 export const keycapCross = style({

@@ -3,7 +3,7 @@ import { vars } from '../../styles/theme.css'
 
 const controlHoverBorder = vars.color.borderAccent
 const controlFocusShadow = `${vars.shadow.panel}, 0 0 0 3px ${vars.color.accentSoft}`
-const iconButtonSize = 32
+const iconButtonSize = vars.control.height
 const menuOpenFromBottom = keyframes({
   from: {
     opacity: 0,
@@ -104,8 +104,8 @@ export const githubIconLink = style([
 ])
 
 export const controlIcon = style({
-  width: 15,
-  height: 15,
+  width: 16,
+  height: 16,
 })
 
 export const localeMenuTrigger = style([

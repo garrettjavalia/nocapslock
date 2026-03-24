@@ -28,7 +28,7 @@ function CyclingPreviewKeycap({ platform }: CyclingPreviewKeycapProps) {
   }, [])
 
   return (
-    <Keycap keyLabel={activeKeyLabel} platform={platform} wide>
+    <Keycap keyLabel={activeKeyLabel} platform={platform} wide shadow={false}>
       <KeycapFace
         key={`${platform}-${activeKeyLabel}`}
         keyLabel={activeKeyLabel}
@@ -59,7 +59,7 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
       <div className={styles.keyRail}>
         <div className={styles.keyNarrative} aria-hidden="true">
           <div className={styles.keyStateColumn}>
-            <Keycap crossed keyLabel="Caps Lock" muted platform={platform} />
+            <Keycap crossed keyLabel="Caps Lock" muted platform={platform} shadow={false} />
           </div>
 
           <div className={styles.keyFlowArrow}>

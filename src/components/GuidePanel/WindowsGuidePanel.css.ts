@@ -1,5 +1,8 @@
-import { style } from '@vanilla-extract/css'
+import { createVar, style } from '@vanilla-extract/css'
 import { vars } from '../../styles/theme.css'
+
+const methodHighlightBorder = createVar()
+const methodHighlightRing = createVar()
 
 export const intro = style({
   margin: 0,
@@ -19,6 +22,10 @@ export const comparisonGrid = style({
 })
 
 export const comparisonCard = style({
+  vars: {
+    [methodHighlightBorder]: '#df9c87',
+    [methodHighlightRing]: '#f8e8e1',
+  },
   position: 'relative',
   display: 'grid',
   padding: 16,
@@ -31,9 +38,15 @@ export const comparisonCard = style({
   scrollMarginTop: 128,
   transition: 'border-color 140ms ease, background 140ms ease, box-shadow 140ms ease',
   selectors: {
+    ':root[data-theme="dark"] &': {
+      vars: {
+        [methodHighlightBorder]: '#975f46',
+        [methodHighlightRing]: '#4b342a',
+      },
+    },
     '&:target': {
-      borderColor: vars.color.accent,
-      boxShadow: `0 0 0 3px ${vars.color.accentSoft}`,
+      borderColor: methodHighlightBorder,
+      boxShadow: `0 0 0 3px ${methodHighlightRing}`,
     },
   },
 })
@@ -54,7 +67,7 @@ export const comparisonOverlayLink = style({
   selectors: {
     '&:focus-visible': {
       outline: 'none',
-      boxShadow: `0 0 0 4px ${vars.color.accentSoft}`,
+      boxShadow: `0 0 0 4px ${methodHighlightRing}`,
     },
   },
 })
@@ -77,9 +90,9 @@ export const comparisonCopyButton = style({
 })
 
 export const comparisonCardActive = style({
-  borderColor: vars.color.accent,
+  borderColor: methodHighlightBorder,
   background: vars.color.bgStrong,
-  boxShadow: `0 0 0 3px ${vars.color.accentSoft}`,
+  boxShadow: `0 0 0 3px ${methodHighlightRing}`,
 })
 
 export const comparisonTitle = style({
