@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite-react-ssg build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "pages:dev": "pnpm build && wrangler pages dev dist"
   },
   "dependencies": {
     "@primer/octicons-react": "^19.23.1",
@@ -27,6 +28,8 @@
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
     "vite-plugin-radar": "^0.10.1",
-    "vite-react-ssg": "^0.9.1-beta.1"
-  }
+    "vite-react-ssg": "^0.9.1-beta.1",
+    "wrangler": "^4.80.0"
+  },
+  "packageManager": "pnpm@10.15.1"
 }

@@ -17,12 +17,26 @@ New languages, clearer wording, better UI details, better sources, and better se
 ## Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Build:
 
 ```bash
-npm run build
+pnpm build
 ```
+
+Run the site locally with Cloudflare Pages Functions:
+
+```bash
+pnpm pages:dev
+```
+
+## Cloudflare Pages
+
+This project can be deployed on Cloudflare Pages with Pages Functions enabled.
+
+- Locale-specific static pages are generated at build time, such as `/en-US/`, `/ko-KR/`, and `/ja-JP/`.
+- The root path `/` is handled by `functions/index.ts`, which reads the browser `Accept-Language` header and redirects to the best supported locale path.
+- The client-side redirect remains in place as a fallback when the site is run outside Cloudflare Pages Functions.
