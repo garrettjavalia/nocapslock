@@ -1,4 +1,5 @@
 import type { PlatformId } from './Keycap'
+export { getRecommendedPreviewPlatform } from '../../platformRecommendations'
 
 export type ShortcutRoleLabel = 'Command' | 'Control'
 
