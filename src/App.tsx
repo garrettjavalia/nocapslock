@@ -12,8 +12,8 @@ import { HeroMasthead } from './components/HeroMasthead'
 import { KeyPreviewPanel } from './components/KeyPreviewPanel'
 import { type PlatformId } from './components/Keycap'
 import {
-  getDefaultGuidePlatform,
   getGuidePath,
+  getRecommendedGuidePlatform,
   type WindowsMethodId,
 } from './guides'
 import {
@@ -93,7 +93,7 @@ export function App({
       return
     }
 
-    const nextGuidePlatform = getDefaultGuidePlatform(platform)
+    const nextGuidePlatform = getRecommendedGuidePlatform(platform)
     if (nextGuidePlatform === null) {
       return
     }
@@ -176,7 +176,7 @@ export function App({
       : `${guideTitle!} | ${rootTitle}`
   const pageDescription = t('meta.description')
   const shouldTrackPageView = guidePlatform !== null
-    || (hasDetectedPlatform && getDefaultGuidePlatform(platform) === null)
+    || (hasDetectedPlatform && getRecommendedGuidePlatform(platform) === null)
 
   useEffect(() => {
     if (!shouldTrackPageView) {
