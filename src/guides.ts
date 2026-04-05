@@ -1,5 +1,5 @@
-import type { PlatformId } from './components/Keycap'
 import { getLocalePath, type GuidePlatformId, type Locale } from './i18n'
+export { getRecommendedGuidePlatform } from './platformRecommendations'
 
 export type WindowsMethodId = 'powertoys' | 'registry'
 
@@ -27,11 +27,4 @@ export function getGuidePath(
   }
 
   return `${localeRoot}linux/`
-}
-
-export function getDefaultGuidePlatform(platform: PlatformId): GuidePlatformId | null {
-  if (platform === 'windows') return 'windows'
-  if (platform === 'mac' || platform === 'ios') return 'mac'
-  if (platform === 'linux' || platform === 'android' || platform === 'unix') return 'linux'
-  return null
 }
