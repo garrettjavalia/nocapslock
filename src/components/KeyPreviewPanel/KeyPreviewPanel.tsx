@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { InlineTransKeycap, Keycap, KeycapFace, type PlatformId } from '../Keycap'
-import { getShortcutRole, previewPlatforms } from '../Keycap/keyRoles'
+import {
+  getRecommendedPreviewPlatform,
+  getShortcutRole,
+  previewPlatforms,
+} from '../Keycap/keyRoles'
 import * as styles from '../../styles/app.css'
 
 const heroKeyCycleIntervalMs = 2000
@@ -55,11 +59,12 @@ function CyclingPreviewKeycap({ platform }: CyclingPreviewKeycapProps) {
 export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
   const { t } = useTranslation()
   const [captionPlatform, setCaptionPlatform] = useState<PlatformId>('other')
+  const recommendedPreviewPlatform = getRecommendedPreviewPlatform(platform)
   const recommendedKeyLabel = getShortcutRole(captionPlatform)
 
   useEffect(() => {
-    setCaptionPlatform(platform)
-  }, [platform])
+    setCaptionPlatform(recommendedPreviewPlatform)
+  }, [recommendedPreviewPlatform])
 
   return (
     <section className={`${styles.panel} ${styles.keyStage}`} aria-labelledby="hero-key-title">
@@ -72,7 +77,7 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
       <div className={styles.keyRail}>
         <div className={styles.keyNarrative} aria-hidden="true">
           <div className={styles.keyStateColumn}>
-            <Keycap crossed keyLabel="Caps Lock" muted platform={platform} />
+            <Keycap crossed keyLabel="Caps Lock" muted platform={recommendedPreviewPlatform} />
           </div>
 
           <div className={styles.keyFlowArrow}>
@@ -80,7 +85,7 @@ export function KeyPreviewPanel({ platform }: KeyPreviewPanelProps) {
           </div>
 
           <div className={styles.keyStateColumn}>
-            <CyclingPreviewKeycap platform={platform} />
+            <CyclingPreviewKeycap platform={recommendedPreviewPlatform} />
           </div>
         </div>
         <p className={styles.keyCaption}>
