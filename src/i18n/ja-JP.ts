@@ -214,7 +214,7 @@ Caps Lock + X で切り取り。
         },
         step02: {
           title: '2. Simple Modifications で <key>Caps Lock</key> を再割り当てする',
-          body: 'Karabiner-Elements を開き、<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> を選び、編集したいキーボードを指定して、<key>Caps Lock</key> を <key>Left Control</key> に変更します。<key>Escape</key> のほうが使いやすければ、ここで選んでも構いません。',
+          body: 'Karabiner-Elements を開き、<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> を選び、編集したいキーボードを指定して、<key>Caps Lock</key> を <key>⌘ Left Command</key> に変更します。多くの macOS 環境では、これが実用的な初期選択です。作業の流れによって <key>Escape</key> や別のキーのほうが重要なら、そちらを選んでも構いません。',
         },
         step03: {
           title: '3. 必要ならログイン前でも同じ割り当てを使う',
@@ -226,11 +226,11 @@ Caps Lock + X で切り取り。
           substeps: {
             step04_1: {
               title: '4-1. 予備の右側修飾キーを1つ選ぶ',
-              body: 'まず、言語切り替え用の右側修飾キーを1つ選びます。一般的には <key>Right Command</key> -> <key>F18</key> が無難です。レイアウト上そのキーがまだ重要でないなら、<key>Right Option</key> -> <key>F18</key> を使っても構いません。',
+              body: 'まず、言語切り替え用の右側修飾キーを1つ選びます。一般的には <key>⌘ Right Command</key> が無難です。レイアウト上そのキーがまだ重要でないなら、<key>⌥ Right Option</key> を使っても構いません。',
             },
             step04_2: {
               title: '4-2. その右側キーを Karabiner で <key>F18</key> に割り当てる',
-              body: '<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> で、前の手順で選んだキーに応じて <key>Right Command</key> -> <key>F18</key> か <key>Right Option</key> -> <key>F18</key> を追加します。これで <key>Caps Lock</key> を別用途に変えながら、キーボード右側に専用の言語切り替えキーを残せます。',
+              body: '<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> で、前の手順で選んだキーに応じて <key>⌘ Right Command</key> -> <key>F18</key> か <key>⌥ Right Option</key> -> <key>F18</key> を追加します。これで <key>Caps Lock</key> を別用途に変えながら、キーボード右側に専用の言語切り替えキーを残せます。',
             },
             step04_3: {
               title: '4-3. macOS で <key>F18</key> を入力ソース切り替えに割り当てる',
@@ -242,7 +242,7 @@ Caps Lock + X で切り取り。
       note1:
         '変更を保存する前にキー名を確認したいなら、Karabiner の EventViewer で macOS と Karabiner に見えている入力を確認できます。',
       note2:
-        'macOS では <key>Command</key> キーを入力ソース切り替え用に割り当てることはできません。',
+        'macOS では <key>⌘ Command</key> キーを入力ソース切り替え用に割り当てることはできません。',
       note3:
         '<key>Caps Lock</key> をときどき使いたいなら、完全に消してしまうのではなく、あまり使わない別のキーに残しておくと安心です。',
     },
