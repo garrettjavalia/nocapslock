@@ -155,6 +155,7 @@ export function App({
     return () => {
       window.cancelAnimationFrame(frame)
       window.clearTimeout(timeout)
+      window.scrollTo({ top: window.scrollY, behavior: 'instant' })
     }
   }, [location.hash, location.pathname])
 
