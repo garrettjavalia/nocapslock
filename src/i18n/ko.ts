@@ -214,7 +214,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
         },
         step02: {
           title: '2. Simple Modifications에서 <key>Caps Lock</key> 변경',
-          body: 'Karabiner-Elements를 열고 <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>로 들어간 뒤, 수정할 키보드를 고르고 <key>Caps Lock</key>을 <key>Left Control</key>로 바꿉니다. <key>Escape</key>가 더 편하다면 그 키를 골라도 됩니다.',
+          body: 'Karabiner-Elements를 열고 <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>로 들어간 뒤, 수정할 키보드를 고르고 <key>Caps Lock</key>을 <key>⌘ Left Command</key>로 바꿉니다. 대부분의 macOS 사용 환경에서는 이 선택이 무난한 기본값에 가깝습니다. 다만 작업 흐름상 <key>Escape</key>나 다른 키가 더 중요하다면 그쪽을 골라도 됩니다.',
         },
         step03: {
           title: '3. 선택 사항: 로그인 창에서도 같은 매핑 쓰기',
@@ -226,11 +226,11 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
           substeps: {
             step04_1: {
               title: '4-1. 오른쪽 보조키 하나 고르기',
-              body: '먼저 오른쪽 보조키 중 하나를 입력 언어 전환용으로 정합니다. 보통은 <key>Right Command</key> -> <key>F18</key>이 무난하고, 필요하면 <key>Right Option</key> -> <key>F18</key>을 써도 됩니다. 다만 그 키가 현재 레이아웃에서 중요한 문자를 만드는 데 쓰이지 않는지는 먼저 확인해 두는 편이 좋습니다.',
+              body: '먼저 오른쪽 보조키 중 하나를 입력 언어 전환용으로 정합니다. 보통은 <key>⌘ Right Command</key>가 무난하고, 필요하면 <key>⌥ Right Option</key>을 써도 됩니다. 다만 그 키가 현재 레이아웃에서 중요한 문자를 만드는 데 쓰이지 않는지는 먼저 확인해 두는 편이 좋습니다.',
             },
             step04_2: {
               title: '4-2. Karabiner에서 그 오른쪽 키를 <key>F18</key>로 바꾸기',
-              body: '<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>에서 앞 단계에서 고른 키를 <key>Right Command</key> -> <key>F18</key> 또는 <key>Right Option</key> -> <key>F18</key>으로 추가합니다. 이렇게 하면 <key>Caps Lock</key>을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
+              body: '<karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>에서 앞 단계에서 고른 키를 <key>⌘ Right Command</key> -> <key>F18</key> 또는 <key>⌥ Right Option</key> -> <key>F18</key>으로 추가합니다. 이렇게 하면 <key>Caps Lock</key>을 다른 용도로 바꾸더라도, 키보드 오른쪽에 입력 언어 전환용 키를 따로 둘 수 있습니다.',
             },
             step04_3: {
               title: '4-3. macOS에서 <key>F18</key>을 입력 소스 전환 키로 배정',
@@ -241,7 +241,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       },
       note1: '저장 전에 실제 키 이름을 확인하고 싶다면 EventViewer로 macOS와 Karabiner가 인식한 입력을 바로 확인할 수 있습니다.',
       note2:
-        'macOS에서는 <key>Command</key> 키를 입력 소스 전환용으로 지정할 수 없습니다.',
+        'macOS에서는 <key>⌘ Command</key> 키를 입력 소스 전환용으로 지정할 수 없습니다.',
       note3:
         '<key>Caps Lock</key>이 가끔 필요하다면, 완전히 없애기보다 잘 쓰지 않는 다른 키 하나를 <key>Caps Lock</key>으로 남겨두는 편이 안전합니다.',
     },

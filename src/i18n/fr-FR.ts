@@ -214,7 +214,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
         },
         step02: {
           title: '2. Remappez <key>Caps Lock</key> dans Simple Modifications',
-          body: 'Ouvrez Karabiner-Elements, choisissez <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, sélectionnez le clavier à modifier, puis changez <key>Caps Lock</key> en <key>Left Control</key>. Si vous préférez <key>Escape</key>, vous pouvez le choisir ici aussi.',
+          body: 'Ouvrez Karabiner-Elements, choisissez <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, sélectionnez le clavier à modifier, puis changez <key>Caps Lock</key> en <key>⌘ Left Command</key>. Pour la plupart des usages sur macOS, c’est un choix pratique par défaut. Si votre flux de travail dépend davantage de <key>Escape</key> ou d’une autre touche, choisissez plutôt celle-là.',
         },
         step03: {
           title: '3. Facultatif : appliquer le même mappage avant la connexion',
@@ -226,15 +226,15 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
           substeps: {
             step04_1: {
               title: '4-1. Choisissez un modificateur de droite inutilisé',
-              body: 'Commencez par choisir un modificateur de droite libre pour le changement de langue. Un choix courant est <key>Right Command</key> -> <key>F18</key>. Vous pouvez aussi utiliser <key>Right Option</key> -> <key>F18</key>, à condition que cette touche ne soit pas déjà importante dans votre disposition.',
+              body: 'Commencez par choisir un modificateur de droite libre pour le changement de langue. <key>⌘ Right Command</key> est souvent un choix pratique. Vous pouvez aussi utiliser <key>⌥ Right Option</key>, à condition que cette touche ne soit pas déjà importante dans votre disposition.',
             },
             step04_2: {
               title: '4-2. Mappez cette touche de droite vers <key>F18</key> dans Karabiner',
-              body: 'Dans <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, ajoutez soit <key>Right Command</key> -> <key>F18</key>, soit <key>Right Option</key> -> <key>F18</key>, selon la touche choisie à l’étape précédente. Cela libère <key>Caps Lock</key> pour le remappage tout en gardant une touche dédiée au changement de langue sur le côté droit du clavier.',
+              body: 'Dans <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, ajoutez soit <key>⌘ Right Command</key> -> <key>F18</key>, soit <key>⌥ Right Option</key> -> <key>F18</key>, selon la touche choisie à l’étape précédente. Cela libère <key>Caps Lock</key> pour le remappage tout en gardant une touche dédiée au changement de langue sur le côté droit du clavier.',
             },
             step04_3: {
               title: '4-3. Attribuez <key>F18</key> au changement de source de saisie dans macOS',
-              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à “Select next source in Input menu.” Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Comme <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. Parmi elles, <key>F18</key> fait partie des touches qu’on peut généralement utiliser sans problème.',
+              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à « sélectionner la méthode de saisie suivante dans le menu Saisie ». Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Comme <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. Parmi elles, <key>F18</key> fait partie des touches qu’on peut généralement utiliser sans problème.',
             },
           },
         },
@@ -242,7 +242,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       note1:
         'Si vous voulez vérifier les noms de touches avant d’enregistrer les changements, EventViewer de Karabiner montre ce que macOS et Karabiner détectent pour chaque touche.',
       note2:
-        'Sur macOS, vous ne pouvez pas attribuer la touche <key>Command</key> au changement de source de saisie.',
+        'Sur macOS, vous ne pouvez pas attribuer la touche <key>⌘ Command</key> au changement de source de saisie.',
       note3:
         'Si vous avez encore besoin de <key>Caps Lock</key> de temps en temps, gardez-le sur une autre touche que vous utilisez rarement au lieu de le supprimer complètement.',
     },

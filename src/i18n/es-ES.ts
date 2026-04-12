@@ -214,7 +214,7 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
         },
         step02: {
           title: '2. Reasigna <key>Caps Lock</key> en Simple Modifications',
-          body: 'Abre Karabiner-Elements, elige <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, selecciona el teclado que quieras editar y cambia <key>Caps Lock</key> a <key>Left Control</key>. Si prefieres <key>Escape</key>, también puedes elegirlo aquí.',
+          body: 'Abre Karabiner-Elements, elige <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, selecciona el teclado que quieras editar y cambia <key>Caps Lock</key> a <key>⌘ Left Command</key>. Para la mayoría de los usos en macOS, esa es una opción práctica por defecto. Si tu flujo de trabajo depende más de <key>Escape</key> o de otra tecla, elige esa en su lugar.',
         },
         step03: {
           title: '3. Opcional: aplica la misma asignación antes de iniciar sesión',
@@ -226,11 +226,11 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
           substeps: {
             step04_1: {
               title: '4-1. Elige un modificador derecho libre',
-              body: 'Primero elige un modificador derecho libre para cambiar de idioma. Una opción habitual es <key>Right Command</key> -> <key>F18</key>. También puedes usar <key>Right Option</key> -> <key>F18</key>, siempre que esa tecla no sea importante en tu distribución.',
+              body: 'Primero elige un modificador derecho libre para cambiar de idioma. <key>⌘ Right Command</key> suele ser una opción práctica. También puedes usar <key>⌥ Right Option</key>, siempre que esa tecla no sea importante en tu distribución.',
             },
             step04_2: {
               title: '4-2. Asígnale <key>F18</key> en Karabiner',
-              body: 'En <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, añade <key>Right Command</key> -> <key>F18</key> o <key>Right Option</key> -> <key>F18</key>, según la tecla que elegiste antes. Así liberas <key>Caps Lock</key> para reasignarlo y mantienes una tecla dedicada para cambiar de idioma a la derecha del teclado.',
+              body: 'En <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, añade <key>⌘ Right Command</key> -> <key>F18</key> o <key>⌥ Right Option</key> -> <key>F18</key>, según la tecla que elegiste antes. Así liberas <key>Caps Lock</key> para reasignarlo y mantienes una tecla dedicada para cambiar de idioma a la derecha del teclado.',
             },
             step04_3: {
               title: '4-3. Asigna <key>F18</key> al cambio de idioma en macOS',
@@ -242,7 +242,7 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
       note1:
         'Si quieres verificar los nombres de las teclas antes de guardar los cambios, EventViewer de Karabiner te muestra lo que macOS y Karabiner ven de cada tecla.',
       note2:
-        'En macOS, no puedes asignar la tecla <key>Command</key> al cambio de fuente de entrada.',
+        'En macOS, no puedes asignar la tecla <key>⌘ Command</key> al cambio de fuente de entrada.',
       note3:
         'Si aún necesitas <key>Caps Lock</key> a veces, asígnalo a otra tecla que uses poco en lugar de eliminarlo por completo.',
     },

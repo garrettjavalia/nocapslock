@@ -214,7 +214,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
         },
         step02: {
           title: '2. <key>Caps Lock</key> in Simple Modifications neu belegen',
-          body: 'Öffne Karabiner-Elements, gehe zu <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, wähle die Tastatur aus, die du ändern möchtest, und lege <key>Caps Lock</key> auf <key>Left Control</key>. Wenn dir <key>Escape</key> lieber ist, kannst du auch diese Taste wählen.',
+          body: 'Öffne Karabiner-Elements, gehe zu <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, wähle die Tastatur aus, die du ändern möchtest, und lege <key>Caps Lock</key> auf <key>⌘ Left Command</key>. Für die meisten macOS-Setups ist das ein praktischer Standard. Wenn dein Arbeitsablauf stärker von <key>Escape</key> oder einer anderen Taste abhängt, wähle stattdessen diese.',
         },
         step03: {
           title: '3. Optional: dieselbe Zuordnung schon vor dem Login nutzen',
@@ -226,11 +226,11 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
           substeps: {
             step04_1: {
               title: '4-1. Eine freie rechte Zusatztaste wählen',
-              body: 'Wähle zuerst eine freie rechte Zusatztaste für den Sprachwechsel. Häufig nimmt man <key>Right Command</key> -> <key>F18</key>. Stattdessen geht auch <key>Right Option</key> -> <key>F18</key>, solange diese Taste in deinem Layout nicht bereits wichtig ist.',
+              body: 'Wähle zuerst eine freie rechte Zusatztaste für den Sprachwechsel. Häufig ist <key>⌘ Right Command</key> eine praktische Wahl. Stattdessen geht auch <key>⌥ Right Option</key>, solange diese Taste in deinem Layout nicht bereits wichtig ist.',
             },
             step04_2: {
               title: '4-2. Die rechte Taste in Karabiner auf <key>F18</key> legen',
-              body: 'Füge in <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> je nach gewählter Taste entweder <key>Right Command</key> -> <key>F18</key> oder <key>Right Option</key> -> <key>F18</key> hinzu. So bleibt <key>Caps Lock</key> für die Umbelegung frei, und rechts auf der Tastatur hast du weiterhin eine eigene Sprachwechsel-Taste.',
+              body: 'Füge in <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide> je nach gewählter Taste entweder <key>⌘ Right Command</key> -> <key>F18</key> oder <key>⌥ Right Option</key> -> <key>F18</key> hinzu. So bleibt <key>Caps Lock</key> für die Umbelegung frei, und rechts auf der Tastatur hast du weiterhin eine eigene Sprachwechsel-Taste.',
             },
             step04_3: {
               title: '4-3. <key>F18</key> in macOS dem Wechsel der Eingabequelle zuweisen',
@@ -242,7 +242,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       note1:
         'Wenn du die Tastennamen vor dem Speichern überprüfen willst, zeigt dir Karabiners EventViewer, was macOS und Karabiner von jeder Taste sehen.',
       note2:
-        'Unter macOS kannst du die <key>Command</key>-Taste nicht für den Wechsel der Eingabequelle festlegen.',
+        'Unter macOS kannst du die <key>⌘ Command</key>-Taste nicht für den Wechsel der Eingabequelle festlegen.',
       note3:
         'Wenn du <key>Caps Lock</key> manchmal noch brauchst, lege sie lieber auf eine andere selten genutzte Taste, statt sie komplett zu entfernen.',
     },

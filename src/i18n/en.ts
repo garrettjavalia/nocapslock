@@ -212,7 +212,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
         },
         step02: {
           title: '2. Remap <key>Caps Lock</key> in Simple Modifications',
-          body: 'Open Karabiner-Elements, choose <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, select the keyboard you want to edit, and change <key>Caps Lock</key> to <key>Left Control</key>. If you prefer <key>Escape</key> instead, you can choose that here too.',
+          body: 'Open Karabiner-Elements, choose <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, select the keyboard you want to edit, and change <key>Caps Lock</key> to <key>⌘ Left Command</key>. For most macOS setups, that is a practical default. If your workflow depends more on <key>Escape</key> or another key, choose that instead.',
         },
         step03: {
           title: '3. Optional: make the same mapping work before login',
@@ -224,11 +224,11 @@ This is only a browser demo, but it is enough to feel the convenience.`,
           substeps: {
             step04_1: {
               title: '4-1. Pick a spare right-side modifier',
-              body: 'Choose a spare right-side modifier for language switching first. A common choice is <key>Right Command</key> -> <key>F18</key>. You can also use <key>Right Option</key> -> <key>F18</key> instead, as long as that key is not already important in your layout.',
+              body: 'Choose a spare right-side modifier for language switching first. <key>⌘ Right Command</key> is often a practical choice, and <key>⌥ Right Option</key> can also work as long as that key is not already important in your layout.',
             },
             step04_2: {
               title: '4-2. Map that right-side key to <key>F18</key> in Karabiner',
-              body: 'In <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, add either <key>Right Command</key> -> <key>F18</key> or <key>Right Option</key> -> <key>F18</key>, depending on which key you picked in the previous step. This frees <key>Caps Lock</key> for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
+              body: 'In <karabinerSimpleModificationsGuide>Simple Modifications</karabinerSimpleModificationsGuide>, add either <key>⌘ Right Command</key> -> <key>F18</key> or <key>⌥ Right Option</key> -> <key>F18</key>, depending on which key you picked in the previous step. This frees <key>Caps Lock</key> for remapping while keeping a dedicated language-switch key on the right side of the keyboard.',
             },
             step04_3: {
               title: '4-3. Assign <key>F18</key> to input-source switching in macOS',
@@ -240,7 +240,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       note1:
         'If you want to verify key names before saving changes, Karabiner’s EventViewer shows what macOS and Karabiner see from each key.',
       note2:
-        'On macOS, you cannot assign the <key>Command</key> key to input-source switching.',
+        'On macOS, you cannot assign the <key>⌘ Command</key> key to input-source switching.',
       note3:
         'If you still need <key>Caps Lock</key> sometimes, keep it on another key you rarely use instead of removing it completely.',
     },
