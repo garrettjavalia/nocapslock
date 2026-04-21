@@ -171,7 +171,144 @@ const registryTargetCandidates = [
   ...registryTargetOnlyCandidates,
   ...registryKeyCandidates,
 ] as const
-const registryTargetIds = registryTargetCandidates.map(({ id }) => id) as RegistryTargetId[]
+const targetOptionGroups = [
+  { label: 'System', ids: ['turnOff', 'escape', 'tab', 'backspace', 'enter', 'space', 'capslock'] },
+  {
+    label: 'Modifiers',
+    ids: [
+      'leftCtrl',
+      'rightCtrl',
+      'leftShift',
+      'rightShift',
+      'leftAlt',
+      'rightAlt',
+      'leftWin',
+      'rightWin',
+      'menu',
+    ],
+  },
+  {
+    label: 'Navigation',
+    ids: [
+      'insert',
+      'delete',
+      'home',
+      'end',
+      'pageUp',
+      'pageDown',
+      'arrowUp',
+      'arrowLeft',
+      'arrowDown',
+      'arrowRight',
+      'printScreen',
+    ],
+  },
+  {
+    label: 'Main Typing Area',
+    ids: [
+      'backquote',
+      'minus',
+      'equal',
+      'leftBracket',
+      'rightBracket',
+      'backslash',
+      'semicolon',
+      'quote',
+      'comma',
+      'period',
+      'slash',
+      'digit1',
+      'digit2',
+      'digit3',
+      'digit4',
+      'digit5',
+      'digit6',
+      'digit7',
+      'digit8',
+      'digit9',
+      'digit0',
+      'q',
+      'w',
+      'e',
+      'r',
+      't',
+      'y',
+      'u',
+      'i',
+      'o',
+      'p',
+      'a',
+      's',
+      'd',
+      'f',
+      'g',
+      'h',
+      'j',
+      'k',
+      'l',
+      'z',
+      'x',
+      'c',
+      'v',
+      'b',
+      'n',
+      'm',
+      'isoExtra',
+    ],
+  },
+  {
+    label: 'Function Keys',
+    ids: [
+      'f1',
+      'f2',
+      'f3',
+      'f4',
+      'f5',
+      'f6',
+      'f7',
+      'f8',
+      'f9',
+      'f10',
+      'f11',
+      'f12',
+      'f13',
+      'f14',
+      'f15',
+      'f16',
+      'f17',
+      'f18',
+      'f19',
+      'f20',
+      'f21',
+      'f22',
+      'f23',
+      'f24',
+      'numLock',
+      'scrollLock',
+    ],
+  },
+  {
+    label: 'Numpad',
+    ids: [
+      'numpadMultiply',
+      'numpadDivide',
+      'numpadSubtract',
+      'numpadAdd',
+      'numpadEnter',
+      'numpadDecimal',
+      'numpad0',
+      'numpad1',
+      'numpad2',
+      'numpad3',
+      'numpad4',
+      'numpad5',
+      'numpad6',
+      'numpad7',
+      'numpad8',
+      'numpad9',
+    ],
+  },
+] as const satisfies readonly { label: string; ids: readonly RegistryTargetId[] }[]
 const registryTargetScanCodes = Object.fromEntries(
   registryTargetCandidates.map(({ id, scanCode }) => [id, scanCode]),
 ) as Record<RegistryTargetId, string>
@@ -329,10 +466,14 @@ export function WindowsRegistryGenerator() {
                   onChange={(event) => handleTargetChange(source, event.target.value as RegistryTargetId)}
                   aria-label={`${getKeyLabel(source)} ${t('guide.registryGenerator.targetLabel')}`}
                 >
-                  {registryTargetIds.map((target) => (
-                    <option key={target} value={target}>
-                      {getKeyLabel(target)} ({formatScanCode(registryTargetScanCodes[target])})
-                    </option>
+                  {targetOptionGroups.map((group) => (
+                    <optgroup key={group.label} label={group.label}>
+                      {group.ids.map((target) => (
+                        <option key={target} value={target}>
+                          {getKeyLabel(target)} ({formatScanCode(registryTargetScanCodes[target])})
+                        </option>
+                      ))}
+                    </optgroup>
                   ))}
                 </select>
             </div>
