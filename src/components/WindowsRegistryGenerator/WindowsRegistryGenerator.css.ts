@@ -70,7 +70,7 @@ export const mappingCard = style({
 
 export const mappingHeader = style({
   display: 'grid',
-  gridTemplateColumns: 'minmax(0, 1fr) auto minmax(220px, 260px)',
+  gridTemplateColumns: 'minmax(0, 1fr) auto minmax(220px, 260px) auto',
   gap: 12,
   alignItems: 'center',
   color: vars.color.textSoft,
@@ -92,12 +92,105 @@ export const mappingList = style({
 
 export const mappingRow = style({
   display: 'grid',
-  gridTemplateColumns: 'minmax(0, 1fr) auto minmax(220px, 260px)',
+  gridTemplateColumns: 'minmax(0, 1fr) auto minmax(220px, 260px) auto',
   gap: 12,
   alignItems: 'center',
   '@media': {
     '(max-width: 720px)': {
-      gridTemplateColumns: '1fr',
+      gridTemplateColumns: '1fr auto',
+      gridTemplateRows: 'auto auto',
+    },
+  },
+})
+
+export const keyCellWrapper = style({
+  '@media': {
+    '(max-width: 720px)': {
+      gridColumn: '1',
+      gridRow: '1',
+    },
+  },
+})
+
+export const rowArrowWrapper = style({
+  '@media': {
+    '(max-width: 720px)': {
+      display: 'none',
+    },
+  },
+})
+
+export const targetSelectWrapper = style({
+  '@media': {
+    '(max-width: 720px)': {
+      gridColumn: '1',
+      gridRow: '2',
+    },
+  },
+})
+
+export const removeButtonWrapper = style({
+  '@media': {
+    '(max-width: 720px)': {
+      gridColumn: '2',
+      gridRow: '1 / 3',
+      display: 'flex',
+      alignItems: 'center',
+    },
+  },
+})
+
+export const removeButton = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+  width: 36,
+  height: 36,
+  borderRadius: 999,
+  border: `1px solid ${vars.color.border}`,
+  background: 'transparent',
+  color: vars.color.textSoft,
+  cursor: 'pointer',
+  fontSize: '1rem',
+  lineHeight: 1,
+  transition: 'background 120ms ease, color 120ms ease',
+  selectors: {
+    '&:hover': {
+      background: vars.color.bgStrong,
+      color: vars.color.text,
+    },
+  },
+})
+
+export const addSourceRow = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  paddingTop: 4,
+})
+
+export const addSourceSelect = style({
+  display: 'inline-block',
+  width: '100%',
+  height: vars.control.height,
+  minHeight: vars.control.height,
+  padding: '0 40px 0 14px',
+  borderRadius: vars.control.radius,
+  border: `1px dashed ${vars.color.border}`,
+  background: vars.color.bg,
+  color: vars.color.textSoft,
+  outline: 'none',
+  cursor: 'pointer',
+  appearance: 'none',
+  WebkitAppearance: 'none',
+  MozAppearance: 'none',
+  backgroundImage: `linear-gradient(45deg, ${vars.color.bg} 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, ${vars.color.bg} 50%)`,
+  backgroundPosition: 'calc(100% - 18px) 19px, calc(100% - 12px) 19px',
+  backgroundSize: '6px 6px, 6px 6px',
+  backgroundRepeat: 'no-repeat',
+  selectors: {
+    '&:focus': {
+      borderColor: vars.color.accent,
     },
   },
 })

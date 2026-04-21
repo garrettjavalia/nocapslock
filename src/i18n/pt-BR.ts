@@ -108,6 +108,8 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
       registryPathLabel:
         'Caminho do Registro: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: 'Redefinir seleções',
+      addSourceLabel: 'Adicionar tecla para remapear',
+      removeSourceLabel: 'Remover',
       key: {
         capslock: 'Caps Lock',
         leftCtrl: 'Ctrl esquerdo',

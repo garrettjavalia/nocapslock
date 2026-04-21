@@ -106,6 +106,8 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       registryPathLabel:
         'Registry path: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: 'Reset selections',
+      addSourceLabel: 'Add a key to remap',
+      removeSourceLabel: 'Remove',
       key: {
         capslock: 'Caps Lock',
         leftCtrl: 'Left Ctrl',

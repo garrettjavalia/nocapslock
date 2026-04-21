@@ -108,6 +108,8 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       registryPathLabel:
         'Registry-Pfad: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: 'Auswahl zurücksetzen',
+      addSourceLabel: 'Taste zum Neuzuordnen hinzufügen',
+      removeSourceLabel: 'Entfernen',
       key: {
         capslock: 'Feststelltaste',
         leftCtrl: 'Linke Strg',

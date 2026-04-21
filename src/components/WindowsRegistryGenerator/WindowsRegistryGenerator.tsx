@@ -134,43 +134,11 @@ type RegistryTargetId =
   | RegistrySourceId
   | (typeof registryTargetOnlyCandidates)[number]['id']
 
-// Source keys stay focused on practical "physical position remap" keys
-// (modifiers, navigation cluster, and high-impact control keys).
-const sourceCandidateIds = [
-  'escape',
-  'tab',
-  'capslock',
-  'leftCtrl',
-  'rightCtrl',
-  'leftShift',
-  'rightShift',
-  'leftAlt',
-  'rightAlt',
-  'leftWin',
-  'rightWin',
-  'menu',
-  'space',
-  'backspace',
-  'enter',
-  'insert',
-  'delete',
-  'home',
-  'end',
-  'pageUp',
-  'pageDown',
-  'arrowUp',
-  'arrowLeft',
-  'arrowDown',
-  'arrowRight',
-] as const satisfies readonly RegistrySourceId[]
-const sourceCandidateIdSet = new Set<RegistrySourceId>(sourceCandidateIds)
-const registrySourceIds = registryKeyCandidates
-  .filter(({ id }) => sourceCandidateIdSet.has(id))
-  .map(({ id }) => id) as RegistrySourceId[]
 const registryTargetCandidates = [
   ...registryTargetOnlyCandidates,
   ...registryKeyCandidates,
 ] as const
+
 const targetOptionGroups = [
   { label: 'System', ids: ['turnOff', 'escape', 'tab', 'backspace', 'enter', 'space', 'capslock'] },
   {
@@ -309,6 +277,13 @@ const targetOptionGroups = [
     ],
   },
 ] as const satisfies readonly { label: string; ids: readonly RegistryTargetId[] }[]
+
+// Source option groups: same groupings as target, but without 'turnOff'
+const sourceOptionGroups = targetOptionGroups.map((group) => ({
+  label: group.label,
+  ids: group.ids.filter((id): id is RegistrySourceId => id !== 'turnOff'),
+}))
+
 const registryTargetScanCodes = Object.fromEntries(
   registryTargetCandidates.map(({ id, scanCode }) => [id, scanCode]),
 ) as Record<RegistryTargetId, string>
@@ -317,8 +292,13 @@ const registryTargetLabels = Object.fromEntries(
 ) as Record<RegistryTargetId, string>
 
 const registryPath = 'HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout'
-const identityMapping = Object.fromEntries(
-  registrySourceIds.map((id) => [id, id]),
+
+// Default source rows when the generator first loads
+const defaultActiveSourceIds: RegistrySourceId[] = ['capslock']
+
+// Full identity mapping for all known source keys (used as initial state)
+const fullIdentityMapping = Object.fromEntries(
+  registryKeyCandidates.map(({ id }) => [id, id as RegistryTargetId]),
 ) as Record<RegistrySourceId, RegistryTargetId>
 
 function formatScanCode(scanCode: string) {
@@ -340,8 +320,11 @@ function dwordToLittleEndianBytes(value: number) {
   ]
 }
 
-function buildRemapFile(mapping: Record<RegistrySourceId, RegistryTargetId>) {
-  const changedMappings = registrySourceIds
+function buildRemapFile(
+  activeSourceIds: readonly RegistrySourceId[],
+  mapping: Record<RegistrySourceId, RegistryTargetId>,
+) {
+  const changedMappings = activeSourceIds
     .filter((source) => mapping[source] !== source)
     .map((source) => ({
       source,
@@ -389,15 +372,30 @@ function buildRevertFile() {
 
 export function WindowsRegistryGenerator() {
   const { t } = useTranslation()
-  const [mapping, setMapping] = useState(identityMapping)
+  const [activeSourceIds, setActiveSourceIds] = useState<RegistrySourceId[]>(defaultActiveSourceIds)
+  const [mapping, setMapping] = useState<Record<RegistrySourceId, RegistryTargetId>>(fullIdentityMapping)
+  const [addSelectValue, setAddSelectValue] = useState('')
 
   const hasChanges = useMemo(
-    () => registrySourceIds.some((key) => mapping[key] !== identityMapping[key]),
-    [mapping],
+    () => activeSourceIds.some((key) => mapping[key] !== key),
+    [activeSourceIds, mapping],
   )
 
-  const remapFile = useMemo(() => buildRemapFile(mapping), [mapping])
+  const remapFile = useMemo(() => buildRemapFile(activeSourceIds, mapping), [activeSourceIds, mapping])
   const revertFile = useMemo(() => buildRevertFile(), [])
+
+  const activeSourceIdSet = useMemo(() => new Set(activeSourceIds), [activeSourceIds])
+
+  const addableGroups = useMemo(
+    () =>
+      sourceOptionGroups
+        .map((group) => ({
+          ...group,
+          ids: group.ids.filter((id) => !activeSourceIdSet.has(id)),
+        }))
+        .filter((group) => group.ids.length > 0),
+    [activeSourceIdSet],
+  )
 
   const getKeyLabel = (keyId: RegistryTargetId) =>
     t(`guide.registryGenerator.key.${keyId}`, {
@@ -409,6 +407,23 @@ export function WindowsRegistryGenerator() {
       ...current,
       [source]: target,
     }))
+  }
+
+  const handleAddSource = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const id = e.target.value as RegistrySourceId
+    if (!id) return
+    setActiveSourceIds((prev) => [...prev, id])
+    setAddSelectValue('')
+  }
+
+  const handleRemoveSource = (id: RegistrySourceId) => {
+    setActiveSourceIds((prev) => prev.filter((s) => s !== id))
+  }
+
+  const handleReset = () => {
+    setActiveSourceIds(defaultActiveSourceIds)
+    setMapping(fullIdentityMapping)
+    setAddSelectValue('')
   }
 
   return (
@@ -426,7 +441,7 @@ export function WindowsRegistryGenerator() {
         <button
           type="button"
           className={styles.resetButton}
-          onClick={() => setMapping(identityMapping)}
+          onClick={handleReset}
         >
           {t('guide.registryGenerator.resetLabel')}
         </button>
@@ -439,12 +454,13 @@ export function WindowsRegistryGenerator() {
           <span>{t('guide.registryGenerator.sourceLabel')}</span>
           <span />
           <span>{t('guide.registryGenerator.targetLabel')}</span>
+          <span />
         </div>
 
         <div className={styles.mappingList}>
-          {registrySourceIds.map((source) => (
+          {activeSourceIds.map((source) => (
             <div key={source} className={styles.mappingRow}>
-              <div className={styles.keyCell}>
+              <div className={`${styles.keyCell} ${styles.keyCellWrapper}`}>
                 <Keycap
                   keyLabel={getKeyLabel(source)}
                   mini
@@ -456,10 +472,11 @@ export function WindowsRegistryGenerator() {
                 </span>
               </div>
 
-              <span className={styles.rowArrow} aria-hidden="true">
+              <span className={`${styles.rowArrow} ${styles.rowArrowWrapper}`} aria-hidden="true">
                 →
               </span>
 
+              <div className={styles.targetSelectWrapper}>
                 <select
                   className={styles.targetSelect}
                   value={mapping[source]}
@@ -476,8 +493,44 @@ export function WindowsRegistryGenerator() {
                     </optgroup>
                   ))}
                 </select>
+              </div>
+
+              <div className={styles.removeButtonWrapper}>
+                <button
+                  type="button"
+                  className={styles.removeButton}
+                  onClick={() => handleRemoveSource(source)}
+                  aria-label={`${t('guide.registryGenerator.removeSourceLabel')} ${getKeyLabel(source)}`}
+                >
+                  ×
+                </button>
+              </div>
             </div>
           ))}
+
+          {addableGroups.length > 0 && (
+            <div className={styles.addSourceRow}>
+              <select
+                className={styles.addSourceSelect}
+                value={addSelectValue}
+                onChange={handleAddSource}
+                aria-label={t('guide.registryGenerator.addSourceLabel')}
+              >
+                <option value="" disabled>
+                  + {t('guide.registryGenerator.addSourceLabel')}
+                </option>
+                {addableGroups.map((group) => (
+                  <optgroup key={group.label} label={group.label}>
+                    {group.ids.map((id) => (
+                      <option key={id} value={id}>
+                        {getKeyLabel(id)} ({formatScanCode(registryTargetScanCodes[id])})
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       </div>
 

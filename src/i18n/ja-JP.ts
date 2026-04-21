@@ -108,6 +108,8 @@ Caps Lock + X で切り取り。
       registryPathLabel:
         'レジストリのパス: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: '選択をリセット',
+      addSourceLabel: '割り当てるキーを追加',
+      removeSourceLabel: '削除',
       key: {
         capslock: 'Caps Lock',
         leftCtrl: '左 Ctrl',

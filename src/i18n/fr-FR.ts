@@ -108,6 +108,8 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       registryPathLabel:
         'Chemin du Registre : HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: 'Réinitialiser la sélection',
+      addSourceLabel: 'Ajouter une touche à remapper',
+      removeSourceLabel: 'Supprimer',
       key: {
         capslock: 'Caps Lock',
         leftCtrl: 'Ctrl gauche',

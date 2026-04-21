@@ -108,6 +108,8 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       registryPathLabel:
         '레지스트리 경로: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: '선택 초기화',
+      addSourceLabel: '변경할 키 추가',
+      removeSourceLabel: '삭제',
       key: {
         capslock: 'Caps Lock',
         leftCtrl: '왼쪽 Ctrl',

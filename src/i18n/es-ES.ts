@@ -108,6 +108,8 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
       registryPathLabel:
         'Ruta del Registro: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: 'Restablecer',
+      addSourceLabel: 'Añadir tecla para reasignar',
+      removeSourceLabel: 'Quitar',
       key: {
         capslock: 'Caps Lock',
         leftCtrl: 'Ctrl izquierdo',
