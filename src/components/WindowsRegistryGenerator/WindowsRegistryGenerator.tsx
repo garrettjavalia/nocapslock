@@ -6,6 +6,8 @@ import { GuideCodeBlock } from '../GuideCodeBlock'
 import { Keycap } from '../Keycap'
 import * as styles from './WindowsRegistryGenerator.css'
 
+// Scancode values are based on the Microsoft USB HID → PS/2 translation table
+// and cross-checked against SharpKeys' maintained key map list.
 const registryKeyCandidates = [
   { id: 'escape', label: 'Escape', scanCode: '0001' },
   { id: 'digit1', label: '1', scanCode: '0002' },
@@ -132,6 +134,8 @@ type RegistryTargetId =
   | RegistrySourceId
   | (typeof registryTargetOnlyCandidates)[number]['id']
 
+// Source keys stay focused on practical "physical position remap" keys
+// (modifiers, navigation cluster, and high-impact control keys).
 const sourceCandidateIds = [
   'escape',
   'tab',
