@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { guideSectionIds } from '../../guideAnchors'
 import { HeadlineCopyLinkButton } from '../CopyLink'
@@ -278,7 +278,7 @@ const targetOptionGroups = [
   },
 ] as const satisfies readonly { label: string; ids: readonly RegistryTargetId[] }[]
 
-// Source option groups: same groupings as target, but without 'turnOff'
+// Source option groups: same groupings as target, but without 'turnOff' (computed once at module load)
 const sourceOptionGroups = targetOptionGroups.map((group) => ({
   label: group.label,
   ids: group.ids.filter((id): id is RegistrySourceId => id !== 'turnOff'),
@@ -397,10 +397,13 @@ export function WindowsRegistryGenerator() {
     [activeSourceIdSet],
   )
 
-  const getKeyLabel = (keyId: RegistryTargetId) =>
-    t(`guide.registryGenerator.key.${keyId}`, {
-      defaultValue: registryTargetLabels[keyId],
-    })
+  const getKeyLabel = useCallback(
+    (keyId: RegistryTargetId) =>
+      t(`guide.registryGenerator.key.${keyId}`, {
+        defaultValue: registryTargetLabels[keyId],
+      }),
+    [t],
+  )
 
   const handleTargetChange = (source: RegistrySourceId, target: RegistryTargetId) => {
     setMapping((current) => ({
