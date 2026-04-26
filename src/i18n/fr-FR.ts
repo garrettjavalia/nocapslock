@@ -107,6 +107,8 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       noChangesLabel: 'Choisissez au moins une cible différente pour générer un fichier de remappage.',
       registryPathLabel:
         'Chemin du Registre : HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
+      imeKeyNotice:
+        'Sur certains claviers coréens ou japonais, le changement d’IME passe par des touches IME dédiées plutôt que par Right Alt ou Right Ctrl. Sur d’autres configurations, la même fonction peut encore dépendre de touches basées sur Alt/Ctrl ou des réglages de l’IME ; choisissez donc la touche qui correspond à votre matériel et au mode actif du clavier.',
       resetLabel: 'Réinitialiser la sélection',
       addSourceLabel: 'Ajouter une touche à remapper',
       addSourcePromptLabel: 'Ajouter une touche',
@@ -114,6 +116,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       group: {
         system: 'Système',
         modifiers: 'Modificateurs',
+        ime: 'Touches IME',
         navigation: 'Navigation',
         mainTypingArea: 'Zone de saisie principale',
         functionKeys: 'Touches de fonction',
@@ -133,6 +136,12 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
         rightShift: 'Maj droite',
         leftAlt: 'Alt gauche',
         rightAlt: 'Alt droit',
+        hangulEnglish: 'Hangul / anglais',
+        hanja: 'Hanja',
+        katakanaHiragana: 'Katakana / Hiragana',
+        henkan: 'Conversion',
+        muhenkan: 'Sans conversion',
+        zenkakuHankaku: 'Pleine largeur / demi-largeur',
         leftWin: 'Windows gauche',
         rightWin: 'Windows droite',
         menu: 'Menu',

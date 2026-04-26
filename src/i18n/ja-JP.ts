@@ -107,6 +107,8 @@ Caps Lock + X で切り取り。
       noChangesLabel: '再割り当てファイルを生成するには、少なくとも1つ別の割り当て先を選んでください。',
       registryPathLabel:
         'レジストリのパス: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
+      imeKeyNotice:
+        '韓国語または日本語キーボードでは、ハングル/英数、漢字、カタカナ/ひらがな などの IME 専用キーが別に動作する場合があります。逆に、キーボードの種類や設定モードによっては、同じ切り替えが Right Alt や Right Ctrl のような通常の修飾キー、または IME 設定側に割り当てられていることもあるため、使用中のハードウェアと入力設定に合うキーを選んでください。',
       resetLabel: '選択をリセット',
       addSourceLabel: '割り当てるキーを追加',
       addSourcePromptLabel: 'キーを追加',
@@ -114,6 +116,7 @@ Caps Lock + X で切り取り。
       group: {
         system: 'システム',
         modifiers: '修飾キー',
+        ime: 'IME キー',
         navigation: '移動キー',
         mainTypingArea: 'メイン入力エリア',
         functionKeys: 'ファンクションキー',
@@ -133,6 +136,12 @@ Caps Lock + X で切り取り。
         rightShift: '右 Shift',
         leftAlt: '左 Alt',
         rightAlt: '右 Alt',
+        hangulEnglish: 'ハングル / 英数',
+        hanja: '漢字',
+        katakanaHiragana: 'カタカナ / ひらがな',
+        henkan: '変換',
+        muhenkan: '無変換',
+        zenkakuHankaku: '全角 / 半角',
         leftWin: '左 Windows',
         rightWin: '右 Windows',
         menu: 'メニュー',
