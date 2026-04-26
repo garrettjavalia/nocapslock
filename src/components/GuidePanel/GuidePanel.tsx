@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next'
 import { NavLink, type NavLinkRenderProps } from 'react-router-dom'
 import { getGuidePath, type WindowsMethodId } from '../../guides'
 import type { Locale } from '../../i18n'
+import { HardwareGuidePanel } from './HardwareGuidePanel'
+import { HardwareGuideNotice } from './HardwareGuideNotice'
 import { LinuxGuidePanel } from './LinuxGuidePanel'
 import { MacGuidePanel } from './MacGuidePanel'
 import { WindowsGuidePanel } from './WindowsGuidePanel'
@@ -18,6 +20,7 @@ const guideTabs = [
   { id: 'windows', titleKey: 'guide.windows.title', end: false },
   { id: 'mac', titleKey: 'guide.mac.title', end: true },
   { id: 'linux', titleKey: 'guide.linux.title', end: true },
+  { id: 'hardware', titleKey: 'guide.hardware.title', end: true },
 ] as const
 
 export function GuidePanel({
@@ -36,6 +39,7 @@ export function GuidePanel({
         </h2>
       </div>
       <p className={styles.guideIntro}>{t('guide.intro')}</p>
+      <HardwareGuideNotice locale={locale} />
       <div className={styles.guideTabs} role="tablist" aria-label={t('guide.title')}>
         {guideTabs.map((tab) => (
           <NavLink
@@ -65,6 +69,7 @@ export function GuidePanel({
       {guidePlatform === 'windows' && <WindowsGuidePanel locale={locale} activeMethod={windowsMethod} />}
       {guidePlatform === 'mac' && <MacGuidePanel locale={locale} />}
       {guidePlatform === 'linux' && <LinuxGuidePanel locale={locale} />}
+      {guidePlatform === 'hardware' && <HardwareGuidePanel locale={locale} />}
     </section>
   )
 }

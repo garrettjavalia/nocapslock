@@ -6,7 +6,7 @@ export type Locale =
   | 'pt-BR'
   | 'fr-FR'
   | 'de-DE'
-export type GuidePlatformId = 'windows' | 'mac' | 'linux'
+export type GuidePlatformId = 'windows' | 'mac' | 'linux' | 'hardware'
 
 type WidenTranslationLeaf<T> =
   T extends string
