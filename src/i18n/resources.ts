@@ -1,18 +1,18 @@
 import { deDeTranslation } from './de-DE'
-import { enTranslation } from './en'
+import { enUsTranslation } from './en-US'
 import { esEsTranslation } from './es-ES'
 import { frFrTranslation } from './fr-FR'
 import { jaJpTranslation } from './ja-JP'
-import { koTranslation } from './ko'
+import { koKrTranslation } from './ko-KR'
 import { ptBrTranslation } from './pt-BR'
 import type { Locale, TranslationMessages } from './schema'
 
 export const resources = {
   'en-US': {
-    translation: enTranslation,
+    translation: enUsTranslation,
   },
   'ko-KR': {
-    translation: koTranslation,
+    translation: koKrTranslation,
   },
   'ja-JP': {
     translation: jaJpTranslation,
