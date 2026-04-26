@@ -4,29 +4,13 @@ import { vars } from '../../styles/theme.css'
 export const section = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: 16,
-})
-
-export const headingRow = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: 6,
-  flexWrap: 'wrap',
+  gap: 12,
 })
 
 export const label = style({
   margin: 0,
   color: vars.color.textSoft,
-  fontSize: '1.12rem',
-  fontWeight: 700,
-  letterSpacing: '0.04em',
-  textTransform: 'uppercase',
-})
-
-export const sublabel = style({
-  margin: 0,
-  color: vars.color.textSoft,
-  fontSize: '0.84rem',
+  fontSize: '0.82rem',
   fontWeight: 700,
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
@@ -86,31 +70,19 @@ export const inlineLink = style({
 export const stepList = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: 18,
+  gap: 20,
 })
 
 export const stepItem = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: 10,
-})
-
-export const contentGroup = style({
-  display: 'flex',
-  flexDirection: 'column',
   gap: 8,
-})
-
-export const subcontentGroup = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 6,
 })
 
 export const substepGroup = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: 14,
+  gap: 18,
   paddingLeft: 18,
   borderLeft: `1px solid ${vars.color.border}`,
 })
@@ -131,7 +103,7 @@ export const notesList = style({
   margin: 0,
   paddingLeft: 18,
   display: 'grid',
-  gap: 6,
+  gap: 8,
   color: vars.color.textSoft,
 })
 

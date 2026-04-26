@@ -21,7 +21,15 @@ export function LinuxGuidePanel({ locale }: LinuxGuidePanelProps) {
     { key: 'referenceLabel2', href: 'https://github.com/rvaiya/keyd#quickstart' },
     { key: 'referenceLabel3', href: 'https://github.com/rvaiya/keyd/releases' },
   ] as const
-  const steps = ['step01', 'step02', 'step03', 'step04', 'step05'] as const
+  const stepFlow = [
+    { type: 'step', id: 'step01' },
+    { type: 'code', id: 'install' },
+    { type: 'step', id: 'step02' },
+    { type: 'code', id: 'config' },
+    { type: 'step', id: 'step03' },
+    { type: 'step', id: 'step04' },
+    { type: 'step', id: 'step05' },
+  ] as const
 
   return (
     <article id={guideSectionIds.linux} className={styles.guideCard}>
@@ -40,44 +48,33 @@ export function LinuxGuidePanel({ locale }: LinuxGuidePanelProps) {
       <section className={guideStyles.section}>
         <p className={guideStyles.label}>{t('guide.label.steps')}</p>
         <div className={guideStyles.stepList}>
-          {steps.map((step) => (
-            <section key={step} className={guideStyles.stepItem}>
-              <h4 className={guideStyles.stepTitle}>
-                <Trans i18nKey={`guide.linux.steps.${step}.title`} components={keyComponents} />
-              </h4>
-              <div className={guideStyles.contentGroup}>
+          {stepFlow.map((item) =>
+            item.type === 'step' ? (
+              <section key={item.id} className={guideStyles.stepItem}>
+                <h4 className={guideStyles.stepTitle}>
+                  <Trans i18nKey={`guide.linux.steps.${item.id}.title`} components={keyComponents} />
+                </h4>
                 <p className={guideStyles.stepBody}>
-                  <Trans i18nKey={`guide.linux.steps.${step}.body`} components={keyComponents} />
+                  <Trans i18nKey={`guide.linux.steps.${item.id}.body`} components={keyComponents} />
                 </p>
-
-                {step === 'step01' ? (
-                  <section className={guideStyles.section}>
-                    <p className={guideStyles.sublabel}>{t('guide.codeBlock.install.label')}</p>
-                    <GuideCodeBlock
-                      code={t('guide.linux.installScript')}
-                      copyLabel={t('guide.codeBlock.install.copy')}
-                      copiedLabel={t('guide.codeBlock.install.copied')}
-                      downloadLabel={t('guide.codeBlock.install.download')}
-                      filename={t('guide.linux.installFilename')}
-                    />
-                  </section>
-                ) : null}
-
-                {step === 'step02' ? (
-                  <section className={guideStyles.section}>
-                    <p className={guideStyles.sublabel}>{t('guide.codeBlock.config.label')}</p>
-                    <GuideCodeBlock
-                      code={t('guide.linux.configSnippet')}
-                      copyLabel={t('guide.codeBlock.config.copy')}
-                      copiedLabel={t('guide.codeBlock.config.copied')}
-                      downloadLabel={t('guide.codeBlock.config.download')}
-                      filename={t('guide.linux.configFilename')}
-                    />
-                  </section>
-                ) : null}
+              </section>
+            ) : (
+              <div key={item.id} className={styles.guideInlineCodeSection}>
+                <section className={guideStyles.section}>
+                  <p className={guideStyles.label}>{t(`guide.codeBlock.${item.id}.label`)}</p>
+                  <GuideCodeBlock
+                    code={t(`guide.linux.${item.id === 'install' ? 'installScript' : 'configSnippet'}`)}
+                    copyLabel={t(`guide.codeBlock.${item.id}.copy`)}
+                    copiedLabel={t(`guide.codeBlock.${item.id}.copied`)}
+                    downloadLabel={t(`guide.codeBlock.${item.id}.download`)}
+                    filename={t(
+                      `guide.linux.${item.id === 'install' ? 'installFilename' : 'configFilename'}`,
+                    )}
+                  />
+                </section>
               </div>
-            </section>
-          ))}
+            ),
+          )}
         </div>
       </section>
 

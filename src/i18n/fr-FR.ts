@@ -107,8 +107,6 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       noChangesLabel: 'Choisissez au moins une cible différente pour générer un fichier de remappage.',
       registryPathLabel:
         'Chemin du Registre : HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
-      imeKeyNotice:
-        'Certains claviers coréens et japonais disposent de touches IME dédiées pour des fonctions comme Hangul/anglais, Hanja ou Katakana/Hiragana. Selon le clavier et le mode de saisie, la même fonction peut aussi passer par des touches comme Right Alt, Right Ctrl ou une combinaison de touches ; choisissez donc l’option qui correspond à votre matériel et à la configuration actuelle de l’IME.',
       resetLabel: 'Réinitialiser la sélection',
       addSourceLabel: 'Ajouter une touche à remapper',
       addSourcePromptLabel: 'Ajouter une touche',
@@ -116,7 +114,6 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       group: {
         system: 'Système',
         modifiers: 'Modificateurs',
-        ime: 'Touches IME',
         navigation: 'Navigation',
         mainTypingArea: 'Zone de saisie principale',
         functionKeys: 'Touches de fonction',
@@ -136,12 +133,6 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
         rightShift: 'Maj droite',
         leftAlt: 'Alt gauche',
         rightAlt: 'Alt droit',
-        hangulEnglish: 'Hangul / anglais',
-        hanja: 'Hanja',
-        katakanaHiragana: 'Katakana / Hiragana',
-        henkan: 'Conversion',
-        muhenkan: 'Sans conversion',
-        zenkakuHankaku: 'Pleine largeur / demi-largeur',
         leftWin: 'Windows gauche',
         rightWin: 'Windows droite',
         menu: 'Menu',
@@ -164,65 +155,6 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
         numpadAdd: 'Pavé num. +',
         numpadEnter: 'Entrée pavé num.',
         numpadDecimal: 'Pavé num. .',
-      },
-    },
-    hardware: {
-      title: 'Matériel dédié',
-      notice:
-        'Si votre clavier prend en charge des interrupteurs DIP, des outils de mappage du fabricant ou un remappage par firmware avec des options comme QMK, VIA, Vial ou ZMK, consultez d’abord l’onglet <hardwareGuideLink>matériel dédié</hardwareGuideLink>.',
-      summary:
-        'Certains claviers permettent de remapper directement sur le clavier des touches comme Caps Lock, Control ou Escape, sans passer par le système d’exploitation. Si votre clavier le permet, cela peut être plus simple que de modifier les réglages de Windows, macOS ou Linux.',
-      advantagesTitle: 'Atouts',
-      methodsTitle: 'Méthodes de configuration',
-      advantages: {
-        item1: 'Le réglage peut rester enregistré dans le clavier même si vous le branchez à un autre ordinateur.',
-        item2: 'Il peut fonctionner avant la connexion ou en dehors de la session utilisateur principale.',
-        item3: 'Cela peut être particulièrement utile sur des postes de travail où les modifications système sont limitées.',
-      },
-      cautionsTitle: 'À noter',
-      cautions: {},
-      examplesTitle: 'Exemples',
-      officialPageLabel: 'Page officielle de {{label}}',
-      exampleGuideLabel: {
-        hhkbDip: 'guide des interrupteurs DIP',
-        setupGuide: 'guide de configuration',
-        toolPage: 'page de l’outil',
-      },
-      sections: {
-        switches: {
-          title: 'Interrupteurs matériels et modes intégrés',
-          body1:
-            'Certains claviers proposent directement dans le matériel des changements de disposition. Les exemples courants sont les interrupteurs DIP qui échangent Control et Caps Lock, permutent Backspace et Delete ou changent le mode de plateforme.',
-          body2:
-            'Les possibilités restent souvent limitées, mais la configuration est rapide, stable et ne dépend d’aucun logiciel en arrière-plan.',
-          body3: '',
-        },
-        tools: {
-          title: 'Outils de configuration et remappage basé sur le firmware',
-          body1:
-            'Certains claviers sont livrés avec des outils de configuration fournis par le fabricant. Ils permettent généralement de modifier les touches dans un éditeur visuel et de régler aussi les couches ou les raccourcis.',
-          body2:
-            'Certains de ces outils reposent sur un firmware propriétaire du fabricant, mais beaucoup s’appuient aujourd’hui sur des firmwares ouverts comme QMK, VIA, Vial ou ZMK.',
-          body3: '',
-        },
-      },
-      references: {
-        hhkbDownload: 'Téléchargements HHKB et outils de keymap',
-        hhkbDipManual: 'Manuel des interrupteurs DIP de HHKB Studio',
-        hhkbFnLayer: 'Guide Fn et couches de HHKB Studio',
-        hhkbKeymapTool: 'Manuel de l’outil de keymap de HHKB Studio',
-        keychronLauncher: 'Guide de remappage Keychron Launcher',
-        zsaVoyager: 'Présentation de ZSA Voyager et Oryx',
-        zsaFlash: 'Documentation ZSA sur le flash et Keymapp',
-        wooting80he: 'Présentation de Wooting 80HE et Wootility',
-        wootingRemap: 'Exemple de remappage Wooting',
-        dygmaBazecor: 'Téléchargement de Dygma Bazecor',
-        dygmaLayout: 'Guide de personnalisation de disposition Dygma',
-        qmkKeymap: 'Documentation des keymaps QMK',
-        viaSpec: 'Documentation VIA',
-        vialFirstUse: 'Documentation utilisateur Vial',
-        zmkStudio: 'Documentation ZMK Studio',
-        nuphyVia: 'Guide VIA de NuPhy',
       },
     },
     windows: {

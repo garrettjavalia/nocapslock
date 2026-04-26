@@ -491,13 +491,6 @@ export const guideCardTitle = style({
   fontSize: '1.4rem',
 })
 
-export const guideSubheading = style({
-  margin: 0,
-  fontSize: '1.08rem',
-  fontWeight: 600,
-  lineHeight: 1.45,
-})
-
 export const guideInlineCodeSection = style({
   display: 'flex',
   flexDirection: 'column',

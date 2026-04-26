@@ -108,12 +108,6 @@ const registryKeyCandidates = [
   { id: 'f22', label: 'F22', scanCode: '006D' },
   { id: 'f23', label: 'F23', scanCode: '006E' },
   { id: 'f24', label: 'F24', scanCode: '006F' },
-  { id: 'zenkakuHankaku', label: 'Zenkaku / Hankaku', scanCode: '0076' },
-  { id: 'katakanaHiragana', label: 'Katakana / Hiragana', scanCode: '0070' },
-  { id: 'henkan', label: 'Henkan', scanCode: '0079' },
-  { id: 'muhenkan', label: 'Muhenkan', scanCode: '007B' },
-  { id: 'hanja', label: 'Hanja', scanCode: '00F1' },
-  { id: 'hangulEnglish', label: 'Hangul / English', scanCode: '00F2' },
   { id: 'rightCtrl', label: 'Right Ctrl', scanCode: 'E01D' },
   { id: 'numpadEnter', label: 'Numpad Enter', scanCode: 'E01C' },
   { id: 'numpadDivide', label: 'Numpad /', scanCode: 'E035' },
@@ -162,11 +156,6 @@ const targetOptionGroups = [
       'rightWin',
       'menu',
     ],
-  },
-  {
-    id: 'ime',
-    label: 'IME Keys',
-    ids: ['hangulEnglish', 'hanja', 'katakanaHiragana', 'henkan', 'muhenkan', 'zenkakuHankaku'],
   },
   {
     id: 'navigation',
@@ -485,7 +474,6 @@ export function WindowsRegistryGenerator() {
       </div>
 
       <p className={styles.pathText}>{t('guide.registryGenerator.registryPathLabel')}</p>
-      <p className={styles.pathText}>{t('guide.registryGenerator.imeKeyNotice')}</p>
 
       <div className={styles.mappingCard}>
         <div className={styles.mappingHeader}>
