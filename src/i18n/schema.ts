@@ -17,4 +17,4 @@ type WidenTranslationLeaf<T> =
         ? { [K in keyof T]: WidenTranslationLeaf<T[K]> }
         : T
 
-export type TranslationMessages = WidenTranslationLeaf<typeof import('./en').enTranslation>
+export type TranslationMessages = WidenTranslationLeaf<typeof import('./en-US').enUsTranslation>
