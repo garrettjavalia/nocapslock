@@ -1,6 +1,6 @@
 import type { TranslationMessages } from './schema'
 
-export const koTranslation = {
+export const koKrTranslation = {
   linkCopy: {
     copy: '링크 복사',
     copied: '링크 복사됨',
@@ -108,12 +108,53 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       registryPathLabel:
         '레지스트리 경로: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       resetLabel: '선택 초기화',
+      addSourceLabel: '변경할 키 추가',
+      addSourcePromptLabel: '키 추가',
+      removeSourceLabel: '삭제',
+      group: {
+        system: '시스템',
+        modifiers: '보조키',
+        navigation: '이동 키',
+        mainTypingArea: '메인 타이핑 영역',
+        functionKeys: '기능 키',
+        numpad: '숫자 키패드',
+      },
       key: {
+        turnOff: '키 비활성화',
+        escape: 'Esc',
+        tab: 'Tab',
+        backspace: 'Backspace',
+        enter: 'Enter',
+        space: 'Space',
         capslock: 'Caps Lock',
         leftCtrl: '왼쪽 Ctrl',
         rightCtrl: '오른쪽 Ctrl',
+        leftShift: '왼쪽 Shift',
+        rightShift: '오른쪽 Shift',
         leftAlt: '왼쪽 Alt',
         rightAlt: '오른쪽 Alt',
+        leftWin: '왼쪽 Windows',
+        rightWin: '오른쪽 Windows',
+        menu: '메뉴',
+        insert: 'Insert',
+        delete: 'Delete',
+        home: 'Home',
+        end: 'End',
+        pageUp: 'Page Up',
+        pageDown: 'Page Down',
+        arrowUp: '위쪽 화살표',
+        arrowLeft: '왼쪽 화살표',
+        arrowDown: '아래쪽 화살표',
+        arrowRight: '오른쪽 화살표',
+        printScreen: 'Print Screen',
+        numLock: 'Num Lock',
+        scrollLock: 'Scroll Lock',
+        numpadMultiply: '숫자 키패드 *',
+        numpadDivide: '숫자 키패드 /',
+        numpadSubtract: '숫자 키패드 -',
+        numpadAdd: '숫자 키패드 +',
+        numpadEnter: '숫자 키패드 Enter',
+        numpadDecimal: '숫자 키패드 .',
       },
     },
     windows: {
@@ -299,4 +340,4 @@ esc = capslock`,
   },
 } as const satisfies TranslationMessages
 
-export const koMessages = koTranslation
+export const koKrMessages = koKrTranslation
