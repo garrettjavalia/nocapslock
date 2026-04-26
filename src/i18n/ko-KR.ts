@@ -108,7 +108,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       registryPathLabel:
         '레지스트리 경로: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       imeKeyNotice:
-        '한국어 또는 일본어 키보드에서는 한/영, 한자, 가타카나/히라가나 같은 전용 IME 키가 따로 동작할 수 있습니다. 반대로 키보드 종류나 설정 모드에 따라 같은 전환이 오른쪽 Alt, 오른쪽 Ctrl 같은 일반 보조키나 IME 설정 쪽에 묶여 있을 수도 있으니, 현재 쓰는 하드웨어와 입력기 설정에 맞는 키를 골라 주세요.',
+        '한국어 또는 일본어 키보드에서는 한/영, 한자, 가타카나/히라가나처럼 IME 전환용 키가 따로 있는 경우가 있습니다. 다만 키보드 종류나 설정 모드에 따라 같은 기능이 오른쪽 Alt, 오른쪽 Ctrl 같은 일반 보조키나 조합키로 동작할 수도 있으니, 현재 쓰는 하드웨어와 입력기 설정에 맞는 키를 골라 주세요.',
       resetLabel: '선택 초기화',
       addSourceLabel: '변경할 키 추가',
       addSourcePromptLabel: '키 추가',

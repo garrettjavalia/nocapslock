@@ -108,7 +108,7 @@ Caps Lock + X で切り取り。
       registryPathLabel:
         'レジストリのパス: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       imeKeyNotice:
-        '韓国語または日本語キーボードでは、ハングル/英数、漢字、カタカナ/ひらがな などの IME 専用キーが別に動作する場合があります。逆に、キーボードの種類や設定モードによっては、同じ切り替えが Right Alt や Right Ctrl のような通常の修飾キー、または IME 設定側に割り当てられていることもあるため、使用中のハードウェアと入力設定に合うキーを選んでください。',
+        '韓国語や日本語のキーボードには、ハングル/英数、漢字、カタカナ/ひらがな などの IME 切り替え専用キーが付いている場合があります。ただし、キーボードの種類や設定モードによっては、同じ機能が Right Alt や Right Ctrl のような通常の修飾キーやキーの組み合わせで動作することもあるため、使用中のハードウェアと入力設定に合うキーを選んでください。',
       resetLabel: '選択をリセット',
       addSourceLabel: '割り当てるキーを追加',
       addSourcePromptLabel: 'キーを追加',

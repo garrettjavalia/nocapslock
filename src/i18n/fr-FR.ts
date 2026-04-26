@@ -108,7 +108,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       registryPathLabel:
         'Chemin du Registre : HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       imeKeyNotice:
-        'Sur certains claviers coréens ou japonais, le changement d’IME passe par des touches IME dédiées plutôt que par Right Alt ou Right Ctrl. Sur d’autres configurations, la même fonction peut encore dépendre de touches basées sur Alt/Ctrl ou des réglages de l’IME ; choisissez donc la touche qui correspond à votre matériel et au mode actif du clavier.',
+        'Certains claviers coréens et japonais disposent de touches IME dédiées pour des fonctions comme Hangul/anglais, Hanja ou Katakana/Hiragana. Selon le clavier et le mode de saisie, la même fonction peut aussi passer par des touches comme Right Alt, Right Ctrl ou une combinaison de touches ; choisissez donc l’option qui correspond à votre matériel et à la configuration actuelle de l’IME.',
       resetLabel: 'Réinitialiser la sélection',
       addSourceLabel: 'Ajouter une touche à remapper',
       addSourcePromptLabel: 'Ajouter une touche',

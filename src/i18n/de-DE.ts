@@ -108,7 +108,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       registryPathLabel:
         'Registry-Pfad: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       imeKeyNotice:
-        'Bei manchen koreanischen oder japanischen Tastaturen wird die IME-Umschaltung über eigene IME-Tasten statt über Right Alt oder Right Ctrl ausgelöst. In anderen Setups kann dieselbe Funktion weiterhin an Alt/Ctrl-basierte Tasten oder an die IME-Einstellungen gebunden sein. Wähle also die Taste, die zu deiner Hardware und zum aktuellen Tastaturmodus passt.',
+        'Einige koreanische und japanische Tastaturen haben eigene IME-Tasten für Funktionen wie Hangul/Englisch, Hanja oder Katakana/Hiragana. Je nach Tastatur und Eingabemodus kann dieselbe Funktion aber auch über Tasten wie Right Alt, Right Ctrl oder eine Tastenkombination ausgelöst werden. Wähle also die Option, die zu deiner Hardware und zur aktuellen IME-Konfiguration passt.',
       resetLabel: 'Auswahl zurücksetzen',
       addSourceLabel: 'Taste zum Neuzuordnen hinzufügen',
       addSourcePromptLabel: 'Taste hinzufügen',

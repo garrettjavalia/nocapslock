@@ -108,7 +108,7 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
       registryPathLabel:
         'Ruta del Registro: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       imeKeyNotice:
-        'En algunos teclados coreanos o japoneses, el cambio del IME usa teclas IME dedicadas en lugar de Right Alt o Right Ctrl. En otros casos, la misma función puede seguir dependiendo de teclas basadas en Alt/Ctrl o de la configuración del IME, así que conviene elegir la tecla que corresponda a tu hardware y al modo actual del teclado.',
+        'Algunos teclados coreanos y japoneses tienen teclas IME dedicadas para funciones como Hangul/inglés, Hanja o Katakana/Hiragana. Según el teclado y el modo de entrada, la misma función también puede depender de teclas como Right Alt, Right Ctrl o una combinación de teclas, así que conviene elegir la opción que corresponda a tu hardware y a la configuración actual del IME.',
       resetLabel: 'Restablecer',
       addSourceLabel: 'Añadir tecla para reasignar',
       addSourcePromptLabel: 'Añadir tecla',

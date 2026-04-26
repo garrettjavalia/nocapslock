@@ -106,7 +106,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       registryPathLabel:
         'Registry path: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout',
       imeKeyNotice:
-        'On some Korean or Japanese keyboard layouts, IME switching uses dedicated IME keys instead of Right Alt or Right Ctrl. On other setups, the same switch may still be tied to Alt/Ctrl-based keys or IME settings, so choose the key that matches your hardware and current keyboard mode.',
+        'Some Korean and Japanese keyboards have dedicated IME keys for actions like Hangul/English, Hanja, or Katakana/Hiragana switching. Depending on the keyboard and input mode, the same action may instead be handled by keys such as Right Alt, Right Ctrl, or a key combination, so choose the option that matches your hardware and current IME setup.',
       resetLabel: 'Reset selections',
       addSourceLabel: 'Add a key to remap',
       addSourcePromptLabel: 'Add key',
