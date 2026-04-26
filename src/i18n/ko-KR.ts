@@ -157,6 +157,70 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
         numpadDecimal: '숫자 키패드 .',
       },
     },
+    hardware: {
+      title: '전용 하드웨어',
+      notice:
+        '키보드가 DIP 스위치, 제조사 키맵 도구, 또는 QMK, VIA, Vial, ZMK 같은 펌웨어 remap을 지원한다면 <hardwareGuideLink>전용 하드웨어</hardwareGuideLink> 탭을 먼저 확인해 보세요.',
+      summary:
+        '일부 키보드는 Caps Lock, Control, Escape 같은 키를 운영체제가 아니라 키보드 자체에서 바꿀 수 있습니다. 이런 기능을 지원한다면 Windows, macOS, Linux 설정보다 더 간단하게 해결할 수 있습니다.',
+      advantagesTitle: '장점',
+      advantages: {
+        item1: '다른 컴퓨터에 연결해도 설정이 키보드와 함께 유지될 수 있습니다.',
+        item2: '로그인 전 화면이나 메인 사용자 세션 밖에서도 동작할 수 있습니다.',
+        item3: '회사 PC처럼 운영체제 수준 변경이 제한된 환경에서 특히 유용할 수 있습니다.',
+      },
+      cautionsTitle: '주의할 점',
+      cautions: {
+        item1: '모든 키보드가 이 방식을 지원하는 것은 아닙니다.',
+        item2: '일부 도구는 유선 USB 연결에서만 동작합니다.',
+        item3: '펌웨어 기반 도구는 강력하지만, 처음 시작하기 가장 쉬운 방법은 아닐 수 있습니다.',
+      },
+      examplesTitle: '예시 제품',
+      officialPageLabel: '{{label}} 공식 페이지',
+      exampleGuideLabel: {
+        hhkbDip: 'DIP 스위치 문서',
+        setupGuide: '설정 가이드',
+        toolPage: '설정 도구 페이지',
+      },
+      sections: {
+        switches: {
+          title: '하드웨어 스위치와 내장 모드',
+          body1:
+            '일부 키보드는 배열 변경 기능을 하드웨어에서 바로 제공합니다. 대표적인 예가 DIP 스위치로 Control과 Caps Lock을 바꾸거나, Backspace와 Delete를 바꾸거나, 플랫폼별 모드를 전환하는 방식입니다.',
+          body2:
+            'HHKB처럼 이 기능이 잘 알려진 제품도 있습니다. 모델에 따라 DIP 스위치나 내장 레이어로 Control, Caps Lock, Fn 계열 배치를 조정할 수 있습니다.',
+          body3:
+            '바꿀 수 있는 범위는 비교적 좁지만, 빠르고 안정적이며 백그라운드 소프트웨어가 필요하지 않습니다.',
+        },
+        tools: {
+          title: '설정 도구와 펌웨어 기반 remap',
+          body1:
+            '일부 키보드는 제조사에서 전용 설정 도구를 제공합니다. 보통 시각적인 레이아웃 편집기에서 키를 바꾸고, 레이어나 단축키를 함께 설정할 수 있습니다.',
+          body2:
+            '이런 도구는 제조사 자체 펌웨어나 QMK, VIA, Vial, ZMK 같은 오픈소스 펌웨어를 기반으로 동작합니다.',
+          body3:
+            '전용 설정 도구를 쓰는 방식은 직접 펌웨어를 수정하거나 컴파일하는 것보다 시작하기 쉽습니다. 다만 지원 모델에서만 쓸 수 있고, 일부 도구는 유선 USB 연결이 필요합니다.',
+        },
+      },
+      references: {
+        hhkbDownload: 'HHKB 다운로드와 키맵 도구',
+        hhkbDipManual: 'HHKB Studio DIP 스위치 매뉴얼',
+        hhkbFnLayer: 'HHKB Studio 레이어와 Fn 키 문서',
+        hhkbKeymapTool: 'HHKB Studio 키맵 도구 매뉴얼',
+        keychronLauncher: 'Keychron Launcher remap 가이드',
+        zsaVoyager: 'ZSA Voyager와 Oryx 소개',
+        zsaFlash: 'ZSA 플래싱과 Keymapp 문서',
+        wooting80he: 'Wooting 80HE와 Wootility 소개',
+        wootingRemap: 'Wooting remap 예시 문서',
+        dygmaBazecor: 'Dygma Bazecor 다운로드',
+        dygmaLayout: 'Dygma 레이아웃 커스터마이즈 가이드',
+        qmkKeymap: 'QMK keymap 문서',
+        viaSpec: 'VIA 문서',
+        vialFirstUse: 'Vial 사용자 문서',
+        zmkStudio: 'ZMK Studio 문서',
+        nuphyVia: 'NuPhy VIA 사용 가이드',
+      },
+    },
     windows: {
       title: 'Windows',
       summary:

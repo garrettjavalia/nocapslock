@@ -20,7 +20,7 @@ const guideTabs = [
   { id: 'windows', titleKey: 'guide.windows.title', end: false },
   { id: 'mac', titleKey: 'guide.mac.title', end: true },
   { id: 'linux', titleKey: 'guide.linux.title', end: true },
-  { id: 'hardware', title: '전용 하드웨어', end: true },
+  { id: 'hardware', titleKey: 'guide.hardware.title', end: true },
 ] as const
 
 export function GuidePanel({
@@ -57,7 +57,7 @@ export function GuidePanel({
               )
             }
           >
-            {'titleKey' in tab ? t(tab.titleKey) : tab.title}
+            {t(tab.titleKey)}
           </NavLink>
         ))}
       </div>

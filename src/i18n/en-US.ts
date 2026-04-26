@@ -155,6 +155,70 @@ This is only a browser demo, but it is enough to feel the convenience.`,
         numpadDecimal: 'Numpad .',
       },
     },
+    hardware: {
+      title: 'Dedicated hardware',
+      notice:
+        'If your keyboard supports DIP switches, vendor keymapping tools, or firmware remapping with <hardwareGuideLink>dedicated hardware</hardwareGuideLink> options like QMK, VIA, Vial, or ZMK, check that tab first.',
+      summary:
+        'Some keyboards can remap keys like Caps Lock, Control, or Escape on the keyboard itself instead of through the operating system. If your keyboard supports that, it can be a simpler solution than changing Windows, macOS, or Linux settings.',
+      advantagesTitle: 'Advantages',
+      advantages: {
+        item1: 'The mapping can stay with the keyboard even when you connect it to another computer.',
+        item2: 'It can work before sign-in or outside the main user session.',
+        item3: 'It can be especially useful on managed work computers where OS-level changes are restricted.',
+      },
+      cautionsTitle: 'What to keep in mind',
+      cautions: {
+        item1: 'Not every keyboard supports this kind of remapping.',
+        item2: 'Some tools only work over a wired USB connection.',
+        item3: 'Firmware-based tools are powerful, but they are not always the easiest place to start.',
+      },
+      examplesTitle: 'Example devices',
+      officialPageLabel: '{{label}} official page',
+      exampleGuideLabel: {
+        hhkbDip: 'DIP switch guide',
+        setupGuide: 'setup guide',
+        toolPage: 'tool page',
+      },
+      sections: {
+        switches: {
+          title: 'Hardware switches and built-in modes',
+          body1:
+            'Some keyboards expose layout changes directly in hardware. Common examples include DIP switches that swap Control and Caps Lock, swap Backspace and Delete, or change platform mode.',
+          body2:
+            'HHKB is a well-known example of this style. Depending on the model, you can adjust Control, Caps Lock, or Fn-related behavior through DIP switches or built-in layers.',
+          body3:
+            'The range of changes is usually narrow, but the setup is fast, stable, and does not depend on background software.',
+        },
+        tools: {
+          title: 'Configuration tools and firmware-backed remapping',
+          body1:
+            'Some keyboards ship with vendor configuration tools. These usually let you change keys in a visual layout editor and may also cover layers, shortcuts, lighting, and firmware updates.',
+          body2:
+            'These tools can run on top of vendor firmware or open firmware projects such as QMK, VIA, Vial, and ZMK.',
+          body3:
+            'Using a dedicated tool is usually easier than editing or compiling firmware yourself. However, it only works on supported models, and some tools require a wired USB connection.',
+        },
+      },
+      references: {
+        hhkbDownload: 'HHKB downloads and keymap tools',
+        hhkbDipManual: 'HHKB Studio DIP switch manual',
+        hhkbFnLayer: 'HHKB Studio Fn and layer guide',
+        hhkbKeymapTool: 'HHKB Studio keymap tool manual',
+        keychronLauncher: 'Keychron Launcher remap guide',
+        zsaVoyager: 'ZSA Voyager and Oryx overview',
+        zsaFlash: 'ZSA flashing and Keymapp docs',
+        wooting80he: 'Wooting 80HE and Wootility overview',
+        wootingRemap: 'Wooting remap example guide',
+        dygmaBazecor: 'Dygma Bazecor download',
+        dygmaLayout: 'Dygma layout customization guide',
+        qmkKeymap: 'QMK keymap docs',
+        viaSpec: 'VIA docs',
+        vialFirstUse: 'Vial user docs',
+        zmkStudio: 'ZMK Studio docs',
+        nuphyVia: 'NuPhy VIA guide',
+      },
+    },
     windows: {
       title: 'Windows',
       summary:

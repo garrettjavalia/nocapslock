@@ -157,6 +157,70 @@ Esto es solo una demo en el navegador, pero basta para notar la comodidad.`,
         numpadDecimal: 'Teclado numérico .',
       },
     },
+    hardware: {
+      title: 'Hardware dedicado',
+      notice:
+        'Si tu teclado admite interruptores DIP, herramientas del fabricante o remapeo por firmware con opciones como QMK, VIA, Vial o ZMK, revisa primero la pestaña de <hardwareGuideLink>hardware dedicado</hardwareGuideLink>.',
+      summary:
+        'Algunos teclados pueden reasignar teclas como Caps Lock, Control o Escape en el propio teclado, sin depender del sistema operativo. Si tu teclado lo permite, puede ser más sencillo que cambiar la configuración de Windows, macOS o Linux.',
+      advantagesTitle: 'Ventajas',
+      advantages: {
+        item1: 'La configuración puede quedarse en el teclado incluso al conectarlo a otro ordenador.',
+        item2: 'Puede funcionar antes de iniciar sesión o fuera de la sesión principal del usuario.',
+        item3: 'Puede ser especialmente útil en ordenadores de trabajo donde los cambios del sistema están restringidos.',
+      },
+      cautionsTitle: 'Aspectos a tener en cuenta',
+      cautions: {
+        item1: 'No todos los teclados admiten este tipo de remapeo.',
+        item2: 'Algunas herramientas solo funcionan con conexión USB por cable.',
+        item3: 'Las herramientas basadas en firmware son potentes, pero no siempre son el punto de partida más sencillo.',
+      },
+      examplesTitle: 'Ejemplos',
+      officialPageLabel: 'Página oficial de {{label}}',
+      exampleGuideLabel: {
+        hhkbDip: 'guía de interruptores DIP',
+        setupGuide: 'guía de configuración',
+        toolPage: 'página de la herramienta',
+      },
+      sections: {
+        switches: {
+          title: 'Interruptores físicos y modos integrados',
+          body1:
+            'Algunos teclados ofrecen cambios de distribución directamente en el hardware. Un ejemplo habitual son los interruptores DIP que intercambian Control y Caps Lock, cambian Backspace y Delete o alternan entre modos de plataforma.',
+          body2:
+            'HHKB es un ejemplo conocido de este estilo. Según el modelo, puedes ajustar el comportamiento de Control, Caps Lock o Fn mediante interruptores DIP o capas integradas.',
+          body3:
+            'El margen de cambio suele ser limitado, pero la configuración es rápida, estable y no depende de software en segundo plano.',
+        },
+        tools: {
+          title: 'Herramientas de configuración y remapeo basado en firmware',
+          body1:
+            'Algunos teclados incluyen herramientas de configuración del fabricante. Suelen permitir cambiar teclas en un editor visual de distribución y también ajustar capas o atajos.',
+          body2:
+            'Estas herramientas pueden funcionar sobre firmware propio del fabricante o sobre firmware abierto como QMK, VIA, Vial o ZMK.',
+          body3:
+            'Usar una herramienta dedicada suele ser más fácil que modificar o compilar el firmware por tu cuenta. Aun así, solo funciona en modelos compatibles y algunas herramientas requieren conexión USB por cable.',
+        },
+      },
+      references: {
+        hhkbDownload: 'Descargas de HHKB y herramientas de keymap',
+        hhkbDipManual: 'Manual de interruptores DIP de HHKB Studio',
+        hhkbFnLayer: 'Guía de Fn y capas de HHKB Studio',
+        hhkbKeymapTool: 'Manual de la herramienta de keymap de HHKB Studio',
+        keychronLauncher: 'Guía de remapeo de Keychron Launcher',
+        zsaVoyager: 'Descripción general de ZSA Voyager y Oryx',
+        zsaFlash: 'Documentación de flasheo y Keymapp de ZSA',
+        wooting80he: 'Descripción general de Wooting 80HE y Wootility',
+        wootingRemap: 'Ejemplo de remapeo de Wooting',
+        dygmaBazecor: 'Descarga de Dygma Bazecor',
+        dygmaLayout: 'Guía de personalización de distribución de Dygma',
+        qmkKeymap: 'Documentación de keymaps de QMK',
+        viaSpec: 'Documentación de VIA',
+        vialFirstUse: 'Documentación de usuario de Vial',
+        zmkStudio: 'Documentación de ZMK Studio',
+        nuphyVia: 'Guía de VIA de NuPhy',
+      },
+    },
     windows: {
       title: 'Windows',
       summary:

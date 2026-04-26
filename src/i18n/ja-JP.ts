@@ -157,6 +157,70 @@ Caps Lock + X で切り取り。
         numpadDecimal: 'テンキー .',
       },
     },
+    hardware: {
+      title: '専用ハードウェア',
+      notice:
+        'キーボードが DIP スイッチ、メーカー製キーマップツール、または QMK、VIA、Vial、ZMK のようなファームウェア remap に対応しているなら、まずは <hardwareGuideLink>専用ハードウェア</hardwareGuideLink> タブを確認してください。',
+      summary:
+        'キーボードによっては、Caps Lock、Control、Escape などを OS ではなくキーボード本体で変更できます。対応しているなら、Windows、macOS、Linux の設定を変えるより簡単に済む場合があります。',
+      advantagesTitle: 'メリット',
+      advantages: {
+        item1: '別の PC につないでも設定をキーボード側に持ち運べる場合があります。',
+        item2: 'ログイン前の画面やメインのユーザーセッション外でも動作することがあります。',
+        item3: '会社の PC のように OS 側の変更が制限されている環境では特に便利です。',
+      },
+      cautionsTitle: '注意点',
+      cautions: {
+        item1: 'すべてのキーボードがこの方法に対応しているわけではありません。',
+        item2: '一部のツールは有線 USB 接続でしか使えません。',
+        item3: 'ファームウェア系のツールは強力ですが、最初の入口としてはやや難しいことがあります。',
+      },
+      examplesTitle: '例',
+      officialPageLabel: '{{label}} 公式ページ',
+      exampleGuideLabel: {
+        hhkbDip: 'DIP スイッチの案内',
+        setupGuide: '設定ガイド',
+        toolPage: '設定ツールのページ',
+      },
+      sections: {
+        switches: {
+          title: 'ハードウェアスイッチと内蔵モード',
+          body1:
+            '一部のキーボードは、配列変更をハードウェア側で直接切り替えられます。代表例は、DIP スイッチで Control と Caps Lock を入れ替えたり、Backspace と Delete を入れ替えたり、プラットフォームモードを切り替えたりする方式です。',
+          body2:
+            'HHKB はこの方式でよく知られた例です。モデルによっては、DIP スイッチや内蔵レイヤーで Control、Caps Lock、Fn 関連の動作を調整できます。',
+          body3:
+            '変更できる範囲は比較的狭いですが、すばやく安定していて、バックグラウンドソフトウェアに依存しません。',
+        },
+        tools: {
+          title: '設定ツールとファームウェアベースの remap',
+          body1:
+            '一部のキーボードは、メーカー製の専用設定ツールを提供しています。視覚的なレイアウトエディターでキーを変更し、レイヤーやショートカットを一緒に設定できることが多いです。',
+          body2:
+            'こうしたツールは、メーカー独自のファームウェアや、QMK、VIA、Vial、ZMK のようなオープンソースファームウェアを土台に動作することがあります。',
+          body3:
+            '専用ツールを使う方法は、ファームウェアを自分で修正したりビルドしたりするより始めやすいことが多いです。ただし、対応モデルでしか使えず、有線 USB 接続が必要なツールもあります。',
+        },
+      },
+      references: {
+        hhkbDownload: 'HHKB のダウンロードとキーマップツール',
+        hhkbDipManual: 'HHKB Studio DIP スイッチマニュアル',
+        hhkbFnLayer: 'HHKB Studio の Fn とレイヤーの案内',
+        hhkbKeymapTool: 'HHKB Studio キーマップツールマニュアル',
+        keychronLauncher: 'Keychron Launcher の remap ガイド',
+        zsaVoyager: 'ZSA Voyager と Oryx の紹介',
+        zsaFlash: 'ZSA の書き込みと Keymapp ドキュメント',
+        wooting80he: 'Wooting 80HE と Wootility の紹介',
+        wootingRemap: 'Wooting remap の例',
+        dygmaBazecor: 'Dygma Bazecor のダウンロード',
+        dygmaLayout: 'Dygma レイアウトカスタマイズガイド',
+        qmkKeymap: 'QMK keymap ドキュメント',
+        viaSpec: 'VIA ドキュメント',
+        vialFirstUse: 'Vial ユーザードキュメント',
+        zmkStudio: 'ZMK Studio ドキュメント',
+        nuphyVia: 'NuPhy VIA ガイド',
+      },
+    },
     windows: {
       title: 'Windows',
       summary:

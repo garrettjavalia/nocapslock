@@ -166,7 +166,7 @@ export function App({ locale, guidePlatform, windowsMethod }: AppProps) {
           : guidePlatform === "linux"
             ? t("guide.linux.title")
           : guidePlatform === "hardware"
-            ? "전용 하드웨어"
+            ? t("guide.hardware.title")
           : null;
   const pageTitle = rootTitle;
   const analyticsTitle =

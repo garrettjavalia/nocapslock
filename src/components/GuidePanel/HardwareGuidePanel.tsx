@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { getGuidePath } from '../../guides'
 import { guideSectionIds } from '../../guideAnchors'
 import type { Locale } from '../../i18n'
@@ -10,158 +11,158 @@ type HardwareGuidePanelProps = {
 }
 
 export function HardwareGuidePanel({ locale }: HardwareGuidePanelProps) {
+  const { t } = useTranslation()
   const content = {
-    title: '전용 하드웨어',
-    summary:
-      '일부 키보드는 Caps Lock, Control, Escape 같은 키를 운영체제가 아니라 키보드 자체에서 바꿀 수 있습니다. 이런 기능을 지원한다면 Windows, macOS, Linux 설정보다 더 간단하게 해결할 수 있습니다.',
-    advantagesTitle: '장점',
+    title: t('guide.hardware.title'),
+    summary: t('guide.hardware.summary'),
+    advantagesTitle: t('guide.hardware.advantagesTitle'),
     advantages: [
-      '다른 컴퓨터에 연결해도 설정이 키보드와 함께 유지될 수 있습니다.',
-      '로그인 전 화면이나 메인 사용자 세션 밖에서도 동작할 수 있습니다.',
-      '회사 PC처럼 운영체제 수준 변경이 제한된 환경에서 특히 유용할 수 있습니다.',
+      t('guide.hardware.advantages.item1'),
+      t('guide.hardware.advantages.item2'),
+      t('guide.hardware.advantages.item3'),
     ],
-    cautionsTitle: '주의할 점',
+    cautionsTitle: t('guide.hardware.cautionsTitle'),
     cautions: [
-      '모든 키보드가 이 방식을 지원하는 것은 아닙니다.',
-      '일부 도구는 유선 USB 연결에서만 동작합니다.',
-      '펌웨어 기반 도구는 강력하지만, 처음 시작하기 가장 쉬운 방법은 아닐 수 있습니다.',
+      t('guide.hardware.cautions.item1'),
+      t('guide.hardware.cautions.item2'),
+      t('guide.hardware.cautions.item3'),
     ],
-    referencesTitle: '참고 자료',
+    referencesTitle: t('guide.label.references'),
     sections: [
       {
         id: guideSectionIds.hardwareSwitches,
-        title: '하드웨어 스위치와 내장 모드',
+        title: t('guide.hardware.sections.switches.title'),
         body: [
-          '일부 키보드는 배열 변경 기능을 하드웨어에서 바로 제공합니다. 대표적인 예가 DIP 스위치로 Control과 Caps Lock을 바꾸거나, Backspace와 Delete를 바꾸거나, 플랫폼별 모드를 전환하는 방식입니다.',
-          'HHKB처럼 이 기능이 잘 알려진 제품도 있습니다. 모델에 따라 DIP 스위치나 내장 레이어로 Control, Caps Lock, Fn 계열 배치를 조정할 수 있습니다.',
-          '바꿀 수 있는 범위는 비교적 좁지만, 빠르고 안정적이며 백그라운드 소프트웨어가 필요하지 않습니다.',
+          t('guide.hardware.sections.switches.body1'),
+          t('guide.hardware.sections.switches.body2'),
+          t('guide.hardware.sections.switches.body3'),
         ],
-        examplesTitle: '예시 제품',
+        examplesTitle: t('guide.hardware.examplesTitle'),
         examples: [
           {
             label: 'HHKB',
             href: 'https://happyhackingkb.com/',
-            guideLabel: 'DIP 스위치 문서',
+            guideLabel: t('guide.hardware.exampleGuideLabel.hhkbDip'),
             guideHref: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/set_dipswitch.html',
           },
         ],
         references: [
           {
-            label: 'HHKB 공식 다운로드와 키맵 도구',
+            label: t('guide.hardware.references.hhkbDownload'),
             href: 'https://happyhackingkb.com/download/',
           },
           {
-            label: 'HHKB Studio DIP 스위치 매뉴얼',
+            label: t('guide.hardware.references.hhkbDipManual'),
             href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/set_dipswitch.html',
           },
           {
-            label: 'HHKB Studio 레이어와 Fn 키 문서',
+            label: t('guide.hardware.references.hhkbFnLayer'),
             href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/use_fnkeys_layer.html',
           },
         ],
       },
       {
         id: guideSectionIds.hardwareVendorTools,
-        title: '설정 도구와 펌웨어 기반 remap',
+        title: t('guide.hardware.sections.tools.title'),
         body: [
-          '일부 키보드는 제조사에서 전용 설정 도구를 제공합니다. 보통 시각적인 레이아웃 편집기에서 키를 바꾸고, 레이어나 단축키를 함께 설정할 수 있습니다.',
-          '이런 도구는 제조사 자체 펌웨어나 QMK, VIA, Vial, ZMK 같은 오픈소스 펌웨어를 기반으로 동작합니다.',
-          '전용 설정 도구를 쓰는 방식은 직접 펌웨어를 수정하거나 컴파일하는 것보다 시작하기 쉽습니다. 다만 지원 모델에서만 쓸 수 있고, 일부 도구는 유선 USB 연결이 필요합니다.',
+          t('guide.hardware.sections.tools.body1'),
+          t('guide.hardware.sections.tools.body2'),
+          t('guide.hardware.sections.tools.body3'),
         ],
-        examplesTitle: '예시 제품',
+        examplesTitle: t('guide.hardware.examplesTitle'),
         examples: [
           {
             label: 'HHKB',
             href: 'https://happyhackingkb.com/',
-            guideLabel: '설정 가이드',
+            guideLabel: t('guide.hardware.exampleGuideLabel.setupGuide'),
             guideHref: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/keymaptool.html',
           },
           {
             label: 'Keychron',
             href: 'https://www.keychron.com/',
-            guideLabel: '설정 도구 페이지',
+            guideLabel: t('guide.hardware.exampleGuideLabel.toolPage'),
             guideHref: 'https://launcher.keychron.com/',
           },
           {
             label: 'ZSA',
             href: 'https://www.zsa.io/',
-            guideLabel: '설정 도구 페이지',
+            guideLabel: t('guide.hardware.exampleGuideLabel.toolPage'),
             guideHref: 'https://configure.zsa.io/',
           },
           {
             label: 'Wooting',
             href: 'https://wooting.io/',
-            guideLabel: '설정 도구 페이지',
+            guideLabel: t('guide.hardware.exampleGuideLabel.toolPage'),
             guideHref: 'https://wootility.io/',
           },
           {
             label: 'Dygma',
             href: 'https://dygma.com/',
-            guideLabel: '설정 도구 페이지',
+            guideLabel: t('guide.hardware.exampleGuideLabel.toolPage'),
             guideHref: 'https://dygma.com/bazecor',
           },
           {
             label: 'NuPhy',
             href: 'https://nuphy.com/',
-            guideLabel: '설정 가이드',
+            guideLabel: t('guide.hardware.exampleGuideLabel.setupGuide'),
             guideHref: 'https://nuphy.com/pages/via-usage-guide-for-nuphy-keyboards',
           },
         ],
         references: [
           {
-            label: 'HHKB 다운로드와 키맵 도구',
+            label: t('guide.hardware.references.hhkbDownload'),
             href: 'https://happyhackingkb.com/download/',
           },
           {
-            label: 'HHKB Studio 키맵 도구 매뉴얼',
+            label: t('guide.hardware.references.hhkbKeymapTool'),
             href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/keymaptool.html',
           },
           {
-            label: 'Keychron Launcher remap 가이드',
+            label: t('guide.hardware.references.keychronLauncher'),
             href: 'https://www.keychron.com/blogs/news/how-to-remap-a-key-on-launcher',
           },
           {
-            label: 'ZSA Voyager와 Oryx 소개',
+            label: t('guide.hardware.references.zsaVoyager'),
             href: 'https://www.zsa.io/voyager',
           },
           {
-            label: 'ZSA 플래싱과 Keymapp 문서',
+            label: t('guide.hardware.references.zsaFlash'),
             href: 'https://www.zsa.io/flash',
           },
           {
-            label: 'Wooting 80HE와 Wootility 소개',
+            label: t('guide.hardware.references.wooting80he'),
             href: 'https://wooting.io/wooting-80he',
           },
           {
-            label: 'Wooting remap 예시 문서',
+            label: t('guide.hardware.references.wootingRemap'),
             href: 'https://help.wooting.io/article/95-swap-around-option-and-command-key-on-mac-osx',
           },
           {
-            label: 'Dygma Bazecor 다운로드',
+            label: t('guide.hardware.references.dygmaBazecor'),
             href: 'https://support.dygma.com/hc/en-us/articles/22652367088797-How-to-download-the-latest-version-of-Bazecor',
           },
           {
-            label: 'Dygma 레이아웃 커스터마이즈 가이드',
+            label: t('guide.hardware.references.dygmaLayout'),
             href: 'https://support.dygma.com/hc/en-us/articles/22652578889501-How-to-customize-the-layout',
           },
           {
-            label: 'QMK keymap 문서',
+            label: t('guide.hardware.references.qmkKeymap'),
             href: 'https://docs.qmk.fm/keymap',
           },
           {
-            label: 'VIA 문서',
+            label: t('guide.hardware.references.viaSpec'),
             href: 'https://caniusevia.com/docs/specification/',
           },
           {
-            label: 'Vial 사용자 문서',
+            label: t('guide.hardware.references.vialFirstUse'),
             href: 'https://get.vial.today/manual/first-use.html',
           },
           {
-            label: 'ZMK Studio 문서',
+            label: t('guide.hardware.references.zmkStudio'),
             href: 'https://zmk.dev/docs/features/studio',
           },
           {
-            label: 'NuPhy VIA 사용 가이드',
+            label: t('guide.hardware.references.nuphyVia'),
             href: 'https://nuphy.com/pages/via-usage-guide-for-nuphy-keyboards',
           },
         ],
@@ -174,7 +175,7 @@ export function HardwareGuidePanel({ locale }: HardwareGuidePanelProps) {
         .flatMap((section) => [
           ...section.references,
           ...section.examples.map((example) => ({
-            label: `${example.label} 공식 페이지`,
+            label: t('guide.hardware.officialPageLabel', { label: example.label }),
             href: example.href,
           })),
           ...section.examples.map((example) => ({
