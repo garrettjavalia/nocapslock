@@ -55,7 +55,7 @@ export const comparisonContent = style({
   position: 'relative',
   zIndex: 2,
   display: 'grid',
-  gap: 12,
+  gap: 16,
   pointerEvents: 'none',
 })
 
@@ -75,13 +75,13 @@ export const comparisonOverlayLink = style({
 export const comparisonBlock = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: 6,
+  gap: 8,
 })
 
 export const comparisonTitleRow = style({
   display: 'flex',
   alignItems: 'center',
-  gap: 8,
+  gap: 6,
   flexWrap: 'wrap',
 })
 
@@ -109,7 +109,7 @@ export const comparisonSummary = style({
 export const comparisonLabel = style({
   margin: 0,
   color: vars.color.textSoft,
-  fontSize: '0.8rem',
+  fontSize: '0.84rem',
   fontWeight: 700,
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
@@ -119,7 +119,7 @@ export const bulletList = style({
   margin: 0,
   paddingLeft: 18,
   display: 'grid',
-  gap: 8,
+  gap: 6,
 })
 
 export const bulletItem = style({

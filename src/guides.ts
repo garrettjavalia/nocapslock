@@ -26,5 +26,9 @@ export function getGuidePath(
     return `${localeRoot}macos/`
   }
 
+  if (guidePlatform === 'hardware') {
+    return `${localeRoot}hardware/`
+  }
+
   return `${localeRoot}linux/`
 }

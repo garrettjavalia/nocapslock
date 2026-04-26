@@ -20,6 +20,7 @@ function createLocaleRoutes(locale: Locale): RouteObject[] {
     },
     { path: getGuidePath(locale, 'mac'), element: <LocalizedApp locale={locale} guidePlatform="mac" /> },
     { path: getGuidePath(locale, 'linux'), element: <LocalizedApp locale={locale} guidePlatform="linux" /> },
+    { path: getGuidePath(locale, 'hardware'), element: <LocalizedApp locale={locale} guidePlatform="hardware" /> },
   ]
 }
 
