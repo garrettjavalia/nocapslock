@@ -163,6 +163,11 @@ export const removeButton = style({
   },
 })
 
+export const removeIcon = style({
+  display: 'block',
+  flexShrink: 0,
+})
+
 export const addSourceRow = style({
   display: 'grid',
   gridTemplateColumns: '1fr',

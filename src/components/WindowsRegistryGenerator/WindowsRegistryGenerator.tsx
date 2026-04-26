@@ -1,3 +1,4 @@
+import { XIcon } from '@primer/octicons-react'
 import { useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { guideSectionIds } from '../../guideAnchors'
@@ -113,12 +114,12 @@ const registryKeyCandidates = [
   { id: 'rightAlt', label: 'Right Alt', scanCode: 'E038' },
   { id: 'printScreen', label: 'Print Screen', scanCode: 'E037' },
   { id: 'home', label: 'Home', scanCode: 'E047' },
-  { id: 'arrowUp', label: 'Arrow Up', scanCode: 'E048' },
+  { id: 'arrowUp', label: 'Up Arrow', scanCode: 'E048' },
   { id: 'pageUp', label: 'Page Up', scanCode: 'E049' },
-  { id: 'arrowLeft', label: 'Arrow Left', scanCode: 'E04B' },
-  { id: 'arrowRight', label: 'Arrow Right', scanCode: 'E04D' },
+  { id: 'arrowLeft', label: 'Left Arrow', scanCode: 'E04B' },
+  { id: 'arrowRight', label: 'Right Arrow', scanCode: 'E04D' },
   { id: 'end', label: 'End', scanCode: 'E04F' },
-  { id: 'arrowDown', label: 'Arrow Down', scanCode: 'E050' },
+  { id: 'arrowDown', label: 'Down Arrow', scanCode: 'E050' },
   { id: 'pageDown', label: 'Page Down', scanCode: 'E051' },
   { id: 'insert', label: 'Insert', scanCode: 'E052' },
   { id: 'delete', label: 'Delete', scanCode: 'E053' },
@@ -140,8 +141,9 @@ const registryTargetCandidates = [
 ] as const
 
 const targetOptionGroups = [
-  { label: 'System', ids: ['turnOff', 'escape', 'tab', 'backspace', 'enter', 'space', 'capslock'] },
+  { id: 'system', label: 'System', ids: ['turnOff', 'escape', 'tab', 'backspace', 'enter', 'space', 'capslock'] },
   {
+    id: 'modifiers',
     label: 'Modifiers',
     ids: [
       'leftCtrl',
@@ -156,6 +158,7 @@ const targetOptionGroups = [
     ],
   },
   {
+    id: 'navigation',
     label: 'Navigation',
     ids: [
       'insert',
@@ -172,6 +175,7 @@ const targetOptionGroups = [
     ],
   },
   {
+    id: 'mainTypingArea',
     label: 'Main Typing Area',
     ids: [
       'backquote',
@@ -225,6 +229,7 @@ const targetOptionGroups = [
     ],
   },
   {
+    id: 'functionKeys',
     label: 'Function Keys',
     ids: [
       'f1',
@@ -256,6 +261,7 @@ const targetOptionGroups = [
     ],
   },
   {
+    id: 'numpad',
     label: 'Numpad',
     ids: [
       'numpadMultiply',
@@ -276,10 +282,11 @@ const targetOptionGroups = [
       'numpad9',
     ],
   },
-] as const satisfies readonly { label: string; ids: readonly RegistryTargetId[] }[]
+] as const satisfies readonly { id: string; label: string; ids: readonly RegistryTargetId[] }[]
 
 // Source option groups: same groupings as target, but without 'turnOff' (computed once at module load)
 const sourceOptionGroups = targetOptionGroups.map((group) => ({
+  id: group.id,
   label: group.label,
   ids: group.ids.filter((id): id is RegistrySourceId => id !== 'turnOff'),
 }))
@@ -405,6 +412,14 @@ export function WindowsRegistryGenerator() {
     [t],
   )
 
+  const getGroupLabel = useCallback(
+    (groupId: string, fallbackLabel: string) =>
+      t(`guide.registryGenerator.group.${groupId}`, {
+        defaultValue: fallbackLabel,
+      }),
+    [t],
+  )
+
   const handleTargetChange = (source: RegistrySourceId, target: RegistryTargetId) => {
     setMapping((current) => ({
       ...current,
@@ -416,11 +431,19 @@ export function WindowsRegistryGenerator() {
     const id = e.target.value as RegistrySourceId
     if (!id) return
     setActiveSourceIds((prev) => [...prev, id])
+    setMapping((current) => ({
+      ...current,
+      [id]: id,
+    }))
     setAddSelectValue('')
   }
 
   const handleRemoveSource = (id: RegistrySourceId) => {
     setActiveSourceIds((prev) => prev.filter((s) => s !== id))
+    setMapping((current) => ({
+      ...current,
+      [id]: id,
+    }))
   }
 
   const handleReset = () => {
@@ -487,7 +510,10 @@ export function WindowsRegistryGenerator() {
                   aria-label={`${getKeyLabel(source)} ${t('guide.registryGenerator.targetLabel')}`}
                 >
                   {targetOptionGroups.map((group) => (
-                    <optgroup key={group.label} label={group.label}>
+                    <optgroup
+                      key={group.id}
+                      label={getGroupLabel(group.id, group.label)}
+                    >
                       {group.ids.map((target) => (
                         <option key={target} value={target}>
                           {getKeyLabel(target)} ({formatScanCode(registryTargetScanCodes[target])})
@@ -505,7 +531,7 @@ export function WindowsRegistryGenerator() {
                   onClick={() => handleRemoveSource(source)}
                   aria-label={`${t('guide.registryGenerator.removeSourceLabel')} ${getKeyLabel(source)}`}
                 >
-                  ×
+                  <XIcon aria-hidden="true" className={styles.removeIcon} size={16} />
                 </button>
               </div>
             </div>
@@ -520,10 +546,13 @@ export function WindowsRegistryGenerator() {
                 aria-label={t('guide.registryGenerator.addSourceLabel')}
               >
                 <option value="" disabled>
-                  + {t('guide.registryGenerator.addSourceLabel')}
+                  + {t('guide.registryGenerator.addSourcePromptLabel')}
                 </option>
                 {addableGroups.map((group) => (
-                  <optgroup key={group.label} label={group.label}>
+                  <optgroup
+                    key={group.id}
+                    label={getGroupLabel(group.id, group.label)}
+                  >
                     {group.ids.map((id) => (
                       <option key={id} value={id}>
                         {getKeyLabel(id)} ({formatScanCode(registryTargetScanCodes[id])})
