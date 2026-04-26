@@ -164,17 +164,14 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
       summary:
         'Alguns teclados conseguem remapear teclas como Caps Lock, Control ou Escape no próprio hardware, sem depender do sistema operacional. Se o seu teclado oferece isso, pode ser mais simples do que mudar as configurações do Windows, macOS ou Linux.',
       advantagesTitle: 'Vantagens',
+      methodsTitle: 'Métodos de configuração',
       advantages: {
         item1: 'A configuração pode continuar no teclado mesmo quando ele é conectado a outro computador.',
         item2: 'Ela pode funcionar antes do login ou fora da sessão principal do usuário.',
         item3: 'Isso pode ser especialmente útil em computadores de trabalho onde mudanças no sistema são restritas.',
       },
       cautionsTitle: 'Pontos a considerar',
-      cautions: {
-        item1: 'Nem todo teclado oferece esse tipo de remapeamento.',
-        item2: 'Algumas ferramentas só funcionam por USB com fio.',
-        item3: 'Ferramentas baseadas em firmware são poderosas, mas nem sempre são o caminho mais simples para começar.',
-      },
+      cautions: {},
       examplesTitle: 'Exemplos',
       officialPageLabel: 'Página oficial de {{label}}',
       exampleGuideLabel: {
@@ -188,18 +185,16 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
           body1:
             'Alguns teclados oferecem mudanças de layout diretamente no hardware. Exemplos comuns são chaves DIP para trocar Control e Caps Lock, inverter Backspace e Delete ou mudar o modo de plataforma.',
           body2:
-            'O HHKB é um exemplo conhecido desse estilo. Dependendo do modelo, é possível ajustar o comportamento de Control, Caps Lock ou Fn por meio de chaves DIP ou camadas integradas.',
-          body3:
             'O alcance das mudanças costuma ser limitado, mas a configuração é rápida, estável e não depende de software em segundo plano.',
+          body3: '',
         },
         tools: {
           title: 'Ferramentas de configuração e remapeamento baseado em firmware',
           body1:
             'Alguns teclados incluem ferramentas de configuração do fabricante. Normalmente elas permitem trocar teclas em um editor visual de layout e também ajustar camadas ou atalhos.',
           body2:
-            'Essas ferramentas podem funcionar sobre firmware próprio do fabricante ou sobre firmware aberto como QMK, VIA, Vial ou ZMK.',
-          body3:
-            'Usar uma ferramenta dedicada costuma ser mais fácil do que editar ou compilar o firmware por conta própria. Ainda assim, isso só funciona em modelos compatíveis e algumas ferramentas exigem conexão USB com fio.',
+            'Algumas dessas ferramentas funcionam sobre firmware próprio do fabricante, mas hoje muitas já se apoiam em firmware aberto como QMK, VIA, Vial ou ZMK.',
+          body3: '',
         },
       },
       references: {

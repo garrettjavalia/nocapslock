@@ -10,7 +10,16 @@ export const section = style({
 export const label = style({
   margin: 0,
   color: vars.color.textSoft,
-  fontSize: '0.82rem',
+  fontSize: '1.12rem',
+  fontWeight: 700,
+  letterSpacing: '0.04em',
+  textTransform: 'uppercase',
+})
+
+export const sublabel = style({
+  margin: 0,
+  color: vars.color.textSoft,
+  fontSize: '0.84rem',
   fontWeight: 700,
   letterSpacing: '0.04em',
   textTransform: 'uppercase',

@@ -494,6 +494,7 @@ export const guideCardTitle = style({
 export const guideSubheading = style({
   margin: 0,
   fontSize: '1.08rem',
+  fontWeight: 600,
   lineHeight: 1.45,
 })
 

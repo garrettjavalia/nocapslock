@@ -16,51 +16,16 @@ export function HardwareGuidePanel({ locale }: HardwareGuidePanelProps) {
     title: t('guide.hardware.title'),
     summary: t('guide.hardware.summary'),
     advantagesTitle: t('guide.hardware.advantagesTitle'),
+    methodsTitle: t('guide.hardware.methodsTitle'),
     advantages: [
       t('guide.hardware.advantages.item1'),
       t('guide.hardware.advantages.item2'),
       t('guide.hardware.advantages.item3'),
     ],
     cautionsTitle: t('guide.hardware.cautionsTitle'),
-    cautions: [
-      t('guide.hardware.cautions.item1'),
-      t('guide.hardware.cautions.item2'),
-      t('guide.hardware.cautions.item3'),
-    ],
+    cautions: [],
     referencesTitle: t('guide.label.references'),
     sections: [
-      {
-        id: guideSectionIds.hardwareSwitches,
-        title: t('guide.hardware.sections.switches.title'),
-        body: [
-          t('guide.hardware.sections.switches.body1'),
-          t('guide.hardware.sections.switches.body2'),
-          t('guide.hardware.sections.switches.body3'),
-        ],
-        examplesTitle: t('guide.hardware.examplesTitle'),
-        examples: [
-          {
-            label: 'HHKB',
-            href: 'https://happyhackingkb.com/',
-            guideLabel: t('guide.hardware.exampleGuideLabel.hhkbDip'),
-            guideHref: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/set_dipswitch.html',
-          },
-        ],
-        references: [
-          {
-            label: t('guide.hardware.references.hhkbDownload'),
-            href: 'https://happyhackingkb.com/download/',
-          },
-          {
-            label: t('guide.hardware.references.hhkbDipManual'),
-            href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/set_dipswitch.html',
-          },
-          {
-            label: t('guide.hardware.references.hhkbFnLayer'),
-            href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/use_fnkeys_layer.html',
-          },
-        ],
-      },
       {
         id: guideSectionIds.hardwareVendorTools,
         title: t('guide.hardware.sections.tools.title'),
@@ -167,8 +132,41 @@ export function HardwareGuidePanel({ locale }: HardwareGuidePanelProps) {
           },
         ],
       },
+      {
+        id: guideSectionIds.hardwareSwitches,
+        title: t('guide.hardware.sections.switches.title'),
+        body: [
+          t('guide.hardware.sections.switches.body1'),
+          t('guide.hardware.sections.switches.body2'),
+          t('guide.hardware.sections.switches.body3'),
+        ],
+        examplesTitle: t('guide.hardware.examplesTitle'),
+        examples: [
+          {
+            label: 'HHKB',
+            href: 'https://happyhackingkb.com/',
+            guideLabel: t('guide.hardware.exampleGuideLabel.hhkbDip'),
+            guideHref: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/set_dipswitch.html',
+          },
+        ],
+        references: [
+          {
+            label: t('guide.hardware.references.hhkbDownload'),
+            href: 'https://happyhackingkb.com/download/',
+          },
+          {
+            label: t('guide.hardware.references.hhkbDipManual'),
+            href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/set_dipswitch.html',
+          },
+          {
+            label: t('guide.hardware.references.hhkbFnLayer'),
+            href: 'https://happyhackingkb.com/manual/studio/ug-us/en/ug/topic/use_fnkeys_layer.html',
+          },
+        ],
+      },
     ],
   }
+  const cautionItems = content.cautions.filter(Boolean)
   const references = Array.from(
     new Map(
       content.sections
@@ -210,63 +208,73 @@ export function HardwareGuidePanel({ locale }: HardwareGuidePanelProps) {
         </ul>
       </section>
 
-      <section className={guideStyles.section}>
-        <p className={guideStyles.label}>{content.cautionsTitle}</p>
-        <ul className={guideStyles.notesList}>
-          {content.cautions.map((item) => (
-            <li key={item} className={guideStyles.noteItem}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {content.sections.map((section) => (
-        <section key={section.id} id={section.id} className={guideStyles.section}>
-          <div className={styles.guideCardTitleRow}>
-            <h4 className={styles.guideSubheading}>{section.title}</h4>
-            <HeadlineCopyLinkButton
-              label={section.title}
-              path={getGuidePath(locale, 'hardware')}
-              hash={section.id}
-            />
-          </div>
-          {section.body.map((paragraph) => (
-            <p key={paragraph} className={styles.panelCopy}>
-              {paragraph}
-            </p>
-          ))}
-          {'examples' in section && section.examples ? (
-            <>
-              <p className={guideStyles.label}>{section.examplesTitle}</p>
-              <ul className={guideStyles.notesList}>
-                {section.examples.map((example) => (
-                  <li key={example.href} className={guideStyles.noteItem}>
-                    <a
-                      className={guideStyles.inlineLink}
-                      href={example.href}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {example.label}
-                    </a>{' '}
-                    (
-                    <a
-                      className={guideStyles.inlineLink}
-                      href={example.guideHref}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {example.guideLabel}
-                    </a>
-                    )
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
+      {cautionItems.length > 0 ? (
+        <section className={guideStyles.section}>
+          <p className={guideStyles.label}>{content.cautionsTitle}</p>
+          <ul className={guideStyles.notesList}>
+            {cautionItems.map((item) => (
+              <li key={item} className={guideStyles.noteItem}>
+                {item}
+              </li>
+            ))}
+          </ul>
         </section>
-      ))}
+      ) : null}
+
+      <section className={guideStyles.section}>
+        <p className={guideStyles.label}>{content.methodsTitle}</p>
+
+        {content.sections.map((section, index) => {
+          const numberedTitle = `${index + 1}. ${section.title}`
+
+          return (
+            <section key={section.id} id={section.id} className={guideStyles.section}>
+              <div className={styles.guideCardTitleRow}>
+                <h4 className={styles.guideSubheading}>{numberedTitle}</h4>
+                <HeadlineCopyLinkButton
+                  label={numberedTitle}
+                  path={getGuidePath(locale, 'hardware')}
+                  hash={section.id}
+                />
+              </div>
+              {section.body.filter(Boolean).map((paragraph) => (
+                <p key={paragraph} className={styles.panelCopy}>
+                  {paragraph}
+                </p>
+              ))}
+              {'examples' in section && section.examples ? (
+                <>
+                  <p className={guideStyles.sublabel}>{section.examplesTitle}</p>
+                  <ul className={guideStyles.notesList}>
+                    {section.examples.map((example) => (
+                      <li key={example.href} className={guideStyles.noteItem}>
+                        <a
+                          className={guideStyles.inlineLink}
+                          href={example.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {example.label}
+                        </a>{' '}
+                        (
+                        <a
+                          className={guideStyles.inlineLink}
+                          href={example.guideHref}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {example.guideLabel}
+                        </a>
+                        )
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+            </section>
+          )
+        })}
+      </section>
 
       <section className={guideStyles.section}>
         <p className={guideStyles.label}>{content.referencesTitle}</p>

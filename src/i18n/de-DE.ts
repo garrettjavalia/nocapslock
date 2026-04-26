@@ -164,17 +164,14 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       summary:
         'Manche Tastaturen können Tasten wie Caps Lock, Strg oder Escape direkt auf der Tastatur neu belegen, statt über das Betriebssystem. Wenn deine Tastatur das unterstützt, ist das oft einfacher als Änderungen in Windows, macOS oder Linux.',
       advantagesTitle: 'Vorteile',
+      methodsTitle: 'Einrichtungsmethoden',
       advantages: {
         item1: 'Die Belegung kann auf der Tastatur erhalten bleiben, auch wenn du sie an einen anderen Computer anschließt.',
         item2: 'Sie kann schon vor der Anmeldung oder außerhalb der eigentlichen Benutzersitzung funktionieren.',
         item3: 'Das ist besonders nützlich auf Arbeitsrechnern, auf denen Änderungen am System eingeschränkt sind.',
       },
       cautionsTitle: 'Worauf du achten solltest',
-      cautions: {
-        item1: 'Nicht jede Tastatur unterstützt diese Art der Neuzuordnung.',
-        item2: 'Manche Werkzeuge funktionieren nur über eine kabelgebundene USB-Verbindung.',
-        item3: 'Firmware-basierte Werkzeuge sind leistungsfähig, aber nicht immer der einfachste Einstieg.',
-      },
+      cautions: {},
       examplesTitle: 'Beispiele',
       officialPageLabel: '{{label}} offizielle Seite',
       exampleGuideLabel: {
@@ -188,18 +185,16 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
           body1:
             'Einige Tastaturen bieten Layout-Änderungen direkt in der Hardware an. Typische Beispiele sind DIP-Schalter, die Strg und Caps Lock tauschen, Backspace und Entf vertauschen oder den Plattformmodus umschalten.',
           body2:
-            'HHKB ist ein bekanntes Beispiel für diesen Ansatz. Je nach Modell lassen sich Strg, Caps Lock oder Fn-bezogene Funktionen über DIP-Schalter oder integrierte Layer anpassen.',
-          body3:
             'Der Spielraum ist meist begrenzt, aber die Einrichtung ist schnell, stabil und kommt ohne Hintergrundsoftware aus.',
+          body3: '',
         },
         tools: {
           title: 'Konfigurationstools und firmwarebasiertes Remapping',
           body1:
             'Einige Tastaturen bringen Konfigurationstools des Herstellers mit. Damit lassen sich Tasten meist in einem visuellen Layout-Editor ändern und zusätzlich Layer oder Shortcuts anpassen.',
           body2:
-            'Diese Werkzeuge können auf herstellereigener Firmware oder auf offener Firmware wie QMK, VIA, Vial oder ZMK aufbauen.',
-          body3:
-            'Ein dediziertes Werkzeug ist in der Regel einfacher als Firmware selbst zu bearbeiten oder zu kompilieren. Es funktioniert aber nur auf unterstützten Modellen, und manche Werkzeuge brauchen eine kabelgebundene USB-Verbindung.',
+            'Ein Teil dieser Werkzeuge basiert auf herstellereigener Firmware, aber viele aktuelle Lösungen bauen auf offener Firmware wie QMK, VIA, Vial oder ZMK auf.',
+          body3: '',
         },
       },
       references: {

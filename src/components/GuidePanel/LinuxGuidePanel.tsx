@@ -59,9 +59,9 @@ export function LinuxGuidePanel({ locale }: LinuxGuidePanelProps) {
                 </p>
               </section>
             ) : (
-              <div key={item.id} className={styles.guideInlineCodeSection}>
+                <div key={item.id} className={styles.guideInlineCodeSection}>
                 <section className={guideStyles.section}>
-                  <p className={guideStyles.label}>{t(`guide.codeBlock.${item.id}.label`)}</p>
+                  <p className={guideStyles.sublabel}>{t(`guide.codeBlock.${item.id}.label`)}</p>
                   <GuideCodeBlock
                     code={t(`guide.linux.${item.id === 'install' ? 'installScript' : 'configSnippet'}`)}
                     copyLabel={t(`guide.codeBlock.${item.id}.copy`)}
