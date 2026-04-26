@@ -109,9 +109,11 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
               <h4 className={guideStyles.stepTitle}>
                 <Trans i18nKey={`guide.mac.steps.${step}.title`} components={keyComponents} />
               </h4>
-              <p className={guideStyles.stepBody}>
-                <Trans i18nKey={`guide.mac.steps.${step}.body`} components={stepComponents} />
-              </p>
+              <div className={guideStyles.contentGroup}>
+                <p className={guideStyles.stepBody}>
+                  <Trans i18nKey={`guide.mac.steps.${step}.body`} components={stepComponents} />
+                </p>
+              </div>
             </section>
           ))}
 
@@ -119,27 +121,31 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
             <h4 className={guideStyles.stepTitle}>
               <Trans i18nKey="guide.mac.steps.step04.title" components={keyComponents} />
             </h4>
-            <p className={guideStyles.stepBody}>
-              <Trans i18nKey="guide.mac.steps.step04.body" components={stepComponents} />
-            </p>
+            <div className={guideStyles.contentGroup}>
+              <p className={guideStyles.stepBody}>
+                <Trans i18nKey="guide.mac.steps.step04.body" components={stepComponents} />
+              </p>
 
-            <div className={guideStyles.substepGroup}>
-              {substeps.map((substep) => (
-                <section key={substep} className={guideStyles.stepItem}>
-                  <h4 className={guideStyles.stepTitle}>
-                    <Trans
-                      i18nKey={`guide.mac.steps.step04.substeps.${substep}.title`}
-                      components={keyComponents}
-                    />
-                  </h4>
-                  <p className={guideStyles.stepBody}>
-                    <Trans
-                      i18nKey={`guide.mac.steps.step04.substeps.${substep}.body`}
-                      components={stepComponents}
-                    />
-                  </p>
-                </section>
-              ))}
+              <div className={guideStyles.substepGroup}>
+                {substeps.map((substep) => (
+                  <section key={substep} className={guideStyles.stepItem}>
+                    <h4 className={guideStyles.stepTitle}>
+                      <Trans
+                        i18nKey={`guide.mac.steps.step04.substeps.${substep}.title`}
+                        components={keyComponents}
+                      />
+                    </h4>
+                    <div className={guideStyles.contentGroup}>
+                      <p className={guideStyles.stepBody}>
+                        <Trans
+                          i18nKey={`guide.mac.steps.step04.substeps.${substep}.body`}
+                          components={stepComponents}
+                        />
+                      </p>
+                    </div>
+                  </section>
+                ))}
+              </div>
             </div>
           </section>
         </div>

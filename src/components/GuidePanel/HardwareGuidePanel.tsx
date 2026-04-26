@@ -223,57 +223,62 @@ export function HardwareGuidePanel({ locale }: HardwareGuidePanelProps) {
 
       <section className={guideStyles.section}>
         <p className={guideStyles.label}>{content.methodsTitle}</p>
+        <div className={guideStyles.stepList}>
+          {content.sections.map((section, index) => {
+            const numberedTitle = `${index + 1}. ${section.title}`
 
-        {content.sections.map((section, index) => {
-          const numberedTitle = `${index + 1}. ${section.title}`
+            return (
+              <section key={section.id} id={section.id} className={guideStyles.stepItem}>
+                <div className={guideStyles.headingRow}>
+                  <h4 className={styles.guideSubheading}>{numberedTitle}</h4>
+                  <HeadlineCopyLinkButton
+                    label={numberedTitle}
+                    path={getGuidePath(locale, 'hardware')}
+                    hash={section.id}
+                  />
+                </div>
 
-          return (
-            <section key={section.id} id={section.id} className={guideStyles.section}>
-              <div className={styles.guideCardTitleRow}>
-                <h4 className={styles.guideSubheading}>{numberedTitle}</h4>
-                <HeadlineCopyLinkButton
-                  label={numberedTitle}
-                  path={getGuidePath(locale, 'hardware')}
-                  hash={section.id}
-                />
-              </div>
-              {section.body.filter(Boolean).map((paragraph) => (
-                <p key={paragraph} className={styles.panelCopy}>
-                  {paragraph}
-                </p>
-              ))}
-              {'examples' in section && section.examples ? (
-                <>
-                  <p className={guideStyles.sublabel}>{section.examplesTitle}</p>
-                  <ul className={guideStyles.notesList}>
-                    {section.examples.map((example) => (
-                      <li key={example.href} className={guideStyles.noteItem}>
-                        <a
-                          className={guideStyles.inlineLink}
-                          href={example.href}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {example.label}
-                        </a>{' '}
-                        (
-                        <a
-                          className={guideStyles.inlineLink}
-                          href={example.guideHref}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {example.guideLabel}
-                        </a>
-                        )
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-            </section>
-          )
-        })}
+                <div className={guideStyles.contentGroup}>
+                  {section.body.filter(Boolean).map((paragraph) => (
+                    <p key={paragraph} className={styles.panelCopy}>
+                      {paragraph}
+                    </p>
+                  ))}
+
+                  {'examples' in section && section.examples ? (
+                    <section className={guideStyles.subcontentGroup}>
+                      <p className={guideStyles.sublabel}>{section.examplesTitle}</p>
+                      <ul className={guideStyles.notesList}>
+                        {section.examples.map((example) => (
+                          <li key={example.href} className={guideStyles.noteItem}>
+                            <a
+                              className={guideStyles.inlineLink}
+                              href={example.href}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {example.label}
+                            </a>{' '}
+                            (
+                            <a
+                              className={guideStyles.inlineLink}
+                              href={example.guideHref}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {example.guideLabel}
+                            </a>
+                            )
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  ) : null}
+                </div>
+              </section>
+            )
+          })}
+        </div>
       </section>
 
       <section className={guideStyles.section}>
