@@ -1,6 +1,6 @@
 import type { TranslationMessages } from './schema'
 
-export const koTranslation = {
+export const koKrTranslation = {
   linkCopy: {
     copy: '링크 복사',
     copied: '링크 복사됨',
@@ -340,4 +340,4 @@ esc = capslock`,
   },
 } as const satisfies TranslationMessages
 
-export const koMessages = koTranslation
+export const koKrMessages = koKrTranslation

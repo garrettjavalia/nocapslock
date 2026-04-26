@@ -1,4 +1,4 @@
-export const enTranslation = {
+export const enUsTranslation = {
   linkCopy: {
     copy: 'Copy link',
     copied: 'Link copied',
@@ -340,4 +340,4 @@ esc = capslock`,
   },
 } as const
 
-export const enMessages = enTranslation
+export const enUsMessages = enUsTranslation
