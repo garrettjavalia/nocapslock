@@ -319,7 +319,7 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
       steps: {
         step01: {
           title: '1. Instale o Karabiner-Elements e conclua as solicitações de permissão',
-          body: 'Instale o <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> primeiro e depois confirme que o serviço em segundo plano, a permissão de Input Monitoring e a extensão do driver estão liberados. Essas são as configurações obrigatórias do macOS.',
+          body: 'Comece pela <karabinerHomepage>página inicial do Karabiner-Elements</karabinerHomepage>, instale o app e depois abra o Karabiner-Elements. Siga as solicitações de permissão mostradas pelo app. Se algo não estiver claro, use o <karabinerInstallationGuide>guia de instalação</karabinerInstallationGuide> como referência.',
         },
         step02: {
           title: '2. Remapeie o <key>Caps Lock</key> em Simple Modifications',
@@ -343,7 +343,7 @@ Esta é só uma demo no navegador, mas já dá para sentir a praticidade.`,
             },
             step04_3: {
               title: '4-3. Atribua <key>F18</key> à troca de fonte de entrada no macOS',
-              body: 'Abra Menu Apple > Ajustes do Sistema > Teclado > Atalhos de Teclado > Fontes de Entrada e atribua <key>F18</key> a “Selecionar a próxima fonte no menu de entrada”. Isso recria uma tecla confiável de troca de idioma depois que o <key>Caps Lock</key> foi reaproveitado. Aqui, <key>F18</key> é usado como exemplo prático. Como <key>F1</key> a <key>F12</key> estão ligados a recursos internos do sistema, uma tecla de função com número mais alto costuma ser mais fácil de usar para troca de fonte de entrada. Entre elas, <key>F18</key> é uma das teclas que costuma dar para usar sem problemas.',
+              body: 'Abra Menu Apple > Ajustes do Sistema > Teclado > Atalhos de Teclado > Fontes de Entrada e atribua <key>F18</key> a “Selecionar a próxima fonte no menu de entrada”. Isso recria uma tecla confiável de troca de idioma depois que o <key>Caps Lock</key> foi reaproveitado. Aqui recomendamos <key>F18</key> porque ela tem menos chance de conflitar com atalhos comuns de apps ou com as teclas de funções do sistema na fileira superior. Se ela não funcionar como esperado, confira se já existe uma atribuição nos atalhos de teclado do macOS.',
             },
           },
         },
