@@ -319,7 +319,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
       steps: {
         step01: {
           title: '1. Karabiner-Elements installieren und Berechtigungen freigeben',
-          body: 'Installiere zuerst <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> und erlaube dann den Hintergrunddienst, die Input-Monitoring-Berechtigung und die Treibererweiterung. Das sind die erforderlichen macOS-Einstellungen.',
+          body: 'Beginne auf der <karabinerHomepage>Karabiner-Elements-Startseite</karabinerHomepage>, installiere die App und öffne danach Karabiner-Elements. Folge den Berechtigungshinweisen, die die App anzeigt. Wenn etwas unklar ist, nutze den <karabinerInstallationGuide>Installationsleitfaden</karabinerInstallationGuide> als Ergänzung.',
         },
         step02: {
           title: '2. <key>Caps Lock</key> in Simple Modifications neu belegen',
@@ -343,7 +343,7 @@ Das ist nur eine kleine Browser-Demo, aber man merkt den Komfort sofort.`,
             },
             step04_3: {
               title: '4-3. <key>F18</key> in macOS dem Wechsel der Eingabequelle zuweisen',
-              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> ist hier nur ein praktisches Beispiel. <key>F1</key> bis <key>F12</key> sind an integrierte Systemfunktionen gebunden; eine höher nummerierte Funktionstaste ist deshalb für den Wechsel der Eingabequelle oft einfacher. Darunter ist <key>F18</key> eine der Tasten, die sich meist problemlos verwenden lassen.',
+              body: 'Öffne Apple-Menü > Systemeinstellungen > Tastatur > Tastaturkurzbefehle > Eingabequellen und weise <key>F18</key> „Nächste Quelle im Eingabemenü auswählen“ zu. So bekommst du nach der Umbelegung von <key>Caps Lock</key> wieder eine verlässliche Sprachwechsel-Taste. <key>F18</key> wird hier empfohlen, weil es seltener mit üblichen App-Kurzbefehlen oder den Systemfunktionstasten der oberen Tastaturreihe kollidiert. Wenn es nicht wie erwartet funktioniert, prüfe die macOS-Tastaturkurzbefehle auf eine vorhandene Belegung.',
             },
           },
         },
