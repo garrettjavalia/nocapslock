@@ -22,7 +22,7 @@ export const ptBrTranslation = {
     dark: 'Modo escuro',
   },
   hero: {
-    title: 'Chega de Caps Lock!',
+    title: 'Deixe o Caps Lock mais útil',
     lead:
       'O Caps Lock ocupa um dos lugares mais valiosos do seu teclado. Se você o remapear para uma tecla de atalho que realmente usa, digitar fica muito mais confortável.',
   },

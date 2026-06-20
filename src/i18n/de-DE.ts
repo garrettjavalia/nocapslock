@@ -22,7 +22,7 @@ export const deDeTranslation = {
     dark: 'Dunkler Modus',
   },
   hero: {
-    title: 'Schluss mit Caps Lock!',
+    title: 'Mach Caps Lock nützlicher',
     lead:
       'Caps Lock belegt einen der wertvollsten Plätze auf deiner Tastatur. Wenn du sie auf eine Taste legst, die du wirklich für Tastenkürzel nutzt, fühlt sich Tippen deutlich angenehmer an.',
   },

@@ -22,7 +22,7 @@ export const jaJpTranslation = {
     dark: 'ダークモード',
   },
   hero: {
-    title: 'もう Caps Lock はいらない！',
+    title: 'Caps Lock をもっと便利に！',
     lead:
       'Caps Lock は、キーボードの中でも特に価値の高い場所を占めています。実際によく使うショートカットキーに再割り当てすれば、入力がぐっと快適になります。',
   },
