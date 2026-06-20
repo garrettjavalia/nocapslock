@@ -319,7 +319,7 @@ Caps Lock + X で切り取り。
       steps: {
         step01: {
           title: '1. Karabiner-Elements をインストールして権限を許可する',
-          body: 'まず <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> をインストールし、バックグラウンドサービス、入力監視権限、ドライバ拡張のすべてを許可してください。これらは必要な macOS 設定です。',
+          body: 'まず <karabinerHomepage>Karabiner-Elements の公式サイト</karabinerHomepage> からアプリをインストールします。その後 Karabiner-Elements を開き、アプリに表示される権限の案内に従って許可してください。わかりにくい場合だけ、<karabinerInstallationGuide>インストールガイド</karabinerInstallationGuide> を補助資料として確認します。',
         },
         step02: {
           title: '2. Simple Modifications で <key>Caps Lock</key> を再割り当てする',
@@ -343,7 +343,7 @@ Caps Lock + X で切り取り。
             },
             step04_3: {
               title: '4-3. macOS で <key>F18</key> を入力ソース切り替えに割り当てる',
-              body: 'Apple メニュー > システム設定 > キーボード > キーボードショートカット > 入力ソース を開き、“入力メニューで次のソースを選択” に <key>F18</key> を割り当ててください。これで <key>Caps Lock</key> を別の役割に変えたあとでも、信頼できる言語切り替えキーを再び用意できます。ここでは実用例として <key>F18</key> を使っています。<key>F1</key> から <key>F12</key> は内蔵のシステム機能に結びついているため、入力ソース切り替えにはそれより大きい番号のファンクションキーのほうが扱いやすいことがあります。その中でも <key>F18</key> は無難に使えるキーの一つです。',
+              body: 'Apple メニュー > システム設定 > キーボード > キーボードショートカット > 入力ソース を開き、“入力メニューで次のソースを選択” に <key>F18</key> を割り当ててください。これで <key>Caps Lock</key> を別の役割に変えたあとでも、信頼できる言語切り替えキーを再び用意できます。ここでは、一般的なアプリのショートカットや上段のシステム機能キーと競合しにくい例として <key>F18</key> を推奨しています。期待どおり動かない場合は、macOS のキーボードショートカット設定で既存の割り当てがないか確認してください。',
             },
           },
         },
