@@ -22,7 +22,7 @@ export const esEsTranslation = {
     dark: 'Modo oscuro',
   },
   hero: {
-    title: '¡No más Caps Lock!',
+    title: 'Haz que Caps Lock sea más útil',
     lead:
       'Caps Lock ocupa uno de los lugares más valiosos del teclado. Si lo reasignas a una tecla de acceso rápido que realmente uses, escribir se siente mucho más cómodo.',
   },
