@@ -117,12 +117,12 @@ export const heroLeadSection = style({
 
 export const heroTitle = style({
   marginBottom: 18,
-  fontSize: 'clamp(3.2rem, 8vw, 6.2rem)',
-  lineHeight: 0.94,
-  letterSpacing: '-0.05em',
+  fontSize: 'clamp(1.8rem, 4vw, 3.1rem)',
+  lineHeight: 1.04,
+  letterSpacing: 0,
   '@media': {
     '(max-width: 640px)': {
-      fontSize: 'clamp(2.6rem, 8vw, 3.2rem)',
+      fontSize: 'clamp(1.5rem, 6vw, 2rem)',
     },
   },
 })

@@ -20,7 +20,7 @@ export const enUsTranslation = {
     dark: 'Dark mode',
   },
   hero: {
-    title: 'No Capslock Anymore!',
+    title: 'Make Caps Lock useful!',
     lead:
       'Caps Lock is taking up one of the most valuable spots on your keyboard. If you remap it to a shortcut key you actually use, typing feels much more comfortable.',
   },
