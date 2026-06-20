@@ -317,7 +317,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
       steps: {
         step01: {
           title: '1. Install Karabiner-Elements and finish the permission prompts',
-          body: 'Install <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide> first, then make sure the background service, Input Monitoring permission, and driver extension are all allowed. These are the required macOS settings.',
+          body: 'Start from the <karabinerHomepage>Karabiner-Elements homepage</karabinerHomepage>, install the app, then open Karabiner-Elements and follow the permission prompts it shows. If anything is unclear, use the <karabinerInstallationGuide>installation guide</karabinerInstallationGuide> as a reference.',
         },
         step02: {
           title: '2. Remap <key>Caps Lock</key> in Simple Modifications',
@@ -341,7 +341,7 @@ This is only a browser demo, but it is enough to feel the convenience.`,
             },
             step04_3: {
               title: '4-3. Assign <key>F18</key> to input-source switching in macOS',
-              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is used here as a practical example. Because <key>F1</key> through <key>F12</key> are tied to built-in system features, a higher-numbered function key is often easier to use for input-source switching. Among them, <key>F18</key> is one of the keys that is usually safe to use.',
+              body: 'Open Apple menu > System Settings > Keyboard > Keyboard Shortcuts > Input Sources, then assign <key>F18</key> to “Select next source in Input menu.” This recreates a reliable language-switch key after <key>Caps Lock</key> has been repurposed. <key>F18</key> is recommended here because it is less likely to conflict with common app shortcuts or top-row system-feature keys. If it does not work as expected, check macOS Keyboard Shortcuts for an existing assignment.',
             },
           },
         },

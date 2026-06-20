@@ -319,7 +319,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
       steps: {
         step01: {
           title: '1. Karabiner-Elements 설치와 권한 허용',
-          body: '먼저 <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>를 설치한 뒤, 백그라운드 서비스, 입력 모니터링 권한, 드라이버 확장을 모두 허용합니다. 이 항목들이 필수 macOS 설정입니다.',
+          body: '먼저 <karabinerHomepage>Karabiner-Elements 공식 홈페이지</karabinerHomepage>에서 앱을 설치합니다. 설치 후 Karabiner-Elements를 실행하고, 앱이 띄우는 권한 안내를 따라 허용을 마칩니다. 막히는 부분이 있을 때만 <karabinerInstallationGuide>설치 안내 문서</karabinerInstallationGuide>를 보조 자료로 확인하면 됩니다.',
         },
         step02: {
           title: '2. Simple Modifications에서 <key>Caps Lock</key> 변경',
@@ -343,7 +343,7 @@ Caps Lock + X 는 잘라내기처럼 동작합니다.
             },
             step04_3: {
               title: '4-3. macOS에서 <key>F18</key>을 입력 소스 전환 키로 배정',
-              body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 <key>F18</key>을 지정합니다. 그러면 <key>Caps Lock</key>을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 <key>F18</key>을 실사용 예시로 사용합니다. <key>F1</key>부터 <key>F12</key>까지는 기본 시스템 기능과 연결되어 있으므로, 입력 소스 전환용 키는 그보다 높은 번호의 기능키가 다루기 편한 경우가 많습니다. 그중에서도 <key>F18</key>은 무난히 쓸 수 있는 키 중 하나입니다.',
+              body: 'Apple 메뉴 > 시스템 설정 > 키보드 > 키보드 단축키 > 입력 소스로 들어간 뒤, “입력 메뉴에서 다음 소스 선택” 항목에 <key>F18</key>을 지정합니다. 그러면 <key>Caps Lock</key>을 다른 역할로 바꾼 뒤에도 입력 언어 전환 키를 유지할 수 있습니다. 여기서는 앱 단축키나 키보드 상단의 시스템 기능키와 충돌할 가능성이 비교적 낮은 <key>F18</key>을 권장 예시로 사용합니다. 예상대로 동작하지 않으면 macOS 키보드 단축키 설정에 이미 배정된 항목이 있는지 확인하세요.',
             },
           },
         },

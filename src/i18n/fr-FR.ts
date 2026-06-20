@@ -319,7 +319,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
       steps: {
         step01: {
           title: '1. Installez Karabiner-Elements et autorisez-le',
-          body: 'Installez d’abord <karabinerInstallationGuide>Karabiner-Elements</karabinerInstallationGuide>, puis assurez-vous que le service d’arrière-plan, l’autorisation de surveillance des saisies et l’extension de pilote sont tous autorisés. Ce sont les réglages macOS requis.',
+          body: 'Commencez par la <karabinerHomepage>page d’accueil de Karabiner-Elements</karabinerHomepage>, installez l’app, puis ouvrez Karabiner-Elements. Suivez les demandes d’autorisation affichées par l’app. Si un point n’est pas clair, utilisez le <karabinerInstallationGuide>guide d’installation</karabinerInstallationGuide> comme référence.',
         },
         step02: {
           title: '2. Remappez <key>Caps Lock</key> dans Simple Modifications',
@@ -343,7 +343,7 @@ Ce n’est qu’une démo dans le navigateur, mais elle suffit pour sentir le co
             },
             step04_3: {
               title: '4-3. Attribuez <key>F18</key> au changement de source de saisie dans macOS',
-              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à « sélectionner la méthode de saisie suivante dans le menu Saisie ». Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est utilisé ici comme exemple pratique. Comme <key>F1</key> à <key>F12</key> sont liés à des fonctions système intégrées, une touche de fonction plus élevée est souvent plus simple à utiliser pour le changement de source. Parmi elles, <key>F18</key> fait partie des touches qu’on peut généralement utiliser sans problème.',
+              body: 'Ouvrez le menu Apple > Réglages Système > Clavier > Raccourcis clavier > Sources de saisie, puis attribuez <key>F18</key> à « sélectionner la méthode de saisie suivante dans le menu Saisie ». Vous recréez ainsi une touche fiable de changement de langue après que <key>Caps Lock</key> a été réaffectée. <key>F18</key> est recommandé ici, car il risque moins de chevaucher des raccourcis d’apps courants ou les touches de fonctions système de la rangée supérieure. Si elle ne fonctionne pas comme prévu, vérifiez si elle est déjà attribuée dans les raccourcis clavier de macOS.',
             },
           },
         },

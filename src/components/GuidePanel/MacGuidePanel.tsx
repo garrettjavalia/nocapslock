@@ -16,6 +16,14 @@ export function MacGuidePanel({ locale }: MacGuidePanelProps) {
   const keyComponents = { key: <InlineTransKeycap platform="mac" /> }
   const stepComponents = {
     ...keyComponents,
+    karabinerHomepage: (
+      <a
+        className={guideStyles.inlineLink}
+        href="https://karabiner-elements.pqrs.org/"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
     karabinerInstallationGuide: (
       <a
         className={guideStyles.inlineLink}
